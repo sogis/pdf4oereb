@@ -12,6 +12,7 @@ import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.SequenceType;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmValue;
+import net.sf.saxon.trans.XPathException;
 
 
 public class Test implements ExtensionFunction {
@@ -35,7 +36,12 @@ public class Test implements ExtensionFunction {
     @Override
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         log.info(arguments.toString());
-        log.info(arguments[0].toString());
+        try {
+            log.info(arguments[0].getUnderlyingValue().getStringValue().toString());
+        } catch (XPathException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         String result = "Saxon is being extended correctly.";
         return new XdmAtomicValue(result);
