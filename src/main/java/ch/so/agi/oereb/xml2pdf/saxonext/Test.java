@@ -35,6 +35,7 @@ public class Test implements ExtensionFunction {
     @Override
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         log.info(arguments.toString());
+        log.info(arguments[0].toString());
         
         String result = "Saxon is being extended correctly.";
         return new XdmAtomicValue(result);
