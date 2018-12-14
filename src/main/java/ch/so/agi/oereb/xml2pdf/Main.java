@@ -20,16 +20,6 @@ public class Main {
         
         Xml2Pdf xml2pdf =  new Xml2Pdf();
         xml2pdf.run(xmlFileName, outputDirectory);
-
-        
-
-//        DM01Converter dm01Converter = new DM01Converter();
-//        try {
-//            dm01Converter.convert(inputFileName, outputPath, language);
-//            log.info("File written to: " + outputPath);
-//        } catch (IllegalArgumentException | IoxException | Ili2cException e) {
-//            e.printStackTrace();
-//        }
     }
 
 }

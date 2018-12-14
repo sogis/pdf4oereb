@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'commons-io:commons-io:2.6'
     implementation 'net.sf.saxon:Saxon-HE:9.9.0-2'
     implementation 'org.apache.xmlgraphics:fop:2.3'
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
+<xsl:stylesheet xmlns:ext="http://some.namespace.com" xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
@@ -295,6 +295,7 @@
                 <fo:inline/>
                 <fo:footnote-body>
                   <fo:block keep-together.within-column="always">
+                  <xsl:value-of select="ext:test(data:PLRCadastreAuthority/data:OfficeAtWeb)" />
                     <fo:block-container margin-top="0mm" margin-bottom="5mm" font-weight="400" font-size="6.5pt" line-height="8.5pt" font-family="Cadastra" background-color="yellowgreen">
                       <fo:table table-layout="fixed" width="100%">
                         <fo:table-column column-width="87mm"/>
