@@ -3,6 +3,12 @@ plugins {
 }
 
 repositories {
+    maven {
+        url "http://download.osgeo.org/webdav/geotools/"
+    }
+    maven {
+        url "http://maven.geo-solutions.it"
+    }
     jcenter()
 }
 
@@ -12,6 +18,10 @@ dependencies {
     implementation 'commons-io:commons-io:2.6'
     implementation 'net.sf.saxon:Saxon-HE:9.9.0-2'
     implementation 'org.apache.xmlgraphics:fop:2.3'
+    implementation 'org.locationtech.jts:jts-core:1.16.0'
+    implementation 'org.geotools:gt-main:20.1'
+    implementation 'org.geotools:gt-render:20.1'
+    implementation 'org.geotools:gt-epsg-hsql:20.1'
 
     testImplementation 'junit:junit:4.12'
 }

@@ -110,7 +110,8 @@
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
-                    <xsl:value-of select="data:RealEstate/data:PlanForLandRegisterMainPage"/>
+                    <!-- <xsl:value-of select="data:RealEstate/data:PlanForLandRegisterMainPage"/> -->
+                    <xsl:value-of select="ext:test(data:RealEstate/data:Limit, data:RealEstate/data:PlanForLandRegisterMainPage)" />
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </fo:external-graphic>
@@ -295,7 +296,6 @@
                 <fo:inline/>
                 <fo:footnote-body>
                   <fo:block keep-together.within-column="always">
-                  <xsl:value-of select="ext:test(data:RealEstate/data:Limit)" />
                     <fo:block-container margin-top="0mm" margin-bottom="5mm" font-weight="400" font-size="6.5pt" line-height="8.5pt" font-family="Cadastra" background-color="yellowgreen">
                       <fo:table table-layout="fixed" width="100%">
                         <fo:table-column column-width="87mm"/>
