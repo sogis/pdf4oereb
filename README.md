@@ -9,4 +9,5 @@
 - Opazität aus XML
 - Nach was genau gruppieren? Da braucht es wohl Absprache, da die Maschinen nicht alles wissen kann. 
  * Gruppieren nach den 17 ÖREB-Themen (tendenziell nach ROL/Theme/Text/Text) und irgendwie auch nach Subthema, falls vorhanden und ungleich Theme/Text/Text. Ist aber auch Heuristik.
+ * siehe PDF-Weisung: Thema/Text muss ja der Codeliste entsprechen, wäre also spezifiert.
 - Distinct? Falls vom gleichen Typ mehrere ROL-Elemente (dh. auch meherere Images) -> Beispiel?
