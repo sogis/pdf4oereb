@@ -1,7 +1,10 @@
 package ch.so.agi.oereb.xml2pdf.saxon.ext;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.Composite;
+import org.geotools.renderer.composite.BlendComposite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -53,17 +56,22 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 
 	@Override
 	public SequenceType[] getArgumentTypes() {
-        return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ZERO_OR_MORE)};
+        return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ZERO_OR_MORE),
+        		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
 	}
 
 	@Override
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
-		XdmValue value = (XdmValue) arguments[0];
-		
+		// the restriction on landownership maps
+		XdmValue restrictionOnLandownershipMaps = (XdmValue) arguments[0];
+
+		// the background image
+		XdmValue backgroundImage = (XdmValue) arguments[1];
+
 		// the list that stores the image, the layer index and the opacity value
 		List<MapImage> mapImageList = new ArrayList<MapImage>();
 		
-		Iterator<XdmItem> it = value.iterator();
+		Iterator<XdmItem> it = restrictionOnLandownershipMaps.iterator();
 		int i=1;
 		while(it.hasNext()) {
 			XdmNode mapNode = (XdmNode) it.next();
@@ -104,7 +112,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		
 		// merge the images
 		BufferedImage newImage = null;
-		Graphics g = null;
+		Graphics2D g = null;
 
 		for(MapImage mapImage : mapImageList) {
 			BufferedImage imageBufferedImage = mapImage.getLayerImage();
@@ -114,11 +122,24 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			
 			if (newImage == null) {
 				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
-				g = newImage.getGraphics();
+				g = (Graphics2D) newImage.getGraphics();
 			}
 			g.drawImage(imageBufferedImage, 0, 0, null);
 		}
 		
+		// merge background image
+		try {
+			byte[] backgroundImageByteArray = Base64.getDecoder().decode(backgroundImage.getUnderlyingValue().getStringValue());
+			InputStream backgroundImageInputStream = new ByteArrayInputStream(backgroundImageByteArray);
+			BufferedImage backgroundImageBufferedImage = ImageIO.read(backgroundImageInputStream);
+			
+//			g.setComposite(BlendComposite.MULTIPLY_COMPOSITE);
+			g.drawImage(backgroundImageBufferedImage, 0, 0, null);
+		} catch (IOException | XPathException e) {
+			e.printStackTrace();
+			throw new SaxonApiException(e.getMessage());
+		} 
+
 		// write image
 		byte[] newImageByteArray = null;
 		try {
@@ -130,10 +151,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			ImageIO.write(newImage, imageFormat, baos);
 			baos.flush();
 			newImageByteArray = baos.toByteArray();
-			baos.close();          
-
-	        
-	        
+			baos.close();         
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());

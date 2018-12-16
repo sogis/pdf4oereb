@@ -349,7 +349,7 @@
               </fo:footnote>
             </fo:block>
             </fo:block-container>
-
+            
             <xsl:for-each-group select="data:RealEstate/data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
               <fo:block-container height="19mm" background-color="yellowgreen">
                 <fo:block page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
@@ -360,7 +360,7 @@
                       <xsl:attribute name="src">
                         <xsl:text>url('data:</xsl:text>
                         <xsl:text>image/png;base64,</xsl:text>
-                        <xsl:value-of select="oereb:mergeRestrictionOnLandownershipImages(current-group()/data:Map)" />                    
+                        <xsl:value-of select="oereb:mergeRestrictionOnLandownershipImages(current-group()/data:Map, ../data:PlanForLandRegister/data:Image)" />                    
                         <xsl:text>')</xsl:text>
                       </xsl:attribute>
                     </fo:external-graphic>
@@ -373,6 +373,28 @@
               </xsl:for-each>
 -->
             </xsl:for-each-group>
+
+            <fo:block-container height="13mm" background-color="wheat">
+              <fo:block page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra">Abkürzungen</fo:block>
+            </fo:block-container>            
+
+            <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
+              <fo:table table-layout="fixed" width="100%">
+                <fo:table-column column-width="174mm"/>
+                <fo:table-body>
+                <xsl:for-each select="data:Glossary">
+                  <xsl:sort select="data:Title/data:LocalisedText/data:Text"/>
+                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11.5pt" >
+                    <fo:table-cell padding-top="1mm" padding-bottom="1mm">
+                      <fo:block><fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText/data:Text"/>: </fo:inline><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
+                    </fo:table-cell>
+                  </fo:table-row>
+
+                </xsl:for-each>
+
+                </fo:table-body>
+              </fo:table>
+            </fo:block-container>
 
 
         </fo:flow>
