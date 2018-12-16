@@ -31,7 +31,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
-import ch.so.agi.oereb.xml2pdf.saxonext.Test;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.HighlightingImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.MergedImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.Test;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
@@ -58,7 +60,7 @@ public class Xml2Pdf {
     
     public void run(String xmlFileName, String outputDirectory) {
         try {
-//            Path tempDir = Files.createTempDirectory("oereb_xml2pdf_");
+//            Path tempDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_resources__");
             Path tempDir = Paths.get("/Users/stefan/tmp/");
             
             String baseFileName = FilenameUtils.getBaseName(xmlFileName);
@@ -93,8 +95,10 @@ public class Xml2Pdf {
             // from examples in source code
             Processor proc = new Processor(false);
             
-            ExtensionFunction test = new Test();
-            proc.registerExtensionFunction(test);
+            ExtensionFunction highlightingImage = new HighlightingImage();
+            proc.registerExtensionFunction(highlightingImage);
+            ExtensionFunction mergedImage = new MergedImage();
+            proc.registerExtensionFunction(mergedImage);
             
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(xsltFile));

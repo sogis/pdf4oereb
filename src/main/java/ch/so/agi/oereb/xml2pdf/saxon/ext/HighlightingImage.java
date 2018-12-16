@@ -1,4 +1,4 @@
-package ch.so.agi.oereb.xml2pdf.saxonext;
+package ch.so.agi.oereb.xml2pdf.saxon.ext;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -73,64 +72,55 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.trans.XPathException;
 
-public class Test implements ExtensionFunction {
-    Logger log = LoggerFactory.getLogger(Test.class);
+public class HighlightingImage implements ExtensionFunction {
+    Logger log = LoggerFactory.getLogger(HighlightingImage.class);
 
     private final String highlightingStrokeColor = "#e60000";
     private final int highlightingStrokeWidth = 6;
     private final double highlightingStrokeOpacity = 0.4;
     private final int dpi = 300;
     private final String imageFormat = "png";
-    
-    @Override
-    public QName getName() {
-        return new QName("http://some.namespace.com", "test");
-    }
 
-    @Override
-    public SequenceType getResultType() {
+	@Override
+	public QName getName() {
+        return new QName("http://oereb.agi.so.ch", "highlightingImage");
+	}
+
+	@Override
+	public SequenceType getResultType() {
         return SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE);
-    }
+	}
 
-    @Override
-    public SequenceType[] getArgumentTypes() {
+	@Override
+	public SequenceType[] getArgumentTypes() {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE), 
         		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE) };
-    }
+	}
 
-    @Override
-    public XdmValue call(XdmValue[] arguments) throws SaxonApiException {    
+	@Override
+	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     	XdmNode limitNode = (XdmNode) arguments[0];
     	XdmNode mapNode = (XdmNode) arguments[1];
 
     	// create a jts geometry from gml geometry
-    	MultiPolygon realEstateDPRGeometry = this.MultiSurface2JTS(limitNode);
+    	MultiPolygon realEstateDPRGeometry = multiSurface2JTS(limitNode);
     	
     	// create real world bounding box of image
-    	Envelope mapEnvelope = createBoundingBox(mapNode);
-    	
+    	Envelope mapEnvelope = calculateBoundingBox(mapNode);
+
     	// create combined image (map and highlighting geometry) 
-    	byte[] combinedImage = null;
+    	byte[] highlightingImage = null;
     	try {
-			combinedImage = createCombinedImage(mapNode, mapEnvelope, realEstateDPRGeometry);
-			
-			
-			
-			
-			
+    		highlightingImage = createHighlightingImage(mapNode, mapEnvelope, realEstateDPRGeometry);			
 		} catch (XPathException | IOException | SchemaException | FactoryException e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
 		}
 
-
-//    	log.info(new net.sf.saxon.value.Base64BinaryValue(combinedImage).asAtomic().getStringValue());
-        String result = "Saxon is being extended correctly.";
-//        return new net.sf.saxon.value.Base64BinaryValue(combinedImage);
-        return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(combinedImage).asAtomic().getStringValue());
-    }
-    
-    private byte[] createCombinedImage(XdmNode node, Envelope envelope, Geometry geometry) throws SaxonApiException, XPathException, IOException, SchemaException, NoSuchAuthorityCodeException, FactoryException {
+        return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(highlightingImage).asAtomic().getStringValue());
+	}
+	
+    private byte[] createHighlightingImage(XdmNode node, Envelope envelope, Geometry geometry) throws SaxonApiException, XPathException, IOException, SchemaException, NoSuchAuthorityCodeException, FactoryException {
 		byte[] mapImageByteArray = null;
     	Iterator it = node.children("Image").iterator();
     	while(it.hasNext()) {
@@ -225,27 +215,13 @@ public class Test implements ExtensionFunction {
 		ImageIO.write(hightlightingImage, imageFormat, baos); 
 		baos.flush();
 		byte[] highlightingImageByteArray = baos.toByteArray();
-    	InputStream highlightingImageInputStream = new ByteArrayInputStream(highlightingImageByteArray);
-		BufferedImage highlightingBufferedImage = ImageIO.read(highlightingImageInputStream);
 		baos.close();          
 		map.dispose();
-		
-		// Create the final product, the combined image.
-        BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
-        
-        Graphics g = combinedImage.getGraphics();
-        g.drawImage(mapBufferedImage, 0, 0, null);
-        g.drawImage(highlightingBufferedImage, 0, 0, null);
-                   
-        Path tmpDirectory = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_");
-        Path outputfilePath = Paths.get(tmpDirectory.toString(), "fubar.png");
-        ImageIO.write(combinedImage, imageFormat, outputfilePath.toFile());            
-        byte[] combinedImageByteArray = Files.readAllBytes(outputfilePath);
-        log.info(outputfilePath.toString());
-		return combinedImageByteArray;
+
+		return highlightingImageByteArray;
     }
-    
-    private Envelope createBoundingBox(XdmNode node) {
+
+    private Envelope calculateBoundingBox(XdmNode node) {
     	Coordinate minCoord = null;
     	Coordinate maxCoord = null;
     	// min coord
@@ -283,8 +259,8 @@ public class Test implements ExtensionFunction {
         Envelope envelope = new Envelope(minCoord, maxCoord);
 		return envelope;
     }
-    
-    private MultiPolygon MultiSurface2JTS(XdmNode inputNode) {
+	
+    private MultiPolygon multiSurface2JTS(XdmNode inputNode) {
 		MultiPolygon multiPolygon = null;
 		List<Polygon> polygonList = new ArrayList<Polygon>();
 		GeometryFactory geometryFactory = new GeometryFactory();
@@ -355,5 +331,4 @@ public class Test implements ExtensionFunction {
     	multiPolygon.setSRID(2056);
 		return multiPolygon;
     }
-    
 }
