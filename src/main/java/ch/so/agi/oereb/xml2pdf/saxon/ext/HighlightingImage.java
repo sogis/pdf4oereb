@@ -209,7 +209,7 @@ public class HighlightingImage implements ExtensionFunction {
 
 		renderer.paint(gr, imageBounds, vp.getBounds());
 
-		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
+//		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(hightlightingImage, imageFormat, baos); 

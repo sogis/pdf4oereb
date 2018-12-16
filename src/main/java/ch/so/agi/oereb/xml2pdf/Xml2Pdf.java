@@ -32,7 +32,8 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 import ch.so.agi.oereb.xml2pdf.saxon.ext.HighlightingImage;
-import ch.so.agi.oereb.xml2pdf.saxon.ext.MergedImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.MergeImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.RestrictionOnLandownershipImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.Test;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.Processor;
@@ -46,7 +47,7 @@ import net.sf.saxon.s9api.XsltTransformer;
 public class Xml2Pdf {
     Logger log = LoggerFactory.getLogger(Xml2Pdf.class);
     
-    private final String xlstFileName = "oereb_title_page.xslt";
+    private final String xlstFileName = "oereb_extract.xslt";
     private final String fopxconfFileName = "fop.xconf";
     private static ArrayList<String> fonts = null;
     
@@ -97,9 +98,11 @@ public class Xml2Pdf {
             
             ExtensionFunction highlightingImage = new HighlightingImage();
             proc.registerExtensionFunction(highlightingImage);
-            ExtensionFunction mergedImage = new MergedImage();
-            proc.registerExtensionFunction(mergedImage);
-            
+            ExtensionFunction mergeImage = new MergeImage();
+            proc.registerExtensionFunction(mergeImage);
+            ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
+            proc.registerExtensionFunction(rolImage);
+
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(xsltFile));
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
@@ -136,7 +139,8 @@ public class Xml2Pdf {
         } catch (SaxonApiException e) {
             log.error(e.getMessage());
             e.printStackTrace();
-        } catch (SAXException e) {
+        } 
+        catch (SAXException e) {
             log.error(e.getMessage());
             e.printStackTrace();
         }

@@ -26,8 +26,8 @@ import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmValue;
 
-public class MergedImage implements ExtensionFunction {
-    Logger log = LoggerFactory.getLogger(MergedImage.class);
+public class MergeImage implements ExtensionFunction {
+    Logger log = LoggerFactory.getLogger(MergeImage.class);
     
     private final String imageFormat = "png";
 
