@@ -12,3 +12,4 @@
  * siehe PDF-Weisung: Thema/Text muss ja der Codeliste entsprechen, wäre also spezifiert.
 - Distinct? Falls vom gleichen Typ mehrere ROL-Elemente (dh. auch meherere Images) -> Beispiel?
 - Viele "sort" fehlen.
+- LengthShare / NrOfPoint in PDF?
