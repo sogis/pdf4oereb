@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
+import ch.so.agi.oereb.xml2pdf.saxon.ext.FixImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.OverlayImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.PlanForLandRegisterMainPageImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.RestrictionOnLandownershipImage;
@@ -102,6 +103,8 @@ public class Xml2Pdf {
             proc.registerExtensionFunction(mergeImage);
             ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
             proc.registerExtensionFunction(rolImage);
+            ExtensionFunction fixImage = new FixImage();
+            proc.registerExtensionFunction(fixImage);
 
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(xsltFile));

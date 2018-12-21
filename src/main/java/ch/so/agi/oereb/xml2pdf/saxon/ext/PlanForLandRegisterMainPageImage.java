@@ -1,6 +1,8 @@
 package ch.so.agi.oereb.xml2pdf.saxon.ext;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -74,7 +76,11 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 	
 	        BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 	        
-	        Graphics g = combinedImage.getGraphics();
+	        Graphics2D g = (Graphics2D) combinedImage.getGraphics();
+//	        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+//	        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
+//	        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+
 	        g.drawImage(baseImageBufferedImage, 0, 0, null);
 	        g.drawImage(overlayImageBufferedImage, 0, 0, null);
 	                   
