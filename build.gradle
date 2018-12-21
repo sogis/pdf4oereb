@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 repositories {
@@ -24,4 +25,12 @@ dependencies {
     implementation 'org.geotools:gt-epsg-hsql:20.1'
 
     testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = "ch.so.agi.oereb.xml2pdf.Main"
+}
+
+run {
+    args = ["src/test/data/CH907705273474.xml", "/Users/stefan/tmp/"]
 }

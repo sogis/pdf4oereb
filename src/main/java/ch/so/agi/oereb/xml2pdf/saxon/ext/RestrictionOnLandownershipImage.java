@@ -3,6 +3,7 @@ package ch.so.agi.oereb.xml2pdf.saxon.ext;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.AlphaComposite;
 import java.awt.Composite;
 import org.geotools.renderer.composite.BlendComposite;
 import java.io.ByteArrayInputStream;
@@ -46,7 +47,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 
 	@Override
 	public QName getName() {
-        return new QName("http://oereb.agi.so.ch", "mergeRestrictionOnLandownershipImages");
+        return new QName("http://oereb.agi.so.ch", "createRestrictionOnLandownershipImages");
 	}
 
 	@Override
@@ -57,16 +58,28 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 	@Override
 	public SequenceType[] getArgumentTypes() {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ZERO_OR_MORE),
-        		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
+        		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE),
+                SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
 	}
 
+	/**
+     * Returns a base64 string as XdmValue of the merged image (plan for land register main page map
+     * and the overlay image). 
+     * 
+     * @param arguments an array of XdmValues containing the restriction on landownership nodes,  
+     *                  the plan for land register map node and the overlay image.
+     * @return          the merged image as base64 string 
+     */
 	@Override
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
 		// the restriction on landownership maps
 		XdmValue restrictionOnLandownershipMaps = (XdmValue) arguments[0];
 
-		// the background image
+		// the background image (which will be put _over_ the restriction images...)
 		XdmValue backgroundImage = (XdmValue) arguments[1];
+		
+		// the overlay image
+	    XdmNode overlayImageNode = (XdmNode) arguments[2];
 
 		// the list that stores the image, the layer index and the opacity value
 		List<MapImage> mapImageList = new ArrayList<MapImage>();
@@ -78,7 +91,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			
 			BufferedImage layerImage =  null;
 			int layerIndex = 0;
-			int layerOpacity = 1;
+			Double layerOpacity = 1.0;
 			
 			// grap the images
 			Iterator<XdmNode> jt = mapNode.children("Image").iterator();
@@ -93,8 +106,13 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 					throw new SaxonApiException(e.getMessage());
 				}
 			}
+			
 			// grap opacity value of image
-			// TODO
+			Iterator<XdmNode> lm = mapNode.children("layerOpacity").iterator();
+			while(lm.hasNext()) {
+			    XdmNode layerOpacityNode = lm.next();
+			    layerOpacity = Double.valueOf(layerOpacityNode.getUnderlyingNode().getStringValue());
+			}
 
 			// grab the layer index of the images
 			Iterator<XdmNode> kt = mapNode.children("layerIndex").iterator();
@@ -103,7 +121,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 				layerIndex = Integer.valueOf(layerIndexNode.getUnderlyingNode().getStringValue());
 			}
 			
-			MapImage mapImage = new MapImage(layerIndex, 1, layerImage);
+			MapImage mapImage = new MapImage(layerIndex, layerOpacity, layerImage);
 			mapImageList.add(mapImage);
 		}
 		
@@ -124,6 +142,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 				g = (Graphics2D) newImage.getGraphics();
 			}
+			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
 			g.drawImage(imageBufferedImage, 0, 0, null);
 		}
 		
@@ -133,13 +152,28 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			InputStream backgroundImageInputStream = new ByteArrayInputStream(backgroundImageByteArray);
 			BufferedImage backgroundImageBufferedImage = ImageIO.read(backgroundImageInputStream);
 			
-//			g.setComposite(BlendComposite.MULTIPLY_COMPOSITE);
+			// if we want to use faaaancy blending modes
+			//g.setComposite(BlendComposite.MULTIPLY_COMPOSITE);
+	        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 			g.drawImage(backgroundImageBufferedImage, 0, 0, null);
 		} catch (IOException | XPathException e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
 		} 
 
+		// merge overlay image
+		try {
+		    byte[] overlayImageByteArray = Base64.getDecoder().decode(overlayImageNode.getUnderlyingValue().getStringValue());
+		    InputStream overlayImageInputStream = new ByteArrayInputStream(overlayImageByteArray);
+		    BufferedImage overlayImageBufferedImage = ImageIO.read(overlayImageInputStream);
+		    
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+            g.drawImage(overlayImageBufferedImage, 0, 0, null);
+		} catch (IOException e) {
+            e.printStackTrace();
+            throw new SaxonApiException(e.getMessage());
+        } 
+		
 		// write image
 		byte[] newImageByteArray = null;
 		try {

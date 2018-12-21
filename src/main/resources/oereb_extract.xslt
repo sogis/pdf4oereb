@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
-  <xsl:variable name="HighlightingImage"><xsl:value-of select="oereb:highlightingImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
+  <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -111,7 +111,7 @@
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
-                    <xsl:value-of select="oereb:mergeImages(data:RealEstate/data:PlanForLandRegisterMainPage/data:Image, $HighlightingImage, 'null')" />                    
+                    <xsl:value-of select="oereb:createPlanForLandRegisterMainPageImage(data:RealEstate/data:PlanForLandRegisterMainPage/data:Image, $OverlayImage)" />                    
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </fo:external-graphic>
@@ -360,7 +360,7 @@
                       <xsl:attribute name="src">
                         <xsl:text>url('data:</xsl:text>
                         <xsl:text>image/png;base64,</xsl:text>
-                        <xsl:value-of select="oereb:mergeRestrictionOnLandownershipImages(current-group()/data:Map, ../data:PlanForLandRegister/data:Image)" />                    
+                        <xsl:value-of select="oereb:createRestrictionOnLandownershipImages(current-group()/data:Map, ../data:PlanForLandRegister/data:Image, $OverlayImage)" />                    
                         <xsl:text>')</xsl:text>
                       </xsl:attribute>
                     </fo:external-graphic>

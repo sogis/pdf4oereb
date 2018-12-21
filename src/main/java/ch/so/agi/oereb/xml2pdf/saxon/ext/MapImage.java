@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class MapImage {
 	private int layerIndex;
-	private int layerOpacity;
+	private double layerOpacity;
 	private BufferedImage layerImage;
 	
-	MapImage(int layerIndex, int layerOpacity, BufferedImage layerImage) {
+	MapImage(int layerIndex, double layerOpacity, BufferedImage layerImage) {
 		this.layerIndex = layerIndex;
 		this.layerOpacity = layerOpacity;
 		this.layerImage = layerImage;
@@ -21,11 +21,11 @@ public class MapImage {
 		this.layerIndex = layerIndex;
 	}
 
-	public int getLayerOpacity() {
+	public double getLayerOpacity() {
 		return layerOpacity;
 	}
 
-	public void setLayerOpacity(int layerOpacity) {
+	public void setLayerOpacity(double layerOpacity) {
 		this.layerOpacity = layerOpacity;
 	}
 

@@ -26,14 +26,14 @@ import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmValue;
 
-public class MergeImage implements ExtensionFunction {
-    Logger log = LoggerFactory.getLogger(MergeImage.class);
+public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
+    Logger log = LoggerFactory.getLogger(PlanForLandRegisterMainPageImage.class);
     
     private final String imageFormat = "png";
 
 	@Override
 	public QName getName() {
-        return new QName("http://oereb.agi.so.ch", "mergeImages");
+        return new QName("http://oereb.agi.so.ch", "createPlanForLandRegisterMainPageImage");
 	}
 
 	@Override
@@ -44,10 +44,17 @@ public class MergeImage implements ExtensionFunction {
 	@Override
 	public SequenceType[] getArgumentTypes() {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE), 
-        		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE), 
         		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
 	}
 
+	/**
+     * Returns a base64 string as XdmValue of the merged image (plan for land register main page map
+     * and the overlay image). 
+     * 
+     * @param arguments an array of XdmValues containing the land register main page node  
+     *                  and the overlay image.
+     * @return          the merged image as base64 string 
+     */
 	@Override
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
 		XdmNode baseImageNode  = (XdmNode) arguments[0];

@@ -31,8 +31,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
-import ch.so.agi.oereb.xml2pdf.saxon.ext.HighlightingImage;
-import ch.so.agi.oereb.xml2pdf.saxon.ext.MergeImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.OverlayImage;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.PlanForLandRegisterMainPageImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.RestrictionOnLandownershipImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.Test;
 import net.sf.saxon.s9api.ExtensionFunction;
@@ -96,9 +96,9 @@ public class Xml2Pdf {
             // from examples in source code
             Processor proc = new Processor(false);
             
-            ExtensionFunction highlightingImage = new HighlightingImage();
+            ExtensionFunction highlightingImage = new OverlayImage();
             proc.registerExtensionFunction(highlightingImage);
-            ExtensionFunction mergeImage = new MergeImage();
+            ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
             proc.registerExtensionFunction(mergeImage);
             ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
             proc.registerExtensionFunction(rolImage);

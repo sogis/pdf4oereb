@@ -72,8 +72,8 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.trans.XPathException;
 
-public class HighlightingImage implements ExtensionFunction {
-    Logger log = LoggerFactory.getLogger(HighlightingImage.class);
+public class OverlayImage implements ExtensionFunction {
+    Logger log = LoggerFactory.getLogger(OverlayImage.class);
 
     private final String highlightingStrokeColor = "#e60000";
     private final int highlightingStrokeWidth = 6;
@@ -83,7 +83,7 @@ public class HighlightingImage implements ExtensionFunction {
 
 	@Override
 	public QName getName() {
-        return new QName("http://oereb.agi.so.ch", "highlightingImage");
+        return new QName("http://oereb.agi.so.ch", "getOverlayImage");
 	}
 
 	@Override
@@ -96,19 +96,27 @@ public class HighlightingImage implements ExtensionFunction {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE), 
         		SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE) };
 	}
-
+	
+	/**
+	 * Returns a base64 string as XdmValue of the overlay image (parcel, north arrow (TODO) 
+	 * and scale bar (TODO)).
+	 * 
+	 * @param arguments an array of XdmValues containing the limit node (the parcels geometry)  
+	 *                  and the map node containing the land registry map image. 
+	 * @return          the overlay image as base64 string 
+	 */
 	@Override
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     	XdmNode limitNode = (XdmNode) arguments[0];
     	XdmNode mapNode = (XdmNode) arguments[1];
 
-    	// create a jts geometry from gml geometry
+    	// Create a jts geometry from gml geometry.
     	MultiPolygon realEstateDPRGeometry = multiSurface2JTS(limitNode);
     	
-    	// create real world bounding box of image
+    	// Calculate the real world bounding box of the map image from the extract.
     	Envelope mapEnvelope = calculateBoundingBox(mapNode);
 
-    	// create combined image (map and highlighting geometry) 
+    	// Create the overlay image. 
     	byte[] highlightingImage = null;
     	try {
     		highlightingImage = createHighlightingImage(mapNode, mapEnvelope, realEstateDPRGeometry);			
@@ -120,9 +128,14 @@ public class HighlightingImage implements ExtensionFunction {
         return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(highlightingImage).asAtomic().getStringValue());
 	}
 	
+	/*
+	 * Creates the highlighting image by rendering the parcel from the geometry.
+	 * The provided node contains the land registry map image, which is needed to find out the
+	 * image width and height.
+	 */
     private byte[] createHighlightingImage(XdmNode node, Envelope envelope, Geometry geometry) throws SaxonApiException, XPathException, IOException, SchemaException, NoSuchAuthorityCodeException, FactoryException {
 		byte[] mapImageByteArray = null;
-    	Iterator it = node.children("Image").iterator();
+    	Iterator<XdmNode> it = node.children("Image").iterator();
     	while(it.hasNext()) {
     		XdmNode imageNode = (XdmNode) it.next();
     		XdmValue mapImageXdmValue = imageNode.getTypedValue();
@@ -221,17 +234,22 @@ public class HighlightingImage implements ExtensionFunction {
 		return highlightingImageByteArray;
     }
 
+    /*
+     * Calculates the Bounding Box of the map image from the extract.
+     * This is needed to georeference the new highlighting image.
+     * Min/max coords are children of the <Map> element.
+     */
     private Envelope calculateBoundingBox(XdmNode node) {
     	Coordinate minCoord = null;
     	Coordinate maxCoord = null;
     	// min coord
-    	Iterator it = node.children("min_NS95").iterator();
+    	Iterator<XdmNode> it = node.children("min_NS95").iterator();
     	while(it.hasNext()) {
     		XdmNode minNode = (XdmNode) it.next();
-    		Iterator jt = minNode.children("Point").iterator();
+    		Iterator<XdmNode> jt = minNode.children("Point").iterator();
     		while(jt.hasNext()) {
         		XdmNode pointNode = (XdmNode) jt.next();
-        		Iterator kt = pointNode.children("pos").iterator();
+        		Iterator<XdmNode> kt = pointNode.children("pos").iterator();
         		while(kt.hasNext()) {
         			XdmNode posNode = (XdmNode) kt.next();
             		String[] coords = posNode.getUnderlyingNode().getStringValue().split(" ");
@@ -241,13 +259,13 @@ public class HighlightingImage implements ExtensionFunction {
     		break;
     	}
     	// max coord
-    	Iterator lt = node.children("max_NS95").iterator();
+    	Iterator<XdmNode> lt = node.children("max_NS95").iterator();
     	while(lt.hasNext()) {
     		XdmNode minNode = (XdmNode) lt.next();
-    		Iterator jt = minNode.children("Point").iterator();
+    		Iterator<XdmNode> jt = minNode.children("Point").iterator();
     		while(jt.hasNext()) {
         		XdmNode pointNode = (XdmNode) jt.next();
-        		Iterator kt = pointNode.children("pos").iterator();
+        		Iterator<XdmNode> kt = pointNode.children("pos").iterator();
         		while(kt.hasNext()) {
         			XdmNode posNode = (XdmNode) kt.next();
             		String[] coords = posNode.getUnderlyingNode().getStringValue().split(" ");
@@ -260,18 +278,29 @@ public class HighlightingImage implements ExtensionFunction {
 		return envelope;
     }
 	
+    /*
+     * Creates a jts multipolygon from a gml multisurface node.
+     * 
+     * Following encodings are supported:
+     * 
+     * <gml:LinearRing>
+     *   <gml:posList>2669946.002 1201975.174 2669957.242 1201968.811 ...</gml:posList>
+     * </gml:LinearRing>
+     * 
+     * 
+     */
     private MultiPolygon multiSurface2JTS(XdmNode inputNode) {
 		MultiPolygon multiPolygon = null;
 		List<Polygon> polygonList = new ArrayList<Polygon>();
 		GeometryFactory geometryFactory = new GeometryFactory();
 
-    	Iterator it = inputNode.children("MultiSurface").iterator();
+    	Iterator<XdmNode> it = inputNode.children("MultiSurface").iterator();
     	while(it.hasNext()) {
     		XdmNode multiSurfaceNode = (XdmNode) it.next();
-    		Iterator jt = multiSurfaceNode.children("surfaceMember").iterator();
+    		Iterator<XdmNode> jt = multiSurfaceNode.children("surfaceMember").iterator();
     		while(jt.hasNext()) {
     			XdmNode surfaceMember = (XdmNode) jt.next();
-    			Iterator kt = surfaceMember.children("Polygon").iterator();
+    			Iterator<XdmNode> kt = surfaceMember.children("Polygon").iterator();
     			
     			LinearRing shell = null;
     			List<LinearRing> holes = new ArrayList<LinearRing>();
@@ -279,13 +308,13 @@ public class HighlightingImage implements ExtensionFunction {
     			while(kt.hasNext()) {
     				XdmNode polygonNode = (XdmNode) kt.next();
     				// exterior 
-    				Iterator lt = polygonNode.children("exterior").iterator();
+    				Iterator<XdmNode> lt = polygonNode.children("exterior").iterator();
     				while(lt.hasNext()) {
     					XdmNode node = (XdmNode) lt.next();
-    					Iterator mt = node.children("LinearRing").iterator();
+    					Iterator<XdmNode> mt = node.children("LinearRing").iterator();
     					while(mt.hasNext()) {
     						XdmNode linearRingNode = (XdmNode) mt.next();
-    						Iterator nt = linearRingNode.children("posList").iterator();
+    						Iterator<XdmNode> nt = linearRingNode.children("posList").iterator();
     						while(nt.hasNext()) {
     							XdmNode posListNode = (XdmNode) nt.next();
     							String coordsString = posListNode.getUnderlyingNode().getStringValue();
@@ -300,13 +329,13 @@ public class HighlightingImage implements ExtensionFunction {
     					}            				
     				}
     				// interior
-    				Iterator ot = polygonNode.children("interior").iterator();
+    				Iterator<XdmNode> ot = polygonNode.children("interior").iterator();
     				while(ot.hasNext()) {
     					XdmNode node = (XdmNode) ot.next();
-    					Iterator mt = node.children("LinearRing").iterator();
+    					Iterator<XdmNode> mt = node.children("LinearRing").iterator();
     					while(mt.hasNext()) {
     						XdmNode linearRingNode = (XdmNode) mt.next();
-    						Iterator nt = linearRingNode.children("posList").iterator();
+    						Iterator<XdmNode> nt = linearRingNode.children("posList").iterator();
     						while(nt.hasNext()) {
     							XdmNode posListNode = (XdmNode) nt.next();
     							String coordsString = posListNode.getUnderlyingNode().getStringValue();
