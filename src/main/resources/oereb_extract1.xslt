@@ -366,7 +366,6 @@
                     </fo:external-graphic>
                   </fo:block>
                 </fo:block-container>
-
             </xsl:for-each-group>
 
             <fo:block-container height="13mm" background-color="wheat">

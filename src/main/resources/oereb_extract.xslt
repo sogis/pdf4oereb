@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
+  <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -25,7 +26,7 @@
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
-                    <xsl:value-of select="data:RealEstate/data:PlanForLandRegisterMainPage"/>
+                    <xsl:value-of select="oereb:createPlanForLandRegisterMainPageImage(data:RealEstate/data:PlanForLandRegisterMainPage/data:Image, $OverlayImage)" />                    
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </fo:external-graphic>
@@ -207,31 +208,29 @@
                                 <fo:block><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
                               </xsl:for-each>
                               <fo:block margin-top="2.2mm">
-                                <xsl:if test="data:QRCode">
-                                  <fo:table table-layout="fixed" width="100%">
-                                    <fo:table-column column-width="35mm"/>
-                                    <fo:table-column column-width="40mm"/>
-                                    <fo:table-body>
-                                      <fo:table-row vertical-align="top">
-                                        <fo:table-cell>
-                                          <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
-                                        </fo:table-cell>
-                                        <fo:table-cell padding-left="4mm">
-                                          <fo:block>
-                                            <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
-                                              <xsl:attribute name="src">
-                                                <xsl:text>url('data:</xsl:text>
-                                                <xsl:text>image/png;base64,</xsl:text>
-                                                <xsl:value-of select="data:QRCode"/>
-                                                <xsl:text>')</xsl:text>
-                                              </xsl:attribute>
-                                            </fo:external-graphic>
-                                          </fo:block>
-                                        </fo:table-cell>
-                                      </fo:table-row>
-                                    </fo:table-body>
-                                  </fo:table>
-                                </xsl:if>
+                                <fo:table table-layout="fixed" width="100%">
+                                  <fo:table-column column-width="35mm"/>
+                                  <fo:table-column column-width="40mm"/>
+                                  <fo:table-body>
+                                    <fo:table-row vertical-align="top">
+                                      <fo:table-cell>
+                                        <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
+                                      </fo:table-cell>
+                                      <fo:table-cell padding-left="4mm">
+                                        <fo:block>
+                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
+                                            <xsl:attribute name="src">
+                                              <xsl:text>url('data:</xsl:text>
+                                              <xsl:text>image/png;base64,</xsl:text>
+                                              <xsl:value-of select="data:QRCode"/>
+                                              <xsl:text>')</xsl:text>
+                                            </xsl:attribute>
+                                          </fo:external-graphic>
+                                        </fo:block>
+                                      </fo:table-cell>
+                                    </fo:table-row>
+                                  </fo:table-body>
+                                </fo:table>
                               </fo:block>
                             </fo:table-cell>
                           </fo:table-row>
@@ -259,17 +258,24 @@
       <xsl:call-template name="insertHeaderAndFooter"/>
       <fo:flow flow-name="xsl-region-body">
         <fo:block>
-            <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Text/data:Text">
-            <!-- Wie geht das, wenn die Namen beliebig sein können? Nach Themen-Code? -->
-              <xsl:sort data-type="number" order="ascending" select="(number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
-
-              <fo:block-container height="13mm" background-color="transparent">
-                <!--<fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>-->
+        
+            <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:SubTheme">
+            <xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>            
+              <fo:block-container height="19mm" background-color="transparent">
                 <fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
-              </fo:block-container> 
-              <fo:block-container height="105mm" background-color="gold">
-                <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm" font-family="Cadastra">Platzhalter unsichtbar</fo:block>
               </fo:block-container>            
+                <fo:block-container height="105mm" background-color="transparent">
+                  <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
+                    <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+                      <xsl:attribute name="src">
+                        <xsl:text>url('data:</xsl:text>
+                        <xsl:text>image/png;base64,</xsl:text>
+                        <xsl:value-of select="oereb:createRestrictionOnLandownershipImages(current-group()/data:Map, ../data:PlanForLandRegister/data:Image, $OverlayImage)" />                    
+                        <xsl:text>')</xsl:text>
+                      </xsl:attribute>
+                    </fo:external-graphic>
+                  </fo:block>
+                </fo:block-container>
           
               <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
                 <fo:table table-layout="fixed" width="100%">
@@ -311,7 +317,6 @@
                           </xsl:if>
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
-                          <!-- padding="1mm" ist heuristisch -->
                           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
                             <fo:external-graphic width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
                               <xsl:attribute name="src">
@@ -323,27 +328,26 @@
                             </fo:external-graphic>
                           </fo:block>
                         </fo:table-cell>
-                        <fo:table-cell display-align="center" text-align="left" line-height="11.5pt">
+                        <fo:table-cell display-align="center" text-align="left" line-height="10.5pt">
                           <!-- Sind die Werte nicht falsch in Kt. NW? Hier sollte doch "Wohnen 3" o.ä. stehen. -->
                           <fo:block><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>
                           <!-- Zum Testen der Summenbildung und Gruppierung-->
                           <!--<fo:block><xsl:value-of select="data:TypeCode"/></fo:block>-->
                         </fo:table-cell>
                         <fo:table-cell text-align="right">
-                          <xsl:choose>
-                            <xsl:when test="data:AreaShare">
-                              <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:AreaShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m<fo:inline baseline-shift="super" font-size="60%">2</fo:inline></fo:block>
-                            </xsl:when>
-                            <xsl:when test="data:LengthShare">
-                              <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:LengthShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m</fo:block>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <fo:block/> 
-                            </xsl:otherwise>
-                          </xsl:choose>
+                          <xsl:if test="data:AreaShare">
+                            <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:AreaShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m<fo:inline baseline-shift="super" font-size="60%">2</fo:inline></fo:block>
+                          </xsl:if>
+                          <xsl:if test="data:LengthShare">
+                            <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:LengthShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m</fo:block>
+                          </xsl:if>
+                          <xsl:if test="data:NrOfPoints">
+                            <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:NrOfPoints), &quot;#'###&quot;, &quot;swiss&quot;)"/></fo:block>
+                          </xsl:if>  
+                          <fo:block/>                        
                         </fo:table-cell>
                         <fo:table-cell text-align="right">
-                          <xsl:if test="sum(current-group()/data:PartInPercent)">
+                          <xsl:if test="data:PartInPercent">
                             <fo:block><xsl:value-of select="format-number(sum(current-group()/data:PartInPercent), &quot;#'###.#&quot;, &quot;swiss&quot;)"/>%</fo:block>
                           </xsl:if>
                           <fo:block/>
@@ -404,13 +408,14 @@
                             </fo:external-graphic>
                           </fo:block>
                         </fo:table-cell>
-                        <fo:table-cell text-align="left">
+                        <fo:table-cell display-align="center" text-align="left" line-height="10.5pt">
                           <fo:block><xsl:value-of select="data:LegendText/data:LocalisedText/data:Text"/></fo:block>
                         </fo:table-cell>
                         <fo:table-cell text-align="right">
-                        <fo:block></fo:block>
+                        <!-- This is just to get the same line height as in the table above. -->
+                            <fo:block line-height-shift-adjustment="disregard-shifts" color="white" visibility="hidden"><xsl:text>m</xsl:text><fo:inline baseline-shift="super" font-size="60%"><xsl:text> </xsl:text></fo:inline></fo:block>
                           </fo:table-cell>
-                        <fo:table-cell text-align="right">
+                        <fo:table-cell text-align="right ">
                           <fo:block></fo:block>
                         </fo:table-cell>
                       </fo:table-row>
@@ -435,7 +440,7 @@
 
                     <xsl:for-each-group select="current-group()/data:Map" group-by="data:LegendAtWeb">
                     <!-- Wegen möglicher leeren LegendAtWeb-Elementen ist die Sortierung entscheidend bezüglich der position()-Bedingung. -->
-                    <xsl:sort lang="de" order="descending" select="data:LegendAtWeb"/>
+                    <xsl:sort lang="de" order="ascending" select="data:LegendAtWeb"/>
                     <xsl:if test="not(normalize-space(data:LegendAtWeb)='')">
 
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
@@ -482,7 +487,7 @@
                         </fo:table-cell>
                     </fo:table-row>
                     <xsl:for-each-group select="current-group()/data:LegalProvisions[data:DocumentType='LegalProvision']" group-by="data:TextAtWeb/data:LocalisedText/data:Text">
-                    <xsl:sort lang="de" order="descending" select="data:Title/data:LocalisedText/data:Text"/>
+                    <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText/data:Text"/>
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
@@ -492,8 +497,8 @@
                             <fo:block></fo:block>
                           </xsl:if>
                         </fo:table-cell>
-                        <fo:table-cell display-align="center" line-height="11.5pt">
-                          <fo:block font-size="8.5pt">
+                        <fo:table-cell display-align="center">
+                          <fo:block font-size="8.5pt" line-height="10.5pt">
                             <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>
                           </fo:block>
                           <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
@@ -523,7 +528,7 @@
                         </fo:table-cell>
                     </fo:table-row>
                     <xsl:for-each-group select="current-group()/data:LegalProvisions[data:DocumentType='Law']" group-by="data:TextAtWeb/data:LocalisedText/data:Text">
-                    <xsl:sort lang="de" order="descending" select="data:Title/data:LocalisedText/data:Text"/>
+                    <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText/data:Text"/>
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
@@ -534,10 +539,10 @@
                           </xsl:if>
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
-                          <fo:block font-size="8.5pt">
+                          <fo:block font-size="8.5pt" line-height="10.5pt">
                             <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>
                           </fo:block>
-                          <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="-1mm">
+                          <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                             <xsl:attribute name="external-destination"><xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/></xsl:attribute>
                             <xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/>
@@ -577,10 +582,10 @@
                             </xsl:if>
                           </fo:table-cell>
                           <fo:table-cell display-align="center">
-                            <fo:block font-size="8.5pt">
+                            <fo:block font-size="8.5pt" line-height="10.5pt">
                               <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>
                             </fo:block>
-                            <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="-1mm">
+                            <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                             <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                               <xsl:attribute name="external-destination"><xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/></xsl:attribute>
                               <xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/>
@@ -663,8 +668,8 @@
               <fo:block/>
             </fo:table-cell>
           </fo:table-row>
-          <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Text/data:Text">
-          <xsl:sort data-type="number" order="ascending" select="(number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
+          <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:SubTheme">
+          <xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
             <fo:table-row line-height="6mm" border-bottom="0.2pt solid black" vertical-align="middle">
               <fo:table-cell>
                 <fo:block>
@@ -676,7 +681,6 @@
               <fo:table-cell>
                 <fo:block>
                   <fo:basic-link internal-destination="{generate-id(.)}">
-                    <!--<xsl:value-of select="data:Theme/data:Text/data:Text"/>-->
                     <xsl:value-of select="data:Theme/data:Text/data:Text"/>
                   </fo:basic-link>  
                 </fo:block>

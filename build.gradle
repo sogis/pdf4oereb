@@ -32,5 +32,5 @@ application {
 }
 
 run {
-    args = ["src/test/data/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/"]
+    args = ["src/test/data/CH527898340565.xml", "/Users/stefan/tmp/"]
 }

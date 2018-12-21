@@ -36,6 +36,7 @@ import ch.so.agi.oereb.xml2pdf.saxon.ext.OverlayImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.PlanForLandRegisterMainPageImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.RestrictionOnLandownershipImage;
 import ch.so.agi.oereb.xml2pdf.saxon.ext.Test;
+import ch.so.agi.oereb.xml2pdf.saxon.ext.URLDecoder;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
@@ -68,25 +69,21 @@ public class Xml2Pdf {
             String baseFileName = FilenameUtils.getBaseName(xmlFileName);
             File foFile = new File(Paths.get(tempDir.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
             File pdfFile = new File(Paths.get(tempDir.toFile().getAbsolutePath(), baseFileName + ".pdf").toFile().getAbsolutePath());
-            log.info(foFile.getAbsolutePath());
 
-            // copy xslt file from resources into temp directory
+            // copy xslt file from resources into temporary directory
             File xsltFile = new File(Paths.get(tempDir.toFile().getAbsolutePath(), xlstFileName).toFile().getAbsolutePath());
             InputStream xsltFileInputStream = Xml2Pdf.class.getResourceAsStream("/"+xlstFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
-            log.info(xsltFile.getAbsolutePath());
             
-            // copy fop.xconf file from resources into temp directory
+            // copy fop.xconf file from resources into temporary directory
             File fopxconfFile = new File(Paths.get(tempDir.toFile().getAbsolutePath(), fopxconfFileName).toFile().getAbsolutePath());
             InputStream fopxconfFileInputStream = Xml2Pdf.class.getResourceAsStream("/"+fopxconfFileName); 
             Files.copy(fopxconfFileInputStream, fopxconfFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             fopxconfFileInputStream.close();
-            log.info(fopxconfFile.getAbsolutePath());
             
-            // copy fonts from resources into temp directory
+            // copy fonts from resources into temporary directory
             for (String fontName : fonts) {
-                log.info(fontName);
                 File fontFile = new File(Paths.get(tempDir.toFile().getAbsolutePath(), fontName).toFile().getAbsolutePath());
                 InputStream is =  Xml2Pdf.class.getResourceAsStream("/"+fontName); 
                 Files.copy(is, fontFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -105,6 +102,8 @@ public class Xml2Pdf {
             proc.registerExtensionFunction(rolImage);
             ExtensionFunction fixImage = new FixImage();
             proc.registerExtensionFunction(fixImage);
+            ExtensionFunction decodeUrl = new URLDecoder();
+            proc.registerExtensionFunction(decodeUrl);
 
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(xsltFile));

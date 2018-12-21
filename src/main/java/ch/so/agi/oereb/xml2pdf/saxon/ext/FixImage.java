@@ -44,12 +44,18 @@ public class FixImage implements ExtensionFunction {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
     }
 
+	/**
+     * Returns a base64 string as XdmValue of the merged image (plan for land register main page map
+     * and the overlay image). 
+     * 
+     * @param arguments Reads any readable image from a base64 string and saves it as a 24bit image.
+     *                  Solves the problem with 8bit (paletted) legend icons.
+     * @return          the 24bit image as base64 string 
+     */
     @Override
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         XdmValue symbolValue = (XdmValue) arguments[0];
-        try {
-            log.info(symbolValue.getUnderlyingValue().getStringValue());
-            
+        try {            
             byte[] imageByteArray = Base64.getDecoder().decode(symbolValue.getUnderlyingValue().getStringValue());
     
             InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
@@ -61,18 +67,8 @@ public class FixImage implements ExtensionFunction {
             BufferedImage fixedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
             
             Graphics2D g = (Graphics2D) fixedImage.getGraphics();
-//          g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-//          g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-//          g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-
             g.drawImage(imageBufferedImage, 0, 0, null);
-                       
-//          Path tmpDirectory = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_images_");
-//          Path outputfilePath = Paths.get(tmpDirectory.toString(), "mergedimage.png");
-//          ImageIO.write(combinedImage, imageFormat, outputfilePath.toFile());            
-//          byte[] combinedImageByteArray = Files.readAllBytes(outputfilePath);
-//          log.info(outputfilePath.toString());
-            
+                                   
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(fixedImage, imageFormat, baos); 
             baos.flush();
@@ -85,5 +81,4 @@ public class FixImage implements ExtensionFunction {
             throw new SaxonApiException(e.getMessage());
         }
     }
-
 }
