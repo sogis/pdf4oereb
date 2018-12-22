@@ -67,14 +67,16 @@
                       <fo:block><xsl:value-of select="data:RealEstate/data:Municipality"/> (<xsl:value-of select="data:RealEstate/data:FosNr"/>)</fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
-                    <fo:table-cell>
-                      <fo:block>Grundbuchkreis</fo:block>
-                    </fo:table-cell>
-                    <fo:table-cell>
-                      <fo:block><xsl:value-of select="data:RealEstate/data:SubunitOfLandRegister"/></fo:block>
-                    </fo:table-cell>
-                  </fo:table-row>
+                    <xsl:if test="data:RealEstate/data:SubunitOfLandRegister">
+	                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+		                    <fo:table-cell>
+		                      <fo:block>Grundbuchkreis</fo:block>
+		                    </fo:table-cell>
+		                    <fo:table-cell>
+		                      <fo:block><xsl:value-of select="data:RealEstate/data:SubunitOfLandRegister"/></fo:block>
+		                    </fo:table-cell>
+	                  </fo:table-row>
+                    </xsl:if>      
                   <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block>Fläche</fo:block>
