@@ -17,7 +17,12 @@
         <fo:flow flow-name="xsl-region-body">
           <!--font size should be 18pt but that seems to large and will lead to non-directive conform line break behaviour-->
           <fo:block-container height="28mm" background-color="transparent">
-            <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster)</fo:block>
+            <xsl:if test="data:isReduced='true'">
+                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster) mit reduzierter Information</fo:block>
+            </xsl:if>
+            <xsl:if test="data:isReduced='false'">
+                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster) </fo:block>            
+            </xsl:if>            
           </fo:block-container>            
 
             <fo:block-container height="109mm" background-color="transparent">
@@ -502,7 +507,14 @@
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
                           <fo:block font-size="8.5pt" line-height="10.5pt">
-                            <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>
+                            <xsl:choose>
+                                <xsl:when test="data:OfficialNumber">
+                                    <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/>, <xsl:value-of select="data:OfficialNumber"/><xsl:text>:</xsl:text>                          
+                                </xsl:when>
+	                            <xsl:otherwise>
+	                                <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>                            
+	                            </xsl:otherwise>
+                            </xsl:choose>
                           </fo:block>
                           <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
@@ -554,6 +566,33 @@
                         </fo:table-cell>
                       </fo:table-row>
                     </xsl:for-each-group>
+                    
+                    <!-- TODO: validate if title is only written when it isn't already there from the for-each-group-iteration from above -->
+                    <xsl:for-each-group select="current-group()/data:LegalProvisions/data:Reference[data:DocumentType='Law']" group-by="data:TextAtWeb/data:LocalisedText/data:Text">
+                    <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText/data:Text"/>
+                      <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
+                        <fo:table-cell>
+                          <xsl:if test="position()=1 and not(../data:LegalProvisions[data:DocumentType='Law'])">
+                            <fo:block font-weight="700">Gesetzliche Grundlagen</fo:block>
+                          </xsl:if>
+                          <xsl:if test="position()!=1">
+                            <fo:block></fo:block>
+                          </xsl:if>
+                        </fo:table-cell>
+                        <fo:table-cell display-align="center">
+                          <fo:block font-size="8.5pt" line-height="10.5pt">
+                            <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/><xsl:text>:</xsl:text>
+                          </fo:block>
+                          <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
+                          <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+                            <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/></xsl:attribute>
+                            <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+                          </fo:basic-link>
+                          </fo:block>
+                        </fo:table-cell>
+                      </fo:table-row>
+                    </xsl:for-each-group>
+                    
                   </fo:table-body>
                 </fo:table>
               </fo:block-container>

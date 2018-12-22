@@ -22,6 +22,7 @@
 - BL: 
  - interior ring == exterior ring of real estate geometry
  - not 300 dpi images
+ - LengthShare nur im extensions-Element
 - NW:
  - information text of restriction on landownership is wrong
  - symbols for restriction on landownership appear also in other legend
