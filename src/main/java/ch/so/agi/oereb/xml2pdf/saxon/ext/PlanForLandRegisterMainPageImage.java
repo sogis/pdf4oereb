@@ -32,8 +32,6 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(PlanForLandRegisterMainPageImage.class);
     
     private final String imageFormat = "png";
-    private final int imageWidthPx = 2055; // 174 mm / 25.2 mm/inch * 300 dpi
-    private final int imageHeightPx = 1169; // 99 mm / 25.2 mm/inch * 300 dpi
 
 	@Override
 	public QName getName() {
@@ -73,17 +71,17 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 	    	InputStream overlayImageInputStream = new ByteArrayInputStream(overlayImageByteArray);
 			BufferedImage overlayImageBufferedImage = ImageIO.read(overlayImageInputStream);
 	
-//			int imageWidthPx = baseImageBufferedImage.getWidth();
-//			int imageHeightPx = baseImageBufferedImage.getHeight();
+			int imageWidthPx = baseImageBufferedImage.getWidth();
+			int imageHeightPx = baseImageBufferedImage.getHeight();
 	
 	        BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 	        
 	        Graphics2D g = (Graphics2D) combinedImage.getGraphics();
-	        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-	        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-	        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+//	        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+//	        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
+//	        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
-	        g.drawImage(baseImageBufferedImage, 0, 0,imageWidthPx, imageHeightPx, null);
+	        g.drawImage(baseImageBufferedImage, 0, 0, null);
 	        g.drawImage(overlayImageBufferedImage, 0, 0, null);
 	                   
 //	        Path tmpDirectory = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_images_");

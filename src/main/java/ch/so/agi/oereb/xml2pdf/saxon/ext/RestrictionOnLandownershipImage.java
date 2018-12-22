@@ -2,7 +2,6 @@ package ch.so.agi.oereb.xml2pdf.saxon.ext;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
@@ -45,8 +44,6 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(RestrictionOnLandownershipImage.class);
     
     private final String imageFormat = "png";
-    private final int imageWidthPx = 2055; // 174 mm / 25.2 mm/inch * 300 dpi
-    private final int imageHeightPx = 1169; // 99 mm / 25.2 mm/inch * 300 dpi
 
 	@Override
 	public QName getName() {
@@ -138,18 +135,15 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		for(MapImage mapImage : mapImageList) {
 			BufferedImage imageBufferedImage = mapImage.getLayerImage();
 			
-//			int imageWidthPx = imageBufferedImage.getWidth();
-//			int imageHeightPx = imageBufferedImage.getHeight();
+			int imageWidthPx = imageBufferedImage.getWidth();
+			int imageHeightPx = imageBufferedImage.getHeight();
 			
 			if (newImage == null) {
 				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 				g = (Graphics2D) newImage.getGraphics();
-		        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-		        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 			}
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
-			g.drawImage(imageBufferedImage, 0, 0, imageWidthPx, imageHeightPx, null);
+			g.drawImage(imageBufferedImage, 0, 0, null);
 		}
 		
 		// merge background image
@@ -161,7 +155,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			// if we want to use faaaancy blending modes
 			//g.setComposite(BlendComposite.MULTIPLY_COMPOSITE);
 	        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-			g.drawImage(backgroundImageBufferedImage, 0, 0, imageWidthPx, imageHeightPx, null);
+			g.drawImage(backgroundImageBufferedImage, 0, 0, null);
 		} catch (IOException | XPathException e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
