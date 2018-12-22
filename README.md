@@ -13,3 +13,18 @@
 - Distinct? Falls vom gleichen Typ mehrere ROL-Elemente (dh. auch meherere Images) -> Beispiel?
 - Viele "sort" fehlen.
 - LengthShare / NrOfPoint in PDF?
+
+
+- scale images? eigentlich nicht. -> ausprobieren. 
+
+
+## Bugs?
+- BL: 
+ - interior ring == exterior ring of real estate geometry
+ - not 300 dpi images
+- NW:
+ - information text of restriction on landownership is wrong
+ - symbols for restriction on landownership appear also in other legend
+ - naming / grouping of theme ?
+ - URL encoding
+ - legend symbols size?

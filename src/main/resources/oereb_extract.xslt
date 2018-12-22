@@ -190,52 +190,55 @@
                 <fo:footnote-body>
                   <fo:block keep-together.within-column="always">
                     <fo:block-container margin-top="0mm" margin-bottom="0mm" font-weight="400" font-size="6.5pt" line-height="8.5pt" font-family="Cadastra" background-color="transparent">
-                      <fo:table table-layout="fixed" width="100%">
-                        <fo:table-column column-width="87mm"/>
-                        <fo:table-column column-width="87mm"/>
-                        <fo:table-body>
-                          <fo:table-row vertical-align="top">
-                            <fo:table-cell padding-right="1.5mm">
-                              <fo:block font-weight="700">Allgemeine Informationen</fo:block>
-                              <fo:block><xsl:value-of select="data:GeneralInformation/data:LocalisedText/data:Text"/></fo:block>
-                              <fo:block margin-top="2.2mm" font-weight="700">Grundlagedaten</fo:block>
-                              <fo:block><xsl:value-of select="data:BaseData/data:LocalisedText/data:Text"/></fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding-left="1.5mm">
-                              <fo:block/>
-                              <xsl:for-each select="data:ExclusionOfLiability">
-                                <fo:block font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText/data:Text"/></fo:block>
-                                <fo:block><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
-                              </xsl:for-each>
-                              <fo:block margin-top="2.2mm">
-                                <fo:table table-layout="fixed" width="100%">
-                                  <fo:table-column column-width="35mm"/>
-                                  <fo:table-column column-width="40mm"/>
-                                  <fo:table-body>
-                                    <fo:table-row vertical-align="top">
-                                      <fo:table-cell>
-                                        <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
-                                      </fo:table-cell>
-                                      <fo:table-cell padding-left="4mm">
-                                        <fo:block>
-                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
-                                            <xsl:attribute name="src">
-                                              <xsl:text>url('data:</xsl:text>
-                                              <xsl:text>image/png;base64,</xsl:text>
-                                              <xsl:value-of select="data:QRCode"/>
-                                              <xsl:text>')</xsl:text>
-                                            </xsl:attribute>
-                                          </fo:external-graphic>
-                                        </fo:block>
-                                      </fo:table-cell>
-                                    </fo:table-row>
-                                  </fo:table-body>
-                                </fo:table>
-                              </fo:block>
-                            </fo:table-cell>
-                          </fo:table-row>
-                        </fo:table-body>
-                      </fo:table>
+                      <xsl:if test="data:QRCode">
+	                      <fo:table table-layout="fixed" width="100%">
+	                        <fo:table-column column-width="87mm"/>
+	                        <fo:table-column column-width="87mm"/>
+	                        <fo:table-body>
+	                          <fo:table-row vertical-align="top">
+	                            <fo:table-cell padding-right="1.5mm">
+	                              <fo:block font-weight="700">Allgemeine Informationen</fo:block>
+	                              <fo:block><xsl:value-of select="data:GeneralInformation/data:LocalisedText/data:Text"/></fo:block>
+	                              <fo:block margin-top="2.2mm" font-weight="700">Grundlagedaten</fo:block>
+	                              <fo:block><xsl:value-of select="data:BaseData/data:LocalisedText/data:Text"/></fo:block>
+	                            </fo:table-cell>
+	                            <fo:table-cell padding-left="1.5mm">
+	                              <fo:block/>
+	                              <xsl:for-each select="data:ExclusionOfLiability">
+	                                <fo:block font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText/data:Text"/></fo:block>
+	                                <fo:block><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
+	                              </xsl:for-each>
+	                              <fo:block margin-top="2.2mm">
+	                                <fo:table table-layout="fixed" width="100%">
+	                                  <fo:table-column column-width="35mm"/>
+	                                  <fo:table-column column-width="40mm"/>
+	                                  <fo:table-body>
+	                                    <fo:table-row vertical-align="top">
+	                                      <fo:table-cell>
+	                                        <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
+	                                      </fo:table-cell>
+	                                      <fo:table-cell padding-left="4mm">
+	                                        <fo:block>
+	                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
+	                                            <xsl:attribute name="src">
+	                                              <xsl:text>url('data:</xsl:text>
+	                                              <xsl:text>image/png;base64,</xsl:text>
+	                                              <xsl:value-of select="data:QRCode"/>
+	                                              <xsl:text>')</xsl:text>
+	                                            </xsl:attribute>
+	                                          </fo:external-graphic>
+	                                        </fo:block>
+	                                      </fo:table-cell>
+	                                    </fo:table-row>
+	                                  </fo:table-body>
+	                                </fo:table>
+	                              </fo:block>
+	                            </fo:table-cell>
+	                          </fo:table-row>
+	                        </fo:table-body>
+	                      </fo:table>
+                      </xsl:if>
+                      <fo:block/>
                     </fo:block-container>
                   </fo:block>
                 </fo:footnote-body>
@@ -259,7 +262,7 @@
       <fo:flow flow-name="xsl-region-body">
         <fo:block>
         
-            <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:SubTheme">
+            <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
             <xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>            
               <fo:block-container height="19mm" background-color="transparent">
                 <fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
@@ -318,7 +321,7 @@
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
                           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                            <fo:external-graphic width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
+                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
                               <xsl:attribute name="src">
                                 <xsl:text>url('data:</xsl:text>
                                 <xsl:text>image/png;base64,</xsl:text>
@@ -396,13 +399,12 @@
                           </xsl:if>
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
-                          <!-- padding="1mm" ist heuristisch -->
                           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                            <fo:external-graphic width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
+                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
                               <xsl:attribute name="src">
                                 <xsl:text>url('data:</xsl:text>
                                 <xsl:text>image/png;base64,</xsl:text>
-                                <xsl:value-of select="data:Symbol"/>
+                                <xsl:value-of select="oereb:fixImage(data:Symbol)"/>
                                 <xsl:text>')</xsl:text>
                               </xsl:attribute>
                             </fo:external-graphic>
@@ -453,10 +455,11 @@
                           </xsl:if>
                         </fo:table-cell>
                         <fo:table-cell line-height="8.5pt" display-align="center">
-                          <fo:block font-size="6.5pt">
+                          <!-- Use hyphenating for very long url (e.g. getlegendgraphics).  -->
+                          <fo:block language="en" hyphenate="true" hyphenation-character="-" font-size="6.5pt">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                            <xsl:attribute name="external-destination"><xsl:value-of select="data:LegendAtWeb"/></xsl:attribute>
-                            <xsl:value-of select="data:LegendAtWeb"/>
+                            <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:LegendAtWeb)"/></xsl:attribute>
+                            <xsl:value-of select="oereb:decodeURL(data:LegendAtWeb)"/>
                           </fo:basic-link>
                           </fo:block>
                         </fo:table-cell>
@@ -503,8 +506,8 @@
                           </fo:block>
                           <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                            <xsl:attribute name="external-destination"><xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/></xsl:attribute>
-                            <xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/>
+                            <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/></xsl:attribute>
+                            <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
                           </fo:basic-link>
                           </fo:block>
                         </fo:table-cell>
@@ -544,8 +547,8 @@
                           </fo:block>
                           <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                            <xsl:attribute name="external-destination"><xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/></xsl:attribute>
-                            <xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/>
+                            <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/></xsl:attribute>
+                            <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
                           </fo:basic-link>
                           </fo:block>
                         </fo:table-cell>
@@ -587,8 +590,8 @@
                             </fo:block>
                             <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
                             <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                              <xsl:attribute name="external-destination"><xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/></xsl:attribute>
-                              <xsl:value-of select="data:TextAtWeb/data:LocalisedText/data:Text"/>
+                              <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/></xsl:attribute>
+                              <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
                             </fo:basic-link>
                             </fo:block>
                           </fo:table-cell>
@@ -629,8 +632,8 @@
                           </fo:block>
                           <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="-1mm">
                           <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                            <xsl:attribute name="external-destination"><xsl:value-of select="data:OfficeAtWeb"/></xsl:attribute>
-                            <xsl:value-of select="data:OfficeAtWeb"/>
+                            <xsl:attribute name="external-destination"><xsl:value-of select="oereb:decodeURL(data:OfficeAtWeb)"/></xsl:attribute>
+                            <xsl:value-of select="oereb:decodeURL(data:OfficeAtWeb)"/>
                           </fo:basic-link>
                           </fo:block>
                         </fo:table-cell>
@@ -668,7 +671,7 @@
               <fo:block/>
             </fo:table-cell>
           </fo:table-row>
-          <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:SubTheme">
+          <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
           <xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
             <fo:table-row line-height="6mm" border-bottom="0.2pt solid black" vertical-align="middle">
               <fo:table-cell>

@@ -315,13 +315,30 @@ public class OverlayImage implements ExtensionFunction {
     					while(mt.hasNext()) {
     						XdmNode linearRingNode = (XdmNode) mt.next();
     						Iterator<XdmNode> nt = linearRingNode.children("posList").iterator();
-    						while(nt.hasNext()) {
-    							XdmNode posListNode = (XdmNode) nt.next();
-    							String coordsString = posListNode.getUnderlyingNode().getStringValue();
-    							String[] coordsArray = coordsString.split(" ");
+    						
+    						// gml-posList-encoding (ZH, NW)
+    						if (nt.hasNext()) {
+	    						while(nt.hasNext()) {
+	    							XdmNode posListNode = (XdmNode) nt.next();
+	    							String coordsString = posListNode.getUnderlyingNode().getStringValue();
+	    							String[] coordsArray = coordsString.split(" ");
+	    							List<Coordinate> coordsList = new ArrayList<Coordinate>();		
+	    							for(int i=0; i<coordsArray.length; i=i+2) {
+	    								Coordinate coord = new Coordinate(Double.valueOf(coordsArray[i]), Double.valueOf(coordsArray[i+1]));
+	    								coordsList.add(coord);
+	    							}
+	    							shell = geometryFactory.createLinearRing(coordsList.toArray(new Coordinate[0]));
+	    						}
+    						} 
+    						// gml-pos-encoding (BL)
+    						else {
+    							nt = linearRingNode.children("pos").iterator();
     							List<Coordinate> coordsList = new ArrayList<Coordinate>();		
-    							for(int i=0; i<coordsArray.length; i=i+2) {
-    								Coordinate coord = new Coordinate(Double.valueOf(coordsArray[i]), Double.valueOf(coordsArray[i+1]));
+    							while(nt.hasNext()) {
+    								XdmNode posNode = (XdmNode) nt.next();
+    								String coordString = posNode.getUnderlyingNode().getStringValue();
+    								String[] coordArray = coordString.split(" ");
+    								Coordinate coord = new Coordinate(Double.valueOf(coordArray[0]), Double.valueOf(coordArray[1]));
     								coordsList.add(coord);
     							}
     							shell = geometryFactory.createLinearRing(coordsList.toArray(new Coordinate[0]));
@@ -333,20 +350,41 @@ public class OverlayImage implements ExtensionFunction {
     				while(ot.hasNext()) {
     					XdmNode node = (XdmNode) ot.next();
     					Iterator<XdmNode> mt = node.children("LinearRing").iterator();
+    					
     					while(mt.hasNext()) {
     						XdmNode linearRingNode = (XdmNode) mt.next();
     						Iterator<XdmNode> nt = linearRingNode.children("posList").iterator();
-    						while(nt.hasNext()) {
-    							XdmNode posListNode = (XdmNode) nt.next();
-    							String coordsString = posListNode.getUnderlyingNode().getStringValue();
-    							String[] coordsArray = coordsString.split(" ");
-    							List<Coordinate> coordsList = new ArrayList<Coordinate>();		
-    							for(int i=0; i<coordsArray.length; i=i+2) {
-    								Coordinate coord = new Coordinate(Double.valueOf(coordsArray[i]), Double.valueOf(coordsArray[i+1]));
-    								coordsList.add(coord);
+    						
+    						// gml-posList-encoding (ZH, NW)
+    						if (nt.hasNext()) {
+	    						while(nt.hasNext()) {
+	    							XdmNode posListNode = (XdmNode) nt.next();
+	    							String coordsString = posListNode.getUnderlyingNode().getStringValue();
+	    							String[] coordsArray = coordsString.split(" ");
+	    							List<Coordinate> coordsList = new ArrayList<Coordinate>();		
+	    							for(int i=0; i<coordsArray.length; i=i+2) {
+	    								Coordinate coord = new Coordinate(Double.valueOf(coordsArray[i]), Double.valueOf(coordsArray[i+1]));
+	    								coordsList.add(coord);
+	    							}
+	    							LinearRing hole = geometryFactory.createLinearRing(coordsList.toArray(new Coordinate[0]));
+	    							holes.add(hole);
+	    						}
+    						} 
+    						// gml-pos-encoding (BL)
+    						else {
+    							nt = linearRingNode.children("pos").iterator();
+    							List<Coordinate> coordsList = new ArrayList<Coordinate>();	
+    							if (nt.hasNext()) {
+        							while(nt.hasNext()) {
+        								XdmNode posNode = (XdmNode) nt.next();
+        								String coordString = posNode.getUnderlyingNode().getStringValue();
+        								String[] coordArray = coordString.split(" ");
+        								Coordinate coord = new Coordinate(Double.valueOf(coordArray[0]), Double.valueOf(coordArray[1]));
+        								coordsList.add(coord);
+        							}
+        							LinearRing hole = geometryFactory.createLinearRing(coordsList.toArray(new Coordinate[0]));
+        							holes.add(hole);
     							}
-    							LinearRing hole = geometryFactory.createLinearRing(coordsList.toArray(new Coordinate[0]));
-    							holes.add(hole);
     						}
     					}            				
     				}
