@@ -80,6 +80,8 @@ public class OverlayImage implements ExtensionFunction {
     private final double highlightingStrokeOpacity = 0.4;
     private final int dpi = 300;
     private final String imageFormat = "png";
+    private final int imageWidthPx = 2055; // 174 mm / 25.2 mm/inch * 300 dpi
+    private final int imageHeightPx = 1169; // 99 mm / 25.2 mm/inch * 300 dpi
 
 	@Override
 	public QName getName() {
@@ -146,8 +148,8 @@ public class OverlayImage implements ExtensionFunction {
     	InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
 		BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
 
-		int imageWidthPx = mapBufferedImage.getWidth();
-		int imageHeightPx = mapBufferedImage.getHeight();
+//		int imageWidthPx = mapBufferedImage.getWidth();
+//		int imageHeightPx = mapBufferedImage.getHeight();
 		
 		// This will create the highlighting image:
 		// Create the feature, feature collection and a feature layer that can
@@ -222,7 +224,7 @@ public class OverlayImage implements ExtensionFunction {
 
 		renderer.paint(gr, imageBounds, vp.getBounds());
 
-//		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
+		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(hightlightingImage, imageFormat, baos); 
