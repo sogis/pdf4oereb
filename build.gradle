@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.geotools:gt-main:20.1'
     implementation 'org.geotools:gt-render:20.1'
     implementation 'org.geotools:gt-epsg-hsql:20.1'
+    implementation 'info.picocli:picocli:3.8.2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testImplementation 'org.junit-pioneer:junit-pioneer:0.3.0'
@@ -35,9 +36,19 @@ test {
 }
 
 application {
-    mainClassName = "ch.so.agi.oereb.xml2pdf.Main"
+    mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
 }
 
 run {
-    args = ["src/test/data/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/"]
+    args = ["src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/"]
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "ch.so.agi.oereb.pdf4oereb.Main"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
 }

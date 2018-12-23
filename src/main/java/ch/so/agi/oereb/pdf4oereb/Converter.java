@@ -43,8 +43,8 @@ import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
 
-public class Pdf4Oereb {
-    Logger log = LoggerFactory.getLogger(Pdf4Oereb.class);
+public class Converter {
+    Logger log = LoggerFactory.getLogger(Converter.class);
     
     private final String xlstFileName = "oereb_extract.xslt";
     private final String fopxconfFileName = "fop.xconf";
@@ -70,20 +70,20 @@ public class Pdf4Oereb {
 
             // copy xslt file from resources into temporary directory
             File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xlstFileName).toFile().getAbsolutePath());
-            InputStream xsltFileInputStream = Pdf4Oereb.class.getResourceAsStream("/"+xlstFileName); 
+            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xlstFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             
             // copy fop.xconf file from resources into temporary directory
             File fopxconfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fopxconfFileName).toFile().getAbsolutePath());
-            InputStream fopxconfFileInputStream = Pdf4Oereb.class.getResourceAsStream("/"+fopxconfFileName); 
+            InputStream fopxconfFileInputStream = Converter.class.getResourceAsStream("/"+fopxconfFileName); 
             Files.copy(fopxconfFileInputStream, fopxconfFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             fopxconfFileInputStream.close();
             
             // copy fonts from resources into temporary directory
             for (String fontName : fonts) {
                 File fontFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fontName).toFile().getAbsolutePath());
-                InputStream is =  Pdf4Oereb.class.getResourceAsStream("/"+fontName); 
+                InputStream is =  Converter.class.getResourceAsStream("/"+fontName); 
                 Files.copy(is, fontFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 is.close();
             }
@@ -130,7 +130,7 @@ public class Pdf4Oereb {
                 log.error(e.getMessage());
                 e.printStackTrace();
             } finally {
-                log.info(pdfFile.getAbsolutePath());
+                log.info("pdf file: " + pdfFile.getAbsolutePath());
                 outPdf.close();
             }
             return pdfFile;

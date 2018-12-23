@@ -1,6 +1,7 @@
 # oereb-xml2pdf
 
 ## TODO:
+- Converter.run()-Methode mit der Möglichkeit das XSLT mitzuliefern.
 - Haftungsausschluss ist unbekannt, ob es sich sauber verhält wenn es mehrere davon gibt (oder sehr lange).
 - Images from Ref.
 - Scalebar und Nordpfeil.
