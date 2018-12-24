@@ -39,8 +39,15 @@ application {
     mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
 }
 
+
 run {
-    args = ["src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/"]
+    args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
+}
+
+
+test {
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
 }
 
 jar {

@@ -18,34 +18,18 @@ class Main implements Callable<Void> {
 	@Option(names = {"-o", "--out"}, required = true, description = "The output directory.")
     private String outputDirectory;
 	
-	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt style sheet.")
+	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt style sheet. (not yet implemented)")
     private String xsltFileName;
 
 
 	public static void main(String[] args) throws SaxonApiException {
-        
         CommandLine.call(new Main(), args);
-
-//        if (args.length < 2 ) {
-//            log.error("Missing parameters");
-//            return;
-//        }
-
 	}
 
 	@Override
 	public Void call() throws Exception {
         Logger log = LoggerFactory.getLogger(Main.class);
-
-//        log.info("xml: " + args[0]);
-//        log.info("output directory: " + args[1]);
-
-//        String xmlFileName = args[0];
-//        String outputDirectory = args[1];
-        
-        String xmlFileName = "aaa";
-        String outputDirectory = "bbb";
-        
+                
         Converter converter =  new Converter();
         converter.run(xmlFileName, outputDirectory);
 		return null;

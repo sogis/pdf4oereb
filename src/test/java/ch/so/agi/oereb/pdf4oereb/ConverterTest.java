@@ -31,8 +31,8 @@ public class ConverterTest {
     @ExtendWith(TempDirectory.class)
     public void convertXml2_CantonBl_Ok(@TempDir Path tempDir) throws SaxonApiException, IOException {
     	Converter converter = new Converter();
-    	File resultFile = converter.run("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString());
-//    	File resultFile = converter.run("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/");
+//    	File resultFile = converter.run("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString());
+    	File resultFile = converter.run("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/");
         byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
         
         File pdfFile = new File("src/test/data/bl/CH567107399166_geometry_images.pdf");

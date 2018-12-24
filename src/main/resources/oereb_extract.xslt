@@ -274,18 +274,25 @@
               <fo:block-container height="19mm" background-color="transparent">
                 <fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
               </fo:block-container>            
-                <fo:block-container height="105mm" background-color="transparent">
-                  <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                    <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
-                      <xsl:attribute name="src">
-                        <xsl:text>url('data:</xsl:text>
-                        <xsl:text>image/png;base64,</xsl:text>
-                        <xsl:value-of select="oereb:createRestrictionOnLandownershipImages(current-group()/data:Map, ../data:PlanForLandRegister/data:Image, $OverlayImage)" />                    
-                        <xsl:text>')</xsl:text>
-                      </xsl:attribute>
-                    </fo:external-graphic>
-                  </fo:block>
-                </fo:block-container>
+              <fo:block-container height="105mm" background-color="transparent">
+                  <!-- get rid of duplicate images (e.g. W2 and W3 are the same images)  -->
+                  <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
+                  <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
+                    <!--<fo:block linefeed-treatment="preserve" font-weight="400" font-size="11pt" font-family="Cadastra"><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>-->
+                    <!--<fo:block><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>-->
+                    <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
+	                    <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+	                    <xsl:attribute name="src">
+	                      <xsl:text>url('data:</xsl:text>
+	                      <xsl:text>image/png;base64,</xsl:text>
+	                      <xsl:value-of select="oereb:createRestrictionOnLandownershipImages(data:Map, ../data:PlanForLandRegister/data:Image, $OverlayImage)" />                    
+	                      <xsl:text>')</xsl:text>
+	                    </xsl:attribute>
+	                    </fo:external-graphic>
+                    </fo:block>
+                    
+                  </xsl:for-each-group>
+              </fo:block-container>
           
               <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
                 <fo:table table-layout="fixed" width="100%">

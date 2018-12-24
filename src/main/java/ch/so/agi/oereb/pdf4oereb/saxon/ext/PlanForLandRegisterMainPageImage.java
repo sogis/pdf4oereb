@@ -64,7 +64,7 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 		try {
 			byte[] baseImageByteArray = Base64.getDecoder().decode(baseImageNode.getUnderlyingValue().getStringValue());
 			byte[] overlayImageByteArray = Base64.getDecoder().decode(overlayImageNode.getUnderlyingValue().getStringValue());
-	
+			
 	    	InputStream baseImageInputStream = new ByteArrayInputStream(baseImageByteArray);
 			BufferedImage baseImageBufferedImage = ImageIO.read(baseImageInputStream);
 	
