@@ -58,94 +58,102 @@ public class Converter {
         fonts.add("CadastraIt.ttf");
     }
     
+    public File run(String xmlFileName, String xsltFileName, String outputDirectory) throws SaxonApiException {
+        try {
+        	Path outputPath = Paths.get(outputDirectory);
+          
+          String baseFileName = FilenameUtils.getBaseName(xmlFileName);
+          File foFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
+          File pdfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".pdf").toFile().getAbsolutePath());
+          
+          // copy fop.xconf file from resources into temporary directory
+          File fopxconfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fopxconfFileName).toFile().getAbsolutePath());
+          InputStream fopxconfFileInputStream = Converter.class.getResourceAsStream("/"+fopxconfFileName); 
+          Files.copy(fopxconfFileInputStream, fopxconfFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+          fopxconfFileInputStream.close();
+          
+          // copy fonts from resources into temporary directory
+          for (String fontName : fonts) {
+              File fontFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fontName).toFile().getAbsolutePath());
+              InputStream is =  Converter.class.getResourceAsStream("/"+fontName); 
+              Files.copy(is, fontFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+              is.close();
+          }
+
+          // create FO file
+          // from examples in source code
+          Processor proc = new Processor(false);
+          
+          ExtensionFunction highlightingImage = new OverlayImage();
+          proc.registerExtensionFunction(highlightingImage);
+          ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
+          proc.registerExtensionFunction(mergeImage);
+          ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
+          proc.registerExtensionFunction(rolImage);
+          ExtensionFunction fixImage = new FixImage();
+          proc.registerExtensionFunction(fixImage);
+          ExtensionFunction decodeUrl = new URLDecoder();
+          proc.registerExtensionFunction(decodeUrl);
+
+          XsltCompiler comp = proc.newXsltCompiler();
+          XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
+          XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
+          Serializer outFo = proc.newSerializer(foFile);
+          XsltTransformer trans = exp.load();
+          trans.setInitialContextNode(source);
+          trans.setDestination(outFo);
+          trans.transform();
+              
+          // create PDF
+          // https://xmlgraphics.apache.org/fop/2.3/embedding.html
+          FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
+          OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile));        
+          try {
+              Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
+              TransformerFactory factory = TransformerFactory.newInstance();
+              Transformer transformer = factory.newTransformer(); 
+              Source src = new StreamSource(foFile);
+              Result res = new SAXResult(fop.getDefaultHandler());
+              transformer.transform(src, res);
+          } catch (TransformerConfigurationException e) {
+              e.printStackTrace();
+              log.error(e.getMessage());
+          } catch (TransformerException e) {
+              log.error(e.getMessage());
+              e.printStackTrace();
+          } finally {
+              log.info("pdf file: " + pdfFile.getAbsolutePath());
+              outPdf.close();
+          }
+          return pdfFile;
+      } catch (IOException | SaxonApiException e) {
+          log.error(e.getMessage());
+          e.printStackTrace();
+          throw new SaxonApiException(e.getMessage());
+      } 
+      catch (SAXException e) {
+          log.error(e.getMessage());
+          e.printStackTrace();
+          throw new SaxonApiException(e.getMessage());
+      }
+    }
+    
     public File run(String xmlFileName, String outputDirectory) throws SaxonApiException {
         try {
-//            Path tempDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_resources_");
-//            Path tempDir = Paths.get("/Users/stefan/Downloads/");
         	Path outputPath = Paths.get(outputDirectory);
             
-            String baseFileName = FilenameUtils.getBaseName(xmlFileName);
-            File foFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
-            File pdfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".pdf").toFile().getAbsolutePath());
-
             // copy xslt file from resources into temporary directory
             File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xlstFileName).toFile().getAbsolutePath());
             InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xlstFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             
-            // copy fop.xconf file from resources into temporary directory
-            File fopxconfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fopxconfFileName).toFile().getAbsolutePath());
-            InputStream fopxconfFileInputStream = Converter.class.getResourceAsStream("/"+fopxconfFileName); 
-            Files.copy(fopxconfFileInputStream, fopxconfFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            fopxconfFileInputStream.close();
-            
-            // copy fonts from resources into temporary directory
-            for (String fontName : fonts) {
-                File fontFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), fontName).toFile().getAbsolutePath());
-                InputStream is =  Converter.class.getResourceAsStream("/"+fontName); 
-                Files.copy(is, fontFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                is.close();
-            }
-
-            // create FO file
-            // from examples in source code
-            Processor proc = new Processor(false);
-            
-            ExtensionFunction highlightingImage = new OverlayImage();
-            proc.registerExtensionFunction(highlightingImage);
-            ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
-            proc.registerExtensionFunction(mergeImage);
-            ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
-            proc.registerExtensionFunction(rolImage);
-            ExtensionFunction fixImage = new FixImage();
-            proc.registerExtensionFunction(fixImage);
-            ExtensionFunction decodeUrl = new URLDecoder();
-            proc.registerExtensionFunction(decodeUrl);
-
-            XsltCompiler comp = proc.newXsltCompiler();
-            XsltExecutable exp = comp.compile(new StreamSource(xsltFile));
-            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
-            Serializer outFo = proc.newSerializer(foFile);
-            XsltTransformer trans = exp.load();
-            trans.setInitialContextNode(source);
-            trans.setDestination(outFo);
-            trans.transform();
-                
-            // create PDF
-            // https://xmlgraphics.apache.org/fop/2.3/embedding.html
-            FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
-            OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile));        
-            try {
-                Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
-                TransformerFactory factory = TransformerFactory.newInstance();
-                Transformer transformer = factory.newTransformer(); 
-                Source src = new StreamSource(foFile);
-                Result res = new SAXResult(fop.getDefaultHandler());
-                transformer.transform(src, res);
-            } catch (TransformerConfigurationException e) {
-                e.printStackTrace();
-                log.error(e.getMessage());
-            } catch (TransformerException e) {
-                log.error(e.getMessage());
-                e.printStackTrace();
-            } finally {
-                log.info("pdf file: " + pdfFile.getAbsolutePath());
-                outPdf.close();
-            }
+            File pdfFile = this.run(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory);
             return pdfFile;
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
-        } catch (SaxonApiException e) {
-            log.error(e.getMessage());
-            e.printStackTrace();
             throw new SaxonApiException(e.getMessage());
         } 
-        catch (SAXException e) {
-            log.error(e.getMessage());
-            e.printStackTrace();
-        }
-		return null;
     }
 }
