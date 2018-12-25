@@ -49,12 +49,15 @@ test {
     testLogging.exceptionFormat = 'full'
 }
 
-jar {
+task customFatJar(type: Jar) {
+    description = "Creates an executable fat jar."
     manifest {
         attributes "Main-Class": "ch.so.agi.oereb.pdf4oereb.Main"
     }
+    baseName = project.name + "-fat"
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+    with jar
 }

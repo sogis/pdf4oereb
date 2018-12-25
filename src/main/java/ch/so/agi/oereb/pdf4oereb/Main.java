@@ -19,7 +19,7 @@ class Main implements Callable<Void> {
 	@Option(names = {"-o", "--out"}, required = true, description = "The output directory.")
     private String outputDirectory;
 	
-	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt style sheet.")
+	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt stylesheet.")
     private String xsltFileName;
 	
 	@Option(names = {"-f", "--fo"}, required = false, description = "Perfom XML->FO transformation only.")
