@@ -94,7 +94,10 @@ public class Converter {
         	// create FO file
         	// from examples in source code
         	log.info("start saxon: " + new Date().toString());
-        	Processor proc = new Processor(false);
+        	TransformerFactory factory = TransformerFactory.newInstance();
+            TransformerFactoryImpl tFactoryImpl = (TransformerFactoryImpl) factory;
+            net.sf.saxon.Configuration saxonConfig = tFactoryImpl.getConfiguration();
+            Processor proc = (Processor) saxonConfig.getProcessor();
 
         	ExtensionFunction highlightingImage = new OverlayImage();
         	proc.registerExtensionFunction(highlightingImage);
@@ -107,13 +110,34 @@ public class Converter {
         	ExtensionFunction decodeUrl = new URLDecoder();
         	proc.registerExtensionFunction(decodeUrl);
 
-        	XsltCompiler comp = proc.newXsltCompiler();
-        	XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
-        	XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
-        	Serializer outFo = proc.newSerializer(foFile);
-        	XsltTransformer trans = exp.load();
-        	trans.setInitialContextNode(source);
-        	trans.setDestination(outFo);
+            Source xslt = new StreamSource(new File(xsltFileName));
+            Transformer transformer = factory.newTransformer(xslt);
+            log.info(transformer.getClass().toString());
+            transformer.reset();
+
+            Source text = new StreamSource(new File(xmlFileName));
+//            transformer.transform(text, new StreamResult(new File("result.xml")));
+
+//        	Processor proc = new Processor(false);
+//
+//        	ExtensionFunction highlightingImage = new OverlayImage();
+//        	proc.registerExtensionFunction(highlightingImage);
+//        	ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
+//        	proc.registerExtensionFunction(mergeImage);
+//        	ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
+//        	proc.registerExtensionFunction(rolImage);
+//        	ExtensionFunction fixImage = new FixImage();
+//        	proc.registerExtensionFunction(fixImage);
+//        	ExtensionFunction decodeUrl = new URLDecoder();
+//        	proc.registerExtensionFunction(decodeUrl);
+//
+//        	XsltCompiler comp = proc.newXsltCompiler();
+//        	XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
+//        	XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
+//        	Serializer outFo = proc.newSerializer(foFile);
+//        	XsltTransformer trans = exp.load();
+//        	trans.setInitialContextNode(source);
+//        	trans.setDestination(outFo);
 //        	trans.transform();
         	
 //            XsltCompiler compiler = proc.newXsltCompiler();
@@ -131,15 +155,17 @@ public class Converter {
         	OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
         	try {
         		Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
-        		TransformerFactory factory = TransformerFactory.newInstance();
+//        		TransformerFactory factory2 = TransformerFactory.newInstance();
 //        		TransformerFactory factory = TransformerFactory.newInstance("org.apache.xalan.processor.TransformerFactoryImpl", null);
+        		log.info(factory.getClass().toString());
 
-        		Transformer transformer =  factory.newTransformer(); 
+//        		Transformer transformer2 =  factory.newTransformer(); 
 //        		log.info(transformer2.getClass().toString());
-        		Source src = new StreamSource(foFile);
+//        		Source src = new StreamSource(foFile);
 //        		Source src = new StreamSource("/Users/stefan/tmp/CH567107399166_test.fo");
-//        		Source src = new StreamSource(new File(xmlFileName));
+        		Source src = new StreamSource(new File(xmlFileName));
         		Result res = new SAXResult(fop.getDefaultHandler());
+        		
         		transformer.transform(src, res);
         		
         	} catch (TransformerConfigurationException e) {

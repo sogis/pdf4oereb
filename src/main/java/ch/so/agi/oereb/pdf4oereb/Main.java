@@ -24,14 +24,18 @@ class Main implements Callable<Void> {
 
 	public static void main(String[] args) throws SaxonApiException {
         CommandLine.call(new Main(), args);
+
 	}
 
 	@Override
 	public Void call() throws Exception {
         Logger log = LoggerFactory.getLogger(Main.class);
-                
+
         Converter converter =  new Converter();
         converter.run(xmlFileName, outputDirectory);
+        
+//        String[] arguments = {"-v", "-fo", "/Users/stefan/tmp/CH567107399166_test.fo", "-pdf", "/Users/stefan/tmp/CH567107399166_test.pdf"};
+//        org.apache.fop.cli.Main.startFOP(arguments);
 		return null;
 	}
 }
