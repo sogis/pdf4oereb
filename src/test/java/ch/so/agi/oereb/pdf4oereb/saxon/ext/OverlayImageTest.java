@@ -36,7 +36,7 @@ public class OverlayImageTest {
 		XdmNode[] arguments = {limitNode, mapNode};
         OverlayImage overlayImage = new OverlayImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) overlayImage.call(arguments);
-        
+
         String expectedResult = new String(Files.readAllBytes(new File("src/test/resources/OverlayImageTest/createOverlayImage_Gml1_Ok_expectedResult.txt").toPath()));
 
     	assertEquals(expectedResult, resultImage.getStringValue(), "Overlay image is not equal.");        

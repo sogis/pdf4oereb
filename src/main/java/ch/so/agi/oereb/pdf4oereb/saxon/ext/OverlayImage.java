@@ -3,13 +3,16 @@ package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -56,6 +59,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.so.agi.oereb.pdf4oereb.Converter;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -75,6 +79,10 @@ public class OverlayImage implements ExtensionFunction {
     private final double highlightingStrokeOpacity = 0.4;
     private final int dpi = 300;
     private final String imageFormat = "png";
+    private final double mapWidthMM = 174.0;
+    private final double mapHeightMM = 99.0;
+    private final int imageWidthPx = 2055;
+    private final int imageHeightPx = 1169;
 
 	@Override
 	public QName getName() {
@@ -141,9 +149,10 @@ public class OverlayImage implements ExtensionFunction {
     	InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
 		BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
 
+		// This makes the resulting image ugly if the stored images in the xml are not 300dpi.
 		int imageWidthPx = mapBufferedImage.getWidth();
 		int imageHeightPx = mapBufferedImage.getHeight();
-		
+				
 		// This will create the highlighting image:
 		// Create the feature, feature collection and a feature layer that can
 		// be added to a map content.
@@ -214,11 +223,45 @@ public class OverlayImage implements ExtensionFunction {
 		Map<Object, Object> rendererHints = new HashMap<Object, Object>();
 		rendererHints.put(StreamingRenderer.DPI_KEY, dpi);
 		renderer.setRendererHints(rendererHints);
-
 		renderer.paint(gr, imageBounds, vp.getBounds());
 
-//		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
+		// Scalebar and north arrow are really heuristic bitches.
+		// Calculate the real dpi of the images. Especially when real dpi
+		// It's still ugly but at least the scale bar should be correct.
+		int dpi = (int) ((hightlightingImage.getWidth() / mapWidthMM) * 25.4);
+		
+		// The scalebar 
+        ScalebarGenerator scalebarGenerator = new ScalebarGenerator();
+        scalebarGenerator.setColorText(Color.BLACK);
+        scalebarGenerator.setDrawScaleText(false);
+        scalebarGenerator.setHeight(50);
+        scalebarGenerator.setTopMargin(15);
+        scalebarGenerator.setLrbMargin(25);
+        scalebarGenerator.setNumberOfSegments(2);
+        double scale = envelope.getWidth() / (mapWidthMM / 1000.0);
+        byte[] scalebarImageByteArray = scalebarGenerator.getImageAsByte(new Double(scale), 400, 72);
+        InputStream insScalebarImage = new ByteArrayInputStream(scalebarImageByteArray);
+        BufferedImage scalebarBufferedImage = ImageIO.read(insScalebarImage);
 
+        // add scalebar to graphic
+        gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
+        gr.drawImage(scalebarBufferedImage, 0, imageHeightPx - 100, null); 
+		
+        // The north arrow
+    	InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow.png"); 
+        BufferedImage northArrowBufferedImage = ImageIO.read(northArrowFileInputStream);
+        int scaledNorthArrowWidthPx = northArrowBufferedImage.getWidth()/3;
+        int scaledNorthArrowHeightPx = northArrowBufferedImage.getWidth()/3;
+        Image tmpNorthArrowImage = northArrowBufferedImage.getScaledInstance(scaledNorthArrowWidthPx, scaledNorthArrowHeightPx, Image.SCALE_SMOOTH);
+        		
+        // add north arrow to graphic
+        gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
+        int leftMargin = (scalebarBufferedImage.getWidth() / 2) - (scaledNorthArrowWidthPx / 2);
+        gr.drawImage(tmpNorthArrowImage, leftMargin, imageHeightPx - 200, null); 
+        
+		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
+
+		// write image to byte[]
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(hightlightingImage, imageFormat, baos); 
 		baos.flush();

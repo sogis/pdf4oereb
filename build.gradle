@@ -40,6 +40,7 @@ application {
 }
 
 run {
+    //args = ["--fo", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
     args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
 }
 
