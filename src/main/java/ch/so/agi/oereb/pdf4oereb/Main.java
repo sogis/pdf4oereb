@@ -1,5 +1,6 @@
 package ch.so.agi.oereb.pdf4oereb;
 
+import java.io.File;
 import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
@@ -18,24 +19,47 @@ class Main implements Callable<Void> {
 	@Option(names = {"-o", "--out"}, required = true, description = "The output directory.")
     private String outputDirectory;
 	
-	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt style sheet. (not yet implemented)")
+	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt style sheet.")
     private String xsltFileName;
+	
+	@Option(names = {"-f", "--fo"}, required = false, description = "Perfom XML->FO transformation only.")
+    private boolean foTransformation = false;
+
 
 
 	public static void main(String[] args) throws SaxonApiException {
-        CommandLine.call(new Main(), args);
-
+		CommandLine.call(new Main(), args);
 	}
 
 	@Override
 	public Void call() throws Exception {
         Logger log = LoggerFactory.getLogger(Main.class);
+        
+        log.info("file to transform: " + xmlFileName);
+        log.info("output directory: " + outputDirectory);
 
         Converter converter =  new Converter();
-        converter.run(xmlFileName, outputDirectory);
-        
-//        String[] arguments = {"-v", "-fo", "/Users/stefan/tmp/CH567107399166_test.fo", "-pdf", "/Users/stefan/tmp/CH567107399166_test.pdf"};
-//        org.apache.fop.cli.Main.startFOP(arguments);
-		return null;
+
+        // xml->fo transformation only
+        if (foTransformation) {
+        	File file = null;
+        	if (xsltFileName != null) {
+        		log.info("custom xslt file will be used: " + xsltFileName);
+        		file = converter.runXml2Fo(xmlFileName, xsltFileName, outputDirectory);
+        	} else {
+        		file = converter.runXml2Fo(xmlFileName, outputDirectory);
+        	}
+        	log.info("file written: " + file.getAbsolutePath());
+        } 
+        // xml->fo->pdf transformation
+        else {
+        	if (xsltFileName != null) {
+        		log.info("custom xslt file will be used: " + xsltFileName);
+            	converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory);
+        	} else {
+        		converter.runXml2Pdf(xmlFileName, outputDirectory);
+        	}
+        }      
+  		return null;
 	}
 }

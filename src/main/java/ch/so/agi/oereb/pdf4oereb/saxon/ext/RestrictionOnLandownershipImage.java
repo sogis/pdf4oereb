@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -181,7 +182,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
-		}	
+		}
         return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(newImageByteArray).asAtomic().getStringValue());
 	}
 }
