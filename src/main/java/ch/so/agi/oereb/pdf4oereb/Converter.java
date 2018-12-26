@@ -80,16 +80,11 @@ public class Converter {
         	log.info("start saxon: " + new Date().toString());
         	Processor proc = new Processor(false);
 
-        	ExtensionFunction highlightingImage = new OverlayImage();
-        	proc.registerExtensionFunction(highlightingImage);
-        	ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
-        	proc.registerExtensionFunction(mergeImage);
-        	ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
-        	proc.registerExtensionFunction(rolImage);
-        	ExtensionFunction fixImage = new FixImage();
-        	proc.registerExtensionFunction(fixImage);
-        	ExtensionFunction decodeUrl = new URLDecoder();
-        	proc.registerExtensionFunction(decodeUrl);
+        	proc.registerExtensionFunction(new OverlayImage());
+        	proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+        	proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+        	proc.registerExtensionFunction(new FixImage());
+        	proc.registerExtensionFunction(new URLDecoder());
 
         	XsltCompiler comp = proc.newXsltCompiler();
         	XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
@@ -172,21 +167,15 @@ public class Converter {
         	// the saxon part
         	Processor proc = new Processor(false);
 
-        	ExtensionFunction highlightingImage = new OverlayImage();
-        	proc.registerExtensionFunction(highlightingImage);
-        	ExtensionFunction mergeImage = new PlanForLandRegisterMainPageImage();
-        	proc.registerExtensionFunction(mergeImage);
-        	ExtensionFunction rolImage = new RestrictionOnLandownershipImage();
-        	proc.registerExtensionFunction(rolImage);
-        	ExtensionFunction fixImage = new FixImage();
-        	proc.registerExtensionFunction(fixImage);
-        	ExtensionFunction decodeUrl = new URLDecoder();
-        	proc.registerExtensionFunction(decodeUrl);
+        	proc.registerExtensionFunction(new OverlayImage());
+        	proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+        	proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+        	proc.registerExtensionFunction(new FixImage());
+        	proc.registerExtensionFunction(new URLDecoder());
 
         	XsltCompiler comp = proc.newXsltCompiler();
         	XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
         	XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
-        	Serializer outFo = proc.newSerializer(foFile);
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
         	switch (locale) {
