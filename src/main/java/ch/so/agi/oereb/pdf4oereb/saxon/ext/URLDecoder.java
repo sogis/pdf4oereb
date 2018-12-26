@@ -39,12 +39,12 @@ public class URLDecoder implements ExtensionFunction {
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
 		XdmNode urlNode = (XdmNode) arguments[0];
 		try {
-			String decodedUrl = java.net.URLDecoder.decode(urlNode.getStringValue(), "UTF-8");
+			String decodedUrl = java.net.URLDecoder.decode(urlNode.getStringValue().trim(), "UTF-8"); // trim fixes some illegal character execption
 			URI resultUri = new URI(decodedUrl);
 	        return new XdmAtomicValue(resultUri);
 		} catch (UnsupportedEncodingException | URISyntaxException e) {
-			e.printStackTrace();
-			throw new SaxonApiException(e.getMessage());
+			log.error(e.getMessage());
+			return new XdmAtomicValue(urlNode.getStringValue());
 		}
 	}
 }

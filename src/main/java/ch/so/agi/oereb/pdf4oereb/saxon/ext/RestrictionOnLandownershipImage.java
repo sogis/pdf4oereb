@@ -7,6 +7,7 @@ import java.awt.Composite;
 import org.geotools.renderer.composite.BlendComposite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		XdmValue restrictionOnLandownershipMaps = (XdmValue) arguments[0];
 
 		// the background image (which will be put _over_ the restriction images...)
-		XdmValue backgroundImage = (XdmValue) arguments[1];
+		XdmNode backgroundMapNode = (XdmNode) arguments[1];
 		
 		// the overlay image
 	    XdmNode overlayImageNode = (XdmNode) arguments[2];
@@ -87,6 +88,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			Double layerOpacity = 1.0;
 			
 			// grap the images
+			// embedded
 			Iterator<XdmNode> jt = mapNode.children("Image").iterator();
 			while(jt.hasNext()) {
 				XdmNode imageNode = jt.next();
@@ -97,6 +99,26 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 				}  catch (IOException e) {
 					e.printStackTrace();
 					throw new SaxonApiException(e.getMessage());
+				}
+			}
+			// wms only when not embedded
+			if (layerImage == null) {
+				jt = mapNode.children("ReferenceWMS").iterator();
+				while(jt.hasNext()) {
+		    		XdmNode imageNode = (XdmNode) jt.next();
+		    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
+		    		try {
+		    			byte[] imageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+						InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
+						layerImage = ImageIO.read(imageInputStream);
+						
+//				        ImageIO.write(layerImage, "png", new File("/Users/stefan/tmp/layerImage.png"));					
+		    		} catch (Exception e) {
+		    			e.printStackTrace();
+		    			log.error(e.getMessage());
+		    			throw new SaxonApiException(e.getMessage());
+		    		}
+		    		break;
 				}
 			}
 			
@@ -135,13 +157,39 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 				g = (Graphics2D) newImage.getGraphics();
 			}
-			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
+			// TODO! Remember!!!
+//			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
+			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 			g.drawImage(imageBufferedImage, 0, 0, null);
 		}
 		
 		// merge background image
 		try {
-			byte[] backgroundImageByteArray = Base64.getDecoder().decode(backgroundImage.getUnderlyingValue().getStringValue());
+			byte[] backgroundImageByteArray = null;
+	    	Iterator<XdmNode> lt = backgroundMapNode.children("Image").iterator();
+	    	while(lt.hasNext()) {
+	    		XdmNode imageNode = (XdmNode) lt.next();
+	    		XdmValue mapImageXdmValue = imageNode.getTypedValue();
+	    		backgroundImageByteArray = Base64.getDecoder().decode(mapImageXdmValue.getUnderlyingValue().getStringValue());
+	    		break;
+	    	}
+	    	// Only get the image by a wms request if it was not embedded.
+	    	if (backgroundImageByteArray == null) {
+		    	lt = backgroundMapNode.children("ReferenceWMS").iterator();
+		    	while(lt.hasNext()) {
+		    		XdmNode imageNode = (XdmNode) lt.next();
+		    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
+		    		try {
+		    			backgroundImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+		    		} catch (Exception e) {
+		    			e.printStackTrace();
+		    			log.error(e.getMessage());
+		    			throw new SaxonApiException(e.getMessage());
+		    		}
+		    		break;
+		    	}
+	    	}
+			
 			InputStream backgroundImageInputStream = new ByteArrayInputStream(backgroundImageByteArray);
 			BufferedImage backgroundImageBufferedImage = ImageIO.read(backgroundImageInputStream);
 			
@@ -169,11 +217,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		
 		// write image
 		byte[] newImageByteArray = null;
-		try {
-//	        Path outputfilePath = Paths.get("/Users/stefan/tmp/", "image"+String.valueOf(Math.random())+".png");
-//	        ImageIO.write(newImage, imageFormat, outputfilePath.toFile());            
-//	        log.info(outputfilePath.toString());
-	        
+		try {	        
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(newImage, imageFormat, baos);
 			baos.flush();

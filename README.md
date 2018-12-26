@@ -16,9 +16,26 @@
   - interior ring == exterior ring of real estate geometry
   - not 300 dpi images
   - LengthShare nur im extensions-Element
+- ZH:
+  - nicht 300dpi images (embedded wie auch WMS)
+  - Georeferenzierung für Image fehlt.
+  - "java.lang.IllegalArgumentException: Illegal base64 character a" beim Versuch PlanForLandRegisterMainPage zu encodieren.
+  - WMS-GetMap liefert die Bandierung des Grundstückes mit. Ist das korrekt?
+  - Grundbuchkreis fehlt im XML? (im PDF vorhanden)
+  - Beteiligte Symbole sind nochmals unter OtherLegend. So wie ich Weisung lese, dürfen die nicht nochmals auftreteten. Einigermassen plausibel.
+  - Zuständige Stellen auf dem PDF kommen von den zuständigen Stellen der Dokumente (? oder irgendwie anders gemacht). Es fehlt das ARE bei den zuständigen Stellen direkt beim ÖREB. M.E. sollten die Stellen von dort verwendet werden.
+  - java.net.URISyntaxException: Illegal character in authority at index 7: http://www.raumplanung.zh.ch
+  - Linien haben AreaShare und PartInPercent von 0. Jedoch keine LineShare.
+  - Symbole haben nicht das korrekte Width/Height-Verhältnis.
+  - Falls es zwei ÖREB des gleichen Typs im Grundstück gibt, fehlt einer (?). Z.B. Freihaltezone in meinem Beispiel. 
+  - Die WMS-Requests der ÖREB beinhalten auch schon alles (highlighting und so.)
+  - layerOpacity ist immer 0 (falls komplett unsichtbar entspricht)
 - NW:
   - information text of restriction on landownership is wrong
   - symbols for restriction on landownership appear also in other legend
   - naming / grouping of theme ?
   - URL encoding
   - legend symbols size?
+- VS:
+ - TypeCode = unknown -> Wird beim Aggregieren/Gruppieren der Symbole Probleme machen, falls das mehrfach vorkommt.
+ - GetExtractByIdResponse-Tag fehlt. Es beginnt beim Extract. (?)

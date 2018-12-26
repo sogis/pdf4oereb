@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Extract xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:xmlsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" xsi:schemaLocation="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData file://srv-data/NoBackups/Data/data_RL/rdppf/ExtractData.xsd">
+  <CreationDate>2018-12-26T19:07:08.392</CreationDate>
+  <ConcernedTheme>
+    <Code>LandUsePlans</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Affectation primaire</Text>
+    </Text>
+  </ConcernedTheme>
+  <ConcernedTheme>
+    <Code>NoiseSensitivityLevels</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Degrés de sensibilité au bruit</Text>
+    </Text>
+  </ConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ch.VS.as</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Affectation superposée</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>MotorwaysProjectPlaningZones</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Zones réservées des routes nationales</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>MotorwaysBuildingLines</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Alignements des routes nationales</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>RailwaysProjectPlanningZones</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Zones réservées des installations ferroviaires</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>RailwaysBuildingLines</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Alignements des installations ferroviaires</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>AirportsProjectPlanningZones</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Zones réservées des installations aéroportuaires</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>AirportsBuildingLines</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Alignements des installations aéroportuaires</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>AirportsSecurityZonePlans</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Plan de la zone de sécurité</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ContaminatedSites</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Sites pollués</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ContaminatedCivilAviationSites</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Cadastre des sites pollués  − domaine des aérodromes civils</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ContaminatedPublicTransportSites</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Cadastre des sites pollués - domaine des transports publics</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>GroundwaterProtectionZones</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Zone de protection des eaux souterraines</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>GroundwaterProtectionSites</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Périmètre de protection des eaux souterraines</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ForestDistanceLines</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Distances par rapport à la forêt</Text>
+    </Text>
+  </NotConcernedTheme>
+  <NotConcernedTheme>
+    <Code>ForestPerimeters</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Limites forestières statiques</Text>
+    </Text>
+  </NotConcernedTheme>
+  <ThemeWithoutData>
+    <Code>ContaminatedMilitarySites</Code>
+    <Text>
+      <Language>de</Language>
+      <Text>Cadastre des sites pollués - domaine militaire</Text>
+    </Text>
+  </ThemeWithoutData>
+  <isReduced>1</isReduced>
+  <LogoPLRCadastreRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/logos/image.oerebkatasterargb.jpg</LogoPLRCadastreRef>
+  <FederalLogoRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/logos/bund_logo.svg</FederalLogoRef>
+  <CantonalLogoRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/logos/Logo.png</CantonalLogoRef>
+  <MunicipalityLogoRef>https://www.vs.ch/documents/10193/1191573/Martigny.gif</MunicipalityLogoRef>
+  <ExtractIdentifier>None</ExtractIdentifier>
+  <BaseData>
+    <LocalisedText>
+      <Language>de</Language>
+      <Text>Données de ma mensuration officielle</Text>
+    </LocalisedText>
+    <LocalisedText>
+      <Language>de</Language>
+      <Text>Daten der amtlichen Vermessung</Text>
+    </LocalisedText>
+  </BaseData>
+  <RealEstate>
+    <Number>3544-</Number>
+    <IdentDN>VS6136</IdentDN>
+    <EGRID/>
+    <Type>RealEstate</Type>
+    <Canton>VS</Canton>
+    <Municipality>Martigny</Municipality>
+    <FosNr>6136</FosNr>
+    <LandRegistryArea>3961</LandRegistryArea>
+    <Limit>
+      <gml:MultiSurface gml:id="ID" srsName="EPSG:2056">
+        <gml:surfaceMember>
+          <gml:Polygon gml:id="ID_1" srsName="EPSG:2056">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:posList srsDimension="2">2573012.48 1106007 2572955.48 1105970.78 2572933.49 1106005.04 2572941.43 1106020.78 2572945.02 1106030.58 2572947.34 1106039.16 2572955.91 1106055.15 2572971.54 1106057.79 2572973.29 1106057.37 2572974.99 1106056.77 2572976.62 1106056 2572979.23 1106054.18 2572981.67 1106052.15 2572983.92 1106049.91 2572985.98 1106047.48 2572987.81 1106044.89 2572989.42 1106042.14 2573012.48 1106007</gml:posList>
+              </gml:LinearRing>
+            </gml:exterior>
+          </gml:Polygon>
+        </gml:surfaceMember>
+      </gml:MultiSurface>
+    </Limit>
+    <RestrictionOnLandownership>
+      <Information>
+        <LocalisedText>
+          <Language>de</Language>
+          <Text>DS III</Text>
+        </LocalisedText>
+        <LocalisedText>
+          <Language>de</Language>
+          <Text>DS III</Text>
+        </LocalisedText>
+      </Information>
+      <Theme>
+        <Code>NoiseSensitivityLevels</Code>
+        <Text>
+          <Language>de</Language>
+          <Text>Lärmempfindlichkeitsstufen</Text>
+        </Text>
+      </Theme>
+      <SubTheme>DS III</SubTheme>
+      <Lawstatus>
+        <Code>inForce</Code>
+        <Text>
+          <Language>de</Language>
+          <Text>In kraft</Text>
+        </Text>
+      </Lawstatus>
+      <AreaShare>3960</AreaShare>
+      <PartInPercent>100</PartInPercent>
+      <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/1v0p305882v0p00784314.png</SymbolRef>
+      <Geometry>
+        <Surface>
+          <gml:Polygon gml:id="ID_2">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:posList srsDimension="2">2572468.677559279371053 1105630.306342742405832 2572497.664562419056892 1105651.736329895677045 2572561.975540794432163 1105701.1863637866918 2572564.787545145023614 1105703.09536503860727 2572568.825555630028248 1105706.440367135219276 2572601.341583547648042 1105729.112354409182444 2572615.883527467958629 1105739.233334944583476 2572639.155560189392418 1105758.474371466785669 2572647.218555139377713 1105764.086375078186393 2572653.986537072341889 1105768.575321009149775 2572673.232593861874193 1105783.410334978019819 2572703.509574196767062 1105803.793325555510819 2572702.260584636125714 1105805.333356018876657 2572703.963568709790707 1105807.786371128400788 2572719.565546777099371 1105817.584378662286326 2572734.535588472615927 1105830.041353109758347 2572736.134531610179693 1105830.808328709099442 2572737.137559487484396 1105831.520313738845289 2572756.173544688615948 1105845.040317418053746 2572780.652570051606745 1105863.815319617977366 2572793.360547854099423 1105872.681318355491385 2572795.063555640168488 1105870.196360448841006 2572807.907546649221331 1105880.599325607065111 2572826.067582304123789 1105893.308347226819023 2572843.338582837488502 1105908.11632440565154 2572853.670538920909166 1105915.185332667082548 2572863.021578321699053 1105922.536336549790576 2572876.594580016098917 1105933.342315121321008 2572893.39558281423524 1105947.815315303392708 2572918.496544889640063 1105976.197316038422287 2572933.494528808165342 1106005.036342376144603 2572941.426590444985777 1106020.779322335962206 2572945.016548504587263 1106030.579333638306707 2572947.33856629114598 1106039.164324471959844 2572955.912569813895971 1106055.150367074413225 2572971.539585365448147 1106057.79332285723649 2572973.261792993638664 1106057.375450755702332 2572974.953854973893613 1106056.781634228304029 2572976.620558497961611 1106055.999347921693698 2572979.143852492328733 1106054.246025309897959 2572981.591168551240116 1106052.216016493272036 2572983.853596829809248 1106049.981799115426838 2572985.9141551614739 1106047.560143153415993 2572987.757376575376838 1106044.969225545646623 2572989.415539836511016 1106042.141375731211156 2573012.475546323694289 1106007.003337983507663 2573028.62953680055216 1105982.443315881770104 2573033.877556309103966 1105974.632332812761888 2573064.227594850119203 1105926.866355688078329 2573064.788238149136305 1105925.889598220819607 2573065.284642787650228 1105924.8332584714517 2573065.691359727177769 1105923.73925270489417 2573066.005563656333834 1105922.615180408814922 2573066.225071901921183 1105921.468849949305877 2573066.348359593655914 1105920.308224329026416 2573066.374570256099105 1105919.141365840099752 2573066.303521759342402 1105917.976380083244294 2573066.138547947630286 1105916.837341331643984 2573065.842725610826164 1105915.578184116166085 2573065.437983356416225 1105914.366781881544739 2573064.924644041806459 1105913.197256994433701 2573064.306970426347107 1105912.079321332974359 2573063.59009167784825 1105911.022258376004174 2573062.779960784129798 1105910.034846121212468 2573061.883305117022246 1105909.125284192385152 2573060.907570571172982 1105908.301125722005963 2573059.895556384697556 1105907.591326334979385 2572971.212540771346539 1105851.305314431665465 2572926.141556362621486 1105822.83132210187614 2572917.756591446232051 1105836.188318786676973 2572875.546566941775382 1105809.455353787867352 2572881.236549520399421 1105800.621344711864367 2572940.759595029987395 1105706.491374482633546 2572941.200006409548223 1105705.716038183774799 2572941.585953159723431 1105704.877885687630624 2572941.897913240361959 1105704.00947755901143 2572942.133545527234674 1105703.117330714827403 2572942.291081692557782 1105702.208140231668949 2572942.36933947680518 1105701.288729088613763 2572942.367731560021639 1105700.365996983833611 2572942.286269973497838 1105699.446868529543281 2572942.128548847977072 1105698.552327334647998 2572941.879507304169238 1105697.65305321617052 2572941.558520789258182 1105696.792821057839319 2572941.164586759638041 1105695.963456904282793 2572940.700636887457222 1105695.171132993418723 2572940.170123913325369 1105694.421745907980949 2572939.576995953451842 1105693.72087269066833 2572938.925667116418481 1105693.073729338124394 2572938.220984653569758 1105692.485131992259994 2572937.494562256615609 1105691.976313635939732 2572853.815591222606599 1105638.967320429161191 2572844.419569528661668 1105632.898367887828499 2572814.826590007171035 1105614.038331232964993 2572803.901587735395879 1105607.01636493159458 2572802.091587277129292 1105606.180356078781188 2572791.071542391553521 1105598.977343068225309 2572779.036727183964103 1105591.522776568308473 2572767.599587816279382 1105584.438342339592054 2572747.105162342544645 1105571.196836587041616 2572746.940752045251429 1105571.085857396479696 2572746.797637896612287 1105570.993349620839581 2572746.675559834111482 1105570.917364733060822 2572702.049575424753129 1105541.766077851410955 2572656.213530961424112 1105511.824340670835227 2572579.147568409796804 1105461.573370956815779 2572513.861575666349381 1105418.990318795666099 2572503.060566335916519 1105416.917315789032727 2572453.51858067791909 1105490.83033849671483 2572442.468571053352207 1105508.179332577623427 2572399.337565643712878 1105578.193339813034981 2572423.57458006683737 1105596.30936684156768 2572462.672552813775837 1105625.563362863846123 2572468.677559279371053 1105630.306342742405832</gml:posList>
+              </gml:LinearRing>
+            </gml:exterior>
+          </gml:Polygon>
+        </Surface>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <ResponsibleOffice>
+          <Name>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>unknown</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>unknown</Text>
+            </LocalisedText>
+          </Name>
+        </ResponsibleOffice>
+      </Geometry>
+      <Map>
+        <Image/>
+        <ReferenceWMS>http://rdppfvs.geopol.ch/v1/pictures/A32DE00F59E93ACC5770FE6C911B3376_12.png</ReferenceWMS>
+        <LegendAtWeb>https://www.vs.ch/documents/17311/969625/Legende_RDPPF_ds_DE.pdf</LegendAtWeb>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p843137v0p843137v0p843137.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Aucune DS</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Aucune DS</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>NoiseSensitivityLevels</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Lärmempfindlichkeitsstufen</Text>
+            </Text>
+          </Theme>
+          <SubTheme>Aucune DS</SubTheme>
+        </OtherLegend>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/1v0p635294v0p0117647.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>DS II</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>DS II</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>NoiseSensitivityLevels</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Lärmempfindlichkeitsstufen</Text>
+            </Text>
+          </Theme>
+          <SubTheme>DS II</SubTheme>
+        </OtherLegend>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p898039v0v0p00784314.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>DS IV</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>DS IV</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>NoiseSensitivityLevels</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Lärmempfindlichkeitsstufen</Text>
+            </Text>
+          </Theme>
+          <SubTheme>DS IV</SubTheme>
+        </OtherLegend>
+        <min_NS95>
+          <gml:Point gml:id="ID_3">
+            <gml:pos>2572821.55676848 1105927.89066917</gml:pos>
+          </gml:Point>
+        </min_NS95>
+        <max_NS95>
+          <gml:Point gml:id="ID_4">
+            <gml:pos>2573124.48261361 1106100.60474911</gml:pos>
+          </gml:Point>
+        </max_NS95>
+        <layerIndex>0</layerIndex>
+        <layerOpacity>1</layerOpacity>
+      </Map>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/814.1/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.admin.ch/opc/de/classified-compilation/19860372/index.html</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.admin.ch/ch/d/sr/c814_01.html</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_rccz.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_paz_10000.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_paz_5000.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <ResponsibleOffice>
+        <Name>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>Commune de Martigny</Text>
+          </LocalisedText>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>Gemeinde Martigny</Text>
+          </LocalisedText>
+        </Name>
+      </ResponsibleOffice>
+    </RestrictionOnLandownership>
+    <RestrictionOnLandownership>
+      <Information>
+        <LocalisedText>
+          <Language>de</Language>
+          <Text>Zone mixte artisanale et commerciale (ZAC)</Text>
+        </LocalisedText>
+        <LocalisedText>
+          <Language>de</Language>
+          <Text>Zone mixte artisanale et commerciale (ZAC)</Text>
+        </LocalisedText>
+      </Information>
+      <Theme>
+        <Code>LandUsePlans</Code>
+        <Text>
+          <Language>de</Language>
+          <Text>Primärnutzung</Text>
+        </Text>
+      </Theme>
+      <SubTheme>Zone mixte artisanale et commerciale (ZAC)</SubTheme>
+      <Lawstatus>
+        <Code>inForce</Code>
+        <Text>
+          <Language>de</Language>
+          <Text>In kraft</Text>
+        </Text>
+      </Lawstatus>
+      <AreaShare>3960</AreaShare>
+      <PartInPercent>100</PartInPercent>
+      <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p996v0p737v0p906.png</SymbolRef>
+      <Geometry>
+        <Surface>
+          <gml:Polygon gml:id="ID_5">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:posList srsDimension="2">2572955.912569813895971 1106055.150367074413225 2572971.539585365448147 1106057.79332285723649 2572973.261792993638664 1106057.375450755702332 2572974.953854973893613 1106056.781634228304029 2572976.620558497961611 1106055.999347921693698 2572979.143852492328733 1106054.246025309897959 2572981.591168551240116 1106052.216016493272036 2572983.853596829809248 1106049.981799115426838 2572985.9141551614739 1106047.560143153415993 2572987.757376575376838 1106044.969225545646623 2572989.415539836511016 1106042.141375731211156 2573012.475546323694289 1106007.003337983507663 2573028.62953680055216 1105982.443315881770104 2573033.877556309103966 1105974.632332812761888 2573064.227594850119203 1105926.866355688078329 2573064.788238149136305 1105925.889598220819607 2573065.284642787650228 1105924.8332584714517 2573065.691359727177769 1105923.73925270489417 2573066.005563656333834 1105922.615180408814922 2573066.225071901921183 1105921.468849949305877 2573066.348359593655914 1105920.308224329026416 2573066.374570256099105 1105919.141365840099752 2573066.303521759342402 1105917.976380083244294 2573066.138547947630286 1105916.837341331643984 2573065.842725610826164 1105915.578184116166085 2573065.437983356416225 1105914.366781881544739 2573064.924644041806459 1105913.197256994433701 2573064.306970426347107 1105912.079321332974359 2573063.59009167784825 1105911.022258376004174 2573062.779960784129798 1105910.034846121212468 2573061.883305117022246 1105909.125284192385152 2573060.907570571172982 1105908.301125722005963 2573059.895556384697556 1105907.591326334979385 2572971.212540771346539 1105851.305314431665465 2572926.141556362621486 1105822.83132210187614 2572917.756591446232051 1105836.188318786676973 2572875.546566941775382 1105809.455353787867352 2572881.236549520399421 1105800.621344711864367 2572940.759595029987395 1105706.491374482633546 2572941.200006409548223 1105705.716038183774799 2572941.585953159723431 1105704.877885687630624 2572941.897913240361959 1105704.00947755901143 2572942.133545527234674 1105703.117330714827403 2572942.291081692557782 1105702.208140231668949 2572942.36933947680518 1105701.288729088613763 2572942.367731560021639 1105700.365996983833611 2572942.286269973497838 1105699.446868529543281 2572942.128548847977072 1105698.552327334647998 2572941.879507304169238 1105697.65305321617052 2572941.558520789258182 1105696.792821057839319 2572941.164586759638041 1105695.963456904282793 2572940.700636887457222 1105695.171132993418723 2572940.170123913325369 1105694.421745907980949 2572939.576995953451842 1105693.72087269066833 2572938.925667116418481 1105693.073729338124394 2572938.220984653569758 1105692.485131992259994 2572937.494562256615609 1105691.976313635939732 2572853.815591222606599 1105638.967320429161191 2572844.419569528661668 1105632.898367887828499 2572814.826590007171035 1105614.038331232964993 2572803.901587735395879 1105607.01636493159458 2572802.091587277129292 1105606.180356078781188 2572791.071542391553521 1105598.977343068225309 2572779.036727183964103 1105591.522776568308473 2572767.599587816279382 1105584.438342339592054 2572747.105162342544645 1105571.196836587041616 2572746.940752045251429 1105571.085857396479696 2572746.797637896612287 1105570.993349620839581 2572746.675559834111482 1105570.917364733060822 2572702.049575424753129 1105541.766077851410955 2572656.213530961424112 1105511.824340670835227 2572579.147568409796804 1105461.573370956815779 2572468.677559279371053 1105630.306342742405832 2572497.664562419056892 1105651.736329895677045 2572561.975540794432163 1105701.1863637866918 2572564.787545145023614 1105703.09536503860727 2572568.825555630028248 1105706.440367135219276 2572601.341583547648042 1105729.112354409182444 2572615.883527467958629 1105739.233334944583476 2572639.155560189392418 1105758.474371466785669 2572647.218555139377713 1105764.086375078186393 2572653.986537072341889 1105768.575321009149775 2572673.232593861874193 1105783.410334978019819 2572703.509574196767062 1105803.793325555510819 2572702.260584636125714 1105805.333356018876657 2572703.963568709790707 1105807.786371128400788 2572719.565546777099371 1105817.584378662286326 2572734.535588472615927 1105830.041353109758347 2572736.134531610179693 1105830.808328709099442 2572737.137559487484396 1105831.520313738845289 2572756.173544688615948 1105845.040317418053746 2572780.652570051606745 1105863.815319617977366 2572793.360547854099423 1105872.681318355491385 2572795.063555640168488 1105870.196360448841006 2572807.907546649221331 1105880.599325607065111 2572826.067582304123789 1105893.308347226819023 2572843.338582837488502 1105908.11632440565154 2572853.670538920909166 1105915.185332667082548 2572863.021578321699053 1105922.536336549790576 2572876.594580016098917 1105933.342315121321008 2572893.39558281423524 1105947.815315303392708 2572918.496544889640063 1105976.197316038422287 2572933.494528808165342 1106005.036342376144603 2572941.426590444985777 1106020.779322335962206 2572945.016548504587263 1106030.579333638306707 2572947.33856629114598 1106039.164324471959844 2572955.912569813895971 1106055.150367074413225</gml:posList>
+              </gml:LinearRing>
+            </gml:exterior>
+          </gml:Polygon>
+        </Surface>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <ResponsibleOffice>
+          <Name>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>unknown</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>unknown</Text>
+            </LocalisedText>
+          </Name>
+        </ResponsibleOffice>
+      </Geometry>
+      <Map>
+        <Image/>
+        <ReferenceWMS>http://rdppfvs.geopol.ch/v1/pictures/A32DE00F59E93ACC5770FE6C911B3376_11.png</ReferenceWMS>
+        <LegendAtWeb>https://www.vs.ch/documents/17311/969625/Legende_RDPPF_affprim_DE.pdf</LegendAtWeb>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p878v0p878v0p878.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone de transport à l'extérieur des zones à bâtir</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone de transport à l'extérieur des zones à bâtir</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>LandUsePlans</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Primärnutzung</Text>
+            </Text>
+          </Theme>
+          <SubTheme>Zone de transport à l'extérieur des zones à bâtir</SubTheme>
+        </OtherLegend>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p69v0p69v0p69.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone de transport à l'intérieur des zones à bâtir</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone de transport à l'intérieur des zones à bâtir</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>LandUsePlans</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Primärnutzung</Text>
+            </Text>
+          </Theme>
+          <SubTheme>Zone de transport à l'intérieur des zones à bâtir</SubTheme>
+        </OtherLegend>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/1v0p82v0p494.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone d'habitat collectif A</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone d'habitat collectif A</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>LandUsePlans</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Primärnutzung</Text>
+            </Text>
+          </Theme>
+          <SubTheme>Zone d'habitat collectif A</SubTheme>
+        </OtherLegend>
+        <OtherLegend>
+          <SymbolRef>https://s3.eu-central-1.amazonaws.com/rdppfvs-ressources/legends/0p655v0v0p898.png</SymbolRef>
+          <LegendText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone industrielle</Text>
+            </LocalisedText>
+            <LocalisedText>
+              <Language>de</Language>
+              <Text>Zone industrielle</Text>
+            </LocalisedText>
+          </LegendText>
+          <TypeCode>unknown</TypeCode>
+          <TypeCodelist>unknown</TypeCodelist>
+          <Theme>
+            <Code>LandUsePlans</Code>
+            <Text>
+              <Language>de</Language>
+              <Text>Primärnutzung</Text>
+            </Text>
+          </Theme>
+          <SubTheme>Zone industrielle</SubTheme>
+        </OtherLegend>
+        <min_NS95>
+          <gml:Point gml:id="ID_6">
+            <gml:pos>2572821.55676848 1105927.89066917</gml:pos>
+          </gml:Point>
+        </min_NS95>
+        <max_NS95>
+          <gml:Point gml:id="ID_7">
+            <gml:pos>2573124.48261361 1106100.60474911</gml:pos>
+          </gml:Point>
+        </max_NS95>
+        <layerIndex>0</layerIndex>
+        <layerOpacity>1</layerOpacity>
+      </Map>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/705.101/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/701.106/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/701.1/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.admin.ch/opc/de/classified-compilation/20000959/index.html</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.admin.ch/opc/de/classified-compilation/19790171/index.html</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/705.1/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>Law</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>http://lex.vs.ch/data/705.100/de</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_rccz.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_paz_10000.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <LegalProvisions>
+        <DocumentType>LegalProvision</DocumentType>
+        <TextAtWeb>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>https://www.vs.ch/documents/17311/3075098/20130123_mart_paz_5000.pdf</Text>
+          </LocalisedText>
+        </TextAtWeb>
+        <Lawstatus>
+          <Code>inForce</Code>
+          <Text>
+            <Language>de</Language>
+            <Text>In kraft</Text>
+          </Text>
+        </Lawstatus>
+        <extensions> </extensions>
+      </LegalProvisions>
+      <ResponsibleOffice>
+        <Name>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>Commune de Martigny</Text>
+          </LocalisedText>
+          <LocalisedText>
+            <Language>de</Language>
+            <Text>Gemeinde Martigny</Text>
+          </LocalisedText>
+        </Name>
+      </ResponsibleOffice>
+    </RestrictionOnLandownership>
+    <PlanForLandRegister>
+      <Image/>
+      <ReferenceWMS>http://rdppfvs.geopol.ch/v1/pictures/A32DE00F59E93ACC5770FE6C911B3376.png</ReferenceWMS>
+      <min_NS95>
+        <gml:Point gml:id="ID_8">
+          <gml:pos>2572821.55676848 1105927.89066917</gml:pos>
+        </gml:Point>
+      </min_NS95>
+      <max_NS95>
+        <gml:Point gml:id="ID_9">
+          <gml:pos>2573124.48261361 1106100.60474911</gml:pos>
+        </gml:Point>
+      </max_NS95>
+      <layerIndex>0</layerIndex>
+      <layerOpacity>1</layerOpacity>
+    </PlanForLandRegister>
+    <PlanForLandRegisterMainPage>
+      <Image/>
+      <ReferenceWMS>http://rdppfvs.geopol.ch/v1/pictures/A32DE00F59E93ACC5770FE6C911B3376.png</ReferenceWMS>
+      <min_NS95>
+        <gml:Point gml:id="ID_10">
+          <gml:pos>2572821.55676848 1105927.89066917</gml:pos>
+        </gml:Point>
+      </min_NS95>
+      <max_NS95>
+        <gml:Point gml:id="ID_11">
+          <gml:pos>2573124.48261361 1106100.60474911</gml:pos>
+        </gml:Point>
+      </max_NS95>
+      <layerIndex>0</layerIndex>
+      <layerOpacity>1</layerOpacity>
+    </PlanForLandRegisterMainPage>
+  </RealEstate>
+  <PLRCadastreAuthority>
+    <Name>
+      <LocalisedText>
+        <Language>de</Language>
+        <Text>Service de la géoinformation</Text>
+      </LocalisedText>
+      <LocalisedText>
+        <Language>de</Language>
+        <Text>Dienststelle für Geoinformation</Text>
+      </LocalisedText>
+    </Name>
+    <Street>Av. de la Gare</Street>
+    <Number>39</Number>
+    <PostalCode>1950</PostalCode>
+    <City>Sion</City>
+  </PLRCadastreAuthority>
+</Extract>

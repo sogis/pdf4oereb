@@ -61,4 +61,26 @@ public class OverlayImageTest {
         
     	assertEquals(expectedResult, resultImage.getStringValue(), "Overlay image is not equal.");        
     }
+    
+    @Test
+    // If there is no georeferencing information of the map
+    // we just create an empty (fully transparent) image.
+    // (North arrow would be possible, though.)
+    public void createEmptyOverlayImage_Ok() throws SaxonApiException, IOException {
+		Processor processor = new Processor(false);
+		
+        XdmNode limitSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/OverlayImageTest/createEmptyOverlayImage_Ok_limitNode.xml")));
+        XdmNode limitNode = limitSource.children().iterator().next();
+
+        XdmNode mapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/OverlayImageTest/createEmptyOverlayImage_Ok_mapNode.xml")));
+        XdmNode mapNode = mapSource.children().iterator().next();
+
+		XdmNode[] arguments = {limitNode, mapNode};
+        OverlayImage overlayImage = new OverlayImage();
+        XdmAtomicValue resultImage = (XdmAtomicValue) overlayImage.call(arguments);
+
+        String expectedResult = new String(Files.readAllBytes(new File("src/test/resources/OverlayImageTest/createEmptyOverlayImage_Ok_expectedResult.txt").toPath()));
+
+    	assertEquals(expectedResult, resultImage.getStringValue(), "Overlay image is not equal.");        
+    }
 }

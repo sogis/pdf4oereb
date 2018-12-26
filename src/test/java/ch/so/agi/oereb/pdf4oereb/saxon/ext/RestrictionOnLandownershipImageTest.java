@@ -29,11 +29,8 @@ public class RestrictionOnLandownershipImageTest {
 		XdmNode rolMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_restrictionOnLandownershipMapNode.xml")));
         XdmNode rolMapNode = rolMapSource.children().iterator().next();
         
-        String baseImageString = new String(Files.readAllBytes(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_baseImageNode.xml").toPath()));
-		Orphan baseImageOrphanNode = new Orphan(processor.getUnderlyingConfiguration());
-		baseImageOrphanNode.setNodeKind(Type.TEXT);
-		baseImageOrphanNode.setStringValue(baseImageString);
-		XdmNode baseImageNode = new XdmNode(baseImageOrphanNode);
+		XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_baseImageNode.xml")));
+        XdmNode baseMapNode = baseMapSource.children().iterator().next();
 
         String overlayImageString = new String(Files.readAllBytes(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_overlayImageNode.xml").toPath()));
 		Orphan overlayImageOrphanNode = new Orphan(processor.getUnderlyingConfiguration());
@@ -41,7 +38,7 @@ public class RestrictionOnLandownershipImageTest {
 		overlayImageOrphanNode.setStringValue(overlayImageString);
 		XdmNode overlayImageNode = new XdmNode(overlayImageOrphanNode);
 		
-		XdmNode[] arguments = {rolMapNode, baseImageNode, overlayImageNode};
+		XdmNode[] arguments = {rolMapNode, baseMapNode, overlayImageNode};
 		RestrictionOnLandownershipImage restrictionOnLandownershipImage = new RestrictionOnLandownershipImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) restrictionOnLandownershipImage.call(arguments);
 
@@ -49,5 +46,7 @@ public class RestrictionOnLandownershipImageTest {
 
         assertEquals(expectedResult, resultImage.getStringValue(), "RestrictonOnLandownership image is not equal.");        
     }
+    
+    
 
 }

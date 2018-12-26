@@ -12,6 +12,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -22,6 +26,12 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.geotools.data.DataUtilities;
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.factory.Hints;
@@ -115,10 +125,16 @@ public class OverlayImage implements ExtensionFunction {
 
     	// Create a jts geometry from gml geometry.
     	MultiPolygon realEstateDPRGeometry = multiSurface2JTS(limitNode);
+    	// TODO: Handle missing real estate geometry.
+    	// Scale bar can be drawn (if information is available) 
+    	// but not the highlighting stuff.
+    	// -> unit test!
     	
     	// Calculate the real world bounding box of the map image from the extract.
+    	// Null-Envelope is handled properly in the createHighlightingImage method
+    	// (at least it should be).
     	Envelope mapEnvelope = calculateBoundingBox(mapNode);
-
+    	    	
     	// Create the overlay image. 
     	byte[] highlightingImage = null;
     	try {
@@ -127,17 +143,17 @@ public class OverlayImage implements ExtensionFunction {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
 		}
-
         return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(highlightingImage).asAtomic().getStringValue());
 	}
-	
+		
 	/*
 	 * Creates the highlighting image by rendering the parcel from the geometry.
 	 * The provided node contains the land registry map image, which is needed to find out the
 	 * image width and height.
 	 */
     private byte[] createHighlightingImage(XdmNode node, Envelope envelope, Geometry geometry) throws SaxonApiException, XPathException, IOException, SchemaException, NoSuchAuthorityCodeException, FactoryException {
-		byte[] mapImageByteArray = null;
+    	// If the image is embedded, use this.
+    	byte[] mapImageByteArray = null;
     	Iterator<XdmNode> it = node.children("Image").iterator();
     	while(it.hasNext()) {
     		XdmNode imageNode = (XdmNode) it.next();
@@ -146,61 +162,32 @@ public class OverlayImage implements ExtensionFunction {
     		break;
     	}
     	
+    	// Only get the image by a wms request if it was not embedded.
+    	if (mapImageByteArray == null) {
+	    	it = node.children("ReferenceWMS").iterator();
+	    	while(it.hasNext()) {
+	    		XdmNode imageNode = (XdmNode) it.next();
+	    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
+	    		try {
+	            	mapImageByteArray = wms2Image(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+	    		} catch (Exception e) {
+	    			e.printStackTrace();
+	    			log.error(e.getMessage());
+	    			throw new SaxonApiException(e.getMessage());
+	    		}
+	    		break;
+	    	}
+    	}
+    	    	
     	InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
 		BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
 
 		// This makes the resulting image ugly if the stored images in the xml are not 300dpi.
 		int imageWidthPx = mapBufferedImage.getWidth();
 		int imageHeightPx = mapBufferedImage.getHeight();
-				
-		// This will create the highlighting image:
-		// Create the feature, feature collection and a feature layer that can
-		// be added to a map content.
-		FeatureCollection<SimpleFeatureType, SimpleFeature> collection = new DefaultFeatureCollection();
-		SimpleFeatureType TYPE = DataUtilities.createType(
-				"Parcel", "the_geom:MultiPolygon:srid=2056," 
-						+ "egrid:String");
-		SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
-
-		featureBuilder.add(geometry);
-		featureBuilder.add("fubar");
-		SimpleFeature feature = featureBuilder.buildFeature(null);
-		((DefaultFeatureCollection)collection).add(feature);
-
-		FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
-		StyleFactory sf = new StyleFactoryImpl();
-		sf.stroke(ff.literal("#000000"), null, ff.literal(2.0), null, null, null, null);
-		Style style = sf.createStyle();
-
-		// This is a bitch...
-		PolygonSymbolizer polygonSymbolizer = sf.createPolygonSymbolizer();
-		Stroke stroke = sf.createStroke(ff.literal(highlightingStrokeColor), ff.literal(highlightingStrokeWidth));
-		stroke.setOpacity(ff.literal(highlightingStrokeOpacity)); // opacity vs transparency?
-		polygonSymbolizer.setStroke(stroke);
-		Rule rl = sf.createRule();
-		rl.symbolizers().add(polygonSymbolizer);
-		FeatureTypeStyle ft = sf.createFeatureTypeStyle();
-		ft.rules().add(rl);
-		style.featureTypeStyles().add(ft);
-
-		FeatureLayer fl = new FeatureLayer(collection, style);
-		fl.setVisible(true);
-
-		// Create the map content from which we export the image.
-		MapContent map = new MapContent();
-		MapViewport vp = new MapViewport();
-		CoordinateReferenceSystem crs = CRS.decode("EPSG:2056");
-		vp.setCoordinateReferenceSystem(crs);
-
-		ReferencedEnvelope re = new ReferencedEnvelope(envelope, crs);
-		vp.setBounds(re);
-		map.setViewport(vp);            
-		map.addLayer(fl);
-
-		// We need a renderer for exporting the image.
-		GTRenderer renderer = new StreamingRenderer();
-		renderer.setMapContent(map);
-
+		
+		// Create the Graphics object which will held all images we want to burn in 
+		// (land register map, scalebar, north arrow and the highlighted parcel).
 		Rectangle imageBounds = new Rectangle(imageWidthPx, imageHeightPx);
 		BufferedImage hightlightingImage = new BufferedImage(imageBounds.width, imageBounds.height, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 
@@ -215,18 +202,84 @@ public class OverlayImage implements ExtensionFunction {
 		gr.setColor(c);
 		gr.fillRect(0, 0, hightlightingImage.getWidth(), hightlightingImage.getHeight());
 		gr.setComposite(AlphaComposite.getInstance(type));
+		
+		// Handle the case if the embedded image has no geo information.
+		// We cannot create an overlay image (except the north arrow, though).
+		if (envelope == null) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(hightlightingImage, imageFormat, baos); 
+			baos.flush();
+			byte[] highlightingImageByteArray = baos.toByteArray();
+			baos.close();      
+			
+//			ImageIO.write(hightlightingImage, "png", new File("/Users/stefan/tmp/fubar3.png"));
 
-		RenderingHints renderingHints = new Hints();
-		renderingHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		renderer.setJava2DHints(renderingHints);
+			return highlightingImageByteArray;
+		}
 
-		Map<Object, Object> rendererHints = new HashMap<Object, Object>();
-		rendererHints.put(StreamingRenderer.DPI_KEY, dpi);
-		renderer.setRendererHints(rendererHints);
-		renderer.paint(gr, imageBounds, vp.getBounds());
+		// This will create the highlighting image:
+		// Create the feature, feature collection and a feature layer that can
+		// be added to a map content.
+		// But only if the geometry is stored in the xml.
+		if (!geometry.isEmpty()) {
+			FeatureCollection<SimpleFeatureType, SimpleFeature> collection = new DefaultFeatureCollection();
+			SimpleFeatureType TYPE = DataUtilities.createType(
+					"Parcel", "the_geom:MultiPolygon:srid=2056," 
+							+ "egrid:String");
+			SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
 
-		// Scalebar and north arrow are really heuristic bitches.
-		// Calculate the real dpi of the images. Especially when real dpi
+			featureBuilder.add(geometry);
+			featureBuilder.add("fubar");
+			SimpleFeature feature = featureBuilder.buildFeature(null);
+			((DefaultFeatureCollection)collection).add(feature);
+
+			FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
+			StyleFactory sf = new StyleFactoryImpl();
+			sf.stroke(ff.literal("#000000"), null, ff.literal(2.0), null, null, null, null);
+			Style style = sf.createStyle();
+
+			// This is a bitch...
+			PolygonSymbolizer polygonSymbolizer = sf.createPolygonSymbolizer();
+			Stroke stroke = sf.createStroke(ff.literal(highlightingStrokeColor), ff.literal(highlightingStrokeWidth));
+			stroke.setOpacity(ff.literal(highlightingStrokeOpacity)); // opacity vs transparency?
+			polygonSymbolizer.setStroke(stroke);
+			Rule rl = sf.createRule();
+			rl.symbolizers().add(polygonSymbolizer);
+			FeatureTypeStyle ft = sf.createFeatureTypeStyle();
+			ft.rules().add(rl);
+			style.featureTypeStyles().add(ft);
+
+			FeatureLayer fl = new FeatureLayer(collection, style);
+			fl.setVisible(true);
+
+			// Create the map content from which we export the image.
+			MapContent map = new MapContent();
+			MapViewport vp = new MapViewport();
+			CoordinateReferenceSystem crs = CRS.decode("EPSG:2056");
+			vp.setCoordinateReferenceSystem(crs);
+
+			ReferencedEnvelope re = new ReferencedEnvelope(envelope, crs);
+			vp.setBounds(re);
+			map.setViewport(vp);            
+			map.addLayer(fl);
+
+			// We need a renderer for exporting the image.
+			GTRenderer renderer = new StreamingRenderer();
+			renderer.setMapContent(map);
+
+			RenderingHints renderingHints = new Hints();
+			renderingHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			renderer.setJava2DHints(renderingHints);
+
+			Map<Object, Object> rendererHints = new HashMap<Object, Object>();
+			rendererHints.put(StreamingRenderer.DPI_KEY, dpi);
+			renderer.setRendererHints(rendererHints);
+			renderer.paint(gr, imageBounds, vp.getBounds());	
+			map.dispose();
+		}
+
+		// Width/height etc. of scalebar and north arrow are heuristic.
+		// Calculate the real dpi of the images.
 		// It's still ugly but at least the scale bar should be correct.
 		int dpi = (int) ((hightlightingImage.getWidth() / mapWidthMM) * 25.4);
 		
@@ -259,7 +312,7 @@ public class OverlayImage implements ExtensionFunction {
         int leftMargin = (scalebarBufferedImage.getWidth() / 2) - (scaledNorthArrowWidthPx / 2);
         gr.drawImage(tmpNorthArrowImage, leftMargin, imageHeightPx - 200, null); 
         
-		ImageIO.write(hightlightingImage, imageFormat, new File("/Users/stefan/tmp/fubar3.png"));
+//		ImageIO.write(hightlightingImage, "png", new File("/Users/stefan/tmp/fubar3.png"));
 
 		// write image to byte[]
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -267,11 +320,34 @@ public class OverlayImage implements ExtensionFunction {
 		baos.flush();
 		byte[] highlightingImageByteArray = baos.toByteArray();
 		baos.close();          
-		map.dispose();
 
 		return highlightingImageByteArray;
     }
+    
+	/*
+	 * Creates an image from a wms getMap request.
+	 */
+	private byte[] wms2Image(String getMapRequest) throws URISyntaxException, ClientProtocolException, IOException {
+		String decodedGetMapRequest = java.net.URLDecoder.decode(getMapRequest, "UTF-8");
 
+		CloseableHttpClient httpclient = HttpClients.custom()
+				.setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods 
+				.build();
+		
+		HttpGet get = new HttpGet(new URL(decodedGetMapRequest).toURI()); 
+		CloseableHttpResponse response = httpclient.execute(get);
+		InputStream inputStream = response.getEntity().getContent();
+		BufferedImage image = ImageIO.read(inputStream);
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(image, imageFormat, baos); 
+		baos.flush();
+		byte[] imageInByte = baos.toByteArray();
+		baos.close();
+
+		return imageInByte;
+	}
+	
     /*
      * Calculates the Bounding Box of the map image from the extract.
      * This is needed to georeference the new highlighting image.
@@ -311,6 +387,9 @@ public class OverlayImage implements ExtensionFunction {
         		}
     		}
     		break;
+    	}
+    	if (minCoord == null || maxCoord == null) {
+    		return null;
     	}
         Envelope envelope = new Envelope(minCoord, maxCoord);
 		return envelope;

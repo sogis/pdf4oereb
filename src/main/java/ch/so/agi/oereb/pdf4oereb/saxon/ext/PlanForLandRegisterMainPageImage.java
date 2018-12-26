@@ -1,17 +1,20 @@
 package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 
@@ -59,10 +62,37 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
      */
 	@Override
 	public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
-		XdmNode baseImageNode  = (XdmNode) arguments[0];
+		XdmNode baseMapNode  = (XdmNode) arguments[0];
 		XdmNode overlayImageNode = (XdmNode) arguments[1];
+
 		try {
-			byte[] baseImageByteArray = Base64.getDecoder().decode(baseImageNode.getUnderlyingValue().getStringValue());
+			// If the image is embedded, use this.
+			byte[] baseImageByteArray = null;
+	    	Iterator<XdmNode> it = baseMapNode.children("Image").iterator();
+	    	while(it.hasNext()) {
+	    		XdmNode imageNode = (XdmNode) it.next();
+	    		XdmValue mapImageXdmValue = imageNode.getTypedValue();
+	    		baseImageByteArray = Base64.getDecoder().decode(mapImageXdmValue.getUnderlyingValue().getStringValue());
+	    		break;
+	    	}
+	    	
+	    	// Only get the image by a wms request if it was not embedded.
+	    	if (baseImageByteArray == null) {
+		    	it = baseMapNode.children("ReferenceWMS").iterator();
+		    	while(it.hasNext()) {
+		    		XdmNode imageNode = (XdmNode) it.next();
+		    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
+		    		try {
+		    			baseImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+		    		} catch (Exception e) {
+		    			e.printStackTrace();
+		    			log.error(e.getMessage());
+		    			throw new SaxonApiException(e.getMessage());
+		    		}
+		    		break;
+		    	}
+	    	}
+
 			byte[] overlayImageByteArray = Base64.getDecoder().decode(overlayImageNode.getUnderlyingValue().getStringValue());
 			
 	    	InputStream baseImageInputStream = new ByteArrayInputStream(baseImageByteArray);
@@ -83,13 +113,9 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 
 	        g.drawImage(baseImageBufferedImage, 0, 0, null);
 	        g.drawImage(overlayImageBufferedImage, 0, 0, null);
-	                   
-//	        Path tmpDirectory = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "oereb_extract_images_");
-//	        Path outputfilePath = Paths.get(tmpDirectory.toString(), "mergedimage.png");
-//	        ImageIO.write(combinedImage, imageFormat, outputfilePath.toFile());            
-//	        byte[] combinedImageByteArray = Files.readAllBytes(outputfilePath);
-//	        log.info(outputfilePath.toString());
-	        
+	                   	        
+//	        ImageIO.write(combinedImage, "png", new File("/Users/stefan/tmp/combinedImage.png"));
+
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(combinedImage, imageFormat, baos); 
 			baos.flush();
@@ -97,7 +123,7 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 			baos.close();          
 
 	        return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(combinedImageByteArray).asAtomic().getStringValue());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
 		}
