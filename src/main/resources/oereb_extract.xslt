@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
+  <xsl:param name="localeUrl" select="'Resources.de.resx'"/>
+  <xsl:variable name="localeXml" select="document($localeUrl)/*" />
   <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
@@ -112,7 +114,7 @@
                   </fo:table-row>
                   <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
-                      <fo:block>Katasterverantwortliche Stelle</fo:block>
+                      <fo:block><xsl:value-of select="$localeXml/data[@name='ResponsibleOffice']/value/text()"/></fo:block>
                     </fo:table-cell>
                     <fo:table-cell>
                       <fo:block><xsl:value-of select="data:PLRCadastreAuthority/data:Name/data:LocalisedText/data:Text"/>, <xsl:value-of select="data:PLRCadastreAuthority/data:Street"/><xsl:text> </xsl:text><xsl:value-of select="data:PLRCadastreAuthority/data:Number"/>, <xsl:value-of select="data:PLRCadastreAuthority/data:PostalCode"/><xsl:text> </xsl:text><xsl:value-of select="data:PLRCadastreAuthority/data:City"/></fo:block>

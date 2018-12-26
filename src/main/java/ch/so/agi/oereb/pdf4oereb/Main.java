@@ -45,9 +45,9 @@ class Main implements Callable<Void> {
         	File file = null;
         	if (xsltFileName != null) {
         		log.info("custom xslt file will be used: " + xsltFileName);
-        		file = converter.runXml2Fo(xmlFileName, xsltFileName, outputDirectory);
+        		file = converter.runXml2Fo(xmlFileName, xsltFileName, outputDirectory, Locale.FR);
         	} else {
-        		file = converter.runXml2Fo(xmlFileName, outputDirectory);
+        		file = converter.runXml2Fo(xmlFileName, outputDirectory, Locale.FR);
         	}
         	log.info("file written: " + file.getAbsolutePath());
         } 
@@ -55,9 +55,9 @@ class Main implements Callable<Void> {
         else {
         	if (xsltFileName != null) {
         		log.info("custom xslt file will be used: " + xsltFileName);
-            	converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory);
+            	converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory, Locale.FR);
         	} else {
-        		converter.runXml2Pdf(xmlFileName, outputDirectory);
+        		converter.runXml2Pdf(xmlFileName, outputDirectory, Locale.DE);
         	}
         }      
   		return null;

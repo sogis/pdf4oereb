@@ -29,10 +29,13 @@ import ch.so.agi.oereb.pdf4oereb.saxon.ext.RestrictionOnLandownershipImage;
 import ch.so.agi.oereb.pdf4oereb.saxon.ext.URLDecoder;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SAXDestination;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.Serializer;
+import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
@@ -43,6 +46,7 @@ public class Converter {
     private final String xsltFileName = "oereb_extract.xslt";
     private final String fopxconfFileName = "fop.xconf";
     private static ArrayList<String> fonts = null;
+    private static ArrayList<String> locales = null;
     
     static {
         fonts = new ArrayList<String>();
@@ -52,12 +56,26 @@ public class Converter {
         fonts.add("CadastraIt.ttf");
     }
     
-    public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory) throws SaxonApiException {
+    static {
+    	locales = new ArrayList<String>();
+    	locales.add("Resources.de.resx");
+    	locales.add("Resources.fr.resx");
+    }
+    
+    public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
           
         	String baseFileName = FilenameUtils.getBaseName(xmlFileName);
         	File foFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
+
+        	// copy Resources.resx (translation of language dependent content) files from resources into temporary directory
+        	for (String localeFileName : locales) {
+        		File localeFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), localeFileName).toFile().getAbsolutePath());
+        		InputStream is =  Converter.class.getResourceAsStream("/"+localeFileName); 
+        		Files.copy(is, localeFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        		is.close();
+        	}
 
         	log.info("start saxon: " + new Date().toString());
         	Processor proc = new Processor(false);
@@ -80,6 +98,14 @@ public class Converter {
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
         	trans.setDestination(outFo);
+        	switch (locale) {
+        	case DE:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+        	case FR:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+        	default:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+        	}
         	trans.transform();
         	log.info("end saxon: " + new Date().toString());
         	
@@ -91,7 +117,7 @@ public class Converter {
         }
     }
     
-    public File runXml2Fo(String xmlFileName, String outputDirectory) throws SaxonApiException {
+    public File runXml2Fo(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
             
@@ -101,7 +127,7 @@ public class Converter {
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             
-            File foFile = this.runXml2Fo(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory);
+            File foFile = this.runXml2Fo(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory, locale);
             return foFile;
         } catch (IOException e) {
             log.error(e.getMessage());
@@ -110,7 +136,7 @@ public class Converter {
         } 
     }
 
-    public File runXml2Pdf(String xmlFileName, String xsltFileName, String outputDirectory) throws SaxonApiException {
+    public File runXml2Pdf(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
           
@@ -132,6 +158,14 @@ public class Converter {
         		is.close();
         	}
         	
+        	// copy Resources.resx (translation of language dependent content) files from resources into temporary directory
+        	for (String localeFileName : locales) {
+        		File localeFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), localeFileName).toFile().getAbsolutePath());
+        		InputStream is =  Converter.class.getResourceAsStream("/"+localeFileName); 
+        		Files.copy(is, localeFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        		is.close();
+        	}
+        
         	// for a better performance (still a mystery) we combine the two transformation steps
         	// https://stackoverflow.com/questions/53918638/slow-apache-fop-transformation-after-saxon-xslt-transformation
         	log.info("start transformation: " + new Date().toString());
@@ -155,7 +189,15 @@ public class Converter {
         	Serializer outFo = proc.newSerializer(foFile);
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
-        	
+        	switch (locale) {
+        	case DE:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+        	case FR:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+        	default:
+        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+        	}
+
         	// the fop part
             FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
 
@@ -175,7 +217,7 @@ public class Converter {
         }
     }
     
-    public File runXml2Pdf(String xmlFileName, String outputDirectory) throws SaxonApiException {
+    public File runXml2Pdf(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
             
@@ -185,7 +227,7 @@ public class Converter {
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             
-            File pdfFile = this.runXml2Pdf(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory);
+            File pdfFile = this.runXml2Pdf(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory, locale);
             return pdfFile;
         } catch (IOException e) {
             log.error(e.getMessage());

@@ -11,7 +11,10 @@
 - Unit-Tests für die Extension-Functions von Saxon.
 - Multilanguage
 
-## Bugs?
+## Bugs / Fragen?
+- Können im Auszug mehrere Sprachen vorkommen? 
+
+
 - BL: 
   - interior ring == exterior ring of real estate geometry
   - not 300 dpi images

@@ -21,7 +21,7 @@ public class ConverterTest {
     public void convertXml2Pdf_InputFileNotFound(@TempDir Path tempDir) {
     	Converter converter = new Converter();
     	try {
-			converter.runXml2Pdf("fubar.xml", tempDir.toAbsolutePath().toString());
+			converter.runXml2Pdf("fubar.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
 		} catch (SaxonApiException e) {
 			assertTrue(e.getMessage().contains("fubar.xml (No such file or directory)"));
 		}
@@ -31,8 +31,8 @@ public class ConverterTest {
     @ExtendWith(TempDirectory.class)
     public void convertXml2_CantonBl_Ok(@TempDir Path tempDir) throws SaxonApiException, IOException {
     	Converter converter = new Converter();
-    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString());
-//    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/");
+    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
+//    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/", Locale.DE);
         byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
         
         File pdfFile = new File("src/test/data/bl/CH567107399166_geometry_images.pdf");
