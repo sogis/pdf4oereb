@@ -1,6 +1,10 @@
 # oereb-xml2pdf
 
 ## TODO:
+- ConverterTest -> functionalTest
+- Multiproject
+- web service
+- Dockerimage
 - Haftungsausschluss ist unbekannt, ob es sich sauber verhält wenn es mehrere davon gibt (oder sehr lange).
 - Nach was genau gruppieren? Da braucht es wohl Absprache, da die Maschinen nicht alles wissen kann. 
   - Gruppieren nach den 17 ÖREB-Themen (tendenziell nach ROL/Theme/Text/Text) und irgendwie auch nach Subthema, falls vorhanden und ungleich Theme/Text/Text. Ist aber auch Heuristik.
