@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <data name="ExtractTitle" xml:space="preserve">
+        <value>Auszug aus dem Kataster der öffentlich-rechtlichen Eigentumsbeschränkungen (ÖREB-Kataster) mit reduzierter Information</value>
+    </data>
+    <data name="ResponsibleOffice" xml:space="preserve">
+        <value>Katasterverantwortliche Stelle</value>
+    </data>
+</root>

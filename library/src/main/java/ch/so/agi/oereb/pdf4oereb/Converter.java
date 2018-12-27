@@ -27,7 +27,6 @@ import ch.so.agi.oereb.pdf4oereb.saxon.ext.OverlayImage;
 import ch.so.agi.oereb.pdf4oereb.saxon.ext.PlanForLandRegisterMainPageImage;
 import ch.so.agi.oereb.pdf4oereb.saxon.ext.RestrictionOnLandownershipImage;
 import ch.so.agi.oereb.pdf4oereb.saxon.ext.URLDecoder;
-import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SAXDestination;
@@ -89,10 +88,10 @@ public class Converter {
         	XsltCompiler comp = proc.newXsltCompiler();
         	XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
         	XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
-        	Serializer outFo = proc.newSerializer(foFile);
+			Serializer outFo = proc.newSerializer(foFile);
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
-        	trans.setDestination(outFo);
+			trans.setDestination(outFo);
         	switch (locale) {
         	case DE:
         		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));

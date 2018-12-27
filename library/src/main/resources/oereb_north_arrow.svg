@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   viewBox="0 0 450 500"
+   id="svg3765"
+   sodipodi:docname="north-arrow_3_simple_symmetric_triangular.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <defs
+     id="defs3769" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1974"
+     inkscape:window-height="1182"
+     id="namedview3767"
+     showgrid="false"
+     inkscape:zoom="0.96167282"
+     inkscape:cx="108.80925"
+     inkscape:cy="16.897172"
+     inkscape:window-x="94"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3765" />
+  <title
+     id="title3754">North Arrow 3, Simple Triangular Symmetric</title>
+  <metadata
+     id="metadata3756">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>North Arrow 3, Simple Triangular Symmetric</dc:title>
+        <dc:date>2009-08-11</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Silvio Grosso</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;opacity:1"
+     d="m 20.935961,332.1018 37.041458,-67.48202 36.66435,68.733 -36.681844,-20.63999 z"
+     id="path3785"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc"
+     inkscape:export-xdpi="299.93134"
+     inkscape:export-ydpi="299.93134" />
+  <path
+     style="fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:1"
+     d="M 57.974887,265.00668 94.628809,333.93433 57.959925,312.71279 Z"
+     id="path3787"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccc"
+     inkscape:export-xdpi="299.93134"
+     inkscape:export-ydpi="299.93134" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:27.98553658px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.69963843;opacity:1;"
+     x="47.02158"
+     y="355.3399"
+     id="text3791"
+     inkscape:export-xdpi="299.93134"
+     inkscape:export-ydpi="299.93134"><tspan
+       sodipodi:role="line"
+       id="tspan3789"
+       x="47.02158"
+       y="355.3399"
+       style="stroke-width:0.69963843;">N</tspan></text>
+</svg>

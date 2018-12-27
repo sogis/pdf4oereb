@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    maven {
+        url "http://download.osgeo.org/webdav/geotools/"
+    }
+    maven {
+        url "http://maven.geo-solutions.it"
+    }
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'net.sf.saxon:Saxon-HE:9.9.0-2'
+    implementation 'org.apache.xmlgraphics:fop:2.3'
+    implementation 'net.sf.offo:fop-hyph:2.0' 
+    implementation 'org.apache.httpcomponents:httpclient:4.5.6'
+    implementation 'org.locationtech.jts:jts-core:1.16.0'
+    implementation 'org.geotools:gt-main:20.1'
+    implementation 'org.geotools:gt-render:20.1'
+    implementation 'org.geotools:gt-epsg-hsql:20.1'
+    implementation 'info.picocli:picocli:3.8.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testImplementation 'org.junit-pioneer:junit-pioneer:0.3.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+
+application {
+    mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
+}
+
+run {
+    //args = ["--fo", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
+    args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
+    //args = ["--fo", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
+    //args = ["-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
+    //args = ["--fo", "-i", "src/test/data/vs/VS6136_3544_geometry_embedded.xml", "-o", "/Users/stefan/tmp/"]
+}
+
+task customFatJar(type: Jar) {
+    description = "Creates an executable fat jar."
+    manifest {
+        attributes "Main-Class": "ch.so.agi.oereb.pdf4oereb.Main"
+    }
+    baseName = project.name + "-fat"
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+    with jar
+}
+
+test {
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+
+    useJUnitPlatform {
+        excludeTags 'wms'    
+    }
+}
+
+task wmsTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'wms'
+    }
+    check.dependsOn it
+    shouldRunAfter test
+}
+
