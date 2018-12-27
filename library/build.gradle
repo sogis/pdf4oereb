@@ -32,6 +32,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
+project.version = scmVersion.version
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 application {
     mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
