@@ -1,0 +1,30 @@
+<Limit>
+<MultiSurface id="gml1">
+    <surfaceMember>
+    <Polygon id="gml2">
+        <exterior>
+        <LinearRing>
+            <pos>2610059.637 1264971.033</pos>
+            <pos>2610069.244 1264996.69</pos>
+            <pos>2610032.739 1265012.69</pos>
+            <pos>2610030.841 1265004.144</pos>
+            <pos>2610028.682 1264995.046</pos>
+            <pos>2610026.303 1264985.852</pos>
+            <pos>2610059.637 1264971.033</pos>
+        </LinearRing>
+        </exterior>
+        <interior>
+        <LinearRing>
+            <pos>2610059.637 1264971.033</pos>
+            <pos>2610069.244 1264996.69</pos>
+            <pos>2610032.739 1265012.69</pos>
+            <pos>2610030.841 1265004.144</pos>
+            <pos>2610028.682 1264995.046</pos>
+            <pos>2610026.303 1264985.852</pos>
+            <pos>2610059.637 1264971.033</pos>
+        </LinearRing>
+        </interior>
+    </Polygon>
+    </surfaceMember>
+</MultiSurface>
+</Limit>
