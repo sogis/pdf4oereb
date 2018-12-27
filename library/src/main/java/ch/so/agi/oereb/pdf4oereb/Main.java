@@ -57,7 +57,7 @@ class Main implements Callable<Void> {
         		log.info("custom xslt file will be used: " + xsltFileName);
             	converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory, Locale.FR);
         	} else {
-        		converter.runXml2Pdf(xmlFileName, outputDirectory, Locale.DE);
+        		converter.runXml2Pdf(xmlFileName, outputDirectory, Locale.FR);
         	}
         }      
   		return null;

@@ -18,7 +18,7 @@
 
 - BL: 
   - interior ring == exterior ring of real estate geometry
-  - not 300 dpi images
+  - not 300 dpi images ACHTUNG: die müssen gar nicht 300dpi aufweisen? Bravo.
   - LengthShare nur im extensions-Element
 - ZH:
   - nicht 300dpi images (embedded wie auch WMS)

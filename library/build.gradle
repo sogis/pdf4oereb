@@ -1,16 +1,5 @@
 plugins {
-    id 'java'
     id 'application'
-}
-
-repositories {
-    maven {
-        url "http://download.osgeo.org/webdav/geotools/"
-    }
-    maven {
-        url "http://maven.geo-solutions.it"
-    }
-    jcenter()
 }
 
 dependencies {

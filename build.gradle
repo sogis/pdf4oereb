@@ -2,4 +2,18 @@ plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.10.0'
 }
 
+subprojects {
+    apply plugin: 'java'
+ 
+    repositories {
+        maven {
+            url "http://download.osgeo.org/webdav/geotools/"
+        }
+        maven {
+            url "http://maven.geo-solutions.it"
+        }
+        jcenter()
+    }
+}
+
 project.version = scmVersion.version

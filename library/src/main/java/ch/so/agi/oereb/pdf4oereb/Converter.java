@@ -92,15 +92,13 @@ public class Converter {
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
 			trans.setDestination(outFo);
-        	switch (locale) {
-        	case DE:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
-        	case FR:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
-        	default:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
-        	}
+			if (locale == Locale.FR) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+			} else {
+	             trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+			}
         	trans.transform();
+            trans.close();
         	log.info("end saxon: " + new Date().toString());
         	
         	return foFile;
@@ -177,24 +175,21 @@ public class Converter {
         	XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
         	XsltTransformer trans = exp.load();
         	trans.setInitialContextNode(source);
-        	switch (locale) {
-        	case DE:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
-        	case FR:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
-        	default:
-        		trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
-        	}
+            if (locale == Locale.FR) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+            } else {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+            }
 
         	// the fop part
             FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
-
             OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
 
             trans.setDestination(new SAXDestination(fop.getDefaultHandler()));
             trans.transform();
             outPdf.close();
+            trans.close();
         	log.info("end transformation: " + new Date().toString());
 
         	return pdfFile;
@@ -214,6 +209,7 @@ public class Converter {
             InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
+            log.info("xsltFile: " + xsltFile.getAbsolutePath());
             
             File pdfFile = this.runXml2Pdf(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory, locale);
             return pdfFile;
