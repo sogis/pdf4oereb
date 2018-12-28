@@ -2,6 +2,7 @@ package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -12,11 +13,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -26,12 +22,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.geotools.data.DataUtilities;
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.factory.Hints;
@@ -69,7 +59,6 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.so.agi.oereb.pdf4oereb.Converter;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -87,7 +76,7 @@ public class OverlayImage implements ExtensionFunction {
     private final String highlightingStrokeColor = "#e60000";
     private final int highlightingStrokeWidth = 6;
     private final double highlightingStrokeOpacity = 0.4;
-    private final int dpi = 300;
+    private final double referenceDpi = 300.0;
     private final String imageFormat = "png";
     private final double mapWidthMM = 174.0;
     private final double mapHeightMM = 99.0;
@@ -169,7 +158,7 @@ public class OverlayImage implements ExtensionFunction {
 	    		XdmNode imageNode = (XdmNode) it.next();
 	    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
 	    		try {
-	            	mapImageByteArray = wms2Image(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+	            	mapImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
 	    		} catch (Exception e) {
 	    			e.printStackTrace();
 	    			log.error(e.getMessage());
@@ -182,9 +171,12 @@ public class OverlayImage implements ExtensionFunction {
     	InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
 		BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
 
-		// This makes the resulting image ugly if the stored images in the xml are not 300dpi.
+		// Calculate actual dpi of provided image (wms or embedded).
 		int imageWidthPx = mapBufferedImage.getWidth();
 		int imageHeightPx = mapBufferedImage.getHeight();
+		
+		double actualDpi = (double) ((mapBufferedImage.getWidth() / mapWidthMM) * 25.4);		
+		double dpiRatio = actualDpi / referenceDpi;
 		
 		// Create the Graphics object which will held all images we want to burn in 
 		// (land register map, scalebar, north arrow and the highlighted parcel).
@@ -220,7 +212,7 @@ public class OverlayImage implements ExtensionFunction {
 		// This will create the highlighting image:
 		// Create the feature, feature collection and a feature layer that can
 		// be added to a map content.
-		// But only if the geometry is stored in the xml.
+		// But only if the geometry is available in the xml.
 		if (!geometry.isEmpty()) {
 			FeatureCollection<SimpleFeatureType, SimpleFeature> collection = new DefaultFeatureCollection();
 			SimpleFeatureType TYPE = DataUtilities.createType(
@@ -272,18 +264,13 @@ public class OverlayImage implements ExtensionFunction {
 			renderer.setJava2DHints(renderingHints);
 
 			Map<Object, Object> rendererHints = new HashMap<Object, Object>();
-			rendererHints.put(StreamingRenderer.DPI_KEY, dpi);
+			rendererHints.put(StreamingRenderer.DPI_KEY, actualDpi);
 			renderer.setRendererHints(rendererHints);
 			renderer.paint(gr, imageBounds, vp.getBounds());	
 			map.dispose();
 		}
-
-		// Width/height etc. of scalebar and north arrow are heuristic.
-		// Calculate the real dpi of the images.
-		// It's still ugly but at least the scale bar should be correct.
-		int dpi = (int) ((hightlightingImage.getWidth() / mapWidthMM) * 25.4);
 		
-		// The scalebar 
+		// The scalebar (all values are more or less heuristic)
         ScalebarGenerator scalebarGenerator = new ScalebarGenerator();
         scalebarGenerator.setColorText(Color.BLACK);
         scalebarGenerator.setDrawScaleText(false);
@@ -291,29 +278,36 @@ public class OverlayImage implements ExtensionFunction {
         scalebarGenerator.setTopMargin(15);
         scalebarGenerator.setLrbMargin(25);
         scalebarGenerator.setNumberOfSegments(2);
+        if (actualDpi < 100) {
+            scalebarGenerator.setHeight(40);
+            scalebarGenerator.setLrbMargin(20);
+            Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, (int) Math.round(20*0.5));
+            scalebarGenerator.setTextFont(textFont);
+        }
         double scale = envelope.getWidth() / (mapWidthMM / 1000.0);
-        byte[] scalebarImageByteArray = scalebarGenerator.getImageAsByte(new Double(scale), 400, 72);
+        double scalebarWidthPx = 400 * dpiRatio;
+        byte[] scalebarImageByteArray = scalebarGenerator.getImageAsByte(new Double(scale), scalebarWidthPx, actualDpi);
         InputStream insScalebarImage = new ByteArrayInputStream(scalebarImageByteArray);
         BufferedImage scalebarBufferedImage = ImageIO.read(insScalebarImage);
 
+//        ImageIO.write(scalebarBufferedImage, "png", new File("/Users/stefan/tmp/scalebar.png"));
+        
         // add scalebar to graphic
         gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
-        gr.drawImage(scalebarBufferedImage, 0, imageHeightPx - 100, null); 
+        gr.drawImage(scalebarBufferedImage, imageWidthPx / 20, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight()), null); 
 		
         // The north arrow
-    	InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow.png"); 
+    	InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow_small.png"); 
         BufferedImage northArrowBufferedImage = ImageIO.read(northArrowFileInputStream);
-        int scaledNorthArrowWidthPx = northArrowBufferedImage.getWidth()/3;
-        int scaledNorthArrowHeightPx = northArrowBufferedImage.getWidth()/3;
+        int scaledNorthArrowWidthPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
+        int scaledNorthArrowHeightPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
         Image tmpNorthArrowImage = northArrowBufferedImage.getScaledInstance(scaledNorthArrowWidthPx, scaledNorthArrowHeightPx, Image.SCALE_SMOOTH);
         		
         // add north arrow to graphic
         gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
-        int leftMargin = (scalebarBufferedImage.getWidth() / 2) - (scaledNorthArrowWidthPx / 2);
-        gr.drawImage(tmpNorthArrowImage, leftMargin, imageHeightPx - 200, null); 
+        int leftMargin = imageWidthPx / 20 + (scalebarBufferedImage.getWidth() / 2) - (scaledNorthArrowWidthPx / 2);
+        gr.drawImage(tmpNorthArrowImage,  leftMargin, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight() - scaledNorthArrowHeightPx), null); 
         
-//		ImageIO.write(hightlightingImage, "png", new File("/Users/stefan/tmp/fubar3.png"));
-
 		// write image to byte[]
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(hightlightingImage, imageFormat, baos); 
@@ -323,31 +317,7 @@ public class OverlayImage implements ExtensionFunction {
 
 		return highlightingImageByteArray;
     }
-    
-	/*
-	 * Creates an image from a wms getMap request.
-	 */
-	private byte[] wms2Image(String getMapRequest) throws URISyntaxException, ClientProtocolException, IOException {
-		String decodedGetMapRequest = java.net.URLDecoder.decode(getMapRequest, "UTF-8");
-
-		CloseableHttpClient httpclient = HttpClients.custom()
-				.setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods 
-				.build();
-		
-		HttpGet get = new HttpGet(new URL(decodedGetMapRequest).toURI()); 
-		CloseableHttpResponse response = httpclient.execute(get);
-		InputStream inputStream = response.getEntity().getContent();
-		BufferedImage image = ImageIO.read(inputStream);
-
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(image, imageFormat, baos); 
-		baos.flush();
-		byte[] imageInByte = baos.toByteArray();
-		baos.close();
-
-		return imageInByte;
-	}
-	
+    	
     /*
      * Calculates the Bounding Box of the map image from the extract.
      * This is needed to georeference the new highlighting image.

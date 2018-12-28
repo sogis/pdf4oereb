@@ -32,8 +32,8 @@ public class ConverterTest {
     @ExtendWith(TempDirectory.class)
     public void convertXml2_CantonBl_Ok(@TempDir Path tempDir) throws SaxonApiException, IOException {
     	Converter converter = new Converter();
-    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
-//    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/", Locale.DE);
+//    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
+    	File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_geometry_images.xml", "/Users/stefan/tmp/", Locale.DE);
         byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
         
         File pdfFile = new File("src/test/data/bl/CH567107399166_geometry_images.pdf");
