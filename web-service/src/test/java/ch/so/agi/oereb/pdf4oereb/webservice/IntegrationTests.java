@@ -16,21 +16,19 @@ import org.junitpioneer.jupiter.TempDirectory.TempDir;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class IntegrationTests {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @LocalServerPort
     int randomServerPort;
