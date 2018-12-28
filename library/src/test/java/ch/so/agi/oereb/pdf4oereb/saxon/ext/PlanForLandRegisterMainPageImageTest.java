@@ -1,11 +1,17 @@
 package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.Base64;
 
+import javax.imageio.ImageIO;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.jupiter.api.Tag;
@@ -65,8 +71,12 @@ public class PlanForLandRegisterMainPageImageTest {
 		PlanForLandRegisterMainPageImage mainPageImage = new PlanForLandRegisterMainPageImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) mainPageImage.call(arguments);
 
-        String expectedResult = new String(Files.readAllBytes(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_wmsImage_Ok_expectedResult.txt").toPath()));
+        String base64String = resultImage.getUnderlyingValue().getStringValue();
 
-        assertEquals(expectedResult, resultImage.getStringValue(), "Main page image is not equal.");        
+        // We cannot compare the file as we would do with embedded images since
+        // the content of the wms getmap request can change from time to time.
+        int resultSize = base64String.length();
+        
+        assertTrue(resultSize > 120000, "Size of resulting image is too small.");        
     }
 }

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junitpioneer.jupiter.TempDirectory;
@@ -39,5 +40,20 @@ public class ConverterTest {
         byte[] pdfFileContent = Files.readAllBytes(pdfFile.toPath());
 
     	assertEquals(pdfFileContent.length, resultFileContent.length, "File content is not equal.");        
+    }
+    
+    @Test
+    @Tag("wms")
+    @ExtendWith(TempDirectory.class)
+    public void convertXml1_CantonZh_Ok(@TempDir Path tempDir) throws SaxonApiException, IOException {
+        Converter converter = new Converter();
+        File resultFile = converter.runXml2Pdf("src/test/data/zh/CH282399917939_geometry_wms.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
+        byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
+        
+        // We cannot compare the file as we would do with embedded images since
+        // the content of the wms getmap request can change from time to time.
+        int resultSize = resultFileContent.length;
+        
+        assertTrue(resultSize > 800000, "Size of resulting pdf is too small.");        
     }
 }

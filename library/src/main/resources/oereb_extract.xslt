@@ -20,10 +20,10 @@
           <!--font size should be 18pt but that seems to large and will lead to non-directive conform line break behaviour-->
           <fo:block-container height="28mm" background-color="transparent">
             <xsl:if test="data:isReduced='true'">
-                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster) mit reduzierter Information</fo:block>
+                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra"><xsl:value-of select="$localeXml/data[@name='ExtractReducedTitle']/value/text()"/></fo:block>
             </xsl:if>
             <xsl:if test="data:isReduced='false'">
-                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster) </fo:block>            
+                <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="700" font-size="17.7pt" font-family="Cadastra">Auszug aus dem Kataster der&#x000A;öffentlich-rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster)</fo:block>            
             </xsl:if>            
           </fo:block-container>            
 
@@ -361,7 +361,7 @@
                                     <xsl:text>')</xsl:text>
                                   </xsl:attribute>
 			                  </xsl:if>
-                                 <xsl:if test="data:SymbolRef">
+                                 <xsl:if test="data:SymbolRef and not(data:Symbol)">
                                   <xsl:attribute name="src">
                                     <xsl:text>url('</xsl:text>
                                     <xsl:value-of select="oereb:decodeURL(data:SymbolRef)"/>
@@ -449,7 +449,7 @@
                                     <xsl:text>')</xsl:text>
                                   </xsl:attribute>
                               </xsl:if>
-                                 <xsl:if test="data:SymbolRef">
+                                 <xsl:if test="data:SymbolRef and not(data:Symbol)">
                                   <xsl:attribute name="src">
                                     <xsl:text>url('</xsl:text>
                                     <xsl:value-of select="oereb:decodeURL(data:SymbolRef)"/>
@@ -793,7 +793,7 @@
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
-                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef">
+                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogo)">
                   <xsl:attribute name="src">
                     <xsl:text>url('</xsl:text>
                     <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef)"/>
@@ -815,7 +815,7 @@
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
-                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef">
+                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogo)">
                   <xsl:attribute name="src">
                     <xsl:text>url('</xsl:text>
                     <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef)"/>
@@ -837,7 +837,7 @@
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
-                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef">
+                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogo)">
                   <xsl:attribute name="src">
                     <xsl:text>url('</xsl:text>
                     <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef)"/>
@@ -859,7 +859,7 @@
 	                 <xsl:text>')</xsl:text>
 	               </xsl:attribute>
                 </xsl:if>
-                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef">
+                <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef and not(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastre)">
                   <xsl:attribute name="src">
                     <xsl:text>url('</xsl:text>
                     <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef)"/>
