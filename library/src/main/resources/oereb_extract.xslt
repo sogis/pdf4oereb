@@ -893,7 +893,8 @@
                 </fo:block>
               </fo:table-cell>
               <fo:table-cell text-align="right">
-                <fo:block>Seite <fo:page-number/>/<fo:page-number-citation-last ref-id="page-sequence-id"/></fo:block>
+               <!-- <fo:block>Seite <fo:page-number/>/<fo:page-number-citation-last ref-id="page-sequence-id"/></fo:block> -->
+               <fo:block>Seite <fo:page-number/>/<fo:page-number-citation ref-id="last-page"/></fo:block>
               </fo:table-cell>
             </fo:table-row>
           </fo:table-body>
@@ -926,6 +927,7 @@
             </fo:table>
           </fo:block-container>
         </fo:block>
+        <fo:block id="last-page"/>
       </fo:flow>  
     </fo:page-sequence>
   </xsl:template>
