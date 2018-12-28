@@ -2,15 +2,10 @@
 
 ## TODO:
 - ConverterTest -> functionalTest
-- Multiproject
-- web service
-- Dockerimage
 - Haftungsausschluss ist unbekannt, ob es sich sauber verhält wenn es mehrere davon gibt (oder sehr lange).
 - Nach was genau gruppieren? Da braucht es wohl Absprache, da die Maschinen nicht alles wissen kann. 
   - Gruppieren nach den 17 ÖREB-Themen (tendenziell nach ROL/Theme/Text/Text) und irgendwie auch nach Subthema, falls vorhanden und ungleich Theme/Text/Text. Ist aber auch Heuristik.
   - siehe PDF-Weisung: Thema/Text muss ja der Codeliste entsprechen, wäre also spezifiert.
-- Unit-Tests für die Extension-Functions von Saxon.
-- Multilanguage
 
 ## Bugs / Fragen?
 - Können im Auszug mehrere Sprachen vorkommen? 

@@ -71,3 +71,22 @@ task buildDockerImage(type: DockerBuildImage) {
     inputDir = project.projectDir
     tags = ["sogis/pdf4oereb-web-service:"+ scmVersion.version, "sogis/pdf4oereb-web-service:latest"]
 }
+
+
+task pushDockerImage_One(dependsOn: 'buildDockerImage', type: DockerPushImage) {
+    description = "Push docker image to hub.docker.com (images are UNTESTED)."
+    imageName = buildDockerImage.tags.get().toArray()[0]
+}
+
+task pushDockerImage_Two(dependsOn: 'buildDockerImage', type: DockerPushImage) {
+    description = "Push docker image to hub.docker.com (images are UNTESTED)."
+    imageName = buildDockerImage.tags.get().toArray()[1]
+}
+
+task pushDockerImages() {
+    description = "Collect all push images tasks."
+}
+
+pushDockerImages.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('pushDockerImage_') }
+}
