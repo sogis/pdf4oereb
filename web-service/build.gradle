@@ -26,29 +26,29 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-/*
-configurations {
-    all*.exclude module : 'spring-boot-starter-logging'
-}
-*/
-
 dependencies {
-    compile (project (':library')) { exclude group: "org.slf4j" } 
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    implementation (project (':library')) { exclude group: "org.slf4j" } 
+    implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     runtime("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     runtime("org.springframework.boot:spring-boot-actuator:${springBootVersion}")
     implementation 'net.sf.saxon:Saxon-HE:9.9.0-2'
-    compile("org.webjars:materializecss:0.100.2")
-    compile("org.webjars:jquery:2.2.4")
-    compile("commons-io:commons-io:2.6")
-    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
+    implementation("org.webjars:materializecss:0.100.2")
+    implementation("org.webjars:jquery:2.2.4")
+    implementation("commons-io:commons-io:2.6")
+    implementation("io.rest-assured:rest-assured:3.2.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
         exclude(module: 'commons-logging')
     }		
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testImplementation 'org.junit-pioneer:junit-pioneer:0.3.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    
 }
 
 test {
     testLogging {
         showStandardStreams = true
     }
+    useJUnitPlatform()
 }
