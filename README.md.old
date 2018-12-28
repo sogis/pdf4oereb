@@ -1,8 +1,4 @@
-# pdf4oereb 
-
-_pdf4oereb_ transformiert ein ÖREB-DATA-Extract-XML-Dokument in das entsprechende PDF-Dokument.
-
-
+# oereb-xml2pdf
 
 ## TODO:
 - ConverterTest -> functionalTest
