@@ -130,5 +130,7 @@ Es wird momentan einzig nach ÖREB-Thema-Code (`RestrictionOnLandownership.Thema
 
 Ziel ist die Unterstützung von Subthemen: Zuerst wird nach Hauptthema gruppiert und falls innerhalb des Hauptthemas Subthemen vorhanden sind, wird nach diesen gruppiert. 
 
+Das generische Sortieren wird komplizierter bis nicht mehr möglich, falls eigene Themen, Codes und Subthemen vorhanden sind.
+
 ### Overlay-Image
 Das Overlay-Image mit der Grundstücksbandierung, dem Nordpfeil und dem Massstabsbalken verwendet die gleiche Auflösung wie die eingebetteten Kartenausschnitte resp. WMS-GetMap-Request. Falls die Auflösung gering ist, sehen die drei Objekte auch bescheiden aus.
