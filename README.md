@@ -93,10 +93,10 @@ docker run -it --rm --name pdf4oereb-web-service -p 8888:8888 sogis/pdf4oereb-we
 
 ## Examples
 ### BL
-[CH567107399166_geometry_images.xml](tree/library/src/test/bl/CH567107399166_geometry_images.xml) -> [CH567107399166_geometry_images.pdf](tree/library/src/test/bl/CH567107399166_geometry_images.pdf)
+[CH567107399166_geometry_images.xml](https://gitlab.com/sogis/pdf4oereb/blob/master/library/src/test/data/bl/CH567107399166_geometry_images.xml) -> [CH567107399166_geometry_images.pdf](https://gitlab.com/sogis/pdf4oereb/blob/master/library/src/test/data/bl/CH567107399166_geometry_images.pdf)
 
 ### ZH
-[CH282399917939_geometry_wms.xml](tree/library/src/test/zh/CH282399917939_geometry_images.xml) -> [CH282399917939_geometry_wms.pdf](tree/library/src/test/zh/CH282399917939_geometry_wms.pdf)
+[CH282399917939_geometry_wms.xml](https://gitlab.com/sogis/pdf4oereb/blob/master/library/src/test/data/zh/CH282399917939_geometry_wms.xml) -> [CH282399917939_geometry_wms.pdf](https://gitlab.com/sogis/pdf4oereb/blob/master/library/src/test/data/zh/CH282399917939_geometry_wms.pdf)
 
 
 ## Details
