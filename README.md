@@ -91,6 +91,14 @@ If you want to use the Docker image:
 docker run -it --rm --name pdf4oereb-web-service -p 8888:8888 sogis/pdf4oereb-web-service:latest
 ```
 
+## Examples
+### BL
+[CH567107399166_geometry_images.xml](library/src/test/bl/CH567107399166_geometry_images.xml) -> [CH567107399166_geometry_images.pdf](library/src/test/bl/CH567107399166_geometry_images.pdf)
+
+### ZH
+[CH282399917939_geometry_wms.xml](library/src/test/zh/CH282399917939_geometry_images.xml) -> [CH282399917939_geometry_wms.pdf](library/src/test/zh/CH282399917939_geometry_wms.pdf)
+
+
 ## Details
 ### Extension functions
 Die Bibliothek verwendet XSLT (Saxon) und XSL-FO (Apache FOP) für die Umwandlung des XML-Dokumentes in die PDF-Datei. Für wenige Aspekte müssen sogenannte "extension functions" geschrieben werden:
