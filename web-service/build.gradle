@@ -19,6 +19,7 @@ apply plugin: 'com.bmuschko.docker-remote-api'
 
 bootJar {
     launchScript()
+    archiveName = rootProject.name + "-web-service-" +scmVersion.version + ".jar"
 }
 
 sourceCompatibility = 1.8

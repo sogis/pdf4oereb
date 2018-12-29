@@ -10,7 +10,7 @@ RUN apk --update add fontconfig ttf-dejavu
 
 RUN mkdir $APP_HOME
 
-ADD build/libs/web-service*.jar $APP_HOME/app.jar
+ADD build/libs/pdf4oereb*.jar $APP_HOME/app.jar
 RUN chown $USER_NAME $APP_HOME/app.jar
 
 USER $USER_NAME

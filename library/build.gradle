@@ -32,19 +32,26 @@ application {
 
 run {
     //args = ["--fo", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
-    //args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
+    args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
-    args = ["-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
+    //args = ["-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/vs/VS6136_3544_geometry_embedded.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["-i", "src/test/data/nw/CH907705273474.xml", "-o", "/Users/stefan/tmp/"]
+}
+
+jar {
+    baseName = rootProject.name
 }
 
 task customFatJar(type: Jar) {
     description = "Creates an executable fat jar."
     manifest {
-        attributes "Main-Class": "ch.so.agi.oereb.pdf4oereb.Main"
+        attributes "Implementation-Vendor": "Sun Microsystems, Inc"
+        attributes "Implementation-Title": "Java Runtime Environment"
+        attributes "Implementation-Version": "1.8.0"
+        attributes "Main-Class": "ch.so.agi.oereb.pdf4oereb.Main"        
     }
-    baseName = project.name + "-fat"
+    baseName = rootProject.name + "-fat"
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
