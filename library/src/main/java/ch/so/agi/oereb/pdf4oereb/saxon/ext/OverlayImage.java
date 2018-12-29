@@ -213,10 +213,13 @@ public class OverlayImage implements ExtensionFunction {
 		// Create the feature, feature collection and a feature layer that can
 		// be added to a map content.
 		// But only if the geometry is available in the xml.
+		// Fix this: Because of problems with the fat-jar, we do all this
+		// w/o proper CRS support.
 		if (!geometry.isEmpty()) {
 			FeatureCollection<SimpleFeatureType, SimpleFeature> collection = new DefaultFeatureCollection();
 			SimpleFeatureType TYPE = DataUtilities.createType(
-					"Parcel", "the_geom:MultiPolygon:srid=2056," 
+//                    "Parcel", "the_geom:MultiPolygon:srid=2056," 
+                    "Parcel", "the_geom:MultiPolygon," 
 							+ "egrid:String");
 			SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
 
@@ -247,10 +250,11 @@ public class OverlayImage implements ExtensionFunction {
 			// Create the map content from which we export the image.
 			MapContent map = new MapContent();
 			MapViewport vp = new MapViewport();
-			CoordinateReferenceSystem crs = CRS.decode("EPSG:2056");
-			vp.setCoordinateReferenceSystem(crs);
+//			CoordinateReferenceSystem crs = CRS.decode("EPSG:2056");
+//			vp.setCoordinateReferenceSystem(crs);
 
-			ReferencedEnvelope re = new ReferencedEnvelope(envelope, crs);
+//            ReferencedEnvelope re = new ReferencedEnvelope(envelope, crs);
+            ReferencedEnvelope re = new ReferencedEnvelope(envelope, null);
 			vp.setBounds(re);
 			map.setViewport(vp);            
 			map.addLayer(fl);
