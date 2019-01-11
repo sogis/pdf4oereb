@@ -199,7 +199,6 @@
                 <fo:footnote-body>
                   <fo:block keep-together.within-column="always">
                     <fo:block-container margin-top="0mm" margin-bottom="0mm" font-weight="400" font-size="6.5pt" line-height="8.5pt" font-family="Cadastra" background-color="transparent">
-                      <xsl:if test="data:QRCode">
 	                      <fo:table table-layout="fixed" width="100%">
 	                        <fo:table-column column-width="87mm"/>
 	                        <fo:table-column column-width="87mm"/>
@@ -218,35 +217,36 @@
 	                                <fo:block><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
 	                              </xsl:for-each>
 	                              <fo:block margin-top="2.2mm">
-	                                <fo:table table-layout="fixed" width="100%">
-	                                  <fo:table-column column-width="35mm"/>
-	                                  <fo:table-column column-width="40mm"/>
-	                                  <fo:table-body>
-	                                    <fo:table-row vertical-align="top">
-	                                      <fo:table-cell>
-	                                        <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
-	                                      </fo:table-cell>
-	                                      <fo:table-cell padding-left="4mm">
-	                                        <fo:block>
-	                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
-	                                            <xsl:attribute name="src">
-	                                              <xsl:text>url('data:</xsl:text>
-	                                              <xsl:text>image/png;base64,</xsl:text>
-	                                              <xsl:value-of select="data:QRCode"/>
-	                                              <xsl:text>')</xsl:text>
-	                                            </xsl:attribute>
-	                                          </fo:external-graphic>
-	                                        </fo:block>
-	                                      </fo:table-cell>
-	                                    </fo:table-row>
-	                                  </fo:table-body>
-	                                </fo:table>
+                                    <xsl:if test="data:QRCode">
+		                                <fo:table table-layout="fixed" width="100%">
+		                                  <fo:table-column column-width="35mm"/>
+		                                  <fo:table-column column-width="40mm"/>
+		                                  <fo:table-body>
+		                                    <fo:table-row vertical-align="top">
+		                                      <fo:table-cell>
+		                                        <fo:block font-weight="700">Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</fo:block>
+		                                      </fo:table-cell>
+		                                      <fo:table-cell padding-left="4mm">
+		                                        <fo:block>
+		                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
+		                                            <xsl:attribute name="src">
+		                                              <xsl:text>url('data:</xsl:text>
+		                                              <xsl:text>image/png;base64,</xsl:text>
+		                                              <xsl:value-of select="data:QRCode"/>
+		                                              <xsl:text>')</xsl:text>
+		                                            </xsl:attribute>
+		                                          </fo:external-graphic>
+		                                        </fo:block>
+		                                      </fo:table-cell>
+		                                    </fo:table-row>
+		                                  </fo:table-body>
+		                                </fo:table>
+	                                </xsl:if>
 	                              </fo:block>
 	                            </fo:table-cell>
 	                          </fo:table-row>
 	                        </fo:table-body>
 	                      </fo:table>
-                      </xsl:if>
                       <fo:block/>
                     </fo:block-container>
                   </fo:block>
