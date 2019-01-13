@@ -3,6 +3,7 @@ package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Composite;
 import org.geotools.renderer.composite.BlendComposite;
 import java.io.ByteArrayInputStream;
@@ -154,8 +155,13 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			int imageHeightPx = imageBufferedImage.getHeight();
 			
 			if (newImage == null) {
-				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+//				newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+	            // PDF/A-1 does not support transparency.
+	            newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_INT_RGB);
+
 				g = (Graphics2D) newImage.getGraphics();
+	            g.setBackground(Color.WHITE);
+	            g.clearRect(0, 0, imageWidthPx, imageHeightPx);
 			}
 			// TODO! Remember!!!
 //			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
@@ -218,6 +224,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 		// write image
 		byte[] newImageByteArray = null;
 		try {	        
+//		    ImageIO.write(newImage, "png", new File("/Users/stefan/tmp/newImage.png"));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(newImage, imageFormat, baos);
 			baos.flush();

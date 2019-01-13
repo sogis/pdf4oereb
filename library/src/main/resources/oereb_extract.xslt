@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
+<xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
   <xsl:param name="localeUrl" select="'Resources.de.resx'"/>
   <xsl:variable name="localeXml" select="document($localeUrl)/*" />
   <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
-    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="mainPage" page-height="297mm" page-width="210mm" margin-top="10mm" margin-bottom="12mm" margin-left="18mm" margin-right="18mm"> 
           <fo:region-body margin-top="30mm" margin-bottom="5mm" background-color="transparent"/>
@@ -29,7 +29,7 @@
 
             <fo:block-container height="109mm" background-color="transparent">
               <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+                <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
@@ -228,7 +228,7 @@
 		                                      </fo:table-cell>
 		                                      <fo:table-cell padding-left="4mm">
 		                                        <fo:block>
-		                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit">
+		                                          <fo:external-graphic width="20mm" height="20mm" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="QRCode">
 		                                            <xsl:attribute name="src">
 		                                              <xsl:text>url('data:</xsl:text>
 		                                              <xsl:text>image/png;base64,</xsl:text>
@@ -282,7 +282,7 @@
 	                  <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
 	                  <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 	                    <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-		                    <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+		                    <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
 		                    <xsl:attribute name="src">
 		                      <xsl:text>url('data:</xsl:text>
 		                      <xsl:text>image/png;base64,</xsl:text>
@@ -298,7 +298,7 @@
                       <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
                       <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
                         <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+                            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
                             <xsl:attribute name="src">
                               <xsl:text>url('data:</xsl:text>
                               <xsl:text>image/png;base64,</xsl:text>
@@ -352,7 +352,7 @@
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
                           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
+                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
 			                  <xsl:if test="data:Symbol">
                                   <xsl:attribute name="src">
                                     <xsl:text>url('data:</xsl:text>
@@ -440,7 +440,7 @@
                         </fo:table-cell>
                         <fo:table-cell display-align="center">
                           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" >
+                            <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
                               <xsl:if test="data:Symbol">
                                   <xsl:attribute name="src">
                                     <xsl:text>url('data:</xsl:text>
@@ -784,19 +784,20 @@
       <fo:block>
         <fo:block-container absolute-position="absolute" top="0mm" left="0mm" background-color="transparent">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-             <fo:external-graphic width="44mm" content-width="scale-to-fit" >
+             <fo:external-graphic width="44mm" content-width="scale-to-fit" fox:alt-text="FederalLogo">
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:FederalLogo">
                    <xsl:attribute name="src">
                      <xsl:text>url('data:</xsl:text>
                      <xsl:text>image/png;base64,</xsl:text>
-                     <xsl:value-of select="/extract:GetExtractByIdResponse/data:Extract/data:FederalLogo"/>
+                     <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogo)"/>
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogo)">
                   <xsl:attribute name="src">
-                    <xsl:text>url('</xsl:text>
-                    <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef)"/>
+                     <xsl:text>url('data:</xsl:text>
+                     <xsl:text>image/png;base64,</xsl:text>
+                    <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:FederalLogoRef)"/>
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </xsl:if>
@@ -806,19 +807,20 @@
 
         <fo:block-container absolute-position="absolute" top="0mm" left="60mm" background-color="transparent">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-             <fo:external-graphic border="0pt solid black" width="30mm" height="13mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" text-align="center">
+             <fo:external-graphic border="0pt solid black" width="30mm" height="13mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" text-align="center" fox:alt-text="CantonalLogo">
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogo">
                    <xsl:attribute name="src">
                      <xsl:text>url('data:</xsl:text>
                      <xsl:text>image/png;base64,</xsl:text>
-                     <xsl:value-of select="/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogo"/>
+                     <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogo)"/>
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogo)">
                   <xsl:attribute name="src">
-                    <xsl:text>url('</xsl:text>
-                    <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef)"/>
+                     <xsl:text>url('data:</xsl:text>
+                     <xsl:text>image/png;base64,</xsl:text>
+                    <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:CantonalLogoRef)"/>
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </xsl:if>
@@ -828,19 +830,20 @@
 
         <fo:block-container absolute-position="absolute" top="0mm" left="95mm" background-color="transparent">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:external-graphic width="30mm" height="13mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" text-align="center">
+            <fo:external-graphic width="30mm" height="13mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" text-align="center" fox:alt-text="MunicipalityLogo">
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogo">
                    <xsl:attribute name="src">
                      <xsl:text>url('data:</xsl:text>
                      <xsl:text>image/png;base64,</xsl:text>
-                     <xsl:value-of select="/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogo"/>
+                     <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogo)"/>
                      <xsl:text>')</xsl:text>
                    </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef and not(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogo)">
                   <xsl:attribute name="src">
-                    <xsl:text>url('</xsl:text>
-                    <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef)"/>
+                     <xsl:text>url('data:</xsl:text>
+                     <xsl:text>image/png;base64,</xsl:text>
+                    <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:MunicipalityLogoRef)"/>
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </xsl:if>
@@ -850,19 +853,20 @@
 
         <fo:block-container absolute-position="absolute" top="0mm" left="139mm" background-color="transparent">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-             <fo:external-graphic width="35mm" height="10mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit">
+             <fo:external-graphic width="35mm" height="10mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="LogoPLRCadastre">
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastre">
 	               <xsl:attribute name="src">
 	                 <xsl:text>url('data:</xsl:text>
 	                 <xsl:text>image/png;base64,</xsl:text>
-	                 <xsl:value-of select="/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastre"/>
+	                 <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastre)"/>
 	                 <xsl:text>')</xsl:text>
 	               </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef and not(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastre)">
                   <xsl:attribute name="src">
-                    <xsl:text>url('</xsl:text>
-                    <xsl:value-of select="oereb:decodeURL(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef)"/>
+                     <xsl:text>url('data:</xsl:text>
+                     <xsl:text>image/png;base64,</xsl:text>
+                    <xsl:value-of select="oereb:fixImage(/extract:GetExtractByIdResponse/data:Extract/data:LogoPLRCadastreRef)"/>
                     <xsl:text>')</xsl:text>
                   </xsl:attribute>
                 </xsl:if>

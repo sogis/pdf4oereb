@@ -1,11 +1,13 @@
 package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.Base64;
 
 import javax.imageio.ImageIO;
@@ -55,18 +57,33 @@ public class FixImage implements ExtensionFunction {
     @Override
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         XdmValue symbolValue = (XdmValue) arguments[0];
-        try {            
-            byte[] imageByteArray = Base64.getDecoder().decode(symbolValue.getUnderlyingValue().getStringValue());
-    
+        XdmNode symbolNode = (XdmNode) symbolValue;
+
+        try {  
+            byte[] imageByteArray = null;
+            
+            if (symbolNode.getNodeName().toString().endsWith("Ref")) {
+                String url = symbolValue.getUnderlyingValue().getStringValue();
+                String decodedUrl = java.net.URLDecoder.decode(url.trim(), "UTF-8"); // trim fixes some illegal character execption
+                imageByteArray = WebMapService.getMap(decodedUrl);
+            } else {
+                imageByteArray = Base64.getDecoder().decode(symbolValue.getUnderlyingValue().getStringValue());
+            }
+            
             InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
             BufferedImage imageBufferedImage = ImageIO.read(imageInputStream);
         
             int imageWidthPx = imageBufferedImage.getWidth();
             int imageHeightPx = imageBufferedImage.getHeight();
-    
-            BufferedImage fixedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
             
+//            BufferedImage fixedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+            // PDF/A-1 does not support transparency.
+            BufferedImage fixedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_INT_RGB);
+
             Graphics2D g = (Graphics2D) fixedImage.getGraphics();
+            g.setBackground(Color.WHITE);
+            g.clearRect(0, 0, imageWidthPx, imageHeightPx);
+            
             g.drawImage(imageBufferedImage, 0, 0, null);
                                    
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -76,7 +93,7 @@ public class FixImage implements ExtensionFunction {
             baos.close();          
 
             return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(combinedImageByteArray).asAtomic().getStringValue());
-        } catch (XPathException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw new SaxonApiException(e.getMessage());
         }
