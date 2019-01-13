@@ -104,17 +104,21 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
 			int imageWidthPx = baseImageBufferedImage.getWidth();
 			int imageHeightPx = baseImageBufferedImage.getHeight();
 	
-	        BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+//            BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+            // PDF/A-1 does not support transparency.
+			BufferedImage combinedImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_INT_RGB);
 	        
 	        Graphics2D g = (Graphics2D) combinedImage.getGraphics();
 //	        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 //	        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
 //	        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+	        g.setBackground(Color.WHITE);
+	        g.clearRect(0, 0, imageWidthPx, imageHeightPx);
 
 	        g.drawImage(baseImageBufferedImage, 0, 0, null);
 	        g.drawImage(overlayImageBufferedImage, 0, 0, null);
 	                   	        
-//	        ImageIO.write(combinedImage, "png", new File("/Users/stefan/tmp/combinedImage.png"));
+//          ImageIO.write(combinedImage, "png", new File("/Users/stefan/tmp/combinedImage.png"));
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(combinedImage, imageFormat, baos); 
