@@ -58,7 +58,8 @@ public class Converter {
     static {
     	locales = new ArrayList<String>();
     	locales.add("Resources.de.resx");
-    	locales.add("Resources.fr.resx");
+        locales.add("Resources.fr.resx");
+        locales.add("Resources.it.resx");
     }
     
     public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
@@ -94,6 +95,8 @@ public class Converter {
 			trans.setDestination(outFo);
 			if (locale == Locale.FR) {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+			} else if (locale == Locale.IT) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
 			} else {
 	             trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
 			}
@@ -177,8 +180,10 @@ public class Converter {
         	trans.setInitialContextNode(source);
             if (locale == Locale.FR) {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+            } else if (locale == Locale.IT) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
             } else {
-                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
             }
 
         	// the fop part

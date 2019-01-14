@@ -112,11 +112,11 @@
                       <fo:block><xsl:value-of select="format-dateTime(data:CreationDate,'[D01].[M01].[Y0001]')"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
-                    <fo:table-cell>
+                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" height="6mm">
+                    <fo:table-cell display-align="center">
                       <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.ResponsibleOffice']/value/text()"/></fo:block>
                     </fo:table-cell>
-                    <fo:table-cell>
+                    <fo:table-cell display-align="center">
                       <fo:block><xsl:value-of select="data:PLRCadastreAuthority/data:Name/data:LocalisedText/data:Text"/>, <xsl:value-of select="data:PLRCadastreAuthority/data:Street"/><xsl:text> </xsl:text><xsl:value-of select="data:PLRCadastreAuthority/data:Number"/>, <xsl:value-of select="data:PLRCadastreAuthority/data:PostalCode"/><xsl:text> </xsl:text><xsl:value-of select="data:PLRCadastreAuthority/data:City"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
