@@ -327,13 +327,13 @@
                         <fo:block></fo:block>
                       </fo:table-cell>
                       <fo:table-cell text-align="left">
-                        <fo:block font-size="6.5pt">Typ</fo:block>
+                        <fo:block font-size="6.5pt"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Type']/value/text()"/></fo:block>
                       </fo:table-cell>
                       <fo:table-cell text-align="right">
-                        <fo:block font-size="6.5pt">Anteil</fo:block>
+                        <fo:block font-size="6.5pt"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Share']/value/text()"/></fo:block>
                       </fo:table-cell>
                       <fo:table-cell text-align="right">
-                        <fo:block font-size="6.5pt">Anteil in %</fo:block>
+                        <fo:block font-size="6.5pt"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.PartInPercent']/value/text()"/></fo:block>
                       </fo:table-cell>
                     </fo:table-row>
 
@@ -344,7 +344,7 @@
                       <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm" >
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Legende beteiligter Objekte</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Legend']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -432,7 +432,7 @@
                       <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm" >
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Übrige Legende (im sichtbaren Bereich)</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.OtherLegend']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -497,7 +497,7 @@
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Vollständige Legende</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.LegendRef']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -543,7 +543,7 @@
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Rechtsvorschriften</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.LegalProvision']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -591,7 +591,7 @@
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Gesetzliche Grundlagen</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Law']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -617,7 +617,7 @@
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1 and not(../data:LegalProvisions[data:DocumentType='Law'])">
-                            <fo:block font-weight="700">Gesetzliche Grundlagen</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Law']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -661,7 +661,7 @@
                         <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                           <fo:table-cell>
                             <xsl:if test="position()=1">
-                              <fo:block font-weight="700">Weitere Informationen und Hinweise</fo:block>
+                              <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.Hint']/value/text()"/></fo:block>
                             </xsl:if>
                             <xsl:if test="position()!=1">
                               <fo:block></fo:block>
@@ -704,7 +704,7 @@
                       <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                         <fo:table-cell>
                           <xsl:if test="position()=1">
-                            <fo:block font-weight="700">Zuständige Stelle</fo:block>
+                            <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='RestrictionPage.ResponsibleOffice']/value/text()"/></fo:block>
                           </xsl:if>
                           <xsl:if test="position()!=1">
                             <fo:block></fo:block>
@@ -909,7 +909,7 @@
       <fo:flow flow-name="xsl-region-body">
         <fo:block>
           <fo:block-container height="13mm" background-color="transparent">
-            <fo:block page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra">Abkürzungen</fo:block>
+            <fo:block page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="$localeXml/data[@name='GlossaryPage.Title']/value/text()"/></fo:block>
           </fo:block-container>            
           <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
             <fo:table table-layout="fixed" width="100%">

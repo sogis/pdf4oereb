@@ -60,6 +60,41 @@
         <value>Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</value>
     </data>
 
+    <data name="RestrictionPage.Legend" xml:space="preserve">
+        <value>Legende beteiligter Objekte</value>
+    </data>
+    <data name="RestrictionPage.OtherLegend" xml:space="preserve">
+        <value>Übrige Legende (im sichtbaren Bereich)</value>
+    </data>
+    <data name="RestrictionPage.LegendRef" xml:space="preserve">
+        <value>Vollständige Legende</value>
+    </data>
+    <data name="RestrictionPage.Type" xml:space="preserve">
+        <value>Typ</value>
+    </data>
+    <data name="RestrictionPage.Share" xml:space="preserve">
+        <value>Anteil</value>
+    </data>
+    <data name="RestrictionPage.PartInPercent" xml:space="preserve">
+        <value>Anteil in %</value>
+    </data>
+    <data name="RestrictionPage.LegalProvision" xml:space="preserve">
+        <value>Rechtsvorschriften</value>
+    </data>
+    <data name="RestrictionPage.Law" xml:space="preserve">
+        <value>Gesetzliche Grundlagen</value>
+    </data>
+    <data name="RestrictionPage.Hint" xml:space="preserve">
+        <value>Weitere Informationen und Hinweise</value>
+    </data>
+    <data name="RestrictionPage.ResponsibleOffice" xml:space="preserve">
+        <value>Zuständige Stelle</value>
+    </data>
+
+    <data name="GlossaryPage.Title" xml:space="preserve">
+        <value>Abkürzungen</value>
+    </data>
+
 
 
 </root>
