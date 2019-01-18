@@ -18,7 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 //sh './gradlew --no-daemon library:test library:wmsTest web-service:test'
-                echo 'foo bar'
+                echo 'foo bar bar foo'
             }
         }        
     }
