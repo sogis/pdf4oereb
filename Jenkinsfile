@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        dockerRegistryUser = credentials('dockerRegistryUser')
+        dockerRegistryPass = credentials('dockerRegistryPass')
+    }    
     stages {
         stage('Prepare') {
             steps {
@@ -11,6 +15,11 @@ pipeline {
                 sh './gradlew --no-daemon clean classes'
             }
         }
+        stage('Test') {
+            steps {
+                sh './gradlew --no-daemon library:test library:wmsTest web-service:test'
+            }
+        }        
     }
     post {
         always {
