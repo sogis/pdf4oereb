@@ -25,8 +25,6 @@ class Main implements Callable<Void> {
 	@Option(names = {"-f", "--fo"}, required = false, description = "Perfom XML->FO transformation only.")
     private boolean foTransformation = false;
 
-
-
 	public static void main(String[] args) throws SaxonApiException {
 		CommandLine.call(new Main(), args);
 	}

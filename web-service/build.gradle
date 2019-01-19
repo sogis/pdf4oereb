@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.1.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
         jcenter()
@@ -19,7 +19,7 @@ apply plugin: 'com.bmuschko.docker-remote-api'
 
 bootJar {
     launchScript()
-    archiveName = rootProject.name + "-web-service-" +scmVersion.version + ".jar"
+    archiveName = rootProject.name + "-web-service-" + project.version.toString() + ".jar"
 }
 
 sourceCompatibility = 1.8
@@ -70,7 +70,7 @@ docker {
 task buildDockerImage(type: DockerBuildImage) {
     description = "Build docker image."
     inputDir = project.projectDir
-    tags = ["sogis/pdf4oereb-web-service:"+ scmVersion.version, "sogis/pdf4oereb-web-service:latest"]
+    tags = ["sogis/pdf4oereb-web-service:"+ project.version.toString(), "sogis/pdf4oereb-web-service:latest"]
 }
 
 
@@ -95,7 +95,7 @@ pushDockerImages.dependsOn {
 task fubar() {
     doLast {
         println "*****"
-        println System.env.dockerRegistryadf
+        println System.env.dockerRegistryUser
         println project.version.toString()
         
     }
