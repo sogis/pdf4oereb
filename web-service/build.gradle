@@ -95,6 +95,8 @@ pushDockerImages.dependsOn {
 task fubar() {
     doLast {
         println "*****"
+        println System.env.dockerRegistryUser
         println project.version.toString()
+        
     }
 }
