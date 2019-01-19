@@ -1,0 +1,5 @@
+ext.buildTimeStamp = new Date().format('yyyy-MM-dd HH:mm:ss')
+
+//version = new ProjectVersion(1, 0, 'LOCALBUILD')
+
+

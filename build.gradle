@@ -2,8 +2,9 @@ plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.10.0'
 }
 
-subprojects {
+allprojects {
     apply plugin: 'java'
+    apply from: "$rootDir/gradle/versioning.gradle"
  
     repositories {
         maven {
