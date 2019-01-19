@@ -91,3 +91,10 @@ task pushDockerImages() {
 pushDockerImages.dependsOn {
     tasks.findAll { task -> task.name.startsWith('pushDockerImage_') }
 }
+
+task fubar() {
+    doLast {
+        println "*****"
+        println project.version.toString()
+    }
+}
