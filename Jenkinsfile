@@ -25,7 +25,7 @@ pipeline {
         stage('Publish') {
             steps {
                 sh './gradlew --no-daemon web-service:bootJar'                
-                sh './gradlew --no-daemon web-service:buildDockerImage'                
+                sh './gradlew --no-daemon web-service:pushDockerImages'                
             }
         }               
     }
