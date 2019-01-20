@@ -17,16 +17,16 @@ pipeline {
         }
         stage('Test') {
             steps {
-                //sh './gradlew --no-daemon library:test library:wmsTest web-service:test'
-                echo 'foo'
+                sh './gradlew --no-daemon library:test library:wmsTest web-service:test'
+                //echo 'foo'
             }
         }  
         stage('Publish') {
             steps {
                 sh './gradlew --no-daemon library:build library:distZip -x library:test -x library:wmsTest'                
                 archiveArtifacts artifacts: 'library/build/distributions/pdf4oereb-1.0.*.zip', fingerprint: true
-                //sh './gradlew --no-daemon web-service:bootJar'                
-                //sh './gradlew --no-daemon web-service:pushDockerImages'                
+                sh './gradlew --no-daemon web-service:bootJar'                
+                sh './gradlew --no-daemon web-service:pushDockerImages'                
             }
         }               
     }
