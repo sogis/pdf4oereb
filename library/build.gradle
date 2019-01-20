@@ -24,6 +24,10 @@ dependencies {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+distZip {
+    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
+}
+
 application {
     mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
 }
