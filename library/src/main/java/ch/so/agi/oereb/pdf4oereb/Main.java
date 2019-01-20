@@ -22,8 +22,11 @@ class Main implements Callable<Void> {
 	@Option(names = {"-s", "--xsl"}, required = false, description = "The xslt stylesheet.")
     private String xsltFileName;
 	
-	@Option(names = {"-f", "--fo"}, required = false, description = "Perfom XML->FO transformation only.")
+    @Option(names = {"-f", "--fo"}, required = false, description = "Perfom XML->FO transformation only.")
     private boolean foTransformation = false;
+    
+    @Option(names = {"-m", "--html"}, required = false, description = "Perfom XML->HTML transformation.")
+    private boolean htmlTransformation = false;
 
 	public static void main(String[] args) throws SaxonApiException {
 		CommandLine.call(new Main(), args);
@@ -37,27 +40,35 @@ class Main implements Callable<Void> {
         log.info("output directory: " + outputDirectory);
 
         Converter converter =  new Converter();
-
+        File file = null;
+        // xml->html transformation
+        if (htmlTransformation) {
+            if (xsltFileName != null) {
+                log.info("custom xslt file will be used: " + xsltFileName);                
+                file = converter.runXml2Html(xmlFileName, xsltFileName, outputDirectory, Locale.DE);
+            } else {
+                file = converter.runXml2Html(xmlFileName, outputDirectory, Locale.DE);
+            }
+        } 
         // xml->fo transformation only
-        if (foTransformation) {
-        	File file = null;
+        else if (foTransformation) {
         	if (xsltFileName != null) {
         		log.info("custom xslt file will be used: " + xsltFileName);
-        		file = converter.runXml2Fo(xmlFileName, xsltFileName, outputDirectory, Locale.FR);
+        		file = converter.runXml2Fo(xmlFileName, xsltFileName, outputDirectory, Locale.DE);
         	} else {
-        		file = converter.runXml2Fo(xmlFileName, outputDirectory, Locale.FR);
+        		file = converter.runXml2Fo(xmlFileName, outputDirectory, Locale.DE);
         	}
-        	log.info("file written: " + file.getAbsolutePath());
         } 
         // xml->fo->pdf transformation
         else {
         	if (xsltFileName != null) {
         		log.info("custom xslt file will be used: " + xsltFileName);
-            	converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory, Locale.FR);
+        		file = converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory, Locale.DE);
         	} else {
-        		converter.runXml2Pdf(xmlFileName, outputDirectory, Locale.FR);
+        	    file = converter.runXml2Pdf(xmlFileName, outputDirectory, Locale.DE);
         	}
-        }      
+        }     
+        log.info("file written: " + file.getAbsolutePath());
   		return null;
 	}
 }

@@ -42,7 +42,8 @@ import net.sf.saxon.s9api.XsltTransformer;
 public class Converter {
     Logger log = LoggerFactory.getLogger(Converter.class);
     
-    private final String xsltFileName = "oereb_extract.xslt";
+    private final String xsltPdfFileName = "oereb_xml2pdf.xslt";
+    private final String xsltHtmlFileName = "oereb_xml2html.xslt";
     private final String fopxconfFileName = "fop.xconf";
     private static ArrayList<String> fonts = null;
     private static ArrayList<String> locales = null;
@@ -62,10 +63,77 @@ public class Converter {
         locales.add("Resources.it.resx");
     }
     
+    public File runXml2Html(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+        try {
+            Path outputPath = Paths.get(outputDirectory);
+            String baseFileName = FilenameUtils.getBaseName(xmlFileName);
+            File htmlFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".html").toFile().getAbsolutePath());
+    
+            for (String localeFileName : locales) {
+                File localeFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), localeFileName).toFile().getAbsolutePath());
+                InputStream is = Converter.class.getResourceAsStream("/"+localeFileName); 
+                Files.copy(is, localeFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                is.close();
+            }
+            
+            log.info("start saxon: " + new Date().toString());
+            Processor proc = new Processor(false);
+
+            proc.registerExtensionFunction(new OverlayImage());
+            proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+            proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+            proc.registerExtensionFunction(new FixImage());
+            proc.registerExtensionFunction(new URLDecoder());
+
+            XsltCompiler comp = proc.newXsltCompiler();
+            XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
+            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
+            Serializer outHtml = proc.newSerializer(htmlFile);
+            XsltTransformer trans = exp.load();
+            trans.setInitialContextNode(source);
+            trans.setDestination(outHtml);
+            if (locale == Locale.FR) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+            } else if (locale == Locale.IT) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
+            } else {
+                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+            }
+            trans.transform();
+            trans.close();
+            log.info("end saxon: " + new Date().toString());
+            
+            return htmlFile;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+            throw new SaxonApiException(e.getMessage());
+        }            
+    }
+    
+    public File runXml2Html(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+        try {
+            Path outputPath = Paths.get(outputDirectory);
+            
+            // copy xslt file from resources into temporary directory
+            File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltHtmlFileName).toFile().getAbsolutePath());
+            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltHtmlFileName); 
+            Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            xsltFileInputStream.close();
+            
+            File htmlFile = this.runXml2Html(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory, locale);
+            return htmlFile;
+        } catch (IOException e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+            throw new SaxonApiException(e.getMessage());
+        } 
+    }
+    
     public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
-          
+
         	String baseFileName = FilenameUtils.getBaseName(xmlFileName);
         	File foFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
 
@@ -117,8 +185,8 @@ public class Converter {
         	Path outputPath = Paths.get(outputDirectory);
             
             // copy xslt file from resources into temporary directory
-            File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltFileName).toFile().getAbsolutePath());
-            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltFileName); 
+            File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltPdfFileName).toFile().getAbsolutePath());
+            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltPdfFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             
@@ -210,8 +278,8 @@ public class Converter {
         	Path outputPath = Paths.get(outputDirectory);
             
             // copy xslt file from resources into temporary directory
-            File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltFileName).toFile().getAbsolutePath());
-            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltFileName); 
+            File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltPdfFileName).toFile().getAbsolutePath());
+            InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltPdfFileName); 
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             log.info("xsltFile: " + xsltFile.getAbsolutePath());
