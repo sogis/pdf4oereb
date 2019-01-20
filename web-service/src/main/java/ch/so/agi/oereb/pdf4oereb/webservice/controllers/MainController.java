@@ -79,10 +79,12 @@ public class MainController {
             
             // Grab desired language of pdf output.
             Locale locale;
-            if (localeString == null || localeString.equalsIgnoreCase("")) {
+            if (localeString == null || localeString.equalsIgnoreCase("") ) {
                 locale = Locale.DE;
             } else if (localeString.equalsIgnoreCase("FR")) {
                 locale = Locale.valueOf("FR");
+            } else if (localeString.equalsIgnoreCase("IT")) {
+                locale = Locale.IT;
             } else {
                 locale = Locale.DE;
             }
