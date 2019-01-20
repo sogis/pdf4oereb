@@ -21,7 +21,13 @@ pipeline {
                 //echo 'foo bar bar foo'
                 sh './gradlew --no-daemon fubar'                
             }
-        }        
+        }  
+        stage('Publish') {
+            steps {
+                sh './gradlew --no-daemon web-service:bootJar'                
+                sh './gradlew --no-daemon web-service:buildDockerImage'                
+            }
+        }               
     }
     post {
         always {
