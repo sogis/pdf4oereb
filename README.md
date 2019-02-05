@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/openoereb/pdf4oereb.svg?branch=master)](https://travis-ci.org/openoereb/pdf4oereb)
 # pdf4oereb 
 
 _pdf4oereb_ transforms a PLR DATA-Extract XML document into the corresponding in PDF document.
