@@ -1,0 +1,18 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+    - stable
+
+install: true
+
+script:
+  - ./gradlew clean gretl:classes
+  - ./gradlew gretl:test gretl:dbTest
+  - ./gradlew library:test library:wmsTest web-service:test
