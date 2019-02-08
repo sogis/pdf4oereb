@@ -171,3 +171,12 @@ bintray {
     }
 }
 
+// Disable very strict javadoc generation, e.g. handling of ">" in comments.
+// https://stackoverflow.com/questions/34874175/disable-all-javadoc-in-gradle
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
