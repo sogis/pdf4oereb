@@ -40,8 +40,8 @@ application {
 run {
     //args = ["--html", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
-    args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
-    //args = ["-i", "src/test/data/bl/CH567107399166_subtheme.xml", "-o", "/Users/stefan/tmp/"]
+    //args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
+    args = ["-i", "src/test/data/bl/CH567107399166_subtheme.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--html", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
