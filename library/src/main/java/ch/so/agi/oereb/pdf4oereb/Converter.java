@@ -42,7 +42,7 @@ import net.sf.saxon.s9api.XsltTransformer;
 public class Converter {
     Logger log = LoggerFactory.getLogger(Converter.class);
     
-    private final String xsltPdfFileName = "oereb_xml2pdf.xslt";
+    private final String xsltPdfFileName = "oereb_xml2pdf_subtheme.xslt";
     private final String xsltHtmlFileName = "oereb_xml2html.xslt";
     private final String fopxconfFileName = "fop.xconf";
     private static ArrayList<String> fonts = null;

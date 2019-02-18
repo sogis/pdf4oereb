@@ -486,7 +486,7 @@
             <data:Text>Nutzungsplanung (kantonal / kommunal)</data:Text>
           </data:Text>
         </data:Theme>
-        <data:SubTheme>07.73B.Grundnutzung</data:SubTheme>
+        <!--<data:SubTheme>07.73B.Grundnutzung</data:SubTheme>-->
         <data:TypeCode>102314</data:TypeCode>
         <data:Lawstatus>
           <data:Code>inForce</data:Code>
@@ -1243,7 +1243,7 @@
             <data:Text>Nutzungsplanung (kantonal / kommunal)</data:Text>
           </data:Text>
         </data:Theme>
-        <data:SubTheme>08.73B.Ueberlagerung_Flaeche</data:SubTheme>
+        <!--<data:SubTheme>08.73B.Ueberlagerung_Flaeche</data:SubTheme>-->
         <data:TypeCode>240013</data:TypeCode>
         <data:Lawstatus>
           <data:Code>inForce</data:Code>
