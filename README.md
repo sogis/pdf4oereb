@@ -127,9 +127,13 @@ Es wird zuerst immer versucht die eingebetteten Kartenausschnitte, Logos und Sym
 Eine XSLT-Transformation ist gut parametrisierbar. Statische Texte (z.B. der Titel des Auszuges usw.) können in eigenen Sprachdateien verwaltet werden und entsprechend geladen werden. Die eigentlichen Auszugsinhalte sind per Definition mehrsprachig und die gewünschte Sprache (falls im XML vorhanden), kann ebenfalls mit XSLT-/XPath-Bordmitteln gewählt werden. Für die statischen Texte ist bereits rudimentärer (proof-of-concept) Support vorhanden. Die Option ist nicht im Standalone-Programm verfügbar, nur in der Bibliothek und im Web service.
 
 ### Gruppierung
-Es wird momentan einzig nach ÖREB-Thema-Code (`RestrictionOnLandownership.Thema.Code`) gruppiert. Gruppiert heisst in diesem Kontext: Sämtliche `<RestrictionOnLandownership>`-Elemente des gleichen Themas erscheinen auf der gleichen PDF-Seite. Was nicht zu sinnvollen Ergebnissen führt, ist die Verwendung des gleichen Codes mit unterschiedlichem Text.
+Es wird nach `RestrictionOnLandownership.Thema.Code` gruppiert. Falls ein `<SubTheme>`-Element vorhanden ist, wird in diesem ÖREB-Thema zusätzlich nach Subthema gruppiert. Der Themencode (z.B. `LandUsePlans`) darf nicht für verschiedene Themen "missbraucht" werden, sondern es muss in diesem Fall mit Subthemen gearbeitet werden. 
 
-Ziel ist die Unterstützung von Subthemen: Zuerst wird nach Hauptthema gruppiert und falls innerhalb des Hauptthemas Subthemen vorhanden sind, wird nach diesen gruppiert. 
+Für jedes Subthema wird eine neue PDF-Seite (analog den ÖREB-Themen) erstellt.
+
+Beispiel `Nutzungsplanung (kantonal/kommunal)`: Der dazugehörige Code zum Thema ist `LandUsePlans`. Will man das Thema unterteilen in `Grundnutzung` und `überlagernde Objekte` müssen dafür zwei Subthemen geschaffen werden. Der Code bleibt aber immer `LandUsePlans`, das Theme (resp. der Text zum Thema) immer `Nutzungsplanung (kantonal/kommunal)`.
+
+Falls keine Subthemen vorhanden sind, sollte das Element `SubTheme` nicht vorhanden sein.
 
 Das generische Sortieren wird komplizierter bis nicht mehr möglich, falls eigene Themen, Codes und Subthemen vorhanden sind.
 
