@@ -139,3 +139,8 @@ Das generische Sortieren wird komplizierter bis nicht mehr möglich, falls eigen
 
 ### Overlay-Image
 Das Overlay-Image mit der Grundstücksbandierung, dem Nordpfeil und dem Massstabsbalken verwendet die gleiche Auflösung wie die eingebetteten Kartenausschnitte resp. WMS-GetMap-Request. Falls die Auflösung gering ist, sehen die drei Objekte auch bescheiden aus.
+
+## GraalVM
+```
+java -cp picocli-codegen-3.9.5.jar:picocli-3.9.5.jar:pdf4oereb-fat-1.0.LOCALBUILD.jar picocli.codegen.aot.graalvm.ReflectionConfigGenerator ch.so.agi.oereb.pdf4oereb.Main > picocli-reflections.json
+```

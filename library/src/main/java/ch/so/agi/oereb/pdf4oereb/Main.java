@@ -28,7 +28,7 @@ class Main implements Callable<Void> {
     @Option(names = {"-m", "--html"}, required = false, description = "Perfom XML->HTML transformation.")
     private boolean htmlTransformation = false;
 
-	public static void main(String[] args) throws SaxonApiException {
+	public static void main(String[] args) throws Exception {
 		CommandLine.call(new Main(), args);
 	}
 
