@@ -1,61 +1,34 @@
 package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.geotools.data.DataUtilities;
-import org.geotools.factory.CommonFactoryFinder;
-import org.geotools.factory.Hints;
-import org.geotools.feature.DefaultFeatureCollection;
-import org.geotools.feature.FeatureCollection;
-import org.geotools.feature.SchemaException;
-import org.geotools.feature.simple.SimpleFeatureBuilder;
-import org.geotools.geometry.jts.ReferencedEnvelope;
-import org.geotools.map.FeatureLayer;
-import org.geotools.map.MapContent;
-import org.geotools.map.MapViewport;
-import org.geotools.referencing.CRS;
-import org.geotools.renderer.GTRenderer;
-import org.geotools.renderer.lite.StreamingRenderer;
-import org.geotools.styling.FeatureTypeStyle;
-import org.geotools.styling.PolygonSymbolizer;
-import org.geotools.styling.Rule;
-import org.geotools.styling.Stroke;
-import org.geotools.styling.Style;
-import org.geotools.styling.StyleFactory;
-import org.geotools.styling.StyleFactoryImpl;
+import org.locationtech.jts.awt.ShapeWriter;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Envelope;
-import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Polygon;
-import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.feature.simple.SimpleFeatureType;
-import org.opengis.filter.FilterFactory2;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.NoSuchAuthorityCodeException;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,17 +43,20 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.trans.XPathException;
 
+import ch.so.agi.oereb.pdf4oereb.jts.util.AffinePointTransformation;
+
 public class OverlayImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(OverlayImage.class);
-
-    private final String highlightingStrokeColor = "#e60000";
-    private final int highlightingStrokeWidth = 6;
-    private final double highlightingStrokeOpacity = 0.4;
+    
     private final double referenceDpi = 300.0;
+    private final String highlightingStrokeColor = "#e60000";
+    private final float highlightingStrokeOpacity = 0.4F;    
+    private final Color highlightingStrokeColorRgb = new Color(230/255F, 0F, 0F, highlightingStrokeOpacity);
+    private final int highlightingStrokeWidth = (int) (5 * referenceDpi / 72.0); // heuristic
     private final String imageFormat = "png";
     private final double mapWidthMM = 174.0;
     private final double mapHeightMM = 99.0;
-    private final int imageWidthPx = 2055;
+    private final int imageWidthPx = 2055; // not needed: it uses same sizes as provided land register map
     private final int imageHeightPx = 1169;
 
 	@Override
@@ -100,8 +76,9 @@ public class OverlayImage implements ExtensionFunction {
 	}
 	
 	/**
-	 * Returns a base64 string as XdmValue of the overlay image (parcel, north arrow (TODO) 
-	 * and scale bar (TODO)).
+	 * Returns a base64 string as XdmValue of the overlay image (parcel, north arrow 
+	 * and scale bar) which will be used for title page and the following restriction
+	 * on landownership pages.
 	 * 
 	 * @param arguments an array of XdmValues containing the limit node (the parcels geometry)  
 	 *                  and the map node containing the land registry map image. 
@@ -119,162 +96,94 @@ public class OverlayImage implements ExtensionFunction {
     	// but not the highlighting stuff.
     	// -> unit test!
     	
-    	// Calculate the real world bounding box of the map image from the extract.
+    	// Calculate the real world bounding box of the map image from the xml file.
     	// Null-Envelope is handled properly in the createHighlightingImage method
     	// (at least it should be).
     	Envelope mapEnvelope = calculateBoundingBox(mapNode);
     	    	
     	// Create the overlay image. 
     	byte[] highlightingImage = null;
+    	
     	try {
     		highlightingImage = createHighlightingImage(mapNode, mapEnvelope, realEstateDPRGeometry);			
-		} catch (XPathException | IOException | SchemaException | FactoryException e) {
+        } catch (Exception e) {
 			e.printStackTrace();
 			throw new SaxonApiException(e.getMessage());
 		}
         return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(highlightingImage).asAtomic().getStringValue());
-	}
-		
-	/*
-	 * Creates the highlighting image by rendering the parcel from the geometry.
-	 * The provided node contains the land registry map image, which is needed to find out the
-	 * image width and height.
-	 */
-    private byte[] createHighlightingImage(XdmNode node, Envelope envelope, Geometry geometry) throws SaxonApiException, XPathException, IOException, SchemaException, NoSuchAuthorityCodeException, FactoryException {
-    	// If the image is embedded, use this.
-    	byte[] mapImageByteArray = null;
-    	Iterator<XdmNode> it = node.children("Image").iterator();
-    	while(it.hasNext()) {
-    		XdmNode imageNode = (XdmNode) it.next();
-    		XdmValue mapImageXdmValue = imageNode.getTypedValue();
-    		mapImageByteArray = Base64.getDecoder().decode(mapImageXdmValue.getUnderlyingValue().getStringValue());
-    		break;
-    	}
-    	
-    	// Only get the image by a wms request if it was not embedded.
-    	if (mapImageByteArray == null) {
-	    	it = node.children("ReferenceWMS").iterator();
-	    	while(it.hasNext()) {
-	    		XdmNode imageNode = (XdmNode) it.next();
-	    		XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
-	    		try {
-	            	mapImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
-	    		} catch (Exception e) {
-	    			e.printStackTrace();
-	    			log.error(e.getMessage());
-	    			throw new SaxonApiException(e.getMessage());
-	    		}
-	    		break;
-	    	}
-    	}
-    	    	
-    	InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
-		BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
+    }
+	
+	
+	private byte[] createHighlightingImage(XdmNode node, Envelope worldEnvelope, MultiPolygon geometry) throws XPathException, SaxonApiException, IOException {
+	    // Get the land register base image.
+	    byte[] mapImageByteArray = getImageFromXdmNode(node);
+	    InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
+        BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
+	    
+        // Width and height is used several times.
+        int imageWidthPx = mapBufferedImage.getWidth();
+        int imageHeightPx = mapBufferedImage.getHeight();
+        
+        // Create the Graphics2D object which will held all images/layers we want to burn in 
+        // (scalebar, north arrow and the highlighted parcel).
+        Rectangle imageBounds = new Rectangle(imageWidthPx, imageHeightPx);
+        BufferedImage hightlightingImage = new BufferedImage(imageBounds.width, imageBounds.height, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 
-		// Calculate actual dpi of provided image (wms or embedded).
-		int imageWidthPx = mapBufferedImage.getWidth();
-		int imageHeightPx = mapBufferedImage.getHeight();
-		
-		double actualDpi = (double) ((mapBufferedImage.getWidth() / mapWidthMM) * 25.4);		
-		double dpiRatio = actualDpi / referenceDpi;
-		
-		// Create the Graphics object which will held all images we want to burn in 
-		// (land register map, scalebar, north arrow and the highlighted parcel).
-		Rectangle imageBounds = new Rectangle(imageWidthPx, imageHeightPx);
-		BufferedImage hightlightingImage = new BufferedImage(imageBounds.width, imageBounds.height, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+        Graphics2D gr = hightlightingImage.createGraphics();
+        int type = AlphaComposite.SRC;
+        gr.setComposite(AlphaComposite.getInstance(type));
+        
+        RenderingHints rh = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        gr.setRenderingHints(rh);
 
-		Graphics2D gr = hightlightingImage.createGraphics();
-		int type = AlphaComposite.SRC;
-		gr.setComposite(AlphaComposite.getInstance(type));
+        // TODO: not quite sure how this works
+        // e.g. http://www.informit.com/articles/article.aspx?p=26349&seqNum=5
+        Color c = new Color(255, 255, 255, 0);
+        gr.setBackground(Color.white);
+        gr.setColor(c);
+        gr.fillRect(0, 0, hightlightingImage.getWidth(), hightlightingImage.getHeight());
+        gr.setComposite(AlphaComposite.getInstance(type));
 
-		// TODO: not quite sure how this works
-		// e.g. http://www.informit.com/articles/article.aspx?p=26349&seqNum=5
-		Color c = new Color(255, 255, 255, 0);
-		gr.setBackground(Color.white);
-		gr.setColor(c);
-		gr.fillRect(0, 0, hightlightingImage.getWidth(), hightlightingImage.getHeight());
-		gr.setComposite(AlphaComposite.getInstance(type));
-		
-		// Handle the case if the embedded image has no geo information.
-		// We cannot create an overlay image (except the north arrow, though).
-		if (envelope == null) {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ImageIO.write(hightlightingImage, imageFormat, baos); 
-			baos.flush();
-			byte[] highlightingImageByteArray = baos.toByteArray();
-			baos.close();      
-			
-//			ImageIO.write(hightlightingImage, "png", new File("/Users/stefan/tmp/fubar3.png"));
+        // Handle the case if the embedded image has no geographical information.
+        // We cannot create an overlay image (north arrow would be possible, though).
+        if (worldEnvelope == null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(hightlightingImage, imageFormat, baos); 
+            baos.flush();
+            byte[] highlightingImageByteArray = baos.toByteArray();
+            baos.close();      
+            
+            return highlightingImageByteArray;
+        }
 
-			return highlightingImageByteArray;
-		}
+        // This will create the highlighting image. It will not
+        // create anything if there is no geometry in the xml file.
+        if (!geometry.isEmpty()) {
+            // Calculate the transformation between provided pixel image and real world coordinate system (parcel geometry).
+            Envelope pixelEnvelope = new Envelope(new Coordinate(0, 0), new Coordinate(imageWidthPx, imageHeightPx));
+            AffinePointTransformation transformation =  new AffinePointTransformation(pixelEnvelope, worldEnvelope);
 
-		// This will create the highlighting image:
-		// Create the feature, feature collection and a feature layer that can
-		// be added to a map content.
-		// But only if the geometry is available in the xml.
-		// Fix this: Because of problems with the fat-jar, we do all this
-		// w/o proper CRS support.
-		if (!geometry.isEmpty()) {
-			FeatureCollection<SimpleFeatureType, SimpleFeature> collection = new DefaultFeatureCollection();
-			SimpleFeatureType TYPE = DataUtilities.createType(
-//                    "Parcel", "the_geom:MultiPolygon:srid=2056," 
-                    "Parcel", "the_geom:MultiPolygon," 
-							+ "egrid:String");
-			SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
+            gr.setColor(highlightingStrokeColorRgb);
+            gr.setStroke(new BasicStroke((float) highlightingStrokeWidth, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
 
-			featureBuilder.add(geometry);
-			featureBuilder.add("fubar");
-			SimpleFeature feature = featureBuilder.buildFeature(null);
-			((DefaultFeatureCollection)collection).add(feature);
+            // TODO: ShapeWriter cannot handle multipolygons (?).
+            // But respects holes.
+            for (int i=0; i<geometry.getNumGeometries(); i++) {
+                Polygon polygon = (Polygon) geometry.getGeometryN(i);
+                
+                ShapeWriter sw = new ShapeWriter(transformation);
+                Shape polyShape = sw.toShape(polygon);
+                
+                gr.draw(polyShape);
+            }
+        }
+        
+        // The scalebar (all values are more or less heuristic)
+        double actualDpi = (double) ((mapBufferedImage.getWidth() / mapWidthMM) * 25.4);        
+        double dpiRatio = actualDpi / referenceDpi;
 
-			FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
-			StyleFactory sf = new StyleFactoryImpl();
-			sf.stroke(ff.literal("#000000"), null, ff.literal(2.0), null, null, null, null);
-			Style style = sf.createStyle();
-
-			// This is a bitch...
-			PolygonSymbolizer polygonSymbolizer = sf.createPolygonSymbolizer();
-			Stroke stroke = sf.createStroke(ff.literal(highlightingStrokeColor), ff.literal(highlightingStrokeWidth));
-			stroke.setOpacity(ff.literal(highlightingStrokeOpacity)); // opacity vs transparency?
-			polygonSymbolizer.setStroke(stroke);
-			Rule rl = sf.createRule();
-			rl.symbolizers().add(polygonSymbolizer);
-			FeatureTypeStyle ft = sf.createFeatureTypeStyle();
-			ft.rules().add(rl);
-			style.featureTypeStyles().add(ft);
-
-			FeatureLayer fl = new FeatureLayer(collection, style);
-			fl.setVisible(true);
-
-			// Create the map content from which we export the image.
-			MapContent map = new MapContent();
-			MapViewport vp = new MapViewport();
-//			CoordinateReferenceSystem crs = CRS.decode("EPSG:2056");
-//			vp.setCoordinateReferenceSystem(crs);
-
-//            ReferencedEnvelope re = new ReferencedEnvelope(envelope, crs);
-            ReferencedEnvelope re = new ReferencedEnvelope(envelope, null);
-			vp.setBounds(re);
-			map.setViewport(vp);            
-			map.addLayer(fl);
-
-			// We need a renderer for exporting the image.
-			GTRenderer renderer = new StreamingRenderer();
-			renderer.setMapContent(map);
-
-			RenderingHints renderingHints = new Hints();
-			renderingHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			renderer.setJava2DHints(renderingHints);
-
-			Map<Object, Object> rendererHints = new HashMap<Object, Object>();
-			rendererHints.put(StreamingRenderer.DPI_KEY, actualDpi);
-			renderer.setRendererHints(rendererHints);
-			renderer.paint(gr, imageBounds, vp.getBounds());	
-			map.dispose();
-		}
-		
-		// The scalebar (all values are more or less heuristic)
         ScalebarGenerator scalebarGenerator = new ScalebarGenerator();
         scalebarGenerator.setColorText(Color.BLACK);
         scalebarGenerator.setDrawScaleText(false);
@@ -288,7 +197,7 @@ public class OverlayImage implements ExtensionFunction {
             Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, (int) Math.round(20*0.5));
             scalebarGenerator.setTextFont(textFont);
         }
-        double scale = envelope.getWidth() / (mapWidthMM / 1000.0);
+        double scale = worldEnvelope.getWidth() / (mapWidthMM / 1000.0);
         double scalebarWidthPx = 400 * dpiRatio;
         byte[] scalebarImageByteArray = scalebarGenerator.getImageAsByte(new Double(scale), scalebarWidthPx, actualDpi);
         InputStream insScalebarImage = new ByteArrayInputStream(scalebarImageByteArray);
@@ -299,29 +208,64 @@ public class OverlayImage implements ExtensionFunction {
         // add scalebar to graphic
         gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
         gr.drawImage(scalebarBufferedImage, imageWidthPx / 20, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight()), null); 
-		
+        
         // The north arrow
-    	InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow_small.png"); 
+        InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow_small.png"); 
         BufferedImage northArrowBufferedImage = ImageIO.read(northArrowFileInputStream);
         int scaledNorthArrowWidthPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
         int scaledNorthArrowHeightPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
         Image tmpNorthArrowImage = northArrowBufferedImage.getScaledInstance(scaledNorthArrowWidthPx, scaledNorthArrowHeightPx, Image.SCALE_SMOOTH);
-        		
+                
         // add north arrow to graphic
         gr.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)); 
         int leftMargin = imageWidthPx / 20 + (scalebarBufferedImage.getWidth() / 2) - (scaledNorthArrowWidthPx / 2);
         gr.drawImage(tmpNorthArrowImage,  leftMargin, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight() - scaledNorthArrowHeightPx), null); 
         
-		// write image to byte[]
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(hightlightingImage, imageFormat, baos); 
-		baos.flush();
-		byte[] highlightingImageByteArray = baos.toByteArray();
-		baos.close();          
+        // write image to byte[]
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(hightlightingImage, imageFormat, baos); 
+        baos.flush();
+        byte[] highlightingImageByteArray = baos.toByteArray();
+        baos.close();          
 
-		return highlightingImageByteArray;
-    }
-    	
+        //ImageIO.write(hightlightingImage, "png", new File("/Users/stefan/tmp/nogeotools.png"));        
+	    return highlightingImageByteArray;
+	}
+	
+	/*
+	 * Creates a byte array of the image provided in the XdmNode (either as base64 string or
+	 * as wms getmap url).
+	 */
+	private byte[] getImageFromXdmNode(XdmNode node) throws SaxonApiException, XPathException {
+        // If the images is embedded, use this.
+        byte[] mapImageByteArray = null;
+        Iterator<XdmNode> it = node.children("Image").iterator();
+        while(it.hasNext()) {
+            XdmNode imageNode = (XdmNode) it.next();
+            XdmValue mapImageXdmValue = imageNode.getTypedValue();
+            mapImageByteArray = Base64.getDecoder().decode(mapImageXdmValue.getUnderlyingValue().getStringValue());
+            break;
+        }
+        
+        // Only get the image by a wms request if it was not embedded.
+        if (mapImageByteArray == null) {
+            it = node.children("ReferenceWMS").iterator();
+            while(it.hasNext()) {
+                XdmNode imageNode = (XdmNode) it.next();
+                XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
+                try {
+                    mapImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.getMessage());
+                    throw new SaxonApiException(e.getMessage());
+                }
+                break;
+            }
+        }
+        return mapImageByteArray;
+	}
+	
     /*
      * Calculates the Bounding Box of the map image from the extract.
      * This is needed to georeference the new highlighting image.

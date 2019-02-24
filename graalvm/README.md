@@ -1,0 +1,7 @@
+$GRAALVM_HOME/bin/native-image --verbose --delay-class-initialization-to-runtime=com.sun.media.jai.tilecodec.JPEGTileEncoder,com.sun.media.jai.codecimpl.JPEGImage,com.sun.media.imageioimpl.plugins.tiff.TIFFCodecLibFaxDecompressor,org.geotools.util.WeakValueHashMap,org.geotools.referencing.NamedIdentifier,org.geotools.parameter.MatrixParameterDescriptors,org.geotools.parameter.DefaultParameterDescriptor,org.geotools.referencing.crs.DefaultGeographicCRS,org.geotools.referencing.datum.DefaultGeodeticDatum,org.geotools.referencing.datum.DefaultPrimeMeridian,org.geotools.referencing.cs.DefaultCoordinateSystemAxis,org.geotools.referencing.cs.DefaultCoordinateSystemAxis,org.geotools.referencing.cs.DefaultEllipsoidalCS --report-unsupported-elements-at-runtime --allow-incomplete-classpath -H:-UseServiceLoaderFeature -H:+ReportExceptionStackTraces --no-server -cp "lib/*" ch.so.agi.oereb.pdf4oereb.Main
+
+$GRAALVM_HOME/bin/native-image --verbose --report-unsupported-elements-at-runtime --allow-incomplete-classpath -H:-UseServiceLoaderFeature -H:+ReportExceptionStackTraces --no-server -cp "lib/*" ch.so.agi.oereb.pdf4oereb.Main
+
+
+org.apache.http.ssl.SSLInitializationException: TLS SSLContext not available
+-> security.provider.3=sun.security.ec.SunEC wieder entkommentiert.

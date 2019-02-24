@@ -7,14 +7,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.Security;
 
 import javax.imageio.ImageIO;
+import javax.net.ssl.SSLContext;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
+import org.apache.http.ssl.SSLContextBuilder;
+//import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class WebMapService {
 	public static byte[] getMap(String request) throws Exception {
@@ -22,7 +27,14 @@ public class WebMapService {
 		try {
 			decodedRequest = java.net.URLDecoder.decode(request, "UTF-8");
 			
+//			Security.addProvider(new BouncyCastleProvider());
+			
+			SSLContext sslContext = new SSLContextBuilder()
+			        .loadTrustMaterial(null, (certificate, authType) -> true).build();
+			   
 			CloseableHttpClient httpclient = HttpClients.custom()
+			        .setSSLContext(sslContext)
+			        .setSSLHostnameVerifier(new NoopHostnameVerifier())
 					.setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods 
 					.build();
 			
@@ -31,7 +43,7 @@ public class WebMapService {
 			InputStream inputStream = response.getEntity().getContent();
 			BufferedImage image = ImageIO.read(inputStream);
 
-			// FOP is picky when it comes to 8bit png images.
+			// Apache FOP is picky when it comes to 8bit png images.
 			// Convert them to 24bit.
             BufferedImage fixedImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_4BYTE_ABGR_PRE);
             

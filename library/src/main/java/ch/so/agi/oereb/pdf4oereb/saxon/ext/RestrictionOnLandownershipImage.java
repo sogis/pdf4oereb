@@ -4,17 +4,13 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Composite;
-import org.geotools.renderer.composite.BlendComposite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -200,7 +196,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
 			BufferedImage backgroundImageBufferedImage = ImageIO.read(backgroundImageInputStream);
 			
 			// if we want to use faaaancy blending modes
-			//g.setComposite(BlendComposite.MULTIPLY_COMPOSITE);
+			//g.setComposite(BlendComposite.MULTIPLY_COMPOSITE); // still possible without geotools?
 	        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 			g.drawImage(backgroundImageBufferedImage, 0, 0, null);
 		} catch (IOException | XPathException e) {

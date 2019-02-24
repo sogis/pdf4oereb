@@ -3,15 +3,10 @@ package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.util.Base64;
 
-import javax.imageio.ImageIO;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.jupiter.api.Tag;
