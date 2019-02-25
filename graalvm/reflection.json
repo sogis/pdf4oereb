@@ -1,0 +1,139 @@
+[
+    {
+      "name" : "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        { "name": "<init>", "parameterTypes": [] }
+      ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.String_1",
+        "methods": [
+          { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.Tokenize_1",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.DocumentFn",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.FormatNumber",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.FormatDate",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.Number_1",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.CurrentGroup",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.NotFn",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.PositionAndLast",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.PositionAndLast$Position",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.Sum",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.NormalizeSpace_1",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.StartsWith",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.ContextItemAccessorFunction",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.GenerateId_1",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.StringJoin",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.Exists",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.Empty",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "net.sf.saxon.functions.BooleanFn",
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "org.apache.commons.logging.impl.LogFactoryImpl",
+        "allDeclaredConstructors" : true,
+        "allPublicConstructors" : true,
+        "allDeclaredMethods" : true,
+        "allPublicMethods" : true,
+        "methods": [
+            { "name": "<init>", "parameterTypes": [] }
+        ]
+    },
+    {
+        "name" : "org.apache.commons.logging.impl.SimpleLog",
+        "allDeclaredConstructors" : true,
+        "allPublicConstructors" : true,
+        "allDeclaredMethods" : true,
+        "allPublicMethods" : true
+    }
+  ]

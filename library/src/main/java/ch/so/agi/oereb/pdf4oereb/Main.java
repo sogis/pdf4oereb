@@ -1,7 +1,6 @@
 package ch.so.agi.oereb.pdf4oereb;
 
 import java.io.File;
-import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +71,7 @@ public class Main {
                 if (xsltFileName != null) {
                   file = converter.runXml2Pdf(xmlFileName, xsltFileName, outputDirectory, locale);
               } else {
+                  log.info("0");
                   file = converter.runXml2Pdf(xmlFileName, outputDirectory, locale);
               }
             }  
@@ -81,5 +81,5 @@ public class Main {
             log.error(e.getMessage());
             System.exit(3);
         }  
-    }
+    }  
 }

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,12 +14,24 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.logging.impl.SimpleLog;
+import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.FopFactoryBuilder;
 import org.apache.fop.apps.MimeConstants;
+import org.apache.fop.fo.FOEventHandler;
+import org.apache.fop.render.Renderer;
+import org.apache.fop.render.RendererFactory;
+import org.apache.fop.render.intermediate.IFContext;
+import org.apache.fop.render.intermediate.IFDocumentHandler;
+import org.apache.fop.render.pdf.PDFDocumentHandler;
+import org.apache.fop.render.pdf.PDFRendererConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -203,7 +216,6 @@ public class Converter {
         	Path outputPath = Paths.get(outputDirectory);
           
         	String baseFileName = FilenameUtils.getBaseName(xmlFileName);
-        	File foFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".fo").toFile().getAbsolutePath());
         	File pdfFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), baseFileName + ".pdf").toFile().getAbsolutePath());
 
         	// copy fop.xconf file from resources into temporary directory
@@ -250,14 +262,23 @@ public class Converter {
             } else if (locale == Locale.IT) {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
             } else {
-                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
             }
 
-        	// the fop part
+        	// the fop part                        
             FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
+            
+            FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+            foUserAgent.setPdfUAEnabled(true);
+            
             OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
-
+            IFDocumentHandler handler = new PDFDocumentHandler(new IFContext(foUserAgent));
+            StreamResult streamResult =  new StreamResult();
+            streamResult.setSystemId("/Users/stefan/tmp/fubar2.pdf");
+            handler.setResult(streamResult);
+            foUserAgent.setDocumentHandlerOverride(handler);
+            Fop fop = fopFactory.newFop(foUserAgent);
+           
             trans.setDestination(new SAXDestination(fop.getDefaultHandler()));
             trans.transform();
             outPdf.close();
@@ -272,13 +293,14 @@ public class Converter {
         }
     }
     
-    public File runXml2Pdf(String xmlFileName, String outputDirectory, Locale locale) throws ConverterException {
+    public File runXml2Pdf(String xmlFileName, String outputDirectory, Locale locale) throws ConverterException {        
         try {
         	Path outputPath = Paths.get(outputDirectory);
             
             // copy xslt file from resources into temporary directory
             File xsltFile = new File(Paths.get(outputPath.toFile().getAbsolutePath(), xsltPdfFileName).toFile().getAbsolutePath());
             InputStream xsltFileInputStream = Converter.class.getResourceAsStream("/"+xsltPdfFileName); 
+            log.info(xsltFileInputStream.toString());
             Files.copy(xsltFileInputStream, xsltFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             xsltFileInputStream.close();
             log.info("xsltFile: " + xsltFile.getAbsolutePath());
@@ -286,6 +308,7 @@ public class Converter {
             File pdfFile = this.runXml2Pdf(xmlFileName, xsltFile.getAbsolutePath(), outputDirectory, locale);
             return pdfFile;
         } catch (IOException e) {
+            // TODO: Falls xsltFileInputStream==null wird ausser "null" (in Main.java) nichts gemeldet.
             log.error(e.getMessage());
             e.printStackTrace();
             throw new ConverterException(e.getMessage());

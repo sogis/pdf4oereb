@@ -6,12 +6,13 @@ plugins {
 apply plugin: 'maven-publish'
 
 dependencies {
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'commons-io:commons-io:2.6'
     implementation 'net.sf.saxon:Saxon-HE:9.9.0-2'
     implementation 'org.apache.xmlgraphics:fop:2.3'
-    implementation 'net.sf.offo:fop-hyph:2.0' 
+    //implementation 'net.sf.offo:fop-hyph:2.0' 
     implementation 'org.apache.httpcomponents:httpclient:4.5.6'
     implementation 'org.locationtech.jts:jts-core:1.16.0'
     //implementation 'org.bouncycastle:bcprov-jdk15on:1.61'
