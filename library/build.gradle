@@ -33,6 +33,10 @@ distZip {
     archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
 }
 
+distTar {
+    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.tar'
+}
+
 application {
     mainClassName = "ch.so.agi.oereb.pdf4oereb.Main"
 }
@@ -49,9 +53,8 @@ run {
     //args = ["-i", "src/test/data/nw/CH907705273474.xml", "-o", "/Users/stefan/tmp/"]
 }
 
-jar {
-    baseName = rootProject.name
-}
+archivesBaseName = rootProject.name
+
 
 task customFatJar(type: Jar) {
     description = "Creates an executable fat jar."
