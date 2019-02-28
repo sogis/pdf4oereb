@@ -35,7 +35,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
     runtime("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     runtime("org.springframework.boot:spring-boot-actuator:${springBootVersion}")
-    implementation 'net.sf.saxon:Saxon-HE:9.9.0-2' // TODO: Get rid of it. Create custom exception.
     implementation("org.webjars:materializecss:0.100.2")
     implementation("org.webjars:jquery:2.2.4")
     implementation("commons-io:commons-io:2.6")

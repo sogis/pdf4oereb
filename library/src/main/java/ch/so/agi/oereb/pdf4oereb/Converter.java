@@ -30,7 +30,6 @@ import ch.so.agi.oereb.pdf4oereb.saxon.ext.URLDecoder;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SAXDestination;
-import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.Serializer;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
@@ -63,7 +62,7 @@ public class Converter {
         locales.add("Resources.it.resx");
     }
     
-    public File runXml2Html(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Html(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
             Path outputPath = Paths.get(outputDirectory);
             String baseFileName = FilenameUtils.getBaseName(xmlFileName);
@@ -107,11 +106,11 @@ public class Converter {
         } catch (Exception e) {
             log.error(e.getMessage());
             e.printStackTrace();
-            throw new SaxonApiException(e.getMessage());
+            throw new ConverterException(e.getMessage());
         }            
     }
     
-    public File runXml2Html(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Html(String xmlFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
             Path outputPath = Paths.get(outputDirectory);
             
@@ -126,11 +125,11 @@ public class Converter {
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
-            throw new SaxonApiException(e.getMessage());
+            throw new ConverterException(e.getMessage());
         } 
     }
     
-    public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
 
@@ -176,11 +175,11 @@ public class Converter {
         } catch (Exception e) {
         	log.error(e.getMessage());
         	e.printStackTrace();
-        	throw new SaxonApiException(e.getMessage());
+        	throw new ConverterException(e.getMessage());
         }
     }
     
-    public File runXml2Fo(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Fo(String xmlFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
             
@@ -195,11 +194,11 @@ public class Converter {
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
-            throw new SaxonApiException(e.getMessage());
+            throw new ConverterException(e.getMessage());
         } 
     }
 
-    public File runXml2Pdf(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Pdf(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
           
@@ -269,11 +268,11 @@ public class Converter {
         } catch (Exception e) {
         	log.error(e.getMessage());
         	e.printStackTrace();
-        	throw new SaxonApiException(e.getMessage());
+        	throw new ConverterException(e.getMessage());
         }
     }
     
-    public File runXml2Pdf(String xmlFileName, String outputDirectory, Locale locale) throws SaxonApiException {
+    public File runXml2Pdf(String xmlFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
         	Path outputPath = Paths.get(outputDirectory);
             
@@ -289,7 +288,7 @@ public class Converter {
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
-            throw new SaxonApiException(e.getMessage());
+            throw new ConverterException(e.getMessage());
         } 
     }
 }
