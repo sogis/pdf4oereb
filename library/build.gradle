@@ -17,7 +17,6 @@ dependencies {
     implementation 'org.geotools:gt-main:20.1'
     implementation 'org.geotools:gt-render:20.1'
     implementation 'org.geotools:gt-epsg-hsql:20.1'
-    implementation 'info.picocli:picocli:3.8.2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testImplementation 'org.junit-pioneer:junit-pioneer:0.3.0'
@@ -45,7 +44,7 @@ run {
     //args = ["--html", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["-i", "src/test/data/bl/CH567107399166_geometry_images.xml", "-o", "/Users/stefan/tmp/"]
-    args = ["-i", "src/test/data/bl/CH567107399166_subtheme.xml", "-o", "/Users/stefan/tmp/"]
+    args = ["--xml", "src/test/data/bl/CH567107399166_geometry_images.xml", "--out", "/Users/stefan/tmp/", "--lang", "fr"]
     //args = ["--html", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["--fo", "-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
     //args = ["-i", "src/test/data/zh/CH282399917939_geometry_wms.xml", "-o", "/Users/stefan/tmp/"]
@@ -54,7 +53,6 @@ run {
 }
 
 archivesBaseName = rootProject.name
-
 
 task customFatJar(type: Jar) {
     description = "Creates an executable fat jar."
