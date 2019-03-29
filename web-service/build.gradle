@@ -70,8 +70,10 @@ task buildDockerImage(type: DockerBuildImage) {
     description = "Build docker image."
     inputDir = project.projectDir
     tags = ["sogis/pdf4oereb-web-service:"+ project.version.toString(), "sogis/pdf4oereb-web-service:latest"]
+    labels = ["pdf4oereb.created": new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), 
+            "pdf4oereb.git_commit": getCheckedOutGitCommitHash(), 
+            "pdf4oereb.travis_build": project.version.toString()]    
 }
-
 
 task pushDockerImage_One(dependsOn: 'buildDockerImage', type: DockerPushImage) {
     description = "Push docker image to hub.docker.com (images are UNTESTED)."
@@ -90,3 +92,10 @@ task pushDockerImages() {
 pushDockerImages.dependsOn {
     tasks.findAll { task -> task.name.startsWith('pushDockerImage_') }
 }
+
+import java.text.SimpleDateFormat
+
+def getCheckedOutGitCommitHash() {
+    'git log -1 --pretty=%H'.execute().text.trim()
+}
+
