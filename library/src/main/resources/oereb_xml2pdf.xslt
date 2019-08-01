@@ -781,38 +781,42 @@
   <!-- Template for pdf restriction on landownership pages aka "the real thing". Sorting is bit of a hack. Perhaps this whole TOC thing can -->
   <!-- be made much simpler with a better apply-templates strategy.-->
   <xsl:template match="data:RealEstate" mode="sheet">
-    <fo:page-sequence master-reference="mainPage" id="page-sequence-id">
-      <xsl:call-template name="insertHeaderAndFooter"/>
-      <fo:flow flow-name="xsl-region-body">
-        <fo:block>
-            <!-- Group by "Code". You cannot use e.g. "LandUsePlans" for different things. In this case you need to make use of a subtheme. -->
-            <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
-            <xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
-              <xsl:if test="current-group()/data:SubTheme">
-                 <xsl:for-each-group select="current-group()" group-by="data:SubTheme">
-                    <xsl:sort data-type="text" order="ascending" select="data:SubTheme"/>
-	                <fo:block-container height="19mm" background-color="transparent">
-	                    <fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:SubTheme"/> (<xsl:value-of select="data:Theme/data:Text/data:Text"/>)</fo:block>
-	                </fo:block-container>   
-                    <xsl:call-template name="handleRestrictionOnLandownership"/>         
-                 </xsl:for-each-group>
-              </xsl:if>
-              <xsl:if test="not(current-group()/data:SubTheme)">
-                <fo:block-container height="19mm" background-color="transparent">
-                    <fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
-                </fo:block-container>     
-                <xsl:call-template name="handleRestrictionOnLandownership"/>
-              </xsl:if>
-            </xsl:for-each-group>
-        </fo:block>
-      </fo:flow>
-    </fo:page-sequence>
+	<xsl:if test="(../data:ConcernedTheme)">
+		<fo:page-sequence master-reference="mainPage" id="page-sequence-id">
+		<xsl:call-template name="insertHeaderAndFooter"/>
+		<fo:flow flow-name="xsl-region-body">
+			<fo:block>
+				<!-- Group by "Code". You cannot use e.g. "LandUsePlans" for different things. In this case you need to make use of a subtheme. -->
+				<xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
+				<xsl:sort data-type="number" order="ascending" select="(number(starts-with(data:Theme/data:Code, 'ch')) * 0.9) + (number(data:Theme/data:Code='LandUsePlans') * 1) + (number(data:Theme/data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Theme/data:Code='MotorwaysBuildingLines') * 3) + (number(data:Theme/data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Theme/data:Code='RailwaysBuildingLines') * 5) + (number(data:Theme/data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Theme/data:Code='AirportsBuildingLines') * 7) + (number(data:Theme/data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Theme/data:Code='ContaminatedSites') * 9) + (number(data:Theme/data:Code='ContaminatedMilitarySites') * 10) + (number(data:Theme/data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Theme/data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Theme/data:Code='GroundwaterProtectionZones') * 13) + (number(data:Theme/data:Code='GroundwaterProtectionSites') * 14) + (number(data:Theme/data:Code='NoiseSensitivityLevels') * 15) + (number(data:Theme/data:Code='ForestPerimeters') * 16) + (number(data:Theme/data:Code='ForestDistanceLines') * 17)"/>
+				<xsl:if test="current-group()/data:SubTheme">
+					<xsl:for-each-group select="current-group()" group-by="data:SubTheme">
+						<xsl:sort data-type="text" order="ascending" select="data:SubTheme"/>
+						<fo:block-container height="19mm" background-color="transparent">
+							<fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:SubTheme"/> (<xsl:value-of select="data:Theme/data:Text/data:Text"/>)</fo:block>
+						</fo:block-container>   
+						<xsl:call-template name="handleRestrictionOnLandownership"/>         
+					</xsl:for-each-group>
+				</xsl:if>
+				<xsl:if test="not(current-group()/data:SubTheme)">
+					<fo:block-container height="19mm" background-color="transparent">
+						<fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
+					</fo:block-container>     
+					<xsl:call-template name="handleRestrictionOnLandownership"/>
+				</xsl:if>
+				</xsl:for-each-group>
+			</fo:block>
+		</fo:flow>
+		</fo:page-sequence>
+	</xsl:if>		
   </xsl:template>
 
   <!-- Template for the table of contents. Sorting is bit of a hack. Perhaps this whole TOC thing can -->
   <!-- be made much simpler with better apply-templates strategy.-->
   <xsl:template match="data:RealEstate" mode="toc">
     <fo:block-container margin-bottom="10mm" font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
+	<xsl:choose>
+	<xsl:when test="(../data:ConcernedTheme)">
       <fo:table table-layout="fixed" width="100%">
         <fo:table-column column-width="7mm"/>
         <fo:table-column column-width="167mm"/>
@@ -869,6 +873,11 @@
           </xsl:for-each-group>
         </fo:table-body>
       </fo:table>
+	  </xsl:when>
+	  <xsl:otherwise>
+		<fo:block margin-top="1mm" margin-bottom="2.8mm" font-weight="400" font-size="6.5pt">&#x2013;</fo:block>
+	  </xsl:otherwise>
+	</xsl:choose>
     </fo:block-container>
   </xsl:template>
 
