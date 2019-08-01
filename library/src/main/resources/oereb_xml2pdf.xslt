@@ -152,18 +152,29 @@
             </fo:block-container>
 
             <fo:block-container margin-bottom="10mm" font-weight="400" font-size="8.5pt" line-height="11.5pt" font-family="Cadastra" background-color="transparent">
-              <fo:table table-layout="fixed" width="100%">
-                <fo:table-body>
-                  <xsl:for-each select="data:NotConcernedTheme">
-                    <xsl:sort data-type="number" order="ascending" select="(number(data:Code='LandUsePlans') * 1) + (number(data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Code='MotorwaysBuildingLines') * 3) + (number(data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Code='RailwaysBuildingLines') * 5) + (number(data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Code='AirportsBuildingLines') * 7) + (number(data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Code='ContaminatedSites') * 9) + (number(data:Code='ContaminatedMilitarySites') * 10) + (number(data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Code='GroundwaterProtectionZones') * 13) + (number(data:Code='GroundwaterProtectionSites') * 14) + (number(data:Code='NoiseSensitivityLevels') * 15) + (number(data:Code='ForestPerimeters') * 16) + (number(data:Code='ForestDistanceLines') * 17)"/>
-                    <fo:table-row vertical-align="middle">
-                      <fo:table-cell>
-                        <fo:block><xsl:value-of select="data:Text/data:Text"/></fo:block>
-                      </fo:table-cell>
-                    </fo:table-row>
-                  </xsl:for-each>
-                </fo:table-body>
-              </fo:table>
+				<fo:table table-layout="fixed" width="100%">
+					<fo:table-body>
+						<xsl:choose>					
+							<xsl:when test="data:NotConcernedTheme">
+								<xsl:for-each select="data:NotConcernedTheme">
+									<xsl:sort data-type="number" order="ascending" select="(number(data:Code='LandUsePlans') * 1) + (number(data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Code='MotorwaysBuildingLines') * 3) + (number(data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Code='RailwaysBuildingLines') * 5) + (number(data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Code='AirportsBuildingLines') * 7) + (number(data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Code='ContaminatedSites') * 9) + (number(data:Code='ContaminatedMilitarySites') * 10) + (number(data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Code='GroundwaterProtectionZones') * 13) + (number(data:Code='GroundwaterProtectionSites') * 14) + (number(data:Code='NoiseSensitivityLevels') * 15) + (number(data:Code='ForestPerimeters') * 16) + (number(data:Code='ForestDistanceLines') * 17)"/>
+									<fo:table-row vertical-align="middle">
+									<fo:table-cell>
+										<fo:block><xsl:value-of select="data:Text/data:Text"/></fo:block>
+									</fo:table-cell>
+									</fo:table-row>
+								</xsl:for-each>
+							</xsl:when>
+							<xsl:otherwise>
+								<fo:table-row vertical-align="middle">
+								<fo:table-cell>
+									<fo:block>&#x2013;</fo:block>
+								</fo:table-cell>
+								</fo:table-row>
+							</xsl:otherwise>
+						</xsl:choose>					
+					</fo:table-body>
+				</fo:table>
             </fo:block-container>
 
           <fo:block-container background-color="transparent">
@@ -180,14 +191,25 @@
             <fo:block-container margin-bottom="10mm" font-weight="400" font-size="8.5pt" line-height="11.5pt" font-family="Cadastra" background-color="transparent">
               <fo:table table-layout="fixed" width="100%">
                 <fo:table-body>
-                  <xsl:for-each select="data:ThemeWithoutData">
-                    <xsl:sort data-type="number" order="ascending" select="(number(data:Code='LandUsePlans') * 1) + (number(data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Code='MotorwaysBuildingLines') * 3) + (number(data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Code='RailwaysBuildingLines') * 5) + (number(data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Code='AirportsBuildingLines') * 7) + (number(data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Code='ContaminatedSites') * 9) + (number(data:Code='ContaminatedMilitarySites') * 10) + (number(data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Code='GroundwaterProtectionZones') * 13) + (number(data:Code='GroundwaterProtectionSites') * 14) + (number(data:Code='NoiseSensitivityLevels') * 15) + (number(data:Code='ForestPerimeters') * 16) + (number(data:Code='ForestDistanceLines') * 17)"/>
-                    <fo:table-row vertical-align="middle">
-                      <fo:table-cell>
-                        <fo:block><xsl:value-of select="data:Text/data:Text"/></fo:block>
-                      </fo:table-cell>
-                    </fo:table-row>
-                  </xsl:for-each>
+					<xsl:choose>					
+						<xsl:when test="data:ThemeWithoutData">
+							<xsl:for-each select="data:ThemeWithoutData">
+								<xsl:sort data-type="number" order="ascending" select="(number(data:Code='LandUsePlans') * 1) + (number(data:Code='MotorwaysProjectPlaningZones') * 2) + (number(data:Code='MotorwaysBuildingLines') * 3) + (number(data:Code='RailwaysProjectPlanningZones') * 4) + (number(data:Code='RailwaysBuildingLines') * 5) + (number(data:Code='AirportsProjectPlanningZones') * 6) + (number(data:Code='AirportsBuildingLines') * 7) + (number(data:Code='AirportsSecurityZonePlans') * 8) + (number(data:Code='ContaminatedSites') * 9) + (number(data:Code='ContaminatedMilitarySites') * 10) + (number(data:Code='ContaminatedCivilAviationSites') * 11) + (number(data:Code='ContaminatedPublicTransportSites') * 12) + (number(data:Code='GroundwaterProtectionZones') * 13) + (number(data:Code='GroundwaterProtectionSites') * 14) + (number(data:Code='NoiseSensitivityLevels') * 15) + (number(data:Code='ForestPerimeters') * 16) + (number(data:Code='ForestDistanceLines') * 17)"/>
+								<fo:table-row vertical-align="middle">
+								<fo:table-cell>
+									<fo:block><xsl:value-of select="data:Text/data:Text"/></fo:block>
+								</fo:table-cell>
+								</fo:table-row>
+							</xsl:for-each>
+						</xsl:when>
+						<xsl:otherwise>
+							<fo:table-row vertical-align="middle">
+							<fo:table-cell>
+								<fo:block>&#x2013;</fo:block>
+							</fo:table-cell>
+							</fo:table-row>
+						</xsl:otherwise>
+					</xsl:choose>					
                 </fo:table-body>
               </fo:table>
             </fo:block-container>

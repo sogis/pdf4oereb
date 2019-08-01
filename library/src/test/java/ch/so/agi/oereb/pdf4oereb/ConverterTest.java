@@ -44,6 +44,19 @@ public class ConverterTest {
     }
     
     @Test
+    @ExtendWith(TempDirectory.class)
+    public void convertXml2_CantonBl_NoNotConcernedThemes_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
+        Converter converter = new Converter();
+        File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_no_not_concerned_themes.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
+//        File resultFile = converter.runXml2Pdf("src/test/data/bl/CH567107399166_no_not_concerned_themes.xml", "/Users/stefan/tmp/", Locale.DE);
+        byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
+                
+        int resultSize = resultFileContent.length;
+
+        assertTrue(resultSize > 550000, "Size of resulting pdf is too small.");        
+    }
+    
+    @Test
     @Tag("wms")
     @ExtendWith(TempDirectory.class)
     public void convertXml1_CantonZh_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
