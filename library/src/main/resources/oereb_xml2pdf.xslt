@@ -347,7 +347,7 @@
 	          </fo:table-cell>
 	          <fo:table-cell text-align="right">
 	            <fo:block font-size="6.5pt">
-	              <xsl:value-of select="$localeXml/data[@name='RestrictionPage.PartInPercent']/value/text()"/>
+	              <xsl:value-of select="$localeXml/data[@name='RestrictionPage.PartInPercent']/value/text()"/>  
 	            </fo:block>
 	          </fo:table-cell>
 	        </fo:table-row>
@@ -397,10 +397,26 @@
 	            </fo:table-cell>
 	            <fo:table-cell text-align="right">
 	              <xsl:if test="data:AreaShare">
-	                <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:AreaShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m<fo:inline baseline-shift="super" font-size="60%">2</fo:inline></fo:block>
+	                <fo:block line-height-shift-adjustment="disregard-shifts">
+	                    <xsl:choose>
+	                      <xsl:when test="sum(current-group()/data:AreaShare) &lt; 0.1"><xsl:text>&lt; 0.1</xsl:text></xsl:when>
+	                      <xsl:otherwise>
+	                        <xsl:value-of select="format-number(sum(current-group()/data:AreaShare), &quot;#'###&quot;, &quot;swiss&quot;)"/>
+	                      </xsl:otherwise>
+	                    </xsl:choose>
+                        <xsl:text> m</xsl:text> <fo:inline baseline-shift="super" font-size="60%">2</fo:inline>
+	                </fo:block>
 	              </xsl:if>
 	              <xsl:if test="data:LengthShare">
-	                <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(sum(current-group()/data:LengthShare), &quot;#'###&quot;, &quot;swiss&quot;)"/> m</fo:block>
+	                <fo:block line-height-shift-adjustment="disregard-shifts">
+                        <xsl:choose>
+                          <xsl:when test="sum(current-group()/data:LengthShare) &lt; 0.1"><xsl:text>&lt; 0.1</xsl:text></xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="format-number(sum(current-group()/data:LengthShare), &quot;#'###&quot;, &quot;swiss&quot;)"/>
+                          </xsl:otherwise>
+                        </xsl:choose>	                   
+	                   <xsl:text> m</xsl:text>
+	                </fo:block>
 	              </xsl:if>
 	              <xsl:if test="data:NrOfPoints">
 	                <fo:block line-height-shift-adjustment="disregard-shifts">
@@ -411,7 +427,15 @@
 	            </fo:table-cell>
 	            <fo:table-cell text-align="right">
 	              <xsl:if test="data:PartInPercent">
-	                <fo:block><xsl:value-of select="format-number(sum(current-group()/data:PartInPercent), &quot;#'###.#&quot;, &quot;swiss&quot;)"/>%</fo:block>
+	                <fo:block>
+                        <xsl:choose>
+                          <xsl:when test="sum(current-group()/data:PartInPercent) &lt; 0.1"><xsl:text>&lt; 0.1</xsl:text></xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="format-number(sum(current-group()/data:PartInPercent), &quot;#'###&quot;, &quot;swiss&quot;)"/>
+                          </xsl:otherwise>
+                        </xsl:choose>                      
+                       <xsl:text>%</xsl:text>	                   
+	                </fo:block>
 	              </xsl:if>
 	              <fo:block/>
 	            </fo:table-cell>
