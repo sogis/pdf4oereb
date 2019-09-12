@@ -40,6 +40,12 @@ public class URLDecoder implements ExtensionFunction {
 		XdmNode urlNode = (XdmNode) arguments[0];
 		try {
 			String decodedUrl = java.net.URLDecoder.decode(urlNode.getStringValue().trim(), "UTF-8"); // trim fixes some illegal character execption
+			
+			// Some strange (?) corner case:
+			if (decodedUrl.contains(" ")) {
+			    decodedUrl = decodedUrl.replace(" ", "%20");
+			}
+			
 			URI resultUri = new URI(decodedUrl);
 	        return new XdmAtomicValue(resultUri);
 		} catch (UnsupportedEncodingException | URISyntaxException e) {

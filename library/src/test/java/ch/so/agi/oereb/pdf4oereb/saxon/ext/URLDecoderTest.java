@@ -39,4 +39,22 @@ public class URLDecoderTest {
 		
     	assertEquals(expectedURL, decodedURL.getStringValue(), "URL is not decoded correctly.");        
 	}
+	
+	@Test
+	public void decodeUndecodedUrlWithWhitespace_Ok() throws SaxonApiException {
+        Processor processor = new Processor(false);
+
+        Orphan node = new Orphan(processor.getUnderlyingConfiguration());
+        node.setNodeKind(Type.TEXT);
+        node.setStringValue("https://geo.so.ch/docs/ch.so.arp.zonenplaene/Zonenplaene_pdf/123-Breitenbach/Entscheide/123-103-106-108%20A-H-E.pdf");
+        XdmNode textNode = new XdmNode(node);
+        
+        XdmNode[] arguments = {textNode};
+        URLDecoder decoder = new URLDecoder();
+        XdmAtomicValue decodedURL = (XdmAtomicValue) decoder.call(arguments);
+
+        String expectedURL = "https://geo.so.ch/docs/ch.so.arp.zonenplaene/Zonenplaene_pdf/123-Breitenbach/Entscheide/123-103-106-108%20A-H-E.pdf";
+
+        assertEquals(expectedURL, decodedURL.getStringValue());        
+	}
 }
