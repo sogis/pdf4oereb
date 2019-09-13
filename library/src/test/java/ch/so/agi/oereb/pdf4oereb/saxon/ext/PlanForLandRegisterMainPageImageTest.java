@@ -76,7 +76,7 @@ public class PlanForLandRegisterMainPageImageTest {
         // We cannot compare the file as we would do with embedded images since
         // the content of the wms getmap request can change from time to time.
         int resultSize = base64String.length();
-        
+                
         assertTrue(resultSize > 120000, "Size of resulting image is too small.");        
     }
 }
