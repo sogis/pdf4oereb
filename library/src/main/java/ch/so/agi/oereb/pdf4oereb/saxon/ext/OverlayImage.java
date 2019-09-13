@@ -76,7 +76,7 @@ public class OverlayImage implements ExtensionFunction {
     }
     
     /**
-     * Returns a base64 string as XdmValue of the overlay image (parcel, north arrow 
+     * Returns a base64 string as XdmValue of the overlay image (parcel highlighting, north arrow 
      * and scale bar) which will be used for title page and the following restriction
      * on landownership pages.
      * 

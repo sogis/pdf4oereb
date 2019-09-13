@@ -245,10 +245,17 @@
 	                        <fo:table-body>
 	                          <fo:table-row vertical-align="top">
 	                            <fo:table-cell padding-right="1.5mm">
-	                              <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='ContentPage.GeneralInformation']/value/text()"/></fo:block>
-	                              <fo:block><xsl:value-of select="data:GeneralInformation/data:LocalisedText/data:Text"/></fo:block>
+	                              <fo:block font-weight="700">
+	                                   <xsl:value-of select="$localeXml/data[@name='ContentPage.GeneralInformation']/value/text()"/>
+	                              </fo:block>
+	                              <fo:block>
+	                                   <!-- <xsl:value-of select="data:GeneralInformation/data:LocalisedText/data:Text"/> -->
+                                        <xsl:apply-templates select="data:GeneralInformation/data:LocalisedText/data:Text"/>	                                   
+	                              </fo:block>
 	                              <fo:block margin-top="2.2mm" font-weight="700"><xsl:value-of select="$localeXml/data[@name='ContentPage.BaseData']/value/text()"/></fo:block>
-	                              <fo:block><xsl:value-of select="data:BaseData/data:LocalisedText/data:Text"/></fo:block>
+	                              <fo:block>
+	                                   <xsl:value-of select="data:BaseData/data:LocalisedText/data:Text"/>
+	                              </fo:block>
 	                            </fo:table-cell>
 	                            <fo:table-cell padding-left="1.5mm">
 	                              <fo:block/>
@@ -1081,4 +1088,18 @@
     </fo:page-sequence>
   </xsl:template>
 
+<!--
+    <xsl:template match="data:GeneralInformation/data:LocalisedText/data:Text">
+        <xsl:apply-templates/>
+    </xsl:template>
+
+    <xsl:template match="link">
+        <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+            <xsl:attribute name="external-destination">
+                <xsl:apply-templates/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </fo:basic-link>
+    </xsl:template>
+-->    
 </xsl:stylesheet>

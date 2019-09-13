@@ -82,7 +82,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
             
             BufferedImage layerImage =  null;
             int layerIndex = 0;
-            Double layerOpacity = 1.0;
+            Double layerOpacity = 0.6;
             
             // grap the images
             // embedded
@@ -137,35 +137,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
             mapImageList.add(mapImage);
         }
         
-        // sort list of images according their layer index value
-        mapImageList.sort(Comparator.comparing(MapImage::getLayerIndex));
-        
-        // merge the images
-        BufferedImage newImage = null;
-        Graphics2D g = null;
-
-        for(MapImage mapImage : mapImageList) {
-            BufferedImage imageBufferedImage = mapImage.getLayerImage();
-            
-            int imageWidthPx = imageBufferedImage.getWidth();
-            int imageHeightPx = imageBufferedImage.getHeight();
-            
-            if (newImage == null) {
-//              newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
-                // PDF/A-1 does not support transparency.
-                newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_INT_RGB);
-
-                g = (Graphics2D) newImage.getGraphics();
-                g.setBackground(Color.WHITE);
-                g.clearRect(0, 0, imageWidthPx, imageHeightPx);
-            }
-            // TODO! Remember!!!
-//          g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
-            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-            g.drawImage(imageBufferedImage, 0, 0, null);
-        }
-        
-        // merge background image
+        // PlanForLandRegister
         try {
             byte[] backgroundImageByteArray = null;
             Iterator<XdmNode> lt = backgroundMapNode.children("Image").iterator();
@@ -195,15 +167,56 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
             InputStream backgroundImageInputStream = new ByteArrayInputStream(backgroundImageByteArray);
             BufferedImage backgroundImageBufferedImage = ImageIO.read(backgroundImageInputStream);
             
-            // if we want to use faaaancy blending modes
-            //g.setComposite(BlendComposite.MULTIPLY_COMPOSITE); // still possible without geotools?
-            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-            g.drawImage(backgroundImageBufferedImage, 0, 0, null);
+            // grap opacity and index value of image
+            int layerIndex = 0;
+            Double layerOpacity = 0.6;
+
+            Iterator<XdmNode> lm = backgroundMapNode.children("layerOpacity").iterator();
+            while(lm.hasNext()) {
+                XdmNode layerOpacityNode = lm.next();
+                layerOpacity = Double.valueOf(layerOpacityNode.getUnderlyingNode().getStringValue());
+            }
+
+            Iterator<XdmNode> kt = backgroundMapNode.children("layerIndex").iterator();
+            while(kt.hasNext()) {
+                XdmNode layerIndexNode = kt.next();
+                layerIndex = Integer.valueOf(layerIndexNode.getUnderlyingNode().getStringValue());
+            }
+
+            MapImage mapImage = new MapImage(layerIndex, layerOpacity, backgroundImageBufferedImage);
+            mapImageList.add(mapImage);
         } catch (IOException | XPathException e) {
             e.printStackTrace();
             throw new SaxonApiException(e.getMessage());
         } 
+        
+        // sort list of images according their layer index value
+        mapImageList.sort(Comparator.comparing(MapImage::getLayerIndex));
+        
+        // merge the images
+        BufferedImage newImage = null;
+        Graphics2D g = null;
 
+        for(MapImage mapImage : mapImageList) {
+            BufferedImage imageBufferedImage = mapImage.getLayerImage();
+            
+            int imageWidthPx = imageBufferedImage.getWidth();
+            int imageHeightPx = imageBufferedImage.getHeight();
+            
+            if (newImage == null) {
+//              newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+                // PDF/A-1 does not support transparency.
+                newImage = new BufferedImage(imageWidthPx, imageHeightPx, BufferedImage.TYPE_INT_RGB);
+
+                g = (Graphics2D) newImage.getGraphics();
+                g.setBackground(Color.WHITE);
+                g.clearRect(0, 0, imageWidthPx, imageHeightPx);
+            }
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (mapImage.getLayerOpacity())));
+//            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            g.drawImage(imageBufferedImage, 0, 0, null);
+        }
+        
         // merge overlay image
         try {
             byte[] overlayImageByteArray = Base64.getDecoder().decode(overlayImageNode.getUnderlyingValue().getStringValue());
