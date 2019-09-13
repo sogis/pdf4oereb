@@ -250,7 +250,7 @@
 	                              </fo:block>
 	                              <fo:block>
 	                                   <!-- <xsl:value-of select="data:GeneralInformation/data:LocalisedText/data:Text"/> -->
-                                        <xsl:apply-templates select="data:GeneralInformation/data:LocalisedText/data:Text"/>	                                   
+                                      <xsl:apply-templates select="data:GeneralInformation/data:LocalisedText/data:Text"/>                               
 	                              </fo:block>
 	                              <fo:block margin-top="2.2mm" font-weight="700"><xsl:value-of select="$localeXml/data[@name='ContentPage.BaseData']/value/text()"/></fo:block>
 	                              <fo:block>
@@ -261,7 +261,10 @@
 	                              <fo:block/>
 	                              <xsl:for-each select="data:ExclusionOfLiability">
 	                                <fo:block font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText/data:Text"/></fo:block>
-	                                <fo:block><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
+	                                <fo:block>
+	                                   <!--<xsl:value-of select="data:Content/data:LocalisedText/data:Text"/>-->
+                                       <xsl:apply-templates select="data:Content/data:LocalisedText/data:Text"/>                               	                                   
+	                                </fo:block>
 	                              </xsl:for-each>
 	                              <fo:block margin-top="2.2mm">
                                     <xsl:if test="data:QRCode">
@@ -1088,18 +1091,41 @@
     </fo:page-sequence>
   </xsl:template>
 
-<!--
-    <xsl:template match="data:GeneralInformation/data:LocalisedText/data:Text">
-        <xsl:apply-templates/>
-    </xsl:template>
 
-    <xsl:template match="link">
-        <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-            <xsl:attribute name="external-destination">
-                <xsl:apply-templates/>
-            </xsl:attribute>
-            <xsl:apply-templates/>
-        </fo:basic-link>
+    <xsl:template match="data:GeneralInformation/data:LocalisedText/data:Text">
+	<xsl:analyze-string select="." regex="(http|https)://([\w.]*)?">
+		<xsl:matching-substring>
+            <fo:inline>
+              <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+                <xsl:attribute name="external-destination">
+                  <xsl:value-of select="."/>
+                </xsl:attribute>
+                <xsl:value-of select="substring(regex-group(0),8)"/>
+              </fo:basic-link>
+            </fo:inline>
+		</xsl:matching-substring>
+		<xsl:non-matching-substring>
+            <xsl:value-of select="."/>
+		</xsl:non-matching-substring>
+      </xsl:analyze-string>
     </xsl:template>
--->    
+ 
+    <xsl:template match="data:Content/data:LocalisedText/data:Text">
+    <xsl:analyze-string select="." regex="(http|https)://([\w.]*)?">
+        <xsl:matching-substring>
+            <fo:inline>
+              <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+                <xsl:attribute name="external-destination">
+                  <xsl:value-of select="."/>
+                </xsl:attribute>
+                <xsl:value-of select="substring(regex-group(0),8)"/>
+              </fo:basic-link>
+            </fo:inline>
+        </xsl:matching-substring>
+        <xsl:non-matching-substring>
+            <xsl:value-of select="."/>
+        </xsl:non-matching-substring>
+      </xsl:analyze-string>
+    </xsl:template>
+ 
 </xsl:stylesheet>
