@@ -687,6 +687,10 @@
                             <xsl:value-of select="data:Abbreviation/data:LocalisedText/data:Text"/>                     
                        <xsl:text>)</xsl:text>
 	                </xsl:if>
+                    <xsl:if test="data:OfficialNumber">
+                       <xsl:text>, </xsl:text>
+                            <xsl:value-of select="data:OfficialNumber"/>                     
+                    </xsl:if>                       	                
 	                <xsl:text>:</xsl:text>
 	              </fo:block>
 	              <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
