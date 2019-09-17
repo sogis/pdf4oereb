@@ -128,14 +128,14 @@
                         <xsl:text> </xsl:text>
                         <xsl:value-of select="data:PLRCadastreAuthority/data:City"/></fo:block>
                         <xsl:text>, </xsl:text>
-                        <fo:block>
+                        <fo:inline>
 	                        <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
 	                            <xsl:attribute name="external-destination">
 	                                <xsl:value-of select="oereb:decodeURL(data:PLRCadastreAuthority/data:OfficeAtWeb)"/>
 	                            </xsl:attribute>
 	                            <xsl:value-of select="oereb:decodeURL(data:PLRCadastreAuthority/data:OfficeAtWeb)"/>
 	                        </fo:basic-link>
-                        </fo:block>
+                        <fo:inline>
                     </fo:table-cell>
                   </fo:table-row>
                 </fo:table-body>
