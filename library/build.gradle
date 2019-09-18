@@ -51,7 +51,8 @@ run {
     //args = ["--xml", "src/test/data/so/CH368132060914_geometry_images.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]
     //args = ["--xml", "src/test/data/gl/CH767922690036_RealEstate.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]
     //args = ["--xml", "src/test/data/so/CH608606483257.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]
-    args = ["--xml", "src/test/data/so/CH857632820629_layer_ordering.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]    
+    //args = ["--xml", "src/test/data/so/CH857632820629_layer_ordering.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]    
+    args = ["--xml", "src/test/data/so/CH368132060914_sorting_again.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]    
 }
 
 archivesBaseName = rootProject.name
