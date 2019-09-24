@@ -317,9 +317,15 @@
 	<xsl:template name="handleRestrictionOnLandownership">
 	  <fo:block-container height="105mm" background-color="transparent">
 	    <!-- get rid of duplicate images (e.g. W2 and W3 are the same images)  -->
+	    <!-- TODO: Other approach possible? better? -->
 	    <xsl:if test="data:Map/data:Image">
 	      <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
 	        <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
+	        
+                     <!-- <fo:block font-family="Cadastra"><xsl:text>handleRestrictionOnLandownership</xsl:text></fo:block>-->
+                     <!--<fo:block font-family="Cadastra"><xsl:value-of select="current-group()"/></fo:block>-->
+	        
+	        
 	        <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
 	          <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
 	            <xsl:attribute name="src">
@@ -381,7 +387,14 @@
 	          </fo:table-cell>
 	        </fo:table-row>
 	        <!-- TODO: Gruppierung prüfen -->
-	        <xsl:for-each-group select="current-group()" group-by="data:TypeCode">
+	        <!-- FIXME
+	        Das funktioniert nicht wenn es für den gleichen Typecode unterschiedliche Geometrietypen gibt.
+	        Man muss das sowieso anpassen, da auch wir das gleich Problem haben mit den Kulturobjekten.
+	        Dort ist es in Kombination mit Codeliste eindeutig. Beim Bund nicht. Somit muss man das einfach
+	        pro Geometrietyp machen. Prüfung ob AreaShare/LengthShare/NrOfPoints vorhanden.
+	        Oder via Zusammenfügen von string(exists(data:AreaShare))
+	        -->
+	        <xsl:for-each-group select="current-group()" group-by="string(exists(data:AreaShare))">
 	          <xsl:sort lang="de" order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 	          <!--<fo:block linefeed-treatment="preserve" font-weight="400" font-size="11pt" font-family="Cadastra"><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>-->
 	          <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm">
@@ -417,7 +430,6 @@
 	              </fo:block>
 	            </fo:table-cell>
 	            <fo:table-cell display-align="center" text-align="left" line-height="10.5pt">
-	              <!-- Sind die Werte nicht falsch in Kt. NW? Hier sollte doch "Wohnen 3" o.ä. stehen. -->
 	              <fo:block>
 	                <xsl:value-of select="data:Information/data:LocalisedText/data:Text"/>
 	              </fo:block>
@@ -645,7 +657,8 @@
 	                  <xsl:attribute name="external-destination">
 	                    <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
 	                  </xsl:attribute>
-	                  <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+	                  <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                        <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />
 	                </fo:basic-link>
 	              </fo:block>
 	            </fo:table-cell>
@@ -698,8 +711,9 @@
 	                <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
 	                  <xsl:attribute name="external-destination">
 	                    <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
-	                  </xsl:attribute>
-	                  <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+	                  </xsl:attribute>	                  
+                      <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                      <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />
 	                </fo:basic-link>
 	              </fo:block>
 	            </fo:table-cell>
@@ -738,7 +752,8 @@
 	                  <xsl:attribute name="external-destination">
 	                    <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
 	                  </xsl:attribute>
-	                  <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+                      <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                      <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />
 	                </fo:basic-link>
 	              </fo:block>
 	            </fo:table-cell>
@@ -785,7 +800,8 @@
 	                    <xsl:attribute name="external-destination">
 	                      <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
 	                    </xsl:attribute>
-	                    <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+                        <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                        <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />	                    
 	                  </fo:basic-link>
 	                </fo:block>
 	              </fo:table-cell>
@@ -832,7 +848,8 @@
 	                  <xsl:attribute name="external-destination">
 	                    <xsl:value-of select="oereb:decodeURL(data:OfficeAtWeb)"/>
 	                  </xsl:attribute>
-	                  <xsl:value-of select="oereb:decodeURL(data:OfficeAtWeb)"/>
+                      <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                      <xsl:value-of select="replace(replace(oereb:decodeURL(data:OfficeAtWeb), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />	                  
 	                </fo:basic-link>
 	              </fo:block>
 	            </fo:table-cell>
@@ -873,7 +890,7 @@
 					<xsl:if test="not(current-group()/data:SubTheme)">
 						<fo:block-container height="19mm" background-color="transparent">
 							<fo:block id="{generate-id()}" page-break-before="always" line-height="18pt" linefeed-treatment="preserve" font-weight="700" font-size="15pt" font-family="Cadastra"><xsl:value-of select="data:Theme/data:Text/data:Text"/></fo:block>
-						</fo:block-container>     
+						</fo:block-container>
 						<xsl:call-template name="handleRestrictionOnLandownership"/>
 					</xsl:if>
 				</xsl:for-each-group>
