@@ -722,7 +722,7 @@
 	            <fo:table-cell display-align="center">
 	              <fo:block font-size="8.5pt" line-height="10.5pt">
 	                <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/>
-                    <xsl:if test="data:Abbreviation">
+                    <xsl:if test="data:Abbreviation/data:LocalisedText/data:Text">
                        <xsl:text> (</xsl:text>
                             <xsl:value-of select="data:Abbreviation/data:LocalisedText/data:Text"/>                     
                        <xsl:text>)</xsl:text>
