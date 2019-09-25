@@ -29,7 +29,7 @@
 
             <fo:block-container height="109mm" background-color="transparent">
               <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
+                <fo:external-graphic border="0.4pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
@@ -45,7 +45,7 @@
                 <fo:table-column column-width="68mm"/>
                 <fo:table-column column-width="106mm"/>
                 <fo:table-body>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='MainPage.RealEstate_DPR.Number']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -53,7 +53,7 @@
                       <fo:block font-weight="700"><xsl:value-of select="data:RealEstate/data:Number"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block>E-GRID</fo:block>
                     </fo:table-cell>
@@ -61,7 +61,7 @@
                       <fo:block><xsl:value-of select="data:RealEstate/data:EGRID"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.Municipality_FosNr']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -70,7 +70,7 @@
                     </fo:table-cell>
                   </fo:table-row>
                     <xsl:if test="data:RealEstate/data:SubunitOfLandRegister">
-	                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+	                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
 		                    <fo:table-cell>
 		                      <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.SubunitOfLandRegister']/value/text()"/></fo:block>
 		                    </fo:table-cell>
@@ -79,7 +79,7 @@
 		                    </fo:table-cell>
 	                  </fo:table-row>
                     </xsl:if>      
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.LandRegistryArea']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -96,7 +96,7 @@
                 <fo:table-column column-width="68mm"/>
                 <fo:table-column column-width="106mm"/>
                 <fo:table-body>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block font-weight="700"><xsl:value-of select="$localeXml/data[@name='MainPage.ExtractIdentifier']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -104,7 +104,7 @@
                       <fo:block font-weight="700"><xsl:value-of select="data:ExtractIdentifier"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.CreationDate']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -112,7 +112,7 @@
                       <fo:block><xsl:value-of select="format-dateTime(data:CreationDate,'[D01].[M01].[Y0001]')"/></fo:block>
                     </fo:table-cell>
                   </fo:table-row>
-                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" height="6mm">
+                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" height="6mm">
                     <fo:table-cell display-align="center">
                       <fo:block><xsl:value-of select="$localeXml/data[@name='MainPage.ResponsibleOffice']/value/text()"/></fo:block>
                     </fo:table-cell>
@@ -153,7 +153,7 @@
 
             <fo:block-container>
               <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
               </fo:block>
             </fo:block-container>
 
@@ -166,7 +166,7 @@
 
             <fo:block-container margin-bottom="1mm">
               <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
               </fo:block>
             </fo:block-container>
 
@@ -202,7 +202,7 @@
 
             <fo:block-container margin-bottom="1mm">
               <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+                <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
               </fo:block>
             </fo:block-container>
 
@@ -318,16 +318,16 @@
 	  <fo:block-container height="105mm" background-color="transparent">
 	    <!-- get rid of duplicate images (e.g. W2 and W3 are the same images)  -->
 	    <!-- TODO: Other approach possible? better? -->
+	    <!-- Das funktioniert nicht, wenn es in einem Thema unterschiedliche Bilder gibt.
+	    Das kann vorkommen, wenn die Bilder z.B. von WMS-Requests mit unterschliedlichen
+	    Layern stammen. Bei uns wäre das bei der "Nutzungsplanung überlagernd" der Fall. 
+	    Diese besteht aus drei Einzel-Layer. Wir sprechen diese Subthema aber mit dem 
+	    Grupppenlayer-Namen an. -->
 	    <xsl:if test="data:Map/data:Image">
 	      <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
-	        <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
-	        
-                     <!-- <fo:block font-family="Cadastra"><xsl:text>handleRestrictionOnLandownership</xsl:text></fo:block>-->
-                     <!--<fo:block font-family="Cadastra"><xsl:value-of select="current-group()"/></fo:block>-->
-	        
-	        
+	        <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>	        
 	        <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	          <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+	          <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
 	            <xsl:attribute name="src">
 	              <xsl:text>url('data:</xsl:text>
 	              <xsl:text>image/png;base64,</xsl:text>
@@ -340,10 +340,11 @@
 	    </xsl:if>
 	    <xsl:if test="data:Map/data:ReferenceWMS and not(data:Map/data:Image)">
 	      <!-- Does only work if the GetMap request is syntactically equal. -->
+	      <!-- Siehe auch Kommentar oben. -->
 	      <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
 	        <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 	        <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	          <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+	          <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
 	            <xsl:attribute name="src">
 	              <xsl:text>url('data:</xsl:text>
 	              <xsl:text>image/png;base64,</xsl:text>
@@ -363,7 +364,7 @@
 	      <fo:table-column column-width="20mm"/>
 	      <fo:table-column column-width="17mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -386,15 +387,16 @@
 	            </fo:block>
 	          </fo:table-cell>
 	        </fo:table-row>
-	        <!-- TODO: Gruppierung prüfen -->
-	        <!-- FIXME
-	        Das funktioniert nicht wenn es für den gleichen Typecode unterschiedliche Geometrietypen gibt.
-	        Man muss das sowieso anpassen, da auch wir das gleich Problem haben mit den Kulturobjekten.
-	        Dort ist es in Kombination mit Codeliste eindeutig. Beim Bund nicht. Somit muss man das einfach
-	        pro Geometrietyp machen. Prüfung ob AreaShare/LengthShare/NrOfPoints vorhanden.
-	        Oder via Zusammenfügen von string(exists(data:AreaShare))
-	        -->
-	        <xsl:for-each-group select="current-group()" group-by="string(exists(data:AreaShare))">
+	        <!-- Die Gruppierung ist exotisch bis gewagt. Auslöser ist der Umstand, dass die Kombiniation
+	        TypeCode und TypeCodeList nicht eindeutig ist. Sie können sie auch im Geometrietyp unterscheiden.
+	        Dies ist bei uns bei den geschützten Objekten der Fall (Nutzungsplanung). Beim Bund theoretisch
+	        bei den KbS der Zivilflugplätzen. Theoretisch weil sie komischerweise auch für die Punktsymbole
+	        ein Flächensymbol verwenden.
+	        Aus diesem Grund muss der Geometrietyp beim Gruppieren mitberücksichtigt werden. Das erreicht man,
+	        indem man prüft, ob AreaShare, LengthShare oder NrOfPoints-Elemente vorhanden sind (nicht deren 
+	        Werte).
+	         -->
+	        <xsl:for-each-group select="current-group()" group-by="concat(data:TypeCode, string(exists(data:AreaShare)), string(exists(data:LengthShare)), string(exists(data:NrOfPoints)))">
 	          <xsl:sort lang="de" order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 	          <!--<fo:block linefeed-treatment="preserve" font-weight="400" font-size="11pt" font-family="Cadastra"><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>-->
 	          <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm">
@@ -408,9 +410,9 @@
 	                <fo:block/>
 	              </xsl:if>
 	            </fo:table-cell>
-	            <fo:table-cell display-align="center">
-	              <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	                <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
+	            <fo:table-cell display-align="before">
+	              <fo:block font-size="0pt" padding="0.5mm" margin="0mm" line-height="0mm">
+	                <fo:external-graphic border="0.4pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
 	                  <xsl:if test="data:Symbol">
 	                    <xsl:attribute name="src">
 	                      <xsl:text>url('data:</xsl:text>
@@ -493,7 +495,7 @@
 	      <fo:table-column column-width="20mm"/>
 	      <fo:table-column column-width="17mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -525,7 +527,7 @@
 	            </fo:table-cell>
 	            <fo:table-cell display-align="center">
 	              <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	                <fo:external-graphic border="0.2pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
+	                <fo:external-graphic border="0.4pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
 	                  <xsl:if test="data:Symbol">
 	                    <xsl:attribute name="src">
 	                      <xsl:text>url('data:</xsl:text>
@@ -571,7 +573,7 @@
 	      <fo:table-column column-width="68mm"/>
 	      <fo:table-column column-width="106mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -613,7 +615,7 @@
 	  </fo:block-container>
 	  <fo:block-container height="10mm" background-color="transparent">
 	    <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	      <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+	      <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
 	    </fo:block>
 	  </fo:block-container>
 	  <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
@@ -621,7 +623,7 @@
 	      <fo:table-column column-width="68mm"/>
 	      <fo:table-column column-width="106mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -672,7 +674,7 @@
 	      <fo:table-column column-width="68mm"/>
 	      <fo:table-column column-width="106mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -769,7 +771,7 @@
 	        <fo:table-column column-width="68mm"/>
 	        <fo:table-column column-width="106mm"/>
 	        <fo:table-body>
-	          <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	          <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	            <fo:table-cell>
 	              <fo:block/>
 	            </fo:table-cell>
@@ -816,7 +818,7 @@
 	      <fo:table-column column-width="68mm"/>
 	      <fo:table-column column-width="106mm"/>
 	      <fo:table-body>
-	        <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
+	        <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
 	          <fo:table-cell>
 	            <fo:block/>
 	          </fo:table-cell>
@@ -860,7 +862,7 @@
 	  </fo:block-container>
 	  <fo:block-container background-color="transparent">
 	    <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-	      <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+	      <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
 	    </fo:block>
 	  </fo:block-container>
 	</xsl:template>
@@ -924,7 +926,7 @@
                 <xsl:if test="current-group()/data:SubTheme">
                 <xsl:for-each-group select="current-group()" group-by="data:SubTheme">
                     <xsl:sort data-type="number" order="ascending" select="(number(data:SubTheme='ch.SO.NutzungsplanungGrundnutzung') * 2) + (number(data:SubTheme='ch.SO.NutzungsplanungUeberlagernd') * 3) + (number(data:SubTheme='ch.SO.NutzungsplanungSondernutzungsplaene') * 4) + (number(data:SubTheme='ch.SO.Baulinien') * 5)"/>                                               
-	                <fo:table-row line-height="6mm" border-bottom="0.2pt solid black" vertical-align="middle">
+	                <fo:table-row line-height="6mm" border-bottom="0.4pt solid black" vertical-align="middle">
 	                  <fo:table-cell>
 	                    <fo:block>
 	                      <fo:basic-link internal-destination="{generate-id(.)}">
@@ -944,7 +946,7 @@
                 </xsl:for-each-group>
             </xsl:if>
             <xsl:if test="not(current-group()/data:SubTheme)">
-	            <fo:table-row line-height="6mm" border-bottom="0.2pt solid black" vertical-align="middle">
+	            <fo:table-row line-height="6mm" border-bottom="0.4pt solid black" vertical-align="middle">
 	              <fo:table-cell>
 	                <fo:block>
 	                  <fo:basic-link internal-destination="{generate-id(.)}">
@@ -1069,7 +1071,7 @@
 
         <fo:block-container absolute-position="absolute" top="19mm" left="0mm">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
+            <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
           </fo:block>
         </fo:block-container>
       </fo:block>
@@ -1114,7 +1116,7 @@
               <fo:table-body>
               <xsl:for-each select="data:Glossary">
                 <xsl:sort select="data:Title/data:LocalisedText/data:Text"/>
-                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11.5pt" >
+                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="11.5pt" >
                   <fo:table-cell padding-top="1mm" padding-bottom="1mm">
                     <fo:block><fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText/data:Text"/>: </fo:inline><xsl:value-of select="data:Content/data:LocalisedText/data:Text"/></fo:block>
                   </fo:table-cell>
