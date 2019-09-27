@@ -525,8 +525,8 @@
 	                <fo:block/>
 	              </xsl:if>
 	            </fo:table-cell>
-	            <fo:table-cell display-align="center">
-	              <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
+	            <fo:table-cell display-align="before">
+	              <fo:block font-size="0pt" padding="0.5mm" margin="0mm" line-height="0mm">
 	                <fo:external-graphic border="0.4pt solid black" width="6mm" height="3mm" content-width="scale-to-fit" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Symbol">
 	                  <xsl:if test="data:Symbol">
 	                    <xsl:attribute name="src">
