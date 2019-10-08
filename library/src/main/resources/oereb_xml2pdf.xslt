@@ -474,7 +474,7 @@
                         <xsl:choose>
                           <xsl:when test="sum(current-group()/data:PartInPercent) &lt; 0.1"><xsl:text>&lt; 0.1</xsl:text></xsl:when>
                           <xsl:otherwise>
-                            <xsl:value-of select="format-number(sum(current-group()/data:PartInPercent), &quot;#'###&quot;, &quot;swiss&quot;)"/>
+                            <xsl:value-of select="format-number(sum(current-group()/data:PartInPercent), &quot;#'##0.0&quot;, &quot;swiss&quot;)"/>
                           </xsl:otherwise>
                         </xsl:choose>                      
                        <xsl:text>%</xsl:text>	                   
