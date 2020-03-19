@@ -765,7 +765,7 @@
 	    </fo:table>
 	  </fo:block-container>
 	  <!-- Hints müssen nicht vorhanden sein. -->
-	  <xsl:if test="current-group()/data:LegalProvisions[data:DocumentType='Hint']">
+	  <xsl:if test="current-group()/data:LegalProvisions[data:DocumentType='Hint'] or current-group()/data:LegalProvisions/data:Reference[data:DocumentType='Hint']">
 	    <fo:block-container font-weight="400" font-size="8.5pt" font-family="Cadastra" background-color="transparent">
 	      <fo:table table-layout="fixed" width="100%">
 	        <fo:table-column column-width="68mm"/>
@@ -809,6 +809,47 @@
 	              </fo:table-cell>
 	            </fo:table-row>
 	          </xsl:for-each-group>
+            <!-- TODO: validate if title is only written when it isn't already there from the for-each-group-iteration from above -->	
+	            <xsl:for-each-group select="current-group()/data:LegalProvisions/data:Reference[data:DocumentType='Hint']" group-by="data:TextAtWeb/data:LocalisedText/data:Text">
+	              <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText/data:Text"/>
+	              <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
+	                <fo:table-cell>
+	                  <xsl:if test="position()=1 and not(../data:LegalProvisions[data:DocumentType='Hint'])">
+	                    <fo:block font-weight="700">
+	                      <xsl:value-of select="$localeXml/data[@name='RestrictionPage.Hint']/value/text()"/>
+	                    </fo:block>
+	                  </xsl:if>
+	                  <xsl:if test="position()!=1">
+	                    <fo:block/>
+	                  </xsl:if>
+	                </fo:table-cell>
+	                <fo:table-cell display-align="center">
+	                  <fo:block font-size="8.5pt" line-height="10.5pt">
+	                    <xsl:value-of select="data:Title/data:LocalisedText/data:Text"/>
+	                    <xsl:if test="data:Abbreviation/data:LocalisedText/data:Text">
+	                       <xsl:text> (</xsl:text>
+	                            <xsl:value-of select="data:Abbreviation/data:LocalisedText/data:Text"/>                     
+	                       <xsl:text>)</xsl:text>
+	                    </xsl:if>   
+	                    <xsl:if test="data:OfficialNumber">
+	                       <xsl:text>, </xsl:text>
+	                            <xsl:value-of select="data:OfficialNumber"/>                     
+	                    </xsl:if>                       
+	                    <xsl:text>:</xsl:text>
+	                  </fo:block>
+	                  <fo:block font-size="6.5pt" line-height="8.5pt" margin-left="3mm" margin-top="0mm">
+	                    <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+	                      <xsl:attribute name="external-destination">
+	                        <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text)"/>
+	                      </xsl:attribute>
+	                      <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+	                      <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText/data:Text), '(\P{Zs}{13})', '$1&#x200B;'), '&#x200B;(\p{Zs})','$1')" />
+	                    </fo:basic-link>
+	                  </fo:block>
+	                </fo:table-cell>
+	              </fo:table-row>
+	            </xsl:for-each-group>
+                      
 	        </fo:table-body>
 	      </fo:table>
 	    </fo:block-container>
