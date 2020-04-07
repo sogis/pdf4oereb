@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "com.bmuschko:gradle-docker-plugin:4.2.0"
+        classpath "com.bmuschko:gradle-docker-plugin:6.4.0"
     }
 }
 
@@ -69,28 +69,28 @@ docker {
 task buildDockerImage(type: DockerBuildImage) {
     description = "Build docker image."
     inputDir = project.projectDir
-    tags = ["sogis/pdf4oereb-web-service:"+ project.version.toString(), "sogis/pdf4oereb-web-service:latest"]
+    images.add("sogis/pdf4oereb-web-service:"+version.toString())
+    images.add("sogis/pdf4oereb-web-service:latest")
     labels = ["pdf4oereb.created": new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), 
             "pdf4oereb.git_commit": getCheckedOutGitCommitHash(), 
             "pdf4oereb.travis_build": project.version.toString()]    
 }
 
-task pushDockerImage_One(dependsOn: 'buildDockerImage', type: DockerPushImage) {
-    description = "Push docker image to hub.docker.com (images are UNTESTED)."
-    imageName = buildDockerImage.tags.get().toArray()[0]
-}
+def tags = ["latest", version]
 
-task pushDockerImage_Two(dependsOn: 'buildDockerImage', type: DockerPushImage) {
-    description = "Push docker image to hub.docker.com (images are UNTESTED)."
-    imageName = buildDockerImage.tags.get().toArray()[1]
+tags.each { tag ->
+    def imageTag = tag.toString()
+    task "pushDockerImage_$imageTag"(type: DockerPushImage) {
+        description = "Push docker image to hub.docker.com: $imageTag"
+        images = ["sogis/pdf4oereb-web-service:$imageTag"]
+    }
 }
 
 task pushDockerImages() {
-    description = "Collect all push images tasks."
-}
-
-pushDockerImages.dependsOn {
-    tasks.findAll { task -> task.name.startsWith('pushDockerImage_') }
+    description = "Push docker images to hub.docker.com."
+    dependsOn {
+        tasks.findAll { task -> task.name.startsWith('pushDockerImage_') }
+    }    
 }
 
 import java.text.SimpleDateFormat
