@@ -17,7 +17,7 @@
         <value>Gemeinde (BFS-Nr.)</value>
     </data>
     <data name="MainPage.SubunitOfLandRegister" xml:space="preserve">
-        <value>Grundbuchkreis</value>
+        <value>Grundbuch</value>
     </data>
     <data name="MainPage.LandRegistryArea" xml:space="preserve">
         <value>Fläche</value>
