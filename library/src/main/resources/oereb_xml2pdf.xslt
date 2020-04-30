@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" exclude-result-prefixes="gml xlink extract data" version="3.0">
+<xsl:stylesheet xmlns:oereb="http://oereb.agi.so.ch" xmlns:gml="https://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/1.0/ExtractData" xmlns:array="http://www.w3.org/2005/xpath-functions/array" exclude-result-prefixes="gml xlink extract data" version="3.0">
   <xsl:output method="xml" indent="yes"/>
   <xsl:param name="localeUrl" select="'Resources.de.resx'"/>
   <xsl:variable name="localeXml" select="document($localeUrl)/*" />
-  <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>
+  <xsl:variable name="OverlayImage"><xsl:value-of select="oereb:getOverlayImage(extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:Limit, extract:GetExtractByIdResponse/data:Extract/data:RealEstate/data:PlanForLandRegisterMainPage)"/></xsl:variable>  
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>  
   <xsl:template match="extract:GetExtractByIdResponse/data:Extract">
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en">
@@ -396,6 +396,9 @@
 	        indem man prüft, ob AreaShare, LengthShare oder NrOfPoints-Elemente vorhanden sind (nicht deren 
 	        Werte).
 	         -->
+	         
+             <xsl:variable name="varray" select="['Hugo', 'Lotte', 'Theo']"/>
+	         
 	        <xsl:for-each-group select="current-group()" group-by="concat(data:TypeCode, string(exists(data:AreaShare)), string(exists(data:LengthShare)), string(exists(data:NrOfPoints)))">
 	          <xsl:sort lang="de" order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 	          <!--<fo:block linefeed-treatment="preserve" font-weight="400" font-size="11pt" font-family="Cadastra"><xsl:value-of select="data:Information/data:LocalisedText/data:Text"/></fo:block>-->
@@ -433,9 +436,9 @@
 	              </fo:block>
 	            </fo:table-cell>
 	            <fo:table-cell display-align="center" text-align="left" line-height="10.5pt">
-	              <fo:block>
-	                <xsl:value-of select="data:Information/data:LocalisedText/data:Text"/>
-	              </fo:block>
+	             <fo:block>
+                    <xsl:value-of select="data:Information/data:LocalisedText/data:Text"/>                    
+	              </fo:block>  
 	              <!-- Zum Testen der Summenbildung und Gruppierung-->
 	              <!--<fo:block><xsl:value-of select="data:TypeCode"/></fo:block>-->
 	            </fo:table-cell>
@@ -515,6 +518,11 @@
 	        </fo:table-row>
 	        <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend" group-by="data:TypeCode">
 	          <xsl:sort lang="de" order="ascending" select="data:LegendText/data:LocalisedText/data:Text"/>
+	          <!-- Mögliches Problem: Falls es zwei identische Aussagen-Texte in unterschiedlichen Themen gibt, wird es nicht funktionieren. 
+	          Dann könnte man noch mit Themen-/Subthemen-Code filtern. -->
+                    <xsl:variable name="legendText" select="data:LegendText/data:LocalisedText/data:Text"/> 
+                    <xsl:if test="not(../../../data:RestrictionOnLandownership[data:Information/data:LocalisedText/data:Text = $legendText])">
+	          
 	          <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm">
 	            <fo:table-cell>
 	              <xsl:if test="position()=1">
@@ -546,12 +554,14 @@
                         </xsl:attribute>
                       </xsl:if>
 	                </fo:external-graphic>
+	                
 	              </fo:block>
 	            </fo:table-cell>
 	            <fo:table-cell display-align="center" text-align="left" line-height="10.5pt">
 	              <fo:block>
 	                <xsl:value-of select="data:LegendText/data:LocalisedText/data:Text"/>
 	              </fo:block>
+	              
 	            </fo:table-cell>
 	            <fo:table-cell text-align="right">
 	              <!-- This is just to get the same line height as in the table above. -->
@@ -566,6 +576,8 @@
 	              <fo:block/>
 	            </fo:table-cell>
 	          </fo:table-row>
+                  </xsl:if>
+	          
 	        </xsl:for-each-group>
 	      </fo:table-body>
 	    </fo:table>
