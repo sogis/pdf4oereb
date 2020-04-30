@@ -564,6 +564,10 @@
           </fo:table-row>
           <!-- Mögliches Problem: Falls es zwei identische Aussagen-Texte in unterschiedlichen Themen gibt, wird es nicht funktionieren. 
               Dann könnte man noch mit Themen-/Subthemen-Code Bedingungen arbeiten. 
+              -> Passiert bei CH233274062061. Überlagernde NPL: erhaltenswertes Kulturobjekt (Fläche und Punkt). Wobei das noch
+              was anderes ist?
+              Group-by war noch falsch. Man muss auch hier natürlich die TypeCodelist berücksichtigen.
+              
               Eine andere Variante war, dass man erst in der Forschleife prüft, ob eine OtherLegend in den Restrictions vorhanden war. Da
               hatte ich aber das Problem, wie man es schafft, dass der Titel 'Übrige Legende' trotzdem geschrieben wird, da Position 
               (forschleifen counter) nicht mehr zwingend 1 sein muss:
@@ -571,7 +575,8 @@
                  <xsl:if test="not(../../../data:RestrictionOnLandownership[data:Information/data:LocalisedText/data:Text = $legendText])">
                -->
           <xsl:variable name="restrictionInformation" select="../data:RestrictionOnLandownership/data:Information/data:LocalisedText/data:Text"/>
-          <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:LegendText/data:LocalisedText/data:Text = $restrictionInformation)]" group-by="data:TypeCode">
+          <xsl:variable name="restrictionTypeCodeList" select="../data:RestrictionOnLandownership/data:TypeCodeList"/>
+          <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:LegendText/data:LocalisedText/data:Text = $restrictionInformation) and not(data:TypeCodeList = $restrictionTypeCodeList)]" group-by="concat(data:TypeCode, '|', data:TypeCodelist)">
             <xsl:sort lang="de" order="ascending" select="data:LegendText/data:LocalisedText/data:Text"/>
             <fo:table-row font-weight="400" vertical-align="middle" line-height="5mm">
               <fo:table-cell>

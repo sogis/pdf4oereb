@@ -57,8 +57,8 @@ run {
     //args = ["--xml", "src/test/data/so/CH793273730603_hint.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
     //args = ["--xml", "src/test/data/so/CH233274062061_M-16.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
     //args = ["--xml", "src/test/data/so/CH233274062061_M-16-fixed-wms-url.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
-    //args = ["--xml", "src/test/data/so/CH993287900649-other-legend.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
-    args = ["--xml", "src/test/data/so/CH233274062061-other-legend.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
+    args = ["--xml", "src/test/data/so/CH993287900649-other-legend.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
+    //args = ["--xml", "src/test/data/so/CH233274062061-other-legend.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
     //args = ["--xml", "src/test/data/so/CH870672603279.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
 }
 
