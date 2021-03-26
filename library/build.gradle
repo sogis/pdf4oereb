@@ -1,6 +1,10 @@
 plugins {
     id 'application'
+    id 'maven-publish'
+    id 'signing'
 }
+
+apply from: "$rootDir/gradle/versioning.gradle"
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.25'
@@ -21,6 +25,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 group = 'io.github.sogis'
+
+repositories {
+    mavenCentral()
+}
 
 distZip {
     archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
@@ -58,6 +66,7 @@ run {
     //args = ["--xml", "src/test/data/so/CH233274062061-other-legend.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
     //args = ["--xml", "src/test/data/so/CH870672603279.xml", "--out", "/Users/stefan/tmp/", "--lang", "de"]          
 }
+
 
 archivesBaseName = rootProject.name
 
