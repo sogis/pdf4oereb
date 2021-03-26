@@ -72,10 +72,9 @@ public class ConverterTest {
     @Test
     @Tag("wms")
     @ExtendWith(TempDirectory.class)
-    public void convertXml1_CantonZh_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
+    public void convertXml1_CantonSo_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
         Converter converter = new Converter();
-        File resultFile = converter.runXml2Pdf("src/test/data/zh/CH282399917939_geometry_wms.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
-        //File resultFile = converter.runXml2Pdf("src/test/data/zh/CH282399917939_geometry_wms.xml", "/Users/stefan/tmp/", Locale.DE);
+        File resultFile = converter.runXml2Pdf("src/test/data/so/CH955832730623_geometry_wms.xml", tempDir.toAbsolutePath().toString(), Locale.DE);
         byte[] resultFileContent = Files.readAllBytes(resultFile.toPath());
         
         // We cannot compare the file as we would do with embedded images since
