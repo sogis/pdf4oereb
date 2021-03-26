@@ -1,9 +1,9 @@
 plugins {
     id 'application'
-    id "com.jfrog.bintray" version "1.8.4"    
+    id 'maven-publish'
+    id 'signing'
+    id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
 }
-
-apply plugin: 'maven-publish'
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.25'
@@ -112,16 +112,60 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 
-
-
-
-
 // Disable very strict javadoc generation, e.g. handling of ">" in comments.
 // https://stackoverflow.com/questions/34874175/disable-all-javadoc-in-gradle
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc) {
             options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = "pdf4oereb"
+                url = "https://github.com/sogis/pdf4oereb"
+                description = "pdf4oereb"
+                scm {
+                    connection = "scm:git:https@github.com/sogis/pdf4oereb"
+                    developerConnection = "scm:git:https@github.com/sogis/pdf4oereb"
+                    url = "https://github.com/sogis/pdf4oereb"
+                }
+                licenses {
+                    license {
+                        name = "MIT"
+                        url = "https://github.com/sogis/pdf4oereb/blob/master/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "edigonzales"
+                        name = "Stefan Ziegler"
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+nexusPublishing {
+    repositories {
+        sonatype { 
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+            password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
         }
     }
 }

@@ -23,7 +23,6 @@ public class WebMapService {
 		String decodedRequest;
 		try {
 			decodedRequest = java.net.URLDecoder.decode(request, "UTF-8");
-			System.out.println("decodedRequest: " + decodedRequest);
 			
 			CloseableHttpClient httpclient = HttpClients.custom()
 					.setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods 
@@ -31,19 +30,6 @@ public class WebMapService {
 			
 			HttpGet get = new HttpGet(new URL(decodedRequest).toURI()); 
 			CloseableHttpResponse response = httpclient.execute(get);
-//            System.out.println("response: " + response.toString());
-//            System.out.println("response: " + response.getEntity().getContentLength());
-//            System.out.println("response: " + response.getEntity());
-//            System.out.println("response: " + response.getStatusLine().getStatusCode());
-//			
-//            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-//            String line = null;
-//            while((line = in.readLine()) != null) {
-//              System.out.println(line);
-//            }
-
-            
-            
 			InputStream inputStream = response.getEntity().getContent();
 			BufferedImage image = ImageIO.read(inputStream);
 			
