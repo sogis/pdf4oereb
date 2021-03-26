@@ -29,6 +29,10 @@ public class WebMapService {
 			
 			HttpGet get = new HttpGet(new URL(decodedRequest).toURI()); 
 			CloseableHttpResponse response = httpclient.execute(get);
+            System.out.println("response: " + response.toString());
+            System.out.println("response: " + response.getEntity().getContentLength());
+            System.out.println("response: " + response.getStatusLine().getStatusCode());
+			
 			InputStream inputStream = response.getEntity().getContent();
 			BufferedImage image = ImageIO.read(inputStream);
 			
