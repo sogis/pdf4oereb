@@ -28,12 +28,12 @@ jobs:
       with:
         name: reports
         path: library/build/reports/tests/
-    - name: Push Docker image
-      if: ${{ success() }} && github.ref == 'refs/heads/master'    
-      run: ./gradlew web-service:pushDockerImages
-      env:
-        DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
-        DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+    # - name: Push Docker image
+    #   if: ${{ success() }} && github.ref == 'refs/heads/master'    
+    #   run: ./gradlew web-service:pushDockerImages
+    #   env:
+    #     DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
+    #     DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
     - name: Decode key ring file
       #if: ${{ success() }} && github.ref == 'refs/heads/master'
       run: |
