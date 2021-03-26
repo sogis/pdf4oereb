@@ -2,9 +2,11 @@ package ch.so.agi.oereb.pdf4oereb.saxon.ext;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -31,8 +33,17 @@ public class WebMapService {
 			CloseableHttpResponse response = httpclient.execute(get);
             System.out.println("response: " + response.toString());
             System.out.println("response: " + response.getEntity().getContentLength());
+            System.out.println("response: " + response.getEntity());
             System.out.println("response: " + response.getStatusLine().getStatusCode());
 			
+            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            String line = null;
+            while((line = in.readLine()) != null) {
+              System.out.println(line);
+            }
+
+            
+            
 			InputStream inputStream = response.getEntity().getContent();
 			BufferedImage image = ImageIO.read(inputStream);
 			
