@@ -23,7 +23,7 @@ jobs:
       if: ${{ failure() }}
       with:
         name: reports
-        path: lib/build/reports/tests/
+        path: library/build/reports/tests/
 
     # - name: Push Docker image
     #   if: ${{ success() }} && github.ref == 'refs/heads/master'    
