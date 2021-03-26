@@ -22,7 +22,7 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       #run: ./gradlew -i clean classes library:test library:wmsTest web-service:test web-service:bootJar web-service:buildDockerImage
-      run: ./gradlew -i clean classes library:test web-service:bootJar web-service:buildDockerImage
+      run: ./gradlew -i clean classes 
     - uses: actions/upload-artifact@v2
       if: ${{ failure() }}
       with:
