@@ -21,6 +21,7 @@ public class WebMapService {
 		String decodedRequest;
 		try {
 			decodedRequest = java.net.URLDecoder.decode(request, "UTF-8");
+			System.out.println("decodedRequest: " + decodedRequest);
 			
 			CloseableHttpClient httpclient = HttpClients.custom()
 					.setRedirectStrategy(new LaxRedirectStrategy()) // adds HTTP REDIRECT support to GET and POST methods 
