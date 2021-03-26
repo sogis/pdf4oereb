@@ -31,6 +31,8 @@ public class WebMapService {
 			CloseableHttpResponse response = httpclient.execute(get);
 			InputStream inputStream = response.getEntity().getContent();
 			BufferedImage image = ImageIO.read(inputStream);
+			
+			System.out.println("image: " + image);
 
 			// FOP is picky when it comes to 8bit png images.
 			// Convert them to 24bit.
