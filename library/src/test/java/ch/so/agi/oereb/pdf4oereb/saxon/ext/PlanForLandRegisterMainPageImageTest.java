@@ -72,6 +72,7 @@ public class PlanForLandRegisterMainPageImageTest {
         XdmAtomicValue resultImage = (XdmAtomicValue) mainPageImage.call(arguments);
 
         String base64String = resultImage.getUnderlyingValue().getStringValue();
+        System.out.println(base64String);
 
         // We cannot compare the file as we would do with embedded images since
         // the content of the wms getmap request can change from time to time.
