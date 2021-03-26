@@ -22,6 +22,8 @@ _pdf4oereb_  is in development state.
 
 For the current version of _pdf4oereb_ , you will need a JRE (Java Runtime Environment) installed on your system, version 1.8 or later.
 
+If a JDK > 1.8 for building is used, there are some failing tests. It seems that the base64 encoding of images is slightly different.
+
 ## Developing
 
 _pdf4oereb_ is a Gradle multiproject. `library` contains the code for the library and the stand alone programm and `web-service` is the Spring Boot application.

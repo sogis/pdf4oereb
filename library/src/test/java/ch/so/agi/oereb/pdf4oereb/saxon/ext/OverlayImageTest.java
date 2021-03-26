@@ -10,6 +10,7 @@ import java.nio.file.Files;
 
 import javax.xml.transform.stream.StreamSource;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +77,7 @@ public class OverlayImageTest {
     }
     
     @Test
+    @Tag("wms")
     // If there is no georeferencing information of the map
     // we just create an empty (fully transparent) image.
     // (North arrow would be possible, though.)
