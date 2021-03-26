@@ -31,16 +31,16 @@ public class WebMapService {
 			
 			HttpGet get = new HttpGet(new URL(decodedRequest).toURI()); 
 			CloseableHttpResponse response = httpclient.execute(get);
-            System.out.println("response: " + response.toString());
-            System.out.println("response: " + response.getEntity().getContentLength());
-            System.out.println("response: " + response.getEntity());
-            System.out.println("response: " + response.getStatusLine().getStatusCode());
-			
-            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            String line = null;
-            while((line = in.readLine()) != null) {
-              System.out.println(line);
-            }
+//            System.out.println("response: " + response.toString());
+//            System.out.println("response: " + response.getEntity().getContentLength());
+//            System.out.println("response: " + response.getEntity());
+//            System.out.println("response: " + response.getStatusLine().getStatusCode());
+//			
+//            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+//            String line = null;
+//            while((line = in.readLine()) != null) {
+//              System.out.println(line);
+//            }
 
             
             
