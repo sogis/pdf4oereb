@@ -21,16 +21,19 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./gradlew -i clean classes library:test library:wmsTest web-service:test web-service:bootJar web-service:buildDockerImage
+      #run: ./gradlew -i clean classes library:test library:wmsTest web-service:test web-service:bootJar web-service:buildDockerImage
+      run: ./gradlew -i clean classes library:test web-service:bootJar web-service:buildDockerImage
     - uses: actions/upload-artifact@v2
       if: ${{ failure() }}
       with:
         name: reports
         path: library/build/reports/tests/
-
-    # - name: Push Docker image
-    #   if: ${{ success() }} && github.ref == 'refs/heads/master'    
-    #   run: ./gradlew web-service:pushDockerImages
+    - name: Push Docker image
+      if: ${{ success() }} && github.ref == 'refs/heads/master'    
+      run: ./gradlew web-service:pushDockerImages
+      env:
+        DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
+        DOCKER_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
 
 
 
