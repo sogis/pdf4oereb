@@ -254,6 +254,7 @@ public class OverlayImage implements ExtensionFunction {
                 XdmNode imageNode = (XdmNode) it.next();
                 XdmValue referenceWmsXdmValue = imageNode.getTypedValue();
                 try {
+                    System.out.println("***"+ referenceWmsXdmValue.getUnderlyingValue().getStringValue());
                     mapImageByteArray = WebMapService.getMap(referenceWmsXdmValue.getUnderlyingValue().getStringValue());
                 } catch (Exception e) {
                     e.printStackTrace();
