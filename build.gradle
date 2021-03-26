@@ -3,12 +3,6 @@ allprojects {
     apply from: "$rootDir/gradle/versioning.gradle"
  
     repositories {
-        maven {
-            url "http://download.osgeo.org/webdav/geotools/"
-        }
-        maven {
-            url "http://maven.geo-solutions.it"
-        }
-        jcenter()
+        mavenCentral()
     }
 }

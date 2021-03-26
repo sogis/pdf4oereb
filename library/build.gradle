@@ -23,7 +23,7 @@ dependencies {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group = 'ch.so.agi.oereb'
+group = 'io.github.sogis'
 
 distZip {
     archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
@@ -100,7 +100,6 @@ task wmsTest(type: Test) {
     shouldRunAfter test
 }
 
-// Bintray / jcenter
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
@@ -112,76 +111,10 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
 
-def githubRepoUrl = "https://github.com/openoereb/pdf4oereb"
-def pomConfig = {
-    licenses {
-        license {
-            name "MIT License"
-            url "https://github.com/openoereb/pdf4oereb/blob/master/LICENSE"
-        }
-    }
-    developers {
-        developer {
-            id "edigonzales"
-            name "Stefan Ziegler"
-            email "stefan.ziegler@bd.so.ch"
-        }
-    }
 
-    scm {
-        url githubRepoUrl
-    }
-}
 
-publishing {
-    publications {
-        mavenPublication(MavenPublication) {
-            from components.java
-            artifact sourcesJar {
-                classifier "sources"
-            }
-            artifact javadocJar {
-                classifier "javadoc"
-            }
-            groupId project.group
-            artifactId 'pdf4oereb'
-            version project.version
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', 'A library and web service for creating a PDF file from a PLR DATA-Extract XML file.')
-                root.appendNode('name', 'pdf4oereb')
-                root.appendNode('url', githubRepoUrl)
-                root.children().last() + pomConfig
-            }
-        }
-    }
-}
 
-bintray {
-    user = System.env.bintrayUser
-    key = System.env.bintrayKey
-    publications = ['mavenPublication']
-    publish = true
-    
-    pkg {
-        repo = 'pdf4oereb'
-        name = 'pdf4oereb'
-        userOrg = 'sogis'
-        licenses = ['MIT']
-        labels = ['oereb', 'plr', 'pdf', 'xml', 'xslt', 'xslfo']        
-        vcsUrl = githubRepoUrl
-        version {
-            name = project.version
-            desc = project.version
-            released  = new Date()
-        }
-    }
-}
 
 // Disable very strict javadoc generation, e.g. handling of ">" in comments.
 // https://stackoverflow.com/questions/34874175/disable-all-javadoc-in-gradle
