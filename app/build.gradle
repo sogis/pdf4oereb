@@ -1,0 +1,63 @@
+plugins {
+    id 'application'
+}
+
+apply from: "$rootDir/gradle/versioning.gradle"
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+group = 'io.github.sogis'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    jar.archiveName = "pdf4oereb-"+version+".jar"
+}
+
+// "The package javax.xml.transform.stream is accessible from more than one module: <unnamed>, java.xml"
+configurations {
+    all*.exclude group: 'xml-apis'
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'net.sf.saxon:Saxon-HE:10.6'
+    implementation 'org.apache.xmlgraphics:fop:2.7'
+    implementation 'net.sf.offo:fop-hyph:2.0' 
+    implementation 'org.locationtech.jts:jts-core:1.18.2'
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.8.1')
+        }
+    }
+}
+
+distZip {
+    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
+}
+
+distTar {
+    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.tar'
+}
+
+application {
+    mainClass = 'ch.so.agi.oereb.pdf4oereb.App'
+}
+
+startScripts {
+   applicationName = 'pdf4oereb'
+}
+
+run {
+    //args = ["--xml", "src/test/data/ne/20220125_70_2364_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
+    args = ["--xml", "src/test/data/bl/CH175978021788_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
+}
+

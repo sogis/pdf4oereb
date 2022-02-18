@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<root>
-    <data name="ExtractReducedTitle" xml:space="preserve">
-        <value>Extrait du cadastre des restrictions de droit public à la propriété foncière (cadastre RDPPF), comportant des informations réduites</value>
-    </data>
-    <data name="ResponsibleOffice" xml:space="preserve">
-        <value>Organisme responsable du cadastre</value>
-    </data>
-</root>

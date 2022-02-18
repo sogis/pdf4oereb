@@ -1,0 +1,52 @@
+<Limit>
+<surface>
+    <exterior>
+    <polyline>
+        <coord>
+        <c1>2600446.133</c1>
+        <c2>1215666.511</c2>
+        </coord>
+        <coord>
+        <c1>2600461.664</c1>
+        <c2>1215671.932</c2>
+        </coord>
+        <coord>
+        <c1>2600469.266</c1>
+        <c2>1215650.11</c2>
+        </coord>
+        <coord>
+        <c1>2600453.595</c1>
+        <c2>1215644.795</c2>
+        </coord>
+        <coord>
+        <c1>2600446.133</c1>
+        <c2>1215666.511</c2>
+        </coord>
+    </polyline>
+    </exterior>
+    <interior>
+    <polyline>
+        <coord>
+        <c1>2600456.000</c1>
+        <c2>1215651.000</c2>
+        </coord>
+        <coord>
+        <c1>2600465.000</c1>
+        <c2>1215655.000</c2>
+        </coord>
+        <coord>
+        <c1>2600460.000</c1>
+        <c2>1215664.000</c2>
+        </coord>
+        <coord>
+        <c1>2600455.000</c1>
+        <c2>1215662.000</c2>
+        </coord>
+        <coord>
+        <c1>2600456.000</c1>
+        <c2>1215651.000</c2>
+        </coord>
+    </polyline>
+    </interior>
+</surface>
+</Limit>

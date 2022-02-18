@@ -1,13 +1,14 @@
 # pdf4oereb 
 
-_pdf4oereb_ transforms a PLR DATA-Extract XML document into the corresponding in PDF document.
+_pdf4oereb_ transforms a PLR DATA-Extract XML document version 2 into the corresponding in PDF document.
 
 It uses XSLT (with some extension functions) and XSL-FO for creating the PDF.
 
+For DATA-Extract version 1 see branch V1_0.
+
 ## Features
 * Java library
-* Java stand alone program (aka fatjar)
-* Spring Boot web service (incl. a simple GUI)
+* Java stand alone program
 
 ##  License
 
@@ -19,35 +20,25 @@ _pdf4oereb_  is in development state.
 
 ## System Requirements
 
-For the current version of _pdf4oereb_ , you will need a JRE (Java Runtime Environment) installed on your system, version 1.8 or later.
-
-If a JDK > 1.8 for building is used, there are some failing tests. It seems that the base64 encoding of images is slightly different.
+For the current version of _pdf4oereb_ , you will need a JRE (Java Runtime Environment) installed on your system, version 11 or later.
 
 ## Developing
 
-_pdf4oereb_ is a Gradle multiproject. `library` contains the code for the library and the stand alone programm and `web-service` is the Spring Boot application.
+_pdf4oereb_ is a Gradle project.
 
 ### Testing
 
-The library has some special "wms" tests which will only be run if you explicitly run the task:
+NOT YET IMPLEMENTED: The app has some special "wms" tests which will only be run if you explicitly run the task:
 
 ```
-./gradlew library:test library:wmsTest
+./gradlew clean app:test app:wmsTest
 ```
 
 These tests require a running external web map service.
 
-The web service has only some functional / integration tests and no unit tests.
-
 ### Building
 
-Building the library: `./gradlew clean library:build` or `./gradlew clean library:jar`.
-
-Building the standalone program: `./gradlew clean library:build library:customFatJar`. The executable fat-jar (`pdf4oereb-fat-VERSION.jar`) can be found in `./build/libs/`.
-
-Building the Spring Boot application: `./gradlew clean web-service:build`.
-
-A Docker image of the web service can also be built: `./gradlew clean web-service:build web-service:buildDockerImage`.
+Building the app: `./gradlew clean app:build app:assembleDist`.
 
 ## Running
 

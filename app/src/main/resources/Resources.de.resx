@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <data name="Page" xml:space="preserve">
+        <value>Seite</value>
+    </data>
+
+    <data name="MainPage.Title" xml:space="preserve">
+        <value>Auszug aus dem Kataster der öffentlich-&#x000A;rechtlichen Eigentumsbeschränkungen&#x000A;(ÖREB-Kataster)</value>
+    </data>
+    <data name="MainPage.RealEstate_DPR.Number" xml:space="preserve">
+        <value>Grundstück-Nr.</value>
+    </data>
+    <data name="MainPage.RealEstate_DPR.Type" xml:space="preserve">
+        <value>Grundstückart</value>
+    </data>
+    <data name="MainPage.Municipality_FosNr" xml:space="preserve">
+        <value>Gemeinde (BFS-Nr.)</value>
+    </data>
+    <data name="MainPage.SubunitOfLandRegister" xml:space="preserve">
+        <value>Grundbuch</value>
+    </data>
+    <data name="MainPage.LandRegistryArea" xml:space="preserve">
+        <value>Fläche</value>
+    </data>    
+    <data name="MainPage.UpdateDateCS" xml:space="preserve">
+        <value>Stand der amtlichen Vermessung</value>
+    </data>
+    <data name="MainPage.ExtractIdentifier" xml:space="preserve">
+        <value>Auszugsnummer</value>
+    </data>
+    <data name="MainPage.CreationDate" xml:space="preserve">
+        <value>Erstellungsdatum des Auszugs</value>
+    </data>    
+    <data name="MainPage.ResponsibleOffice" xml:space="preserve">
+        <value>Katasterverantwortliche Stelle</value>
+    </data>
+    
+    <data name="ContentPage.Title" xml:space="preserve">
+        <value>Übersicht ÖREB-Themen</value>
+    </data>
+    <data name="ContentPage.ConcernedTheme_Part1" xml:space="preserve">
+        <value>Öffentlich-rechtliche Eigentumsbeschränkungen, welche das Grundstück</value>
+    </data>
+    <data name="ContentPage.ConcernedTheme_Part2" xml:space="preserve">
+        <value>in</value>
+    </data>
+    <data name="ContentPage.ConcernedTheme_Part3" xml:space="preserve">
+        <value>betreffen</value>
+    </data>
+    <data name="ContentPage.NotConcernedTheme" xml:space="preserve">
+        <value>Eigentumsbeschränkungen, welche das Grundstück nicht betreffen</value>
+    </data>
+    <data name="ContentPage.ThemeWithoutData" xml:space="preserve">
+        <value>Allfällige Eigentumsbeschränkungen, zu denen noch keine Daten vorhanden sind</value>
+    </data>
+    <data name="ContentPage.GeneralInformation" xml:space="preserve">
+        <value>Allgemeine Informationen</value>
+    </data>
+    <data name="ContentPage.QRCode" xml:space="preserve">
+        <value>Um einen aktualisierten Auszug aus dem ÖREB-Kataster zu erhalten, scannen Sie bitte den QR-Code.</value>
+    </data>
+
+    <data name="RestrictionPage.Legend" xml:space="preserve">
+        <value>Legende beteiligter Objekte</value>
+    </data>
+    <data name="RestrictionPage.OtherLegend" xml:space="preserve">
+        <value>Übrige Legende (im sichtbaren Bereich)</value>
+    </data>
+    <data name="RestrictionPage.LegendRef" xml:space="preserve">
+        <value>Vollständige Legende</value>
+    </data>
+    <data name="RestrictionPage.Type" xml:space="preserve">
+        <value>Typ</value>
+    </data>
+    <data name="RestrictionPage.Share" xml:space="preserve">
+        <value>Anteil</value>
+    </data>
+    <data name="RestrictionPage.PartInPercent" xml:space="preserve">
+        <value>Anteil in %</value>
+    </data>
+    <data name="RestrictionPage.LegalProvision" xml:space="preserve">
+        <value>Rechtsvorschriften</value>
+    </data>
+    <data name="RestrictionPage.Law" xml:space="preserve">
+        <value>Gesetzliche Grundlagen</value>
+    </data>
+    <data name="RestrictionPage.Hint" xml:space="preserve">
+        <value>Weitere Informationen und Hinweise</value>
+    </data>
+    <data name="RestrictionPage.ResponsibleOffice" xml:space="preserve">
+        <value>Zuständige Stelle</value>
+    </data>
+
+    <data name="GlossaryPage.Title" xml:space="preserve">
+        <value>Begriffe und Abkürzungen</value>
+    </data>
+
+
+
+</root>
