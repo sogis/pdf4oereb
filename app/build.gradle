@@ -19,7 +19,7 @@ repositories {
 }
 
 configurations {
-    jar.archiveName = "pdf4oereb-"+version+".jar"
+    jar.archiveName = artifactId+version+".jar"
 }
 
 // "The package javax.xml.transform.stream is accessible from more than one module: <unnamed>, java.xml"
@@ -46,11 +46,11 @@ testing {
 }
 
 distZip {
-    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.zip'
+    archiveName artifactId + '-'  + project.version.toString() + '.zip'
 }
 
 distTar {
-    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.gzip'
+    archiveName artifactId + '-'  + project.version.toString() + '.gzip'
 }
 
 tasks.distTar {
@@ -62,7 +62,7 @@ application {
 }
 
 startScripts {
-   applicationName = 'pdf4oereb'
+   applicationName = artifactId
 }
 
 run {
@@ -71,14 +71,14 @@ run {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    baseName 'pdf4oereb'
+    baseName artifactId
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
 javadoc.failOnError = false
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    baseName 'pdf4oereb'
+    baseName artifactId
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
@@ -89,13 +89,13 @@ publishing {
             from components.java
             artifact sourcesJar
             artifact javadocJar
-            groupId = 'io.github.sogis'
-            artifactId = 'pdf4oereb'
+            groupId = group
+            artifactId = artifactId
 
             pom {
-                name = "pdf4oereb"
+                name = artifactId
                 url = "https://github.com/sogis/pdf4oereb"
-                description = "pdf4oereb"
+                description = artifactId
                 scm {
                     connection = "scm:git:https@github.com/sogis/pdf4oereb"
                     developerConnection = "scm:git:https@github.com/sogis/pdf4oereb"
@@ -126,12 +126,12 @@ jreleaser {
     gitRootSearch = true
     
     project {
-        name = 'pdf4oereb'
+        name = artifactId
         description = 'pdf4oereb transforms a PLR DATA-Extract XML document version 2 into the corresponding PDF document.'
         website = 'https://agi.so.ch'
         authors = ['edigonzales']
         license = 'MIT'
-        licenseUrl = 'https://opensource.org/licenses/MIT'
+        licenseUrl = "https://github.com/sogis/pdf4oereb/blob/master/LICENSE"
         docsUrl = 'https://github.com/sogis/pdf4oereb'
         copyright = '2022 AGI Kanton Solothurn'
     }
@@ -148,9 +148,12 @@ jreleaser {
             artifact {
                 path = "build/distributions/pdf4oereb-${version}.zip"
             }
+            artifact {
+                path = "build/distributions/pdf4oereb-${version}.gzip"
+            }
             java {
-                groupId = 'io.github.sogis'
-                artifactId = 'pdf4oereb'
+                groupId = group
+                artifactId = artifactId
                 version = '11'
             }
         }
