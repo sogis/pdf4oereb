@@ -4,14 +4,14 @@
         <value>Page</value>
     </data>
 
-    <data name="MainPage.TitleReduced" xml:space="preserve">
-        <value>Extrait du cadastre des restrictions de droit public à la propriété foncière (cadastre RDPPF), comportant des informations réduites</value>
-    </data>
     <data name="MainPage.Title" xml:space="preserve">
         <value>Extrait du cadastre des restrictions de droit public à la propriété foncière (cadastre RDPPF)</value>
     </data>
     <data name="MainPage.RealEstate_DPR.Number" xml:space="preserve">
         <value>No de l'immeuble</value>
+    </data>
+    <data name="MainPage.RealEstate_DPR.Type" xml:space="preserve">
+        <value>Grundstückart</value>
     </data>
     <data name="MainPage.Municipality_FosNr" xml:space="preserve">
         <value>Commune (No OFS)</value>
@@ -21,6 +21,9 @@
     </data>
     <data name="MainPage.LandRegistryArea" xml:space="preserve">
         <value>Surface</value>
+    </data>
+    <data name="MainPage.UpdateDateCS" xml:space="preserve">
+        <value>Stand der amtlichen Vermessung</value>
     </data>
     <data name="MainPage.ExtractIdentifier" xml:space="preserve">
         <value>Identifiant de l'extrait</value>
@@ -52,9 +55,6 @@
     </data>
     <data name="ContentPage.GeneralInformation" xml:space="preserve">
         <value>Informations générales</value>
-    </data>
-    <data name="ContentPage.BaseData" xml:space="preserve">
-        <value>Données de base</value>
     </data>
     <data name="ContentPage.QRCode" xml:space="preserve">
         <value>Pour obtenir un extrait actualisé du cadastre RDPPF, veuillez svp scannez le code QR ci-contre.</value>

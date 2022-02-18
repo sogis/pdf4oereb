@@ -4,14 +4,14 @@
         <value>Pagina</value>
     </data>
 
-    <data name="MainPage.TitleReduced" xml:space="preserve">
-        <value>Estratto del Catasto delle restrizioni di diritto pubblico della proprietà (Catasto RDPP) con contenuto informativo ridotto</value>
-    </data>
     <data name="MainPage.Title" xml:space="preserve">
         <value>Estratto del Catasto delle restrizioni di diritto pubblico della proprietà (Catasto RDPP)</value>
     </data>
     <data name="MainPage.RealEstate_DPR.Number" xml:space="preserve">
         <value>No. del fondo</value>
+    </data>
+    <data name="MainPage.RealEstate_DPR.Type" xml:space="preserve">
+        <value>Grundstückart</value>
     </data>
     <data name="MainPage.Municipality_FosNr" xml:space="preserve">
         <value>Comune (no. del Comune)</value>
@@ -21,6 +21,9 @@
     </data>
     <data name="MainPage.LandRegistryArea" xml:space="preserve">
         <value>Superficie</value>
+    </data>
+    <data name="MainPage.UpdateDateCS" xml:space="preserve">
+        <value>Stand der amtlichen Vermessung</value>
     </data>
     <data name="MainPage.ExtractIdentifier" xml:space="preserve">
         <value>Numero dell'estratto</value>
@@ -52,9 +55,6 @@
     </data>
     <data name="ContentPage.GeneralInformation" xml:space="preserve">
         <value>Informazioni generali</value>
-    </data>
-    <data name="ContentPage.BaseData" xml:space="preserve">
-        <value>Dati di base</value>
     </data>
     <data name="ContentPage.QRCode" xml:space="preserve">
         <value>Per ottenere un estratto aggiornato del Catasto RDPP, siete pregati di scansionare il QR Code.</value>
