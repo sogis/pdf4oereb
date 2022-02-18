@@ -2,7 +2,6 @@ plugins {
     id 'application'
     id 'maven-publish'
     id 'signing'
-    id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
 }
 
 apply plugin: 'maven-publish'
@@ -84,8 +83,6 @@ publishing {
             from components.java
             artifact sourcesJar
             artifact javadocJar
-            //groupId = 'io.github.sogis'
-            //artifactId = 'oereb-iconizer'
 
             pom {
                 name = "pdf4oereb"
@@ -115,16 +112,5 @@ publishing {
 
 signing {
     sign publishing.publications.mavenJava
-}
-
-nexusPublishing {
-    repositories {
-        sonatype { 
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
-            password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
-        }
-    }
 }
 
