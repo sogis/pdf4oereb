@@ -131,6 +131,7 @@ jreleaser {
         website = 'https://agi.so.ch'
         authors = ['edigonzales']
         license = 'MIT'
+        licenseUrl = 'https://opensource.org/licenses/MIT'
         docsUrl = 'https://github.com/sogis/pdf4oereb'
         copyright = '2022 AGI Kanton Solothurn'
     }
