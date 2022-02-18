@@ -146,7 +146,7 @@ jreleaser {
         app {
             distributionType = 'JAVA_BINARY'
             artifact {
-                path = "app/build/distributions/pdf4oereb-${version}.zip"
+                path = "build/distributions/pdf4oereb-${version}.zip"
             }
             java {
                 groupId = 'io.github.sogis'

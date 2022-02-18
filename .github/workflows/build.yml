@@ -26,9 +26,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew -i clean app:build app:assembleDist
 
-      - name: ls
-        run: ls -la app/build/libs  
-
       - uses: actions/upload-artifact@v2
         if: ${{ failure() }}
         with:
