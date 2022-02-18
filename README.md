@@ -140,3 +140,4 @@ Das generische Sortieren wird komplizierter bis nicht mehr möglich, falls eigen
 
 ### Overlay-Image
 Das Overlay-Image mit der Grundstücksbandierung, dem Nordpfeil und dem Massstabsbalken verwendet die gleiche Auflösung wie die eingebetteten Kartenausschnitte resp. WMS-GetMap-Request. Falls die Auflösung gering ist, sehen die drei Objekte auch bescheiden aus.
+
