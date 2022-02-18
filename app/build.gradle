@@ -50,7 +50,11 @@ distZip {
 }
 
 distTar {
-    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.tar'
+    archiveName 'pdf4oereb' + '-'  + project.version.toString() + '.gzip'
+}
+
+tasks.distTar {
+    compression = Compression.GZIP
 }
 
 application {
@@ -141,7 +145,7 @@ jreleaser {
         app {
             distributionType = 'JAVA_BINARY'
             artifact {
-                path = "app/build/libs/distributions/pdf4oereb-${version}.zip"
+                path = "app/build/distributions/pdf4oereb-${version}.zip"
             }
             java {
                 groupId = 'io.github.sogis'
