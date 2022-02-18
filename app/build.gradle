@@ -12,6 +12,7 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 group = 'io.github.sogis'
+artifactId = "pdf4oereb"
 
 repositories {
     mavenCentral()
@@ -127,6 +128,7 @@ jreleaser {
         authors = ['edigonzales']
         license = 'MIT'
         docsUrl = 'https://github.com/sogis/pdf4oereb'
+        copyright = '2022 AGI Kanton Solothurn'
     }
     release {
         github {
