@@ -24,7 +24,7 @@ jobs:
           
       - name: Build with Gradle
         #run: ./gradlew -i clean classes library:test library:wmsTest web-service:test web-service:bootJar web-service:buildDockerImage
-        run: ./gradlew -i clean classes test 
+        run: ./gradlew -i clean app:build app:assembleDist
       - uses: actions/upload-artifact@v2
         if: ${{ failure() }}
         with:
