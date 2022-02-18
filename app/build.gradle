@@ -1,7 +1,11 @@
 plugins {
     id 'application'
+    id 'maven-publish'
+    id 'signing'
+    id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
 }
 
+apply plugin: 'maven-publish'
 apply from: "$rootDir/gradle/versioning.gradle"
 
 sourceCompatibility = 11
@@ -59,5 +63,68 @@ startScripts {
 run {
     //args = ["--xml", "src/test/data/ne/20220125_70_2364_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
     args = ["--xml", "src/test/data/bl/CH175978021788_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName 'pdf4oereb'
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName 'pdf4oereb'
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            //groupId = 'io.github.sogis'
+            //artifactId = 'oereb-iconizer'
+
+            pom {
+                name = "pdf4oereb"
+                url = "https://github.com/sogis/pdf4oereb"
+                description = "pdf4oereb"
+                scm {
+                    connection = "scm:git:https@github.com/sogis/pdf4oereb"
+                    developerConnection = "scm:git:https@github.com/sogis/pdf4oereb"
+                    url = "https://github.com/sogis/pdf4oereb"
+                }
+                licenses {
+                    license {
+                        name = "MIT"
+                        url = "https://github.com/sogis/pdf4oereb/blob/master/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "edigonzales"
+                        name = "Stefan Ziegler"
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+nexusPublishing {
+    repositories {
+        sonatype { 
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+            password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+        }
+    }
 }
 
