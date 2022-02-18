@@ -2,6 +2,7 @@ plugins {
     id 'application'
     id 'maven-publish'
     id 'signing'
+    id 'org.jreleaser' version '0.9.1'
 }
 
 apply plugin: 'maven-publish'
@@ -116,3 +117,38 @@ signing {
     sign publishing.publications.mavenJava
 }
 
+jreleaser {
+    gitRootSearch = true
+    
+    project {
+        name = 'pdf4oereb'
+        description = 'pdf4oereb transforms a PLR DATA-Extract XML document version 2 into the corresponding PDF document.'
+        website = 'https://agi.so.ch'
+        authors = ['edigonzales']
+        license = 'MIT'
+        docsUrl = 'https://github.com/sogis/pdf4oereb'
+    }
+    release {
+        github {
+            owner = 'sogis'
+            overwrite = true
+            apiEndpoint = 'https://api.github.com'
+        }
+    }
+    distributions {
+        app {
+            distributionType = 'JAVA_BINARY'
+            artifact {
+                path = "app/build/libs/distributions/pdf4oereb-${version}.zip"
+            }
+            artifact {
+                path = "app/build/libs/distributions/pdf4oereb-${version}.tar"
+            }
+            java {
+                groupId = 'io.github.sogis'
+                artifactId = 'pdf4oereb'
+                version = '11'
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 # pdf4oereb 
 
-_pdf4oereb_ transforms a PLR DATA-Extract XML document version 2 into the corresponding in PDF document.
+_pdf4oereb_ transforms a PLR DATA-Extract XML document version 2 into the corresponding PDF document.
 
 It uses XSLT (with some extension functions) and XSL-FO for creating the PDF.
 
@@ -70,7 +70,7 @@ Die Bibliothek verwendet XSLT (Saxon) und XSL-FO (Apache FOP) für die Umwandlun
 - Herstellung eines "Overlay-Images" mit der Grundstückbandierung und dem Massstabsbalken und dem Nordpfeil (falls die Informationen im XML vorhanden sind).
 - Zusammenfügen der Bilder (Titelseite und pro ÖREB-Thema).
 
-Ein Standalone-Programm für die Umwandlung der XML-Datei in die PDF-Datei wäre nicht nötig, da für den beide Schritte jeweils bereits ein Standalone-Programm existiert:
+Ein Standalone-Programm für die Umwandlung der XML-Datei in die PDF-Datei wäre nicht nötig, da für beide Schritte jeweils bereits ein Standalone-Programm existiert:
 
 XML -> FO: `java -jar saxon-he-10.6.jar -s:CH567107399166_geometry_images.xml -xsl:oereb_extract.xslt -o:CH567107399166_geometry_images.fo`
 
