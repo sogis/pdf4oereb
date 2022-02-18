@@ -2,7 +2,7 @@ plugins {
     id 'application'
     id 'maven-publish'
     id 'signing'
-    id 'org.jreleaser' version '0.9.1'
+    id 'org.jreleaser' version '1.0.0-M2'
 }
 
 apply plugin: 'maven-publish'
@@ -12,7 +12,7 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 group = 'io.github.sogis'
-artifactId = "pdf4oereb"
+def artifactId = "pdf4oereb"
 
 repositories {
     mavenCentral()
@@ -142,9 +142,6 @@ jreleaser {
             distributionType = 'JAVA_BINARY'
             artifact {
                 path = "app/build/libs/distributions/pdf4oereb-${version}.zip"
-            }
-            artifact {
-                path = "app/build/libs/distributions/pdf4oereb-${version}.tar"
             }
             java {
                 groupId = 'io.github.sogis'
