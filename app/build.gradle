@@ -83,6 +83,8 @@ publishing {
             from components.java
             artifact sourcesJar
             artifact javadocJar
+            groupId = 'io.github.sogis'
+            artifactId = 'pdf4oereb'
 
             pom {
                 name = "pdf4oereb"
