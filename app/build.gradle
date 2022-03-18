@@ -8,8 +8,8 @@ plugins {
 apply plugin: 'maven-publish'
 apply from: "$rootDir/gradle/versioning.gradle"
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 group = 'io.github.sogis'
 def artifactId = "pdf4oereb"
