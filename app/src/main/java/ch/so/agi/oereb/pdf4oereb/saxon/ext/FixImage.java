@@ -46,7 +46,7 @@ public class FixImage implements ExtensionFunction {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_ITEM, OccurrenceIndicator.ONE)};
     }
 
-	/**
+    /**
      * Returns a base64 string as XdmValue of the merged image (plan for land register main page map
      * and the overlay image). 
      * 

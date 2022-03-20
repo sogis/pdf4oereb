@@ -31,20 +31,20 @@ public class PlanForLandRegisterMainPageImageTest {
        
     @Test
     public void createPlanForLandRegisterMainPageImage_embeddedImage_Ok() throws SaxonApiException, IOException {
-		Processor processor = new Processor(false);
+        Processor processor = new Processor(false);
 
-		XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_embeddedImage_Ok_baseMapNode.xml")));
+        XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_embeddedImage_Ok_baseMapNode.xml")));
         XdmNode baseMapNode = baseMapSource.children().iterator().next();
         
         // the overlay image is only a base64 string
         String overlayImageString = new String(Files.readAllBytes(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_embeddedImage_Ok_overlayImageNode.xml").toPath()));
-		Orphan node = new Orphan(processor.getUnderlyingConfiguration());
-		node.setNodeKind(Type.TEXT);
-		node.setStringValue(overlayImageString);
-		XdmNode overlayImageNode = new XdmNode(node);
+        Orphan node = new Orphan(processor.getUnderlyingConfiguration());
+        node.setNodeKind(Type.TEXT);
+        node.setStringValue(overlayImageString);
+        XdmNode overlayImageNode = new XdmNode(node);
 
-		XdmNode[] arguments = {baseMapNode, overlayImageNode};
-		PlanForLandRegisterMainPageImage mainPageImage = new PlanForLandRegisterMainPageImage();
+        XdmNode[] arguments = {baseMapNode, overlayImageNode};
+        PlanForLandRegisterMainPageImage mainPageImage = new PlanForLandRegisterMainPageImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) mainPageImage.call(arguments);
 
         // Funktioniert nicht zuverlässig, da je nach JVM(-Version?) leicht unterschiedliche Strings resultieren.

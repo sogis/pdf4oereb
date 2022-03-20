@@ -80,8 +80,5 @@ public class App {
             log.error(e.getMessage());
             System.exit(3);
         }  
-
-
-        
     }
 }

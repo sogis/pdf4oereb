@@ -25,22 +25,22 @@ public class RestrictionOnLandownershipImageTest {
     
     @Test
     public void createRestrictionOnLandownershipImage_Ok() throws SaxonApiException, IOException {
-		Processor processor = new Processor(false);
+        Processor processor = new Processor(false);
 
-		XdmNode rolMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_restrictionOnLandownershipMapNode.xml")));
+        XdmNode rolMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_restrictionOnLandownershipMapNode.xml")));
         XdmNode rolMapNode = rolMapSource.children().iterator().next();
         
-		XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_baseImageNode.xml")));
+        XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_baseImageNode.xml")));
         XdmNode baseMapNode = baseMapSource.children().iterator().next();
 
         String overlayImageString = new String(Files.readAllBytes(new File("src/test/resources/RestrictionOnLandownershipImageTest/createRestrictionOnLandownershipImage_Ok_overlayImageNode.xml").toPath()));
-		Orphan overlayImageOrphanNode = new Orphan(processor.getUnderlyingConfiguration());
-		overlayImageOrphanNode.setNodeKind(Type.TEXT);
-		overlayImageOrphanNode.setStringValue(overlayImageString);
-		XdmNode overlayImageNode = new XdmNode(overlayImageOrphanNode);
-		
-		XdmNode[] arguments = {rolMapNode, baseMapNode, overlayImageNode};
-		RestrictionOnLandownershipImage restrictionOnLandownershipImage = new RestrictionOnLandownershipImage();
+        Orphan overlayImageOrphanNode = new Orphan(processor.getUnderlyingConfiguration());
+        overlayImageOrphanNode.setNodeKind(Type.TEXT);
+        overlayImageOrphanNode.setStringValue(overlayImageString);
+        XdmNode overlayImageNode = new XdmNode(overlayImageOrphanNode);
+        
+        XdmNode[] arguments = {rolMapNode, baseMapNode, overlayImageNode};
+        RestrictionOnLandownershipImage restrictionOnLandownershipImage = new RestrictionOnLandownershipImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) restrictionOnLandownershipImage.call(arguments);
 
         // see OverlayImageTest.java
@@ -50,9 +50,5 @@ public class RestrictionOnLandownershipImageTest {
         int resultSize = resultImage.getStringValue().length();
         //System.err.println(resultSize);
         assertTrue(resultSize > 150000, "Size of resulting image is too small.");        
-
     }
-    
-    
-
 }
