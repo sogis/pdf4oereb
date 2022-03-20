@@ -84,8 +84,8 @@ Es wird zuerst immer versucht die eingebetteten Kartenausschnitte, Logos und Sym
 ### Multilanguage
 Eine XSLT-Transformation ist gut parametrisierbar. Statische Texte (z.B. der Titel des Auszuges usw.) können in eigenen Sprachdateien verwaltet werden und entsprechend geladen werden. Die eigentlichen Auszugsinhalte sind per Definition mehrsprachig und die gewünschte Sprache (falls im XML vorhanden). Momentan wird jedoch immer das erste Element verwendet. Mit einem einfachen Filter könnte jedoch die gewünschte Sprache gewählt werden, z.B.: `select="data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[data:Language = 'fr']/data:Text`. 
 
-### Gruppierung und Sortierung
-Die Gruppierung und Sortierung funktioniert nun in OEREB V2_0 generisch und korrekt.
+### Gruppierung und Sortierung der Themen
+Die Gruppierung und Sortierung der Themen funktioniert nun in OEREB V2_0 generisch und korrekt.
 
 ### Overlay-Image
 Das Overlay-Image mit der Grundstücksbandierung, dem Nordpfeil und dem Massstabsbalken verwendet die gleiche Auflösung wie die eingebetteten Kartenausschnitte resp. WMS-GetMap-Request. Falls die Auflösung gering ist, sehen die drei Objekte auch bescheiden aus.

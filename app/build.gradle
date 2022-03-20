@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id 'java'
     id 'maven-publish'
     id 'signing'
     id 'org.jreleaser' version '1.0.0-M2'
@@ -10,6 +11,12 @@ apply from: "$rootDir/gradle/versioning.gradle"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+/*
+compileJava {
+    options.compilerArgs.addAll(['--release', '8'])
+}
+*/
 
 group = 'io.github.sogis'
 def artifactId = "pdf4oereb"
