@@ -56,8 +56,6 @@ public class OverlayImage implements ExtensionFunction {
     private final String imageFormat = "png";
     private final double mapWidthMM = 174.0;
     private final double mapHeightMM = 99.0;
-    private final int imageWidthPx = 2055; // not needed: it uses same sizes as provided land register map
-    private final int imageHeightPx = 1169;
 
     @Override
     public QName getName() {
@@ -243,28 +241,39 @@ public class OverlayImage implements ExtensionFunction {
         // Falls das Bild im XML eingebettet ist, wird dieses verwendet.
         byte[] mapImageByteArray = null;
         Iterator<XdmNode> it = node.children("Image").iterator();
+       
+        // FIXME:
+        // Erstes LocalisedBlob-Element verwenden.
+        // Anschliessend Languange und Blob (also ähnlich wie jetzt).
+        // -> Eine Verschachtelungstiefe mehr.
         
         while(it.hasNext()) {
             XdmNode imageNode = (XdmNode) it.next();
             Iterator<XdmNode> jt = imageNode.children().iterator();
+                    
             while(jt.hasNext()) {
-                XdmNode subNode = (XdmNode) jt.next();
-                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
-                        // Falls die Sprache berücksichtigt werden soll, muss dies
-                        // hier implementiert werden. Achtung: Vielleicht müssen die
-                        // Informationen dann gleichzeitig ausgelesen werden (Sprache 
-                        // und Image) und nicht mehr sequentiell.
-                        // Das Vorgehen jetzt entspricht dem Vorgehen in der XSLT-Transformation.
-                        // Es wird das erste Element verwendet.
-                    } else if(subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
-                        // trim(): Ist nicht ganz nachvollziehbar. Stimmt das Auslesen des Strings
-                        // vom Node? Ggf. getMimeDecoder() verwenden.
-                        String base64String = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                        mapImageByteArray = Base64.getDecoder().decode(base64String);
-                        break;
-                    }
+                XdmNode localisedBlobNode = (XdmNode) jt.next();
+
+                if (localisedBlobNode.getNodeName().getLocalName().equalsIgnoreCase("LocalisedBlob")) {
+                    System.out.println("fooo");
                 }
+////                XdmNode subNode = (XdmNode) jt.next();
+////                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+////                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
+////                        // Falls die Sprache berücksichtigt werden soll, muss dies
+////                        // hier implementiert werden. Achtung: Vielleicht müssen die
+////                        // Informationen dann gleichzeitig ausgelesen werden (Sprache 
+////                        // und Image) und nicht mehr sequentiell.
+////                        // Das Vorgehen jetzt entspricht dem Vorgehen in der XSLT-Transformation.
+////                        // Es wird das erste Element verwendet.
+////                    } else if(subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
+////                        // trim(): Ist nicht ganz nachvollziehbar. Stimmt das Auslesen des Strings
+////                        // vom Node? Ggf. getMimeDecoder() verwenden.
+////                        String base64String = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+////                        mapImageByteArray = Base64.getDecoder().decode(base64String);
+////                        break;
+////                    }
+////                }
             }
         }
         
