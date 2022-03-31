@@ -252,11 +252,15 @@ public class OverlayImage implements ExtensionFunction {
             Iterator<XdmNode> jt = imageNode.children().iterator();
                     
             while(jt.hasNext()) {
-                XdmNode localisedBlobNode = (XdmNode) jt.next();
-
-                if (localisedBlobNode.getNodeName().getLocalName().equalsIgnoreCase("LocalisedBlob")) {
-                    System.out.println("fooo");
+                XdmNode subNode = (XdmNode) jt.next();
+                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+                    
                 }
+
+                
+//                if (localisedBlobNode.getNodeName().getLocalName().equalsIgnoreCase("LocalisedBlob")) {
+//                    System.out.println("fooo");
+//                }
 ////                XdmNode subNode = (XdmNode) jt.next();
 ////                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
 ////                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
