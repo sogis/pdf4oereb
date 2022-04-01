@@ -46,7 +46,7 @@ import net.sf.saxon.s9api.XsltTransformer;
 public class Converter {
     Logger log = LoggerFactory.getLogger(Converter.class);
     
-    private final String XML2PDF_XSL = "xml2pdf.xsl";
+    private final String XML2PDF_XSL = "xml2pdf_V2_0.xsl";
     private final String FOP_XCONF = "fop.xconf";
     private static ArrayList<String> fonts = null;
     private static ArrayList<String> locales = null;

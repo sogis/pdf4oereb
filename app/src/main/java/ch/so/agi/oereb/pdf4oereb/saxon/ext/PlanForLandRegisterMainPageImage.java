@@ -64,18 +64,24 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
             // Falls das Bild im XML eingebettet ist, wird dieses verwendet.            
             byte[] baseImageByteArray = null;
             Iterator<XdmNode> it = baseMapNode.children("Image").iterator();
+            
             while(it.hasNext()) {
                 XdmNode imageNode = (XdmNode) it.next();
-                Iterator<XdmNode> jt = imageNode.children().iterator();
+                Iterator<XdmNode> jt = imageNode.children("LocalisedBlob").iterator();
+                        
                 while(jt.hasNext()) {
                     XdmNode subNode = (XdmNode) jt.next();
-                    if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                        if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
-                            // Siehe OverlayImage.java
-                        } else if(subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
-                            String base64String = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                            baseImageByteArray = Base64.getDecoder().decode(base64String);
-                            break;
+                    Iterator<XdmNode> kt = subNode.children().iterator();
+                    while (kt.hasNext()) {
+                        XdmNode subSubNode = (XdmNode) kt.next();
+                        if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+                            if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                // do something
+                            } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
+                                String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                baseImageByteArray = Base64.getDecoder().decode(base64String);
+                                break; // TODO: Ändern, falls Sprache berücksichtigt wird.
+                            }
                         }
                     }
                 }

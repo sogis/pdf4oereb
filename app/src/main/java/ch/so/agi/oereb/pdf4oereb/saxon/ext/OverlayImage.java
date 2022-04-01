@@ -229,6 +229,9 @@ public class OverlayImage implements ExtensionFunction {
         byte[] highlightingImageByteArray = baos.toByteArray();
         baos.close();          
 
+        String base64Encoded = Base64.getEncoder().encodeToString(highlightingImageByteArray);
+        //System.out.println(base64Encoded);
+
         //ImageIO.write(overlayImage, "png", new File("/Users/stefan/tmp/overlay_image.png"));        
         return highlightingImageByteArray;
     }
@@ -242,42 +245,25 @@ public class OverlayImage implements ExtensionFunction {
         byte[] mapImageByteArray = null;
         Iterator<XdmNode> it = node.children("Image").iterator();
        
-        // FIXME:
-        // Erstes LocalisedBlob-Element verwenden.
-        // Anschliessend Languange und Blob (also ähnlich wie jetzt).
-        // -> Eine Verschachtelungstiefe mehr.
-        
         while(it.hasNext()) {
             XdmNode imageNode = (XdmNode) it.next();
-            Iterator<XdmNode> jt = imageNode.children().iterator();
+            Iterator<XdmNode> jt = imageNode.children("LocalisedBlob").iterator();
                     
             while(jt.hasNext()) {
                 XdmNode subNode = (XdmNode) jt.next();
-                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                    
+                Iterator<XdmNode> kt = subNode.children().iterator();
+                while (kt.hasNext()) {
+                    XdmNode subSubNode = (XdmNode) kt.next();
+                    if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+                        if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                            // do something
+                        } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
+                            String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                            mapImageByteArray = Base64.getDecoder().decode(base64String);
+                            break; // TODO: Ändern, falls Sprache berücksichtigt wird.
+                        }
+                    }
                 }
-
-                
-//                if (localisedBlobNode.getNodeName().getLocalName().equalsIgnoreCase("LocalisedBlob")) {
-//                    System.out.println("fooo");
-//                }
-////                XdmNode subNode = (XdmNode) jt.next();
-////                if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-////                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
-////                        // Falls die Sprache berücksichtigt werden soll, muss dies
-////                        // hier implementiert werden. Achtung: Vielleicht müssen die
-////                        // Informationen dann gleichzeitig ausgelesen werden (Sprache 
-////                        // und Image) und nicht mehr sequentiell.
-////                        // Das Vorgehen jetzt entspricht dem Vorgehen in der XSLT-Transformation.
-////                        // Es wird das erste Element verwendet.
-////                    } else if(subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
-////                        // trim(): Ist nicht ganz nachvollziehbar. Stimmt das Auslesen des Strings
-////                        // vom Node? Ggf. getMimeDecoder() verwenden.
-////                        String base64String = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-////                        mapImageByteArray = Base64.getDecoder().decode(base64String);
-////                        break;
-////                    }
-////                }
             }
         }
         

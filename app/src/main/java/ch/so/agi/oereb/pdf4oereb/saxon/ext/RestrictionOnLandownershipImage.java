@@ -114,21 +114,30 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                 // grap the images
                 // embedded
                 Iterator<XdmNode> jt = mapNode.children("Image").iterator();
+                
                 while(jt.hasNext()) {
-                    XdmNode imageNode = jt.next();
-                    Iterator<XdmNode> kt = imageNode.children().iterator();
+                    XdmNode imageNode = (XdmNode) jt.next();
+                    Iterator<XdmNode> kt = imageNode.children("LocalisedBlob").iterator();
+                            
                     while(kt.hasNext()) {
                         XdmNode subNode = (XdmNode) kt.next();
-                        if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                            // TODO: Sprache
-                            if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
-                                byte[] imageByteArray = Base64.getDecoder().decode(subNode.getUnderlyingValue().getStringValue().trim());
-                                InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
-                                layerImage = ImageIO.read(imageInputStream);
+                        Iterator<XdmNode> lt = subNode.children().iterator();
+                        while (lt.hasNext()) {
+                            XdmNode subSubNode = (XdmNode) lt.next();
+                            if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+                                if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                    // do something
+                                } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
+                                    String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                    byte[] imageByteArray = Base64.getDecoder().decode(base64String);
+                                    InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
+                                    layerImage = ImageIO.read(imageInputStream);
+                                }
                             }
                         }
                     }
                 }
+                
                 // wms only when not embedded
                 if (layerImage == null) {
                     jt = mapNode.children("ReferenceWMS").iterator();
@@ -213,19 +222,27 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
             // embedded
             byte[] backgroundImageByteArray = null;
             Iterator<XdmNode> jt = backgroundMapNode.children("Image").iterator();
+            
             while(jt.hasNext()) {
-                XdmNode imageNode = jt.next();
-                Iterator<XdmNode> kt = imageNode.children().iterator();
+                XdmNode imageNode = (XdmNode) jt.next();
+                Iterator<XdmNode> kt = imageNode.children("LocalisedBlob").iterator();
+                        
                 while(kt.hasNext()) {
                     XdmNode subNode = (XdmNode) kt.next();
-                    if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                        // TODO: Sprache
-                        if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Image")) {
-                            backgroundImageByteArray = Base64.getDecoder().decode(subNode.getUnderlyingValue().getStringValue().trim());
+                    Iterator<XdmNode> lt = subNode.children().iterator();
+                    while (lt.hasNext()) {
+                        XdmNode subSubNode = (XdmNode) lt.next();
+                        if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
+                            if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                // do something
+                            } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {                                
+                                backgroundImageByteArray = Base64.getDecoder().decode(subSubNode.getUnderlyingValue().getStringValue().trim());
+                            }
                         }
                     }
                 }
             }
+
             // wms only when not embedded
             if (backgroundImageByteArray == null) {
                 jt = backgroundMapNode.children("ReferenceWMS").iterator();
