@@ -1,6 +1,6 @@
 plugins {
     id 'application'
-    id 'java'
+    //id 'java'
     id 'maven-publish'
     id 'signing'
     id 'org.jreleaser' version '1.0.0-M2'
@@ -18,20 +18,20 @@ compileJava {
 }
 */
 
+// "The package javax.xml.transform.stream is accessible from more than one module: <unnamed>, java.xml"
+configurations {
+    all*.exclude group: 'xml-apis'
+}
+
 group = 'io.github.sogis'
-def artifactId = "pdf4oereb"
+def myArtifactId = "pdf4oereb"
 
 repositories {
     mavenCentral()
 }
 
 configurations {
-    jar.archiveName = artifactId+version+".jar"
-}
-
-// "The package javax.xml.transform.stream is accessible from more than one module: <unnamed>, java.xml"
-configurations {
-    all*.exclude group: 'xml-apis'
+    jar.archiveName = artifactId+"-"+version+".jar"
 }
 
 dependencies {
@@ -53,11 +53,11 @@ testing {
 }
 
 distZip {
-    archiveName artifactId + '-'  + project.version.toString() + '.zip'
+    archiveName myArtifactId + '-'  + project.version.toString() + '.zip'
 }
 
 distTar {
-    archiveName artifactId + '-'  + project.version.toString() + '.gzip'
+    archiveName myArtifactId + '-'  + project.version.toString() + '.gz'
 }
 
 tasks.distTar {
@@ -69,7 +69,7 @@ application {
 }
 
 startScripts {
-   applicationName = artifactId
+   applicationName = myArtifactId
 }
 
 run {
@@ -79,14 +79,14 @@ run {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    baseName artifactId
+    baseName myArtifactId
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
 javadoc.failOnError = false
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    baseName artifactId
+    baseName myArtifactId
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
@@ -98,12 +98,12 @@ publishing {
             artifact sourcesJar
             artifact javadocJar
             groupId = group
-            artifactId = artifactId
+            artifactId = myArtifactId
 
             pom {
-                name = artifactId
+                name = "pdf4oereb"
                 url = "https://github.com/sogis/pdf4oereb"
-                description = artifactId
+                description = myArtifactId
                 scm {
                     connection = "scm:git:https@github.com/sogis/pdf4oereb"
                     developerConnection = "scm:git:https@github.com/sogis/pdf4oereb"
@@ -134,7 +134,7 @@ jreleaser {
     gitRootSearch = true
     
     project {
-        name = artifactId
+        name = myArtifactId
         description = 'pdf4oereb transforms a PLR DATA-Extract XML document version 2 into the corresponding PDF document.'
         website = 'https://agi.so.ch'
         authors = ['edigonzales']
@@ -161,7 +161,7 @@ jreleaser {
             }
             java {
                 groupId = group
-                artifactId = artifactId
+                artifactId = myArtifactId
                 version = '11'
             }
         }
