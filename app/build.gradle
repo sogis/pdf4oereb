@@ -57,7 +57,7 @@ distZip {
 }
 
 distTar {
-    archiveName myArtifactId + '-'  + project.version.toString() + '.gz'
+    archiveName myArtifactId + '-'  + project.version.toString() + '.gzip'
 }
 
 tasks.distTar {
