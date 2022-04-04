@@ -169,15 +169,15 @@ public class Converter {
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
             XsltTransformer trans = exp.load();
             trans.setInitialContextNode(source);
-//            if (locale == Locale.FR) {
-//                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
-//            } else if (locale == Locale.IT) {
-//                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
-//            } else {
-//                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
-//            }
-//
-//          // the fop part
+            if (locale == Locale.FR) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
+            } else if (locale == Locale.IT) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
+            } else {
+                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
+            }
+
+            // the fop part
             FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
             OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
