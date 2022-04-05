@@ -836,7 +836,7 @@
             <!-- Siehe Kommentare in V1_0. Die Anforderungen sind tricky.-->
             <xsl:variable name="restrictionInformation" select="../data:RestrictionOnLandownership/data:LegendText[1]/data:LocalisedText/data:Text"/>
             <xsl:variable name="restrictionTypeCodeList" select="../data:RestrictionOnLandownership/data:TypeCodeList"/>
-            <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:LegendText/data:LocalisedText[1]/data:Text = $restrictionInformation) and not(data:TypeCodeList = $restrictionTypeCodeList)]" group-by="concat(data:TypeCode, '|', data:TypeCodelist)">
+            <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:LegendText/data:LocalisedText[1]/data:Text = $restrictionInformation) and not(data:TypeCodeList = $restrictionTypeCodeList)]" group-by="concat(data:TypeCode, '|', data:TypeCodelist, '|', data:Symbol)">
               <xsl:sort lang="de" order="ascending" select="data:LegendText/data:LocalisedText[1]/data:Text"/>
               <fo:table-row vertical-align="middle" line-height="5mm">
                 <fo:table-cell>

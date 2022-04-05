@@ -75,7 +75,8 @@ startScripts {
 run {
     //args = ["--xml", "src/test/data/ne/20220125_70_2364_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
     //args = ["--xml", "src/test/data/bl/CH175978021788_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]   
-    args = ["--xml", "src/test/data/so/CH955832730623_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
+    args = ["--xml", "src/test/data/so/CH955832730623_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
+    args = ["--xml", "src/test/data/so/CH870679603216_geom_images_ohne_punkt.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
