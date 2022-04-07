@@ -1,1 +1,2 @@
-- `CH870679603216_geom_images.xml`: OtherLegend scheint falsch zu sein. Im PDF erscheint das Punktsymbol. Es handelt sich aber um eine Fläche.
+- `CH870679603216_geom_images_mit/ohne_punkt.xml`: OtherLegend scheint falsch zu sein. Im PDF erscheint das Punktsymbol. Es handelt sich aber um eine Fläche.
+- `CH870679603216_geom_images_einzelschutz.xml`: OtherLegend fehlt bei Einzelschutz in PDF.
