@@ -807,7 +807,9 @@
         </fo:table-body>
       </fo:table>
     </fo:block-container>
-    <xsl:if test="current-group()/data:Map/data:OtherLegend">
+    <xsl:variable name="restrictionTypeCode" select="../data:RestrictionOnLandownership/data:TypeCode"/>
+    <xsl:variable name="restrictionTypeCodelist" select="../data:RestrictionOnLandownership/data:TypeCodelist"/>
+    <xsl:if test="current-group()/data:Map/data:OtherLegend[not(data:TypeCode = $restrictionTypeCode and data:TypeCodelist = $restrictionTypeCodelist)]">
       <fo:block-container font-size="8pt" background-color="transparent">
         <fo:table table-layout="fixed" width="100%">
           <fo:table-column column-width="68mm"/>
@@ -836,8 +838,7 @@
             <!-- Siehe Kommentare in V1_0. Die Anforderungen sind tricky.-->
             <!-- In V1_0 habe ich als Kriterum statt des Typcodes den Text verwendet. Wahrscheinlich weil die Symbole bei uns aggregiert sind. Momentan finde
             ich es aber sinnvoller den Artcode zu verwenden. -->
-            <xsl:variable name="restrictionTypeCode" select="../data:RestrictionOnLandownership/data:TypeCode"/>
-            <xsl:variable name="restrictionTypeCodelist" select="../data:RestrictionOnLandownership/data:TypeCodelist"/>
+            <!-- Die Variablen sind bereits weiter oben definiert, damit überhaupt nicht ein block-container mit Linie gezeichnet wird, wenn es gar keine Einträge gibt.-->
             <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:TypeCode = $restrictionTypeCode and data:TypeCodelist = $restrictionTypeCodelist)]" group-by="concat(data:TypeCode, '|', data:TypeCodelist, '|', data:Symbol)">
               <xsl:sort lang="de" order="ascending" select="data:LegendText/data:LocalisedText[1]/data:Text"/>
               <fo:table-row vertical-align="middle" line-height="5mm">
