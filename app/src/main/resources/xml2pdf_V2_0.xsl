@@ -24,9 +24,9 @@
               <xsl:value-of select="$localeXml/data[@name='MainPage.Title']/value/text()"/>
             </fo:block>
           </fo:block-container>
-          <fo:block-container height="109mm" background-color="transparent">
+          <fo:block-container height="107mm" background-color="transparent">
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-              <fo:external-graphic border="0.4pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
+              <fo:external-graphic border="0.2pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
                 <xsl:if test="data:RealEstate/data:PlanForLandRegisterMainPage/data:Image/data:LocalisedBlob[1]/data:Blob">
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
@@ -44,7 +44,7 @@
               <fo:table-column column-width="68mm"/>
               <fo:table-column column-width="106mm"/>
               <fo:table-body>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block font-weight="700">
                       <xsl:value-of select="$localeXml/data[@name='MainPage.RealEstate_DPR.Number']/value/text()"/>
@@ -56,7 +56,7 @@
                     </fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>
                       <xsl:value-of select="$localeXml/data[@name='MainPage.RealEstate_DPR.Type']/value/text()"/>
@@ -69,7 +69,7 @@
                   </fo:table-cell>
                 </fo:table-row>
 
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>E-GRID</fo:block>
                   </fo:table-cell>
@@ -79,7 +79,7 @@
                     </fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>
                       <xsl:value-of select="$localeXml/data[@name='MainPage.Municipality_FosNr']/value/text()"/>
@@ -90,7 +90,7 @@
                   </fo:table-cell>
                 </fo:table-row>
                 <xsl:if test="data:RealEstate/data:SubunitOfLandRegister">
-                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                     <fo:table-cell>
                       <fo:block>
                         <xsl:value-of select="data:RealEstate/data:SubunitOfLandRegisterDesignation"/>
@@ -103,7 +103,7 @@
                     </fo:table-cell>
                   </fo:table-row>
                 </xsl:if>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>
                       <xsl:value-of select="$localeXml/data[@name='MainPage.LandRegistryArea']/value/text()"/>
@@ -113,7 +113,7 @@
                     <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-number(data:RealEstate/data:LandRegistryArea, &quot;#'###&quot;, &quot;swiss&quot;)"/> m<fo:inline baseline-shift="super" font-size="60%">2</fo:inline></fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>
                       <xsl:value-of select="$localeXml/data[@name='MainPage.UpdateDateCS']/value/text()"/>
@@ -126,12 +126,12 @@
               </fo:table-body>
             </fo:table>
           </fo:block-container>
-          <fo:block-container margin-top="10mm" font-size="8pt" background-color="transparent">
+          <fo:block-container margin-top="8mm" font-size="8pt" background-color="transparent">
             <fo:table table-layout="fixed" width="100%">
               <fo:table-column column-width="68mm"/>
               <fo:table-column column-width="106mm"/>
               <fo:table-body>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block font-weight="700">
                       <xsl:value-of select="$localeXml/data[@name='MainPage.ExtractIdentifier']/value/text()"/>
@@ -143,7 +143,7 @@
                     </fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>
                       <xsl:value-of select="$localeXml/data[@name='MainPage.CreationDate']/value/text()"/>
@@ -155,7 +155,7 @@
                     </fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-                <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="11pt" height="6mm">
+                <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11pt" height="6mm">
                   <!-- Text darf vertikal nicht zentriert werden (wie bei den einzeiligen Zellen).  
                   Rechnerisch komme ich zwar auf 4.5pt (6mm Zeileinhöhe = 17pt minus 8pt für die Schrift), 
                   3.5pt passt aber besser zu den einzeiligen Zellen. Wahrscheinlich ist kann man 8pt 
@@ -216,7 +216,7 @@
           </fo:block-container>
           <fo:block-container>
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
+              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
             </fo:block>
           </fo:block-container>
           
@@ -224,13 +224,13 @@
           <xsl:apply-templates select="data:RealEstate" mode="toc"/>
 
           <fo:block-container background-color="transparent">
-            <fo:block line-height="11pt" linefeed-treatment="preserve" font-weight="700" font-size="8pt">
+            <fo:block line-height="12pt" linefeed-treatment="preserve" font-weight="700" font-size="8pt">
               <xsl:value-of select="$localeXml/data[@name='ContentPage.NotConcernedTheme']/value/text()"/>
             </fo:block>
           </fo:block-container>
-          <fo:block-container>
+          <fo:block-container margin-bottom="1mm">
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
+              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
             </fo:block>
           </fo:block-container>
           <fo:block-container margin-bottom="10mm" font-size="8pt" line-height="11pt" background-color="transparent">
@@ -260,13 +260,13 @@
             </fo:table>
           </fo:block-container>
           <fo:block-container background-color="transparent">
-            <fo:block line-height="11pt" linefeed-treatment="preserve" font-weight="700" font-size="8pt">
+            <fo:block line-height="12pt" linefeed-treatment="preserve" font-weight="700" font-size="8pt">
               <xsl:value-of select="$localeXml/data[@name='ContentPage.ThemeWithoutData']/value/text()"/>
             </fo:block>
           </fo:block-container>
-          <fo:block-container>
+          <fo:block-container margin-bottom="1mm">
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
+              <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
             </fo:block>
           </fo:block-container>
           <!-- margin-bottom ist heuristisch -->
@@ -431,7 +431,7 @@
                       </fo:block-container>
                       <fo:block-container>
                         <!-- 2mm sind circa. 3mm sind bereits vorhanden. Kann nicht (?) besser gesteuert werden.-->
-                        <fo:block margin-top="2mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
+                        <fo:block margin-top="1mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
                           <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"/>
                         </fo:block>
                       </fo:block-container>
@@ -456,7 +456,7 @@
                         </fo:block>
                       </fo:block-container>
                       <fo:block-container>
-                        <fo:block margin-top="2mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
+                        <fo:block margin-top="1mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
                           <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"/>
                         </fo:block>
                       </fo:block-container>
@@ -484,7 +484,7 @@
               <fo:table-body>
                 <fo:table-row vertical-align="middle">
                   <fo:table-cell>
-                    <fo:block margin-top="1mm" margin-bottom="2.8mm" font-weight="700" font-size="6pt">
+                    <fo:block margin-top="1mm" margin-bottom="1.8mm" font-weight="700" font-size="6pt">
                       <xsl:value-of select="$localeXml/data[@name='Page']/value/text()"/>
                     </fo:block>
                   </fo:table-cell>
@@ -499,7 +499,7 @@
                         <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
                           <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
 
-                          <fo:table-row line-height="6mm" border-bottom="0.4pt solid black" vertical-align="middle">
+                          <fo:table-row line-height="5mm" border-bottom="0.2pt solid black" vertical-align="middle">
                             <fo:table-cell>
                               <fo:block>
                                 <fo:basic-link internal-destination="{generate-id(.)}">
@@ -529,7 +529,7 @@
                       <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
                         <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
 
-                        <fo:table-row line-height="6mm" border-bottom="0.4pt solid black" vertical-align="middle">
+                        <fo:table-row line-height="6mm" border-bottom="0.2pt solid black" vertical-align="middle">
                           <fo:table-cell>
                             <fo:block>
                               <fo:basic-link internal-destination="{generate-id(.)}">
@@ -577,8 +577,8 @@
     </xsl:for-each-group>
     -->
 
-    <!-- Abstand sind 12mm - 5mm. 1mm ist jedoch bereits vom Untertitel vorhanden. -->
-    <fo:block-container margin-top="6mm" height="105mm" background-color="transparent">
+    <!-- margin-top: heuristisch -->
+    <fo:block-container margin-top="4mm" height="105mm" background-color="transparent">
       <!-- Das funktioniert nicht, wenn es in einem Thema unterschiedliche Bilder gibt.
 	    Das kann vorkommen, wenn die Bilder z.B. von WMS-Requests mit unterschliedlichen
 	    Layern stammen. Bei uns wäre das bei der "Nutzungsplanung überlagernd" der Fall. 
@@ -603,7 +603,7 @@
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">
                 <xsl:text>url('data:</xsl:text>
                 <xsl:text>image/png;base64,</xsl:text>
@@ -621,7 +621,7 @@
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">
                 <xsl:text>url('data:</xsl:text>
                 <xsl:text>image/png;base64,</xsl:text>
@@ -641,7 +641,7 @@
         <fo:table-column column-width="20mm"/>
         <fo:table-column column-width="17mm"/>
         <fo:table-body>
-          <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
+          <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -818,7 +818,7 @@
           <fo:table-column column-width="20mm"/>
           <fo:table-column column-width="17mm"/>
           <fo:table-body>
-            <fo:table-row min-height="1mm" border-top="0.4pt solid black">
+            <fo:table-row min-height="1mm" border-top="0.2pt solid black">
               <fo:table-cell>
                 <fo:block/>
               </fo:table-cell>
@@ -893,7 +893,7 @@
                 </fo:table-cell>
               </fo:table-row>
             </xsl:for-each-group>
-            <fo:table-row min-height="1mm" border-bottom="0.4pt solid black">
+            <fo:table-row min-height="1mm" border-bottom="0.2pt solid black">
               <fo:table-cell>
                 <fo:block/>
               </fo:table-cell>
@@ -910,7 +910,7 @@
         <fo:table-column column-width="68mm"/>
         <fo:table-column column-width="106mm"/>
         <fo:table-body>
-          <fo:table-row min-height="1mm" border-top="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-top="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -954,7 +954,7 @@
               </fo:table-cell>
             </fo:table-row>
           </xsl:for-each-group>
-          <fo:table-row min-height="1mm" border-bottom="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-bottom="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -970,7 +970,7 @@
         <fo:table-column column-width="68mm"/>
         <fo:table-column column-width="106mm"/>
         <fo:table-body>
-          <fo:table-row min-height="1mm" border-top="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-top="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -1017,7 +1017,7 @@
               </fo:table-cell>
             </fo:table-row>
           </xsl:for-each-group>
-          <fo:table-row min-height="1mm" border-bottom="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-bottom="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -1034,7 +1034,7 @@
           <fo:table-column column-width="68mm"/>
           <fo:table-column column-width="106mm"/>
           <fo:table-body>
-            <fo:table-row min-height="1mm" border-top="0.4pt solid black" vertical-align="middle" line-height="5mm">
+            <fo:table-row min-height="1mm" border-top="0.2pt solid black" vertical-align="middle" line-height="5mm">
               <fo:table-cell>
                 <fo:block/>
               </fo:table-cell>
@@ -1072,7 +1072,7 @@
                 </fo:table-cell>
               </fo:table-row>
             </xsl:for-each-group>
-            <fo:table-row min-height="1mm" border-bottom="0.4pt solid black" vertical-align="middle" line-height="5mm">
+            <fo:table-row min-height="1mm" border-bottom="0.2pt solid black" vertical-align="middle" line-height="5mm">
               <fo:table-cell>
                 <fo:block/>
               </fo:table-cell>
@@ -1089,7 +1089,7 @@
         <fo:table-column column-width="68mm"/>
         <fo:table-column column-width="106mm"/>
         <fo:table-body>
-          <fo:table-row min-height="1mm" border-top="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-top="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -1128,7 +1128,7 @@
               </fo:table-cell>
             </fo:table-row>
           </xsl:for-each-group>
-          <fo:table-row min-height="1mm" border-bottom="0.4pt solid black">
+          <fo:table-row min-height="1mm" border-bottom="0.2pt solid black">
             <fo:table-cell>
               <fo:block/>
             </fo:table-cell>
@@ -1244,7 +1244,7 @@
         </fo:block-container>
         <fo:block-container absolute-position="absolute" top="19mm" left="0mm">
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.4pt"/>
+            <fo:leader leader-pattern="rule" leader-length="100%" rule-style="solid" rule-thickness="0.2pt"/>
           </fo:block>
         </fo:block-container>
       </fo:block>
@@ -1297,7 +1297,7 @@
               <fo:table-body>
                 <xsl:for-each select="data:Glossary">
                   <xsl:sort select="data:Title/data:LocalisedText[1]/data:Text" lang="de-CH"/>
-                  <fo:table-row border-bottom="0.4pt solid black" vertical-align="middle" line-height="11pt">
+                  <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11pt">
                     <fo:table-cell padding-top="1mm" padding-bottom="1mm">
                       <fo:block>
                         <fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>: </fo:inline>
