@@ -211,10 +211,10 @@ public class OverlayImage implements ExtensionFunction {
         gr.drawImage(scalebarBufferedImage, imageWidthPx / 20, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight()), null); 
         
         // The north arrow
-        InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow_small.png"); 
+        InputStream northArrowFileInputStream = OverlayImage.class.getResourceAsStream("/oereb_north_arrow_small_V2.png"); 
         BufferedImage northArrowBufferedImage = ImageIO.read(northArrowFileInputStream);
         int scaledNorthArrowWidthPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
-        int scaledNorthArrowHeightPx = (int) (northArrowBufferedImage.getWidth() * dpiRatio);
+        int scaledNorthArrowHeightPx = (int) (northArrowBufferedImage.getHeight() * dpiRatio);
         Image tmpNorthArrowImage = northArrowBufferedImage.getScaledInstance(scaledNorthArrowWidthPx, scaledNorthArrowHeightPx, Image.SCALE_SMOOTH);
                 
         // add north arrow to graphic
