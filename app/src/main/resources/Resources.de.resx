@@ -48,10 +48,10 @@
         <value>betreffen</value>
     </data>
     <data name="ContentPage.NotConcernedTheme" xml:space="preserve">
-        <value>Eigentumsbeschränkungen, welche das Grundstück nicht betreffen</value>
+        <value>Öffentlich-rechtliche Eigentumsbeschränkungen, welche das Grundstück nicht betreffen</value>
     </data>
     <data name="ContentPage.ThemeWithoutData" xml:space="preserve">
-        <value>Allfällige Eigentumsbeschränkungen, zu denen noch keine Daten vorhanden sind</value>
+        <value>Öffentlich-rechtliche Eigentumsbeschränkungen, zu denen noch keine Daten vorhanden sind</value>
     </data>
     <data name="ContentPage.GeneralInformation" xml:space="preserve">
         <value>Allgemeine Informationen</value>
