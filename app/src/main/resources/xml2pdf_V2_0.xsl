@@ -120,7 +120,7 @@
                     </fo:block>
                   </fo:table-cell>
                   <fo:table-cell>
-                    <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-dateTime(/extract:GetExtractByIdResponse/data:Extract/data:CreationDate,'[D01].[M01].[Y0001]')"/></fo:block>
+                    <fo:block line-height-shift-adjustment="disregard-shifts"><xsl:value-of select="format-dateTime(/extract:GetExtractByIdResponse/data:Extract/data:UpdateDateCS,'[D01].[M01].[Y0001]')"/></fo:block>
                   </fo:table-cell>
                 </fo:table-row>
               </fo:table-body>
