@@ -358,7 +358,7 @@ public class OverlayImage implements ExtensionFunction {
                             if (nt.hasNext()) {
                                 while(nt.hasNext()) {
                                     XdmNode posListNode = (XdmNode) nt.next();
-                                    String coordsString = posListNode.getUnderlyingNode().getStringValue();
+                                    String coordsString = posListNode.getUnderlyingNode().getStringValue().trim();
                                     String[] coordsArray = coordsString.split(" ");
                                     List<Coordinate> coordsList = new ArrayList<Coordinate>();      
                                     for(int i=0; i<coordsArray.length; i=i+2) {
@@ -374,7 +374,7 @@ public class OverlayImage implements ExtensionFunction {
                                 List<Coordinate> coordsList = new ArrayList<Coordinate>();      
                                 while(nt.hasNext()) {
                                     XdmNode posNode = (XdmNode) nt.next();
-                                    String coordString = posNode.getUnderlyingNode().getStringValue();
+                                    String coordString = posNode.getUnderlyingNode().getStringValue().trim();
                                     String[] coordArray = coordString.split(" ");
                                     Coordinate coord = new Coordinate(Double.valueOf(coordArray[0]), Double.valueOf(coordArray[1]));
                                     coordsList.add(coord);
@@ -397,7 +397,7 @@ public class OverlayImage implements ExtensionFunction {
                             if (nt.hasNext()) {
                                 while(nt.hasNext()) {
                                     XdmNode posListNode = (XdmNode) nt.next();
-                                    String coordsString = posListNode.getUnderlyingNode().getStringValue();
+                                    String coordsString = posListNode.getUnderlyingNode().getStringValue().trim();
                                     String[] coordsArray = coordsString.split(" ");
                                     List<Coordinate> coordsList = new ArrayList<Coordinate>();      
                                     for(int i=0; i<coordsArray.length; i=i+2) {
@@ -415,7 +415,7 @@ public class OverlayImage implements ExtensionFunction {
                                 if (nt.hasNext()) {
                                     while(nt.hasNext()) {
                                         XdmNode posNode = (XdmNode) nt.next();
-                                        String coordString = posNode.getUnderlyingNode().getStringValue();
+                                        String coordString = posNode.getUnderlyingNode().getStringValue().trim();
                                         String[] coordArray = coordString.split(" ");
                                         Coordinate coord = new Coordinate(Double.valueOf(coordArray[0]), Double.valueOf(coordArray[1]));
                                         coordsList.add(coord);
