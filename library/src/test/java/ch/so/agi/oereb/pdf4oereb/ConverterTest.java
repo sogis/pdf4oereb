@@ -69,7 +69,7 @@ public class ConverterTest {
         assertTrue(resultSize > 310000, "Size of resulting pdf is too small.");        
     }    
     
-    @Test
+    //@Test
     @Tag("wms")
     @ExtendWith(TempDirectory.class)
     public void convertXml1_CantonSo_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
