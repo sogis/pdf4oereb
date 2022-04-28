@@ -191,15 +191,17 @@ public class Converter {
                  trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
             }
 
-            // the fop part
-            FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
-            OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
+            synchronized(this) {
+                // the fop part
+                FopFactory fopFactory = FopFactory.newInstance(fopxconfFile);
+                OutputStream outPdf = new BufferedOutputStream(new FileOutputStream(pdfFile)); 
+                Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outPdf);
 
-            trans.setDestination(new SAXDestination(fop.getDefaultHandler()));
-            trans.transform();
-            outPdf.close();
-            trans.close();
+                trans.setDestination(new SAXDestination(fop.getDefaultHandler()));
+                trans.transform();
+                outPdf.close();
+                trans.close();
+            }
             
             log.info("end transformation: " + new Date().toString());
 
