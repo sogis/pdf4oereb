@@ -71,6 +71,7 @@ public class ScalebarGenerator {
     private Color colorSegmentEven = Color.BLACK;
     private Color colorSegmentUneven = Color.WHITE;
     private Color colorText = Color.RED;
+    private Color haloColor = Color.WHITE;
     private Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, 20);
     private segmentMeasureUnitType segmentMeasureUnit = segmentMeasureUnitType.m;
     private boolean drawScaleText = true;
@@ -322,6 +323,13 @@ public class ScalebarGenerator {
         FontMetrics fontMetrics = g2D.getFontMetrics();
         int txtWidth = fontMetrics.stringWidth(txt);
         x = x - txtWidth / 2;
+        
+        g2D.setColor(haloColor);
+        g2D.drawString(txt, x + 2, y);
+        g2D.drawString(txt, x - 2, y);
+        g2D.drawString(txt, x, y + 2);
+        g2D.drawString(txt, x, y - 2);
+        
         g2D.setColor(this.colorText);
         g2D.drawString(txt, x, y);
     }
