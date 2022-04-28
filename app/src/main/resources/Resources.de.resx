@@ -66,9 +66,6 @@
     <data name="RestrictionPage.OtherLegend" xml:space="preserve">
         <value>Übrige Legende (im sichtbaren Bereich)</value>
     </data>
-    <data name="RestrictionPage.LegendRef" xml:space="preserve">
-        <value>Vollständige Legende</value>
-    </data>
     <data name="RestrictionPage.Type" xml:space="preserve">
         <value>Typ</value>
     </data>
@@ -94,7 +91,4 @@
     <data name="GlossaryPage.Title" xml:space="preserve">
         <value>Begriffe und Abkürzungen</value>
     </data>
-
-
-
 </root>

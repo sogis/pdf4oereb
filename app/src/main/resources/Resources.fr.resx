@@ -11,19 +11,19 @@
         <value>No de l'immeuble</value>
     </data>
     <data name="MainPage.RealEstate_DPR.Type" xml:space="preserve">
-        <value>Grundstückart</value>
+        <value>Type d'immeuble</value>
     </data>
     <data name="MainPage.Municipality_FosNr" xml:space="preserve">
-        <value>Commune (No OFS)</value>
+        <value>Commune (No. OFS)</value>
     </data>
     <data name="MainPage.SubunitOfLandRegister" xml:space="preserve">
-        <value>Arrondissement du RF</value>
+        <value>Cadastre, Arrondissement</value>
     </data>
     <data name="MainPage.LandRegistryArea" xml:space="preserve">
         <value>Surface</value>
     </data>
     <data name="MainPage.UpdateDateCS" xml:space="preserve">
-        <value>Stand der amtlichen Vermessung</value>
+        <value>Etat de la mensuration officielle</value>
     </data>
     <data name="MainPage.ExtractIdentifier" xml:space="preserve">
         <value>Identifiant de l'extrait</value>
@@ -32,14 +32,14 @@
         <value>Date de création de l'extrait</value>
     </data>  
     <data name="MainPage.ResponsibleOffice" xml:space="preserve">
-        <value>Service chargé du cadastre</value>
+        <value>Organisme responsable du cadastre</value>
     </data>
     
     <data name="ContentPage.Title" xml:space="preserve">
         <value>Sommaire des thèmes RDPPF</value>
     </data>
     <data name="ContentPage.ConcernedTheme_Part1" xml:space="preserve">
-        <value>Restrictions à la propriété foncière qui touchent l'immeuble</value>
+        <value>Restrictions de droit public à la propriété foncière qui touchent l'immeuble</value>
     </data>
     <data name="ContentPage.ConcernedTheme_Part2" xml:space="preserve">
         <value>de</value>
@@ -48,10 +48,10 @@
         <value></value>
     </data>
     <data name="ContentPage.NotConcernedTheme" xml:space="preserve">
-        <value>Restrictions à la propriété foncière qui ne touchent pas l'immeuble</value>
+        <value>Restrictions de droit public à la propriété foncière qui ne touchent pas l'immeuble</value>
     </data>
     <data name="ContentPage.ThemeWithoutData" xml:space="preserve">
-        <value>Restrictions à la propriété foncière pour lesquelles aucune donnée n'est disponible</value>
+        <value>Restrictions de droit public à la propriété foncière pour lesquelles aucune donnée n'est disponible</value>
     </data>
     <data name="ContentPage.GeneralInformation" xml:space="preserve">
         <value>Informations générales</value>
@@ -64,10 +64,7 @@
         <value>Légende des objets touchés</value>
     </data>
     <data name="RestrictionPage.OtherLegend" xml:space="preserve">
-        <value>Autre légende (visible dans le cadre)</value>
-    </data>
-    <data name="RestrictionPage.LegendRef" xml:space="preserve">
-        <value>Légende complète</value>
+        <value>Autre légende (visible dans le cadre du plan)</value>
     </data>
     <data name="RestrictionPage.Type" xml:space="preserve">
         <value>Type</value>
@@ -92,6 +89,6 @@
     </data>
 
     <data name="GlossaryPage.Title" xml:space="preserve">
-        <value>Abréviations</value>
+        <value>Termes et abréviations</value>
     </data>
 </root>

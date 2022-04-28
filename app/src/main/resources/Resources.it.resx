@@ -8,38 +8,38 @@
         <value>Estratto del Catasto delle restrizioni di diritto pubblico della proprietà (Catasto RDPP)</value>
     </data>
     <data name="MainPage.RealEstate_DPR.Number" xml:space="preserve">
-        <value>No. del fondo</value>
+        <value>Numero del fondo</value>
     </data>
     <data name="MainPage.RealEstate_DPR.Type" xml:space="preserve">
-        <value>Grundstückart</value>
+        <value>Tipo di fondo</value>
     </data>
     <data name="MainPage.Municipality_FosNr" xml:space="preserve">
-        <value>Comune (no. del Comune)</value>
+        <value>Comune (N. UST)</value>
     </data>
     <data name="MainPage.SubunitOfLandRegister" xml:space="preserve">
-        <value>Distretto del registro fondiario</value>
+        <value>Sezione</value>
     </data>
     <data name="MainPage.LandRegistryArea" xml:space="preserve">
         <value>Superficie</value>
     </data>
     <data name="MainPage.UpdateDateCS" xml:space="preserve">
-        <value>Stand der amtlichen Vermessung</value>
+        <value>Stato della misurazione ufficiale</value>
     </data>
     <data name="MainPage.ExtractIdentifier" xml:space="preserve">
         <value>Numero dell'estratto</value>
     </data>
     <data name="MainPage.CreationDate" xml:space="preserve">
-        <value>Data di redazione dell'estratto</value>
+        <value>Data dell'estratto</value>
     </data>  
     <data name="MainPage.ResponsibleOffice" xml:space="preserve">
-        <value>Servizio competente per la tenuta del catasto</value>
+        <value>Organo responsabile del Catasto</value>
     </data>
     
     <data name="ContentPage.Title" xml:space="preserve">
-        <value>Panoramica temi RDPP</value>
+        <value>Panoramica dei temi RDPP</value>
     </data>
     <data name="ContentPage.ConcernedTheme_Part1" xml:space="preserve">
-        <value>Restrizioni della proprietà che riguardano il fondo</value>
+        <value>Restrizioni di diritto pubblico della proprietà, che riguardano il fondo</value>
     </data>
     <data name="ContentPage.ConcernedTheme_Part2" xml:space="preserve">
         <value>a</value>
@@ -48,10 +48,10 @@
         <value></value>
     </data>
     <data name="ContentPage.NotConcernedTheme" xml:space="preserve">
-        <value>Restrizioni della proprietà che non riguardano il fondo</value>
+        <value>Restrizioni di diritto pubblico della proprietà, che non riguardano il fondo</value>
     </data>
     <data name="ContentPage.ThemeWithoutData" xml:space="preserve">
-        <value>Restrizioni della proprietà per le quali non sono ancora disponibili dati</value>
+        <value>Restrizioni di diritto pubblico della proprietà per le quali non sono ancora disponibili dei dati</value>
     </data>
     <data name="ContentPage.GeneralInformation" xml:space="preserve">
         <value>Informazioni generali</value>
@@ -61,34 +61,31 @@
     </data>
 
     <data name="RestrictionPage.Legend" xml:space="preserve">
-        <value>Legenda oggetti coinvolti</value>
+        <value>Legenda degli oggetti coinvolti</value>
     </data>
     <data name="RestrictionPage.OtherLegend" xml:space="preserve">
         <value>Altra legenda (nell'area visibile)</value>
-    </data>
-    <data name="RestrictionPage.LegendRef" xml:space="preserve">
-        <value>Legenda completa</value>
     </data>
     <data name="RestrictionPage.Type" xml:space="preserve">
         <value>Tipo</value>
     </data>
     <data name="RestrictionPage.Share" xml:space="preserve">
-        <value>Quota</value>
+        <value>Parte</value>
     </data>
     <data name="RestrictionPage.PartInPercent" xml:space="preserve">
-        <value>Quota in %</value>
+        <value>Parte in %</value>
     </data>
     <data name="RestrictionPage.LegalProvision" xml:space="preserve">
-        <value>Norme di legge</value>
+        <value>Prescrizione legale</value>
     </data>
     <data name="RestrictionPage.Law" xml:space="preserve">
-        <value>Basi giuridiche</value>
+        <value>Basi legali</value>
     </data>
     <data name="RestrictionPage.Hint" xml:space="preserve">
-        <value>Altre informazioni e indicazioni</value>
+        <value>Ulteriori informazioni e indicazioni</value>
     </data>
     <data name="RestrictionPage.ResponsibleOffice" xml:space="preserve">
-        <value>Servizio competente</value>
+        <value>Termini e abbreviazioni</value>
     </data>
 
     <data name="GlossaryPage.Title" xml:space="preserve">
