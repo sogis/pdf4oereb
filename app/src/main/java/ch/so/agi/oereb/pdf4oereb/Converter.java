@@ -64,8 +64,13 @@ public class Converter {
         locales.add("Resources.de.resx");
         locales.add("Resources.fr.resx");
         locales.add("Resources.it.resx");
+        locales.add("Resources.rm.resx");
     }
-        
+       
+    private Processor proc;
+    private XsltCompiler comp;
+    private XsltExecutable exp;
+    
     public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
             Path outputPath = Paths.get(outputDirectory);
@@ -81,16 +86,19 @@ public class Converter {
             }
 
             log.info("start saxon: " + new Date().toString());
-            Processor proc = new Processor(false);
+            
+            if (proc == null) {
+                proc = new Processor(false);
+                proc.registerExtensionFunction(new OverlayImage());
+                proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+                proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+                proc.registerExtensionFunction(new FixImage());
+                proc.registerExtensionFunction(new URLDecoder());
+                
+                comp = proc.newXsltCompiler();
+                exp = comp.compile(new StreamSource(new File(xsltFileName)));
+            } 
 
-            proc.registerExtensionFunction(new OverlayImage());
-            proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
-            proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
-            proc.registerExtensionFunction(new FixImage());
-            proc.registerExtensionFunction(new URLDecoder());
-
-            XsltCompiler comp = proc.newXsltCompiler();
-            XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
             Serializer outFo = proc.newSerializer(foFile);
             XsltTransformer trans = exp.load();
@@ -100,6 +108,8 @@ public class Converter {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
             } else if (locale == Locale.IT) {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
+            } else if (locale == Locale.RM) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.rm.resx"));
             } else {
                  trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
             }
@@ -156,16 +166,18 @@ public class Converter {
             log.info("start transformation: " + new Date().toString());
             
             // the saxon part
-            Processor proc = new Processor(false);
-
-            proc.registerExtensionFunction(new OverlayImage());
-            proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
-            proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
-            proc.registerExtensionFunction(new FixImage());
-            proc.registerExtensionFunction(new URLDecoder());
-
-            XsltCompiler comp = proc.newXsltCompiler();
-            XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
+            if (proc == null) {
+                proc = new Processor(false);
+                proc.registerExtensionFunction(new OverlayImage());
+                proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+                proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+                proc.registerExtensionFunction(new FixImage());
+                proc.registerExtensionFunction(new URLDecoder());
+                
+                comp = proc.newXsltCompiler();
+                exp = comp.compile(new StreamSource(new File(xsltFileName)));
+            } 
+             
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
             XsltTransformer trans = exp.load();
             trans.setInitialContextNode(source);
@@ -173,6 +185,8 @@ public class Converter {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.fr.resx"));
             } else if (locale == Locale.IT) {
                 trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.it.resx"));
+            } else if (locale == Locale.RM) {
+                trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.rm.resx"));
             } else {
                  trans.setParameter(new QName("localeUrl"), (XdmValue) XdmAtomicValue.makeAtomicValue("Resources.de.resx"));
             }
