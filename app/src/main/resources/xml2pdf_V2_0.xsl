@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet  version="3.0" exclude-result-prefixes="geometry extract data" xmlns:oereb="http://oereb.so.ch" xmlns:geometry="http://www.interlis.ch/geometry/1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData" xmlns:array="http://www.w3.org/2005/xpath-functions/array">
+<xsl:stylesheet  version="3.0" exclude-result-prefixes="geometry extract data" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oereb="http://oereb.so.ch" xmlns:geometry="http://www.interlis.ch/geometry/1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract" xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData" xmlns:array="http://www.w3.org/2005/xpath-functions/array">
   <xsl:output method="xml" indent="yes"/>
   <xsl:param name="localeUrl" select="'Resources.de.resx'"/>
   <xsl:variable name="localeXml" select="document($localeUrl)/*"/>
@@ -1300,6 +1300,9 @@
                   <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11pt">
                     <fo:table-cell padding-top="1mm" padding-bottom="1mm">
                       <fo:block>
+                      <!--Funktionsname? Parametername?-->
+                        <!--<xsl:value-of select="oereb:getLocalisedText(data:Title/data:LocalisedText, 'it')"/>-->
+
                         <fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>: </fo:inline>
                         <xsl:value-of select="data:Content/data:LocalisedText[1]/data:Text"/>
                       </fo:block>
@@ -1336,5 +1339,14 @@
       </xsl:non-matching-substring>
     </xsl:analyze-string>
   </xsl:template>
+
+
+  <xsl:function name="oereb:extractMultilingualText">
+    <xsl:param name="multilingualtext" />
+    <xsl:param name="lang" as="xs:string" />
+    <!--<xsl:sequence select="$param1 + $param2"/>-->
+    <xsl:message><xsl:value-of select="$multilingualtext" /></xsl:message>
+
+  </xsl:function>
 
 </xsl:stylesheet>
