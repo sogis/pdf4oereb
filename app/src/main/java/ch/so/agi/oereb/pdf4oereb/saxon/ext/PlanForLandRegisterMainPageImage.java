@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -25,6 +26,7 @@ import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmNodeKind;
 import net.sf.saxon.s9api.XdmValue;
+import net.sf.saxon.trans.XPathException;
 
 public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(PlanForLandRegisterMainPageImage.class);
@@ -44,7 +46,8 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
     @Override
     public SequenceType[] getArgumentTypes() {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE), 
-                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE)};
+                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE), 
+                SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE)};
     }
 
     /**
@@ -59,12 +62,20 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         XdmNode baseMapNode  = (XdmNode) arguments[0];
         XdmNode overlayImageNode = (XdmNode) arguments[1];
+        String locale;
+        try {
+            locale = arguments[2].getUnderlyingValue().getStringValue();
+        } catch (XPathException e) {
+            throw new SaxonApiException(e.getMessage());
+        }
 
         try {
             // Falls das Bild im XML eingebettet ist, wird dieses verwendet.            
             byte[] baseImageByteArray = null;
-            Iterator<XdmNode> it = baseMapNode.children("Image").iterator();
+            String base64String = null;
+            int j=0;
             
+            Iterator<XdmNode> it = baseMapNode.children("Image").iterator();
             while(it.hasNext()) {
                 XdmNode imageNode = (XdmNode) it.next();
                 Iterator<XdmNode> jt = imageNode.children("LocalisedBlob").iterator();
@@ -75,20 +86,29 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                     while (kt.hasNext()) {
                         XdmNode subSubNode = (XdmNode) kt.next();
                         if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                            if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
-                                // do something
-                            } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
-                                String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                baseImageByteArray = Base64.getDecoder().decode(base64String);
-                                break; // TODO: Ändern, falls Sprache berücksichtigt wird.
-                            }
+                            if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                if (j == 0) {
+                                    base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                }
+                                String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                if (language.equalsIgnoreCase(locale)) {
+                                    base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                    break;
+                                } 
+                            } 
                         }
                     }
+                    j++;
                 }
+            }
+            if (base64String != null) {
+                baseImageByteArray = Base64.getDecoder().decode(base64String);
             }
 
             // Das Bild wird nur vom WMS bezogen, falls kein eingebettetes Bild vorhanden ist.
             if (baseImageByteArray == null) {
+                String requestString = null;
+                int i=0;
                 it = baseMapNode.children("ReferenceWMS").iterator();
                 while(it.hasNext()) {
                     XdmNode wmsNode = (XdmNode) it.next();
@@ -99,22 +119,29 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                         while(kt.hasNext()) {
                             XdmNode subNode = (XdmNode) kt.next();
                             if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                                // TODO: Sprache
-                                if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Text")) {
-                                    String requestString = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                    log.info(requestString);
-                                    try {
-                                        baseImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                        log.error(e.getMessage());
-                                        throw new SaxonApiException(e.getMessage());
+                                if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
+                                    if (i == 0) {
+                                        requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                     }
-                                    break;
+                                    
+                                    String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                    if (language.equalsIgnoreCase(locale)) {
+                                        requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                        break;
+                                    } 
                                 }
                             }
                         }
+                        i++;
                     }
+                }
+                
+                try {
+                    baseImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.getMessage());
+                    throw new SaxonApiException(e.getMessage());
                 }
             }
 

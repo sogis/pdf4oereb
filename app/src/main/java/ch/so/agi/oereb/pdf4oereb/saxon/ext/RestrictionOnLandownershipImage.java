@@ -27,6 +27,7 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -60,7 +61,8 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
         return new SequenceType[] { 
                 SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE),
                 SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE),
-                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE)
+                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE),
+                SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE)
             };
     }
 
@@ -77,6 +79,12 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
         XdmNode oerebMap = (XdmNode) arguments[0];
         XdmNode backgroundMapNode = (XdmNode) arguments[1];
         XdmNode overlayImageNode = (XdmNode) arguments[2];
+        String locale;
+        try {
+            locale = arguments[2].getUnderlyingValue().getStringValue();
+        } catch (XPathException e) {
+            throw new SaxonApiException(e.getMessage());
+        }
 
         List<MapImage> mapImageList = new ArrayList<MapImage>();
                 
@@ -113,8 +121,10 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                 
                 // grap the images
                 // embedded
+                String base64String = null;
+                int j=0;
+
                 Iterator<XdmNode> jt = mapNode.children("Image").iterator();
-                
                 while(jt.hasNext()) {
                     XdmNode imageNode = (XdmNode) jt.next();
                     Iterator<XdmNode> kt = imageNode.children("LocalisedBlob").iterator();
@@ -125,21 +135,33 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                         while (lt.hasNext()) {
                             XdmNode subSubNode = (XdmNode) lt.next();
                             if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                                if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
-                                    // do something
-                                } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
-                                    String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                    byte[] imageByteArray = Base64.getDecoder().decode(base64String);
-                                    InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
-                                    layerImage = ImageIO.read(imageInputStream);
-                                }
+                                if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                    if (j == 0) {
+                                        base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                    }
+                                    String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                    if (language.equalsIgnoreCase(locale)) {
+                                        base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                        break;
+                                    } 
+                                } 
                             }
                         }
+                        j++;
                     }
+                }
+                
+                if (base64String != null) {
+                    byte[] imageByteArray = Base64.getDecoder().decode(base64String);
+                    InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
+                    layerImage = ImageIO.read(imageInputStream);
                 }
                 
                 // wms only when not embedded
                 if (layerImage == null) {
+                    String requestString = null;
+                    int i=0;
+
                     jt = mapNode.children("ReferenceWMS").iterator();
                     while(jt.hasNext()) {
                         XdmNode wmsNode = (XdmNode) jt.next();
@@ -150,16 +172,31 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                             while(lt.hasNext()) {
                                 XdmNode subNode = (XdmNode) lt.next();
                                 if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                                    // TODO: Sprache
-                                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Text")) {
-                                        String requestString = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                        byte[] imageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
-                                        InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
-                                        layerImage = ImageIO.read(imageInputStream);
+                                    if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
+                                        if (i == 0) {
+                                            requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                        }
+                                        
+                                        String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                        if (language.equalsIgnoreCase(locale)) {
+                                            requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                            break;
+                                        } 
                                     }
                                 }
                             }
+                            i++;
                         }
+                    }
+                    
+                    try {
+                        byte[] imageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
+                        InputStream imageInputStream = new ByteArrayInputStream(imageByteArray);
+                        layerImage = ImageIO.read(imageInputStream);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        log.error(e.getMessage());
+                        throw new SaxonApiException(e.getMessage());
                     }
                 }
                                 
@@ -221,8 +258,10 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
             // grap the images
             // embedded
             byte[] backgroundImageByteArray = null;
+            String base64String = null;
+            int j=0;
+
             Iterator<XdmNode> jt = backgroundMapNode.children("Image").iterator();
-            
             while(jt.hasNext()) {
                 XdmNode imageNode = (XdmNode) jt.next();
                 Iterator<XdmNode> kt = imageNode.children("LocalisedBlob").iterator();
@@ -233,18 +272,30 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                     while (lt.hasNext()) {
                         XdmNode subSubNode = (XdmNode) lt.next();
                         if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                            if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
-                                // do something
-                            } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {                                
-                                backgroundImageByteArray = Base64.getDecoder().decode(subSubNode.getUnderlyingValue().getStringValue().trim());
-                            }
+                            if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                                if (j == 0) {
+                                    base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                }
+                                String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                if (language.equalsIgnoreCase(locale)) {
+                                    base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                    break;
+                                } 
+                            } 
                         }
                     }
                 }
+                j++;
+            }
+            if (base64String != null) {
+                backgroundImageByteArray = Base64.getDecoder().decode(base64String);
             }
 
             // wms only when not embedded
             if (backgroundImageByteArray == null) {
+                String requestString = null;
+                int i=0;
+
                 jt = backgroundMapNode.children("ReferenceWMS").iterator();
                 while(jt.hasNext()) {
                     XdmNode wmsNode = (XdmNode) jt.next();
@@ -255,14 +306,28 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                         while(lt.hasNext()) {
                             XdmNode subNode = (XdmNode) lt.next();
                             if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                                // TODO: Sprache
-                                if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Text")) {
-                                    String requestString = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                    backgroundImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
+                                if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
+                                    if (i == 0) {
+                                        requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                    }
+                                    
+                                    String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                    if (language.equalsIgnoreCase(locale)) {
+                                        requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                        break;
+                                    } 
                                 }
                             }
                         }
+                        i++;
                     }
+                }
+                try {
+                    backgroundImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.getMessage());
+                    throw new SaxonApiException(e.getMessage());
                 }
             }
             

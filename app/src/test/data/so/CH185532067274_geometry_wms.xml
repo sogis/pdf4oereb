@@ -1,0 +1,2444 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns5:GetExtractByIdResponse xmlns:ns1="http://www.interlis.ch/geometry/1.0" xmlns:ns2="http://schemas.geo.admin.ch/V_D/OeREB/1.0/Versioning" xmlns:ns3="http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData" xmlns:ns4="http://www.w3.org/2000/09/xmldsig#" xmlns:ns5="http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract">
+  <ns3:Extract>
+    <ns3:CreationDate>2022-04-30T18:34:03.368+02:00</ns3:CreationDate>
+    <ns3:ConcernedTheme>
+      <ns3:Code>ch.Sicherheitszonenplan</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Sicherheitszonenplan</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.ProjektierungszonenNationalstrassen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Nationalstrassen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BaulinienNationalstrassen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Nationalstrassen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.ProjektierungszonenEisenbahnanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Eisenbahnanlagen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BaulinienEisenbahnanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Eisenbahnanlagen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.ProjektierungszonenFlughafenanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Flughafenanlagen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BaulinienFlughafenanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Flughafenanlagen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BelasteteStandorte</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BelasteteStandorteMilitaer</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte im Bereich des Militärs</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BelasteteStandorteZivileFlugplaetze</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte im Bereich der zivilen Flugplätze</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BelasteteStandorteOeffentlicherVerkehr</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte im Bereich des öffentlichen Verkehrs</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.Grundwasserschutzzonen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Grundwasserschutzzonen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.Grundwasserschutzareale</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Grundwasserschutzareale</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.StatischeWaldgrenzen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Statische Waldgrenzen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.ProjektierungszonenStarkstromanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Leitungen mit einer Nennspannung von 220 kV oder höher</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.BaulinienStarkstromanlagen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Starkstromanlagen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:NotConcernedTheme>
+      <ns3:Code>ch.SO.Einzelschutz</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Einzelschutz</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:NotConcernedTheme>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Planungszonen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Planungszonen</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Nutzungsplanung</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Nutzungsplanung (kantonal/kommunal)</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Gewaesserraum</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Gewässerraum</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Laermempfindlichkeitsstufen</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Lärmempfindlichkeitsstufen (in Nutzungszonen)</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Waldabstandslinien</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Waldabstandslinien</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:ThemeWithoutData>
+      <ns3:Code>ch.Waldreservate</ns3:Code>
+      <ns3:Text>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Waldreservate</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Text>
+    </ns3:ThemeWithoutData>
+    <ns3:LogoPLRCadastreRef>https://geo-t.so.ch/api/oereb/logo/ch.plr</ns3:LogoPLRCadastreRef>
+    <ns3:FederalLogoRef>https://geo-t.so.ch/api/oereb/logo/ch</ns3:FederalLogoRef>
+    <ns3:CantonalLogoRef>https://geo-t.so.ch/api/oereb/logo/ch.SO</ns3:CantonalLogoRef>
+    <ns3:MunicipalityLogoRef>https://geo-t.so.ch/api/oereb/logo/ch.2543</ns3:MunicipalityLogoRef>
+    <ns3:ExtractIdentifier>606b29bb-0db9-4294-b1d7-cccd68100551</ns3:ExtractIdentifier>
+    <ns3:GeneralInformation>
+      <ns3:LocalisedText>
+        <ns3:Language>de</ns3:Language>
+        <ns3:Text>Der Inhalt des ÖREB-Katasters wird als bekannt vorausgesetzt. Der Kanton Solothurn ist für die Genauigkeit und Verlässlichkeit der gesetzgebenden Dokumente in elektronischer Form nicht haftbar. Der Auszug hat rein informativen Charakter und begründet insbesondere keine Rechte und Pflichten. Massgeblich sind diejenigen Dokumente, welche rechtskräftig verabschiedet oder veröffentlicht worden sind. Weitere Informationen zum ÖREB-Kataster finden Sie unter www.cadastre.ch</ns3:Text>
+      </ns3:LocalisedText>
+      <ns3:LocalisedText>
+        <ns3:Language>fr</ns3:Language>
+        <ns3:Text>Le contenu du cadastre RDPPF est supposé connu. Le canton de Solothurn n'engage pas sa responsabilité sur l'exactitude ou la fiabilité des documents législatifs dans leur version électronique. L'extrait a un caractère informatif et ne crée aucun droit ou obligation. La primauté va aux documents qui ont été légalement adoptés ou publiés. Vous trouverez d'autres informations sur le cadastre RDPPF sous www.cadastre.ch</ns3:Text>
+      </ns3:LocalisedText>
+      <ns3:LocalisedText>
+        <ns3:Language>it</ns3:Language>
+        <ns3:Text>Il contenuto del Catasto RDPP si considera noto. Il Canton Solothurn non può essere ritenuto responsabile per la precisione e l'affidabilità dei documenti legislativi in formato elettronico. L'estratto ha carattere puramente informativo e non è in particolare costitutivo di diritti e obblighi. Sono considerati determinante i documenti approvati o pubblicati passati in giudicato. Ulteriori informazioni relative al Catasto RDPP sono disponibili su www.cadastre.ch</ns3:Text>
+      </ns3:LocalisedText>
+      <ns3:LocalisedText>
+        <ns3:Language>rm</ns3:Language>
+        <ns3:Text>Il cuntegn dal cataster RDPP vegn premess sco enconuschent. Il chantun Solothurn n'è betg responsabel per l'exactadad e per la fidadadad dals documents legislativs electronics. L'extract ha in caracter puramain infurmativ e na motivescha cunzunt nagins dretgs e naginas obligaziuns. Giuridicamain liants èn quels documents ch'èn vegnids deliberads u publitgads cun vigur legala. Ulteriuras infurmaziuns davart il cataster RDPP chattais Vus sut www.cadastre.ch</ns3:Text>
+      </ns3:LocalisedText>
+    </ns3:GeneralInformation>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Sicherheitszonenplan</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Plan de la zone de sécurité</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Piano delle zone di sicurezza</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Plan da zonas da segirezza</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Security zone plan</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zonenplan, in dem die Sicherheitszonen dargestellt sind und aus dem die Eigentumsbeschränkungen nach Fläche und Höhe ersichtlich sind.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Plan de zone représentant la zone de sécurité et indiquant les restrictions de la propriété en surface et en hauteur.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Piano di zona in cui è rappresentata la zona di sicurezza e sono indicate le limitazioni della proprietà in superficie e in altezza.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Plan da zonas, en il qual èn represchentadas las zonas da segirezza che mussan las restricziuns da la proprietad tenor surfatscha e tenor autezza.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Every airport is required to designate a security zone. The Federal Office of Civil Aviation (FOCA) is responsible for deciding on a case by case basis whether a security zone is required for air traffic control systems and flight paths. Without the consent of the applicant, no one may own property that is subject to a security zone plan.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Nutzungsplanung</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Plans d'affectation</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Piani di utilizzazione</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Planisaziun d'utilisaziun</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Land use plans</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Festlegung der Verwendung einzelner Bodenflächen für bestimmte Zwecke (z. B. Landwirtschaft, Siedlung, Wald).</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Détermination de l'affectation des différentes surfaces du sol (agriculture, agglomérations, forêts, etc.).</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Definizione dell'uso di singole superfici di terreno per scopi specifici (ad es. agricoltura, insediamento, foresta).</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Determinaziun da l'utilisaziun da singulas surfatschas da terren per tscherts intents (p.ex. agricultura, abitadi, guaud).</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Land use plans (which are often also referred to as zoning plans) specify the type and use of the land. They divide an area into various zones (building, agricultural, conservation).</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Einzelschutz</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Für historische Kulturdenkmäler, Naturschutzgebiete oder Geotope (geowissenschaftlich schützenswerte Objekte) werden Schutzverfügungen vom Regierungsrat oder Gemeinderat erlassen. Ziel ist es diese Objekte zu Schützen und zu Erhalten. Schutzmassnahmen sind Bau-, Abbruch- oder Veränderungsverboten, Gestaltungsvorschriften, Nutzungsbeschränkungen, Nutzungsvorschriften, Duldungs- oder Leistungspflichten.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>ÖREB-Kataster</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Cadastre RDPPF</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Catasto RDPP</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cataster RDPP</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>PLR Cadastre</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der öffentlich-rechtlichen Eigentumsbeschränkungen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Cadastre des restrictions de droit public à la propriété foncière</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Catasto delle restrizioni di diritto pubblico della proprietà</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cataster da las restricziuns da dretg public da la proprietad</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Cadastre of public-law restrictions on landownership</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>ÖREB</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>RDPPF</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>RDPP</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>RDPP</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>PLR</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Öffentlich-rechtliche Eigentumsbeschränkung</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Restriction de droit public à la propriété foncière</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Restrizione di diritto pubblico della proprietà</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Restricziun da dretg public da la proprietad funsila</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Public-law restriction on landownership rights</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Eigentumsbeschränkung</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Restriction de la propriété</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Restrizione del diritto di proprietà</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Restricziun da la proprietad</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Restriction on ownership</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Der Zweck aller Eigentumsbeschränkungen ist die Wahrung von Interessen anderer Personen, denen jene des Eigentümers sich in bestimmter Beziehung unterordnen müssen. Dies sind entweder die Eigentümer angrenzender Grundstücke, die Nachbarn, oder auch weitere Kreise von Privatpersonen oder endlich die Allgemeinheit selber, der Staat. Die Beschränkungen zugunsten der Nachbarn oder weiterer Privatpersonen sind regelmässig privatrechtlicher, jene zugunsten der Allgemeinheit öffentlich-rechtlicher Natur.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Les restrictions de propriété ont toujours pour but de préserver les intérêts d'autres personnes auxquels ceux du propriétaire doivent se soumettre dans le cadre d'une relation donnée. Il s'agit soit des propriétaires d'immeubles contigus, de voisins, d'autres cercles de particuliers voire de la collectivité dans son ensemble, soit de l'Etat. Les restrictions au profit des voisins ou d'autres particuliers relèvent normalement du droit privé, celles décidées au profit de la collectivité relevant du droit public.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Lo scopo di tutte le restrizioni della proprietà è quello di tutelare gli interessi di altre persone, a cui quelli del proprietario devono essere subordinati in un certo rapporto. Questi sono o i proprietari dei fondi adiacenti, i vicini, o anche altre cerchie di privati, o infine la collettività stessa, lo Stato. Le restrizioni a favore dei vicini o di altri privati sono generalmente di diritto privato, quelle a favore della collettività di diritto pubblico.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>La finamira da tut las restricziuns da la proprietad è quella da mantegnair ils interess d'autras persunas, a quests interess ston sa suttametter ils interess da la proprietaria u dal proprietari en tscherts reguards. Quai èn ubain las proprietarias ed ils proprietaris da bains immobigliars cunfinants, las vischinas ed ils vischins u er ulteriurs circuls da persunas privatas ubain la finala la generalitad sezza, il stadi. Las restricziuns a favur da las vischinas e dals vischins u d'ulteriuras persunas privatas èn adina da natira da dretg privat, quellas a favur da la generalitad da natira da dretg public.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The purpose of all landownership restrictions is to safeguard those interests of other persons or entities that take precedence over those of the landowner in a certain context. The persons or entities concerned may be the owners of neighbouring properties, neighbours, broader circles of private individuals, or ultimately the general public or the state. Restrictions in favour of neighbours or other private individuals are of a private-law nature, while those in favour of the general public or state are classified as public-law restrictions.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>E-GRID</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>E-GRID</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>E-GRID</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>E-GRID</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>E-GRID</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Eidgenössischer Grundstücksidentifikator; Aus einem Präfix und einer Nummer bestehende Bezeichnung, die es erlaubt, jedes in das Grundbuch aufgenommene Grundstück landesweit eindeutig zu identifizieren, und die zum Datenaustausch zwischen Informatiksystemen dient.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Identificateur fédéral des immeubles; Désignation composée d'un préfixe et d'un numéro qui permet l'identification univoque pour tout le pays de chaque immeuble immatriculé au registre foncier et sert à l'échange des données entre les systèmes informatiques.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Identificatore federale dei fondi; Identificatore federale dei fondi; designazione composta da un prefisso e da un numero che permette di identificare in modo univoco ogni fondo iscritto nel registro fondiario in tutto il Paese e che viene utilizzato per lo scambio di dati tra sistemi informatici.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Identificaziun federala dals bains immobigliars; Indicaziun che consista d'in prefix e d'in numer che permetta d'identifitgar precis mintga immobiglia registrada en il cudesch funsil e che serva al barat da datas tranter ils sistems d'informatica.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Official real estate identifier: A designation comprising a prefix and a number by means of which every plot recorded in the land register throughout the country can be unequivocally identified; these identifiers are also used for exchanging data between IT systems.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>BFS-Nr.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>N° OFS</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>N. UST</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>UST nr.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>FSO number</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Gemeindenummer aus amtlichem Gemeindeverzeichnis; Eine vom schweizerischen Bundesamt für Statistik mit dem Amtlichen Gemeindeverzeichnis im Jahre 1986 erstmals vergebene Zahl, die der eineindeutigen Bezeichnung von territorialen Einheiten im Einzugsbereich der Schweiz dient.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Numéro officiel de la commune issu du répertoire officiel des communes; Attribué pour la toute première fois en 1986 par l'Office fédéral de la statistique avec le répertoire officiel des communes, ce numéro sert à la désignation univoque d'entités territoriales en Suisse.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Numero del Comune nell'elenco ufficiale dei Comuni; un numero assegnato per la prima volta nel 1986 dall'Ufficio federale di statistica con l'elenco ufficiale dei Comuni della Svizzera, che serve a contraddistinguere in modo inequivocabile le unità territoriali nell'area di insediamento della Svizzera.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Numer da la vischnanca sin la glista uffiziala da las vischnancas; ina cifra surdada per l'emprima giada da l'Uffizi federal da statistica en il rom da la glista uffiziala da las vischnancas da la Svizra l'onn 1986. Quest numer serva a designar cleramain las unitads territorialas en l'intschess da la Svizra.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Municipal number from the official directory of municipalities: A number initially allocated by the Swiss Federal Statistical Office in the official directory of municipalities in 1986 for the purpose of unequivocally designating territorial units within Switzerland.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Eisenbahnanlagen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Alignements des installations ferroviaires</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Allineamenti per gli impianti ferroviari</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lingias da construcziun dals implants da viafier</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines for railways</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Eisenbahnanlagen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Entre les alignements, il est interdit de procéder à des modifications des constructions existantes ou de prendre des mesures allant à l'encontre de la finalité poursuivie par les installations ferroviaires présentes ou à venir.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Non possono essere apportate modifiche strutturali tra gli allineamenti o adottate altre misure che contraddicano lo scopo degli impianti ferroviari esistenti o futuri.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Tranter las lingias da construcziun na dastgan vegnir fatgas naginas midadas architectonicas u prendidas ulteriuras mesiras che cuntrafan a l'intent d'implants da viafier existents u futurs.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines may be specified in order to ensure that the necessary land for the ongoing or future construction of railway stretches and installations remains available. No structural alterations or other measures that do not correspond to the specified purpose of the railway operator may be carried out either between the building lines or between a building line and a railway installation.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Flughafenanlagen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Alignements des installations aéroportuaires</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Allineamenti per gli impianti aeroportuali</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lingias da construcziun dals implants d'eroport</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines for airports</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Flughafenanlagen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Entre les alignements, il est interdit de procéder à des modifications des constructions existantes ou de prendre des mesures allant à l'encontre de la finalité poursuivie par les installations aéroportuaires présentes ou à venir.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Non possono essere apportate modifiche strutturali tra gli allineamenti né adottate altre misure che sono in contrasto con lo scopo delle strutture aeroportuali esistenti o future.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Tranter las lingias da construcziun na dastgan vegnir fatgas naginas midadas architectonicas u prendidas ulteriuras mesiras che cuntrafan a l'intent d'eroports existents u futurs.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines for airports may be defined in order to ensure that airports have the necessary land at their disposal for existing or future facilities. Within these building lines, no structural changes may be carried out that conflict with the purpose of the defined building lines.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Nationalstrassen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Alignements des routes nationales</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Allineamenti per le strade nazionali</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lingias da construcziun da las vias naziunalas</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines for motorways</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Wenn der projektierte Strassenverlauf definitiv bekannt ist, werden beiderseits der Strasse Baulinien festgelegt. Diese Baulinien ermöglichen es, die Anforderungen der Verkehrssicherheit und der Wohnhygiene sowie die Erfordernisse eines eventuellen künftigen Ausbaus der Strasse zu berücksichtigen. Zwischen den Baulinien dürfen ohne Bewilligung weder Neubauten erstellt noch Umbauten bestehender Gebäude vorgenommen werden, auch wenn diese nur teilweise in die Baulinien hineinragen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des alignements sont définis de part et d'autre de la route lorsque le tracé de cette dernière est définitif. Ces alignements permettent de tenir compte d'impératifs différents: ceux touchant à la sécurité du trafic et à la salubrité publique mais également ceux découlant d'un possible élargissement de la chaussée à l'avenir. Entre les alignements définis, une autorisation est indispensable pour procéder à de nouvelles constructions ou pour modifier des bâtiments existants, même si ces derniers ne sont que partiellement frappés d'alignement.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Quando il percorso stradale previsto è noto in via definitiva, su entrambi i lati della strada sono definiti gli allineamenti. Questi allineamenti consentono di tener conto delle esigenze di sicurezza del traffico e di igiene abitativa, nonché delle esigenze di un eventuale futuro ampliamento della strada. Non si possono costruire nuovi edifici tra gli allineamenti senza autorizzazione, né si possono effettuare ristrutturazioni degli edifici esistenti, anche se questi si estendono solo parzialmente all'interno degli allineamenti.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Sch'il traject projectà da la via è definitivamain enconuschent, vegnan las lingias da construcziun determinadas da tuttas duas varts da la via. Questas lingias da construcziun permettan da resguardar las premissas da la segirezza dal traffic e da l'igiena d'abitar sco er las necessitads d'ina eventuala renovaziun futura da la via. Senza permissiun na dastgan vegnir construids nagins edifizis novs u midads edifizis existents tranter las lingias da construcziun, er sch'els sa chattan mo per part entaifer las lingias da construcziun.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Once the plans for a route have been finalised, building lines are defined along both sides of that route. These lines make it possible to take certain requirements into account, including road safety and public health, as well as the demands associated with the potential future widening of the stretch of road. Without a special permit, the construction of new buildings is prohibited between these lines, as is the renovation of existing structures, even if they only partially protrude into the building lines.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Baulinien Starkstromanlagen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Alignements des installations électriques à courant fort</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Allineamenti per impianti a corrente forte</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lingias da construcziun d'implants da current ferm</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines for high-voltage installations</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Starkstromanlagen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Entre les alignements, il est interdit de procéder à des modifications des constructions existantes ou de prendre des mesures allant à l'encontre de la finalité poursuivie par les installations à courant fort présentes ou à venir.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Non possono essere apportate modifiche strutturali tra gli allineamenti o adottate altre misure che contraddicano lo scopo degli impianti ad alta tensione esistenti o futuri.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Tranter las lingias da construcziun na dastgan vegnir fatgas naginas midadas architectonicas u prendidas ulteriuras mesiras che cuntrafan a l'intent d'implants da current ferm existents u futurs.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Between the designated building lines, no structural alterations may be carried out or other measures implemented that could interfere with the specified purpose of existing or future high-voltage installations.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Gesetzliche Grundlage</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Base légale</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Base legale</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Basa legala</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Legal basis</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Gesetz, Verordnung etc., das generell-abstrakt ist (generell für die Person, die nicht bekannt ist, abstrakt, weil der Perimeter ohne Karte definiert ist) und auf Bundesebene, auf kantonaler oder kommunaler Ebene erlassen worden ist und die bloss eine allgemeine Rechtsgrundlage der Eigentumsbeschränkung darstellen. Die gesetzliche Grundlage ist nicht Teil des ÖREB-Katasters. Der ÖREB-Kataster enthält aber Hinweise auf die entsprechende gesetzliche Grundlage.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Il s'agit de lois, d'ordonnances etc. à caractère général et abstrait (général car les personnes concernées ne sont pas connues et abstrait parce que le périmètre est défini sans plan) édictés au niveau fédéral, cantonal ou communal et qui ne constituent que des bases juridiques générales de la restriction de propriété. Les bases légales ne font pas partie du cadastre RDPPF qui contient toutefois des renvois vers les bases légales appropriées.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Legge, ordinanza ecc., che sono generali-astratti (generalmente astratti per la persona sconosciuta, perché il perimetro è definito senza carta) e che sono stati emanati a livello federale, cantonale o comunale e costituiscono semplicemente una base giuridica generale per la restrizione della proprietà. La base giuridica non fa parte del Catasto RDPP. Tuttavia, il Catasto RDPP contiene riferimenti alla base giuridica corrispondente.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lescha, ordinaziun e.u.v, tut quai ch'è general ed abstract (general per la persuna che n'è betg enconuschenta, abstract, perquai ch'il perimeter è definì senza charta) ed è vegnì relaschà sin plaun federal, chantunal u communal e che represchenta mo ina basa legala generala da la restricziun da la proprietad. La basa legala n'è betg ina part integrala dal cataster RPDP. Il cataster RPDP cuntegna però renviaments a la basa legala correspundenta.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Acts, ordinances, etc., that are generally abstract and applicable (generally, because the person concerned is not known, and abstract because the perimeter is defined without a map), and which have been issued at the federal, cantonal or municipal level and merely represent a general legal basis for ownership restriction. The legal basis does not form an integral part of the PLR Cadastre. However, the latter does contain references to the corresponding legal basis.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Gewässerraum</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Espace réservé aux eaux</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Spazio riservato alle acque</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Spazi d'auas</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Space provided for waters</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Fliessgewässer können nur wieder naturnäher werden, wenn ausreichend Raum in den Schutz der Gewässer miteinbezogen wird. Der Gewässerraum soll weitgehend frei von neuen Anlagen bleiben; bestehende Anlagen haben jedoch Bestandesgarantie.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Les cours d'eau ne peuvent retrouver leur état naturel que si un espace suffisant est ménagé afin qu'ils puissent remplir leurs diverses fonctions. Ces surfaces doivent rester libres de toute nouvelle installation. Les installations existantes bénéficient de la garantie de la situation acquise.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>I corsi d'acqua possono tornare a essere più naturali soltanto se si proteggono a sufficienza le acque. Nello spazio riservato alle acque non devono essere costruiti nuovi impianti, mentre possono essere mantenuti quelli già esistenti.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Auas currentas pon mo daventar pli natiralas, sch'i vegn mess a disposiziun spazi avunda per la protecziun da las auas. Il spazi d'auas duai da princip restar liber da stabiliments novs; stabiliments existents han però ina garanzia d'existenza.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Flowing bodies of water can only be preserved in their natural state if sufficient space is reserved for their protection. Watercourse corridors must be kept free from new installations, though existing structures may be retained.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Grundwasserschutzareale</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Périmètres de protection des eaux souterraines</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Aree di protezione delle acque sotterranee</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Areals da protecziun da las auas sutterranas</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Groundwater protection areas</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Von Kanton festgelegte Areale, die für die künftige Nutzung und Anreicherung von Grundwasservorkommen von Bedeutung sind und in dem keine Bauten und Anlagen erstellt oder Arbeiten ausgeführt werden, die künftige Nutzungs- und Anreicherungsanlagen beeinträchtigen könnten.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Périmètres concentriques dont le but est de protéger l'exploitation et l'alimentation artificielle de nappes souterraines et dans lequel il est interdit de construire des bâtiments ou d'effectuer des travaux qui pourraient compromettre l'établissement futur d'installations d'exploitation ou d'alimentation des eaux souterraines.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Area delimitata dai Cantoni, importante per il futuro sfruttamento e l'alimentazione della falda freatica, in cui non possono essere costruiti edifici o impianti né essere eseguiti lavori che possano pregiudicare i futuri impianti di sfruttamento o alimentazione.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Areal determinà dal chantun ch'è d'impurtanza per utilisar e per concentrar en l'avegnir resursas d'aua sutterrana ed en il qual i na dastgan vegnir construids nagins edifizis e stabiliments ed exequidas naginas lavurs che pudessan disturbar en l'avegnir ils stabiliments per utilisar e per concentrar aua sutterrana.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The cantons define sites that are of significance in terms of the future use and treatment of groundwater reserves. At these sites, no buildings or installations may be constructed, and no work may be carried out, that could interfere with the future construction of groundwater utilisation and treatment facilities.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Grundwasserschutzzonen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones de protection des eaux souterraines</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone di protezione delle acque sotterranee</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da protecziun da las auas sutterranas</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Groundwater protection zones</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Grundwasserschutzzonen, in denen gewährleistet werden soll, dass bei unmittelbar drohenden Gefahren wie Unfällen mit wassergefährdenden Stoffen ausreichend Zeit und Raum für die erforderlichen Massnahmen zur Verfügung stehen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones de protection des eaux souterraines devant garantir qu'en cas de danger imminent (p. ex. en cas d'accident impliquant des substances pouvant polluer les eaux), on dispose de suffisamment de temps et d'espace pour prendre les mesures qui s'imposent.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone di protezione delle acque sotterranee che deve garantire che, in caso di pericolo immediato (p. es. incidenti con sostanze suscettibili di inquinare le acque), vi sia sufficiente tempo e spazio per le misure di risanamento.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zona da protecziun da l'aua sutterrana, en la quala i duai vegnir garantì ch'i stattan a disposiziun temp e plazza avunda per prender las mesiras ch'èn necessarias en cas da privels directamain smanatschants sco accidents cun substanzas che pericliteschan l'aua.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The cantons define groundwater protection zones for the supply and treatment facilities that are in the public interest, and specify the necessary landownership restrictions.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Cadastre des sites pollués</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Catasto dei siti inquinati</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cataster dals lieus contaminads</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Cadastre of contaminated sites</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Der Kataster enthält Deponien und andere durch Abfälle belastete Standorte, die saniert werden, wenn sie zu schädlichen oder lästigen Einwirkungen führen oder die konkrete Gefahr besteht, dass solche Einwirkungen entstehen. Die Behörde ermittelt die belasteten Standorte, indem sie vorhandene Angaben wie Karten, Verzeichnisse und Meldungen auswertet. Sie trägt diejenigen Standorte, deren Belastung erwiesen oder sehr wahrscheinlich ist, in den Kataster ein.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Le cadastre répertorie les décharges et les autres sites pollués par des déchets qui doivent être assainis lorsqu'ils sont à l'origine d'effets nocifs ou indésirables ou s'il existe un danger concret que de tels effets surviennent. L'autorité compétente détermine les sites pollués en se fondant sur l'ensemble des informations dont elle dispose (cartes, inventaires ou annonces qui lui sont faites). Elle inscrit au cadastre les sites dont la pollution est avérée ou semble très probable.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Il catasto contiene discariche e altri siti inquinati da rifiuti, che vengono bonificati se provocano effetti dannosi o fastidiosi o se esiste il rischio concreto che tali effetti si verifichino. L'autorità identifica i siti inquinati valutando le informazioni esistenti come carte, elenchi e comunicazioni. Essa iscrive nel catasto i siti per i quali è provato o molto probabile che si verifichi un effetto inquinante.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Il cataster cuntegna deponias ed auters lieus contaminads cun ruments, ils qualsvegnan sanads, sch'els chaschunan influenzas nuschaivlas u mulestusas u sch'igl exista in privel concret che talas influenzas sa sviluppian. L'autoritad eruescha ils lieus contaminads cun evaluar las indicaziuns avant maun sco chartas, registers ed annunzias. En il register inscriva ella quels lieus, tar ils quals la contaminaziun è cumprovada u fitg probabla.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The Cadastre includes landfills and other sites polluted by waste that have to be decontaminated if they give rise to harmful or undesirable impacts or if there is a specific risk that such impacts could arise. The relevant authority is responsible for identifying contaminated sites by evaluating existing sources such as maps, lists and reports. It is required to enter those sites in the cadastre that have been identified as definitely or almost certainly contaminated.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Katasterverantwortliche Stelle</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Organisme responsable du cadastre</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Organo responsabile del Catasto</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Post resposnabel per il cataster</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Office responsible for managing the Cadastre</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Die katasterverantwortliche Stelle im Kanton erhält die in den ÖREB-Kataster aufzunehmenden Daten von den zuständigen Fachstellen. Sie verwaltet diese Daten und stellt sie via kantonales ÖREB-Geoportal der Öffentlichkeit zur Verfügung.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>L'organisme responsable du cadastre au sein du canton obtient les données à rassembler dans le cadastre RDPPF auprès des services spécialisés compétents. Il gère ces données et les met à la disposition du public via le géoportail RDPPF cantonal.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>L'organo cantonale responsabile del Catasto riceve i dati da inserire nel catasto RDPP dai servizi specializzati competenti. Gestisce questi dati e li mette a disposizione del pubblico attraverso il geoportale RDPP cantonale.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Il post chantunal ch'è responsabel per il cataster survegn las datas ch'ils posts spezialisads cumpetents ston inscriver en il cataster RDPP. El administrescha questas datas e las metta a disposiziun a la populaziun sur il geoportal RDPP dal chantun.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The office responsible for the cadastre in each canton receives the data to be included in the PLR Cadastre from the relevant authorities. It is responsible for managing the data and placing them at the disposal of the general public via the corresponding cantonal geoportal.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>KbS</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>CSP</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>CSIN</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>CLC</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>CCS</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Kataster der belasteten Standorte</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Cadastre des sites pollués</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Catasto dei siti inquinati</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cataster dals lieus contaminads</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Cadastre of contaminated sites</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Lärmempfindlichkeitsstufen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Degrés de sensibilité au bruit</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Gradi di sensibilità al rumore</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Grads da sensibladad da canera</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Noise sensitivity level</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Empfindlichkeitsstufen werden festgelegt, um jeweils bestimmte Zonen zu definieren: diejenigen, die eines erhöhten Lärmschutzes bedürfen, diejenigen, in denen keine störenden Betriebe zugelassen sind, und diejenigen, in denen mässig und stark störende Betriebe zugelassen sind.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des degrés de sensibilité au bruit sont définis pour délimiter certaines zones: on distingue celles nécessitant une protection accrue contre le bruit, celles où l'exploitation d'aucun établissement susceptible de générer des nuisances sonores n'est permise et celles où l'exploitation d'établissements générant des nuisances moyennes à fortes est autorisée.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>I gradi di sensibilità al rumore sono stabiliti per definire zone specifiche: quelle che necessitano di una maggiore protezione dal rumore, quelle in cui non sono consentiti stabilimenti rumorosi e quelle in cui sono consentiti stabilimenti con livelli di rumore moderati ed elevati.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Grads da sensibilitad vegnan fixads per definir mintgamai tschertas zonas: quellas che basegnan ina protecziun pli gronda cunter la canera, quellas, en las qualas n'èn admess nagins manaschis disturbants, e quellas, en las qualas èn admess manaschis che chaschunan disturbis moderads e ferms.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Sensitivity levels are specified in order to define certain zones, namely those in which increased noise abatement measures are required, those in which no activities are permitted that result in disturbance due to noise, and those in which activities are permitted that give rise to medium to high levels of noise.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Planungszonen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones réservées</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone di pianificazione</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da planisaziun</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Planning zones</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zone, die ein genau bezeichnetes Gebiet umfasst, für das ein Nutzungsplan angepasst werden muss oder noch keiner vorliegt, und innerhalb derer nichts unternommen werden darf, was die Nutzungsplanung erschwert.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zone comprenant un territoire pour lequel un plan d'affectation doit être adopté ou adapté et à l'intérieur de laquelle rien ne doit être entrepris qui puisse entraver l'établissement du plan d'affectation.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone comprendente un territorio per il quale il piano di utilizzazione manca o dev'essere adottato, e all'interno della quale nulla può essere intrapreso che possa rendere più ardua la pianificazione dell'utilizzazione.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Sche plans d'utilisaziun ston vegnir adattads u sch'els n'èn betg anc avant maun, po l'autoritad cumpetenta determinar zonas da planisaziun per territoris circumscrits detagliadamain. Entaifer las zonas da planisaziun na dastga vegnir fatg nagut che pudess engrevgiar la planisaziun d'utilisaziun.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Area designated by the authorities with immediately binding effect for which land use plans have to be made or adapted and nothing may be done which could prejudice a future land use plan.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Rechtsvorschrift</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Disposition juridique</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Prescrizione legale</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Prescripziun giuridica</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Legal provision</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Generell-konkrete Rechtsnorm, die zusammen mit den ihr zugeschriebenen Geobasisdaten die Eigentumsbeschränkung unmittelbar umschreibt und innerhalb desselben Verfahrens verabschiedet worden ist.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Norme juridique à caractère général et concret qui, formant un tout avec les géodonnées de base qui lui sont associées, décrit directement la restriction de propriété et est régie par la même procédure.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Norma giuridica generale e concreta che, unitamente ai corrispondenti geodati di base e costituendo un'unità con quest'ultimi, descrive in maniera immediata le restrizioni della proprietà e per le quali è determinante la medesima procedura.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Prescripziun general-concreta che circumscriva ensemen cun las geodatas da basa attribuidas directamain la restricziun da la proprietad e ch'è vegnida approvada entaifer la medema procedura.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>General-specific legal provision that together with the attributed official geodata directly describes the landownership restriction and has been adopted within the same process.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Eisenbahnanlagen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones réservées des installations ferroviaires</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone riservate per gli impianti ferroviari</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da projectaziun dals implants da viafier</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserved zones for railways</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Um die freie Verfügbarkeit der für künftige Bahnbauten und -anlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Eisenbahnen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des zones réservées peuvent être instaurées sur des portions de territoires clairement délimitées, afin de garantir la parfaite disponibilité des biens-fonds requis pour la construction future d'ouvrages et d'installations ferroviaires. Au sein de ces zones, toute modification des constructions contraire à l'affectation prévue est proscrite.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Al fine di garantire la libera disponibilità dei fondi necessari per i futuri edifici e impianti ferroviari possono essere definite zone riservate per aree chiaramente contrassegnate. In queste zone non possono essere apportate modifiche strutturali contrarie allo scopo delle ferrovie.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Per garantir la libra disponibladad dals bains immobigliars ch'èn necessaris per construir futurs edifizis e stabiliments da viafier, pon vegnir determinadas zonas da projectaziun per territoris designads exactamain. En questas zonas na dastgan vegnir fatgas naginas midadas architectonicas che cuntrafan a l'intent da las viafiers.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserved zones may be specified for precisely defined areas in order to ensure that the necessary land for the future construction of railway stretches and installations is kept in reserve. In these zones, no structural alterations may be carried out that do not correspond to the purpose specified by the railway operator.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Flughafenanlagen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones réservées des installations aéroportuaires</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone riservate per gli impianti aeroportuali</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da projectaziun dals implants d'eroport</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserved zones for airports</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Um die freie Verfügbarkeit der für Flughafenanlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Flughafenanlagen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des zones réservées peuvent être instaurées sur des portions de territoires clairement délimitées, afin de garantir la parfaite disponibilité des biens-fonds requis pour les installations aéroportuaires. Au sein de ces zones, toute modification des constructions contraire à l'affectation prévue est proscrite.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Al fine di garantire la libera disponibilità dei fondi necessari per i futuri edifici e impianti aeroportuali possono essere definite zone riservate per aree chiaramente contrassegnate. In queste zone non possono essere apportate modifiche strutturali contrarie allo scopo degli impianti aeroportuali.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Per garantir la libra disponibladad dals bains immobigliars ch'èn necessaris per construir eroports, pon vegnir determinadas zonas da projectaziun per territoris designads exactamain. En questas zonas na dastgan vegnir fatgas naginas midadas architectonicas che cuntrafan a l'intent dals eroports.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>In order to ensure that airports have the necessary land at their disposal for their various facilities, project zones can be defined, the boundaries of which have to be clearly specified. Within these zones, no structural changes may be carried out that conflict with the purpose of the airport facilities.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Leitungen mit einer Nennspannung von 220 kV oder höher</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones réservées des lignes d'une tension nominale égale ou supérieure à 220 kV</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone riservate per linee con una tensione nominale pari o superiore a 220 kV</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da projectaziun per conducts cun ina tensiun nominala da 220 kV u dapli</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserved zones for power lines with a nominal voltage of 220 kV or higher</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Um die freie Verfügbarkeit der für Flughafenanlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Flughafenanlagen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des zones réservées peuvent être instaurées sur des portions de territoires clairement délimitées, afin de garantir la parfaite disponibilité des biens-fonds requis pour les lignes d'une tension nominale égale ou supérieure à 220 kV. Au sein de ces zones, toute modification des constructions contraire à l'affectation prévue est proscrite.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Al fine di garantire la libera disponibilità dei fondi necessari per le condotte con una tensione nominale di 220 kV o superiore, è possibile definire zone riservate per aree contrassegnate con precisione. In queste zone non possono essere apportate modifiche strutturali che contraddicano lo scopo delle condotte.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Per garantir la libra disponibladad dals bains immobigliars ch'èn necessaris per construir conducts cun ina tensiun nominala da 220 kilovolts u dapli, pon vegnir determinadas zonas da projectaziun per territoris designads exactamain. En questas zonas na dastgan vegnir fatgas naginas midadas architectonicas che cuntrafan a l'intent dals conducts.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserve zones may be specified in precisely designated regions in order to secure the availability of the necessary plots of land for the use of power lines with a nominal voltage of 200 kV or higher. In these zones, no structural alterations may be carried out that could interfere with the specified purpose of the power lines.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Projektierungszonen Nationalstrassen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Zones réservées des routes nationales</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Zone riservate per le strade nazionali</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Zonas da projectaziun da las vias naziunalas</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Reserved zones for motorways</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Um die freie Verfügbarkeit des für den Bau der Nationalstrassen erforderlichen Landes zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Nationalstrassen widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Des zones réservées peuvent être instaurées sur des portions de territoires clairement délimitées, afin de garantir la parfaite disponibilité des terrains requis pour la construction des routes nationales. Au sein de ces zones, toute modification des constructions contraire à l'affectation prévue est proscrite.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Al fine di garantire la libera disponibilità del terreno necessario per la costruzione delle strade nazionali è possibile definire zone riservate per aree designate con precisione. In queste zone non possono essere apportate modifiche strutturali che contraddicano lo scopo delle strade nazionali.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Per garantir la libra disponibladad dal terren ch'è necessari per construir las vias naziunalas, pon vegnir determinadas zonas da projectaziun per territoris designads exactamain. En questas zonas na dastgan vegnir fatgas naginas midadas architectonicas che cuntrafan a l'intent da las vias naziunalas.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Building lines may be specified in order to ensure that the necessary land for the ongoing or future construction of railway stretches and installations remains available. No structural alterations or other measures that do not correspond to the specified purpose of the railway operator may be carried out either between the building lines or between a building line and a railway installation.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Statische Waldgrenzen</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Limites forestières statiques</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Margini statici della foresta</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cunfins statics dal guaud</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Static forest perimeters</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Statische Waldgrenzen müssen auf der Grundlage rechtskräftiger Waldfeststellungen festgelegt werden. Neue Bestockungen ausserhalb dieser Waldgrenzen gelten nicht als Wald.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Les limites forestières statiques doivent être fixées sur la base de constatations de la nature forestière faisant foi juridiquement. De nouveaux peuplements en dehors de ces limites ne sont pas considérés comme étant des forêts.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>I margini statici della foresta devono essere stabiliti sulla base di inventari forestali giuridicamente vincolanti. Le nuove zone boscate al di fuori di questi margini della foresta non sono considerate foresta.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Cunfins statics dal guaud ston vegnir fixads sin basa da determinaziuns dal guaud cun vigur legala. Novs plantadis ordaifer quests cunfins da guaud na valan betg sco guaud.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Static forest perimeters have to be defined on the basis of legally binding declarations of forested areas. Newly planted trees outside the defined forest perimeter are not regarded as forest.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Waldabstandslinien</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Distances par rapport à la forêt</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Linee di distanza dalla foresta</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Lingias da distanza dal guaud</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Forest distance lines</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Bauten und Anlagen in Waldesnähe sind nur zulässig, wenn sie die Erhaltung, Pflege und Nutzung des Waldes nicht beeinträchtigen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Les constructions et les installations proches de la forêt ne sont permises que si elles ne portent atteinte ni à sa conservation, ni à son entretien, ni à son exploitation.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Gli edifici e gli impianti in prossimità della foresta sono consentiti solo se non compromettono la conservazione, la cura e lo sfruttamento della foresta.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Edifizis e stabiliments en la vischinanza dal guaud èn mo admissibels, sch'els na sminueschan betg la cultivaziun, la tgira e l'utilisaziun dal guaud.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Buildings and installations are only permitted near a forested area if they do not interfere with the preservation, management and use of the forest. Based on legally binding forest boundaries, the cantons define an appropriate minimum distance between buildings and facilities and the forest perimeter. The minimum distance is defined while taking the location and the anticipated height of the trees into account.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Waldreservate</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Réserves forestières</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Riserve forestali</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Reservats da guaud</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Forest reserves</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Geschützte Waldfläche, die der Erhaltung der Artenvielfalt von Fauna und Flora dient.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Surface forestière protégée qui assure la conservation de la diversité des espèces animales et végétales.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Superficie forestale protetta che garantisce la conservazione della molteplicità delle specie animali e vegetali.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Surfatscha da guaud protegida che serva a mantegnair la diversitad da las spezias da la fauna e da la flora.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Protected forest land for the purpose of preserving the diversity of fauna and flora.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zuständige Stelle</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Service compétent</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Servizio competente</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Post cumpetent</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Responsible authority</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Durch die Gesetzgebung bezeichnete Stelle des Bundes, des Kantons oder der Gemeinde, die für das Erheben, Nachführen und Verwalten der Geobasisdaten zuständig ist.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Service de la Confédération, du canton ou de la commune dont relèvent la saisie, la mise à jour et la gestion des géodonnées de base selon la législation.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Servizio federale, cantonale o comunale designato dalla legislazione che è responsabile della raccolta, della tenuta a giorno e della gestione dei geodati di base.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Post da la Confederaziun, dal chantun u da la vischnanca designà da la legislaziun ch'è cumpetent per registrar, per actualisar e per administrar las geodatas da basa.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Unit of the federal government, canton or municipality designated by law as responsible for the collection, updating and management of official geodata.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:Glossary>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Vorwirkung</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Effet anticipé</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Effetto anticipato</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Effect anticipà</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Pre-effect</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Mit der öffentlichen Auflage entsteht eine Vorwirkung: Ab diesem Zeitpunkt dürfen Bauvorhaben in der Regel nur bewilligt werden, wenn sie der öffentlich aufgelegten Planung nicht widersprechen.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>L'enquête publique génère un effet anticipé: à compter de son ouverture, seuls peuvent généralement être autorisés les projets de construction qui ne contreviennent pas aux nouvelles dispositions mises à l'enquête.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>La condizione pubblica crea un effetto anticipato: da questo momento in poi, i progetti di costruzione possono essere di regola approvati soltanto se non sono in contraddizione con la pianificazione impostata a livello pubblico.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>L'exposiziun publica generescha in effect anticipà: a partir da quest termin dastgan projects da construcziun vegnir permess per regla mo, sch'els na stattan betg en cuntradicziun cun la planisaziun exponida publicamain.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>The publication of plans results in a pre-effect: From that moment onwards, construction projects may normally only be approved if they do not conflict with the published planning.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Glossary>
+    <ns3:RealEstate>
+      <ns3:Number>548</ns3:Number>
+      <ns3:IdentDN>SO0200002543</ns3:IdentDN>
+      <ns3:EGRID>CH185532067274</ns3:EGRID>
+      <ns3:Type>
+        <ns3:Code>RealEstate</ns3:Code>
+        <ns3:Text>
+          <ns3:LocalisedText>
+            <ns3:Language>de</ns3:Language>
+            <ns3:Text>Liegenschaft</ns3:Text>
+          </ns3:LocalisedText>
+        </ns3:Text>
+      </ns3:Type>
+      <ns3:Canton>SO</ns3:Canton>
+      <ns3:MunicipalityName>Bettlach</ns3:MunicipalityName>
+      <ns3:MunicipalityCode>2543</ns3:MunicipalityCode>
+      <ns3:SubunitOfLandRegister>Bettlach</ns3:SubunitOfLandRegister>
+      <ns3:SubunitOfLandRegisterDesignation>Grundbuch</ns3:SubunitOfLandRegisterDesignation>
+      <ns3:LandRegistryArea>472</ns3:LandRegistryArea>
+      <ns3:Limit>
+        <ns1:surface>
+          <ns1:exterior>
+            <ns1:polyline>
+              <ns1:coord>
+                <ns1:c1>2598351.278</ns1:c1>
+                <ns1:c2>1227576.155</ns1:c2>
+              </ns1:coord>
+              <ns1:coord>
+                <ns1:c1>2598370.692</ns1:c1>
+                <ns1:c2>1227585.8</ns1:c2>
+              </ns1:coord>
+              <ns1:coord>
+                <ns1:c1>2598380.421</ns1:c1>
+                <ns1:c2>1227566.31</ns1:c2>
+              </ns1:coord>
+              <ns1:coord>
+                <ns1:c1>2598360.516</ns1:c1>
+                <ns1:c2>1227556.827</ns1:c2>
+              </ns1:coord>
+              <ns1:coord>
+                <ns1:c1>2598351.278</ns1:c1>
+                <ns1:c2>1227576.155</ns1:c2>
+              </ns1:coord>
+            </ns1:polyline>
+          </ns1:exterior>
+        </ns1:surface>
+      </ns3:Limit>
+      <ns3:RestrictionOnLandownership>
+        <ns3:LegendText>
+          <ns3:LocalisedText>
+            <ns3:Language>de</ns3:Language>
+            <ns3:Text>Genehmigter Sicherheitszonenperimeter</ns3:Text>
+          </ns3:LocalisedText>
+        </ns3:LegendText>
+        <ns3:Theme>
+          <ns3:Code>ch.Sicherheitszonenplan</ns3:Code>
+          <ns3:Text>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Sicherheitszonenplan</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Text>
+        </ns3:Theme>
+        <ns3:TypeCode>108-T-01</ns3:TypeCode>
+        <ns3:TypeCodelist>https://models.geo.admin.ch/BAZL/SafetyZonePlan_Catalogues_V1_3_20211125.xml</ns3:TypeCodelist>
+        <ns3:Lawstatus>
+          <ns3:Code>inForce</ns3:Code>
+          <ns3:Text>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Rechtskräftig</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Text>
+        </ns3:Lawstatus>
+        <ns3:AreaShare>472</ns3:AreaShare>
+        <ns3:PartInPercent>100.0</ns3:PartInPercent>
+        <ns3:SymbolRef>https://geo-t.so.ch/api/oereb/symbol/311622</ns3:SymbolRef>
+        <ns3:Geometry>
+          <ns3:Surface>
+            <ns1:exterior>
+              <ns1:polyline>
+                <ns1:coord>
+                  <ns1:c1>2596401.419</ns1:c1>
+                  <ns1:c2>1225016.472</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596372.111</ns1:c1>
+                  <ns1:c2>1225106.299</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596324.915</ns1:c1>
+                  <ns1:c2>1225352.891</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596309.121</ns1:c1>
+                  <ns1:c2>1225603.485</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596324.926</ns1:c1>
+                  <ns1:c2>1225854.087</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596372.13</ns1:c1>
+                  <ns1:c2>1226100.692</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596449.934</ns1:c1>
+                  <ns1:c2>1226339.498</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596557.237</ns1:c1>
+                  <ns1:c2>1226566.696</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596692.14</ns1:c1>
+                  <ns1:c2>1226778.694</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596852.743</ns1:c1>
+                  <ns1:c2>1226972.191</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597036.345</ns1:c1>
+                  <ns1:c2>1227144.089</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597240.048</ns1:c1>
+                  <ns1:c2>1227291.687</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597460.75</ns1:c1>
+                  <ns1:c2>1227412.584</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597694.952</ns1:c1>
+                  <ns1:c2>1227505.08</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597938.954</ns1:c1>
+                  <ns1:c2>1227567.478</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598188.856</ns1:c1>
+                  <ns1:c2>1227598.973</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598440.655</ns1:c1>
+                  <ns1:c2>1227598.968</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598690.556</ns1:c1>
+                  <ns1:c2>1227567.463</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598934.557</ns1:c1>
+                  <ns1:c2>1227505.058</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599168.756</ns1:c1>
+                  <ns1:c2>1227412.554</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599389.454</ns1:c1>
+                  <ns1:c2>1227291.65</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599593.153</ns1:c1>
+                  <ns1:c2>1227144.047</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599776.75</ns1:c1>
+                  <ns1:c2>1226972.144</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599937.348</ns1:c1>
+                  <ns1:c2>1226778.642</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600060.196</ns1:c1>
+                  <ns1:c2>1226586.635</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2601016.256</ns1:c1>
+                  <ns1:c2>1227143.424</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2601250.148</ns1:c1>
+                  <ns1:c2>1226631.623</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600868.545</ns1:c1>
+                  <ns1:c2>1226501.928</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600810.346</ns1:c1>
+                  <ns1:c2>1226527.83</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600727.344</ns1:c1>
+                  <ns1:c2>1226480.831</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600731.344</ns1:c1>
+                  <ns1:c2>1226455.231</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600200.642</ns1:c1>
+                  <ns1:c2>1226274.838</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600257.34</ns1:c1>
+                  <ns1:c2>1226100.639</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600304.536</ns1:c1>
+                  <ns1:c2>1225854.039</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600320.334</ns1:c1>
+                  <ns1:c2>1225603.441</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600306.187</ns1:c1>
+                  <ns1:c2>1225366.645</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600242.319</ns1:c1>
+                  <ns1:c2>1225364.43</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600151.158</ns1:c1>
+                  <ns1:c2>1225428.106</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2600097.037</ns1:c1>
+                  <ns1:c2>1225522.592</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599990.628</ns1:c1>
+                  <ns1:c2>1225930.807</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599965.339</ns1:c1>
+                  <ns1:c2>1225965.845</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599890.639</ns1:c1>
+                  <ns1:c2>1226010.846</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599872.34</ns1:c1>
+                  <ns1:c2>1226021.846</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599735.338</ns1:c1>
+                  <ns1:c2>1226044.849</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599607.339</ns1:c1>
+                  <ns1:c2>1225996.851</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599512.337</ns1:c1>
+                  <ns1:c2>1225925.852</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599480.237</ns1:c1>
+                  <ns1:c2>1225867.253</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599425.336</ns1:c1>
+                  <ns1:c2>1225766.854</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599415.333</ns1:c1>
+                  <ns1:c2>1225577.854</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599457.329</ns1:c1>
+                  <ns1:c2>1225282.855</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599473.325</ns1:c1>
+                  <ns1:c2>1225068.864</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599402.325</ns1:c1>
+                  <ns1:c2>1224900.873</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599314.322</ns1:c1>
+                  <ns1:c2>1224806.878</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599175.322</ns1:c1>
+                  <ns1:c2>1224715.884</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2599028.321</ns1:c1>
+                  <ns1:c2>1224655.885</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598838.321</ns1:c1>
+                  <ns1:c2>1224631.882</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598631.323</ns1:c1>
+                  <ns1:c2>1224567.876</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598485.322</ns1:c1>
+                  <ns1:c2>1224482.871</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598393.32</ns1:c1>
+                  <ns1:c2>1224337.868</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598306.318</ns1:c1>
+                  <ns1:c2>1223997.862</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598250.316</ns1:c1>
+                  <ns1:c2>1223782.86</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598163.315</ns1:c1>
+                  <ns1:c2>1223631.856</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2598140.515</ns1:c1>
+                  <ns1:c2>1223614.056</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597938.916</ns1:c1>
+                  <ns1:c2>1223639.455</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597694.913</ns1:c1>
+                  <ns1:c2>1223701.859</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597460.711</ns1:c1>
+                  <ns1:c2>1223794.364</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597240.01</ns1:c1>
+                  <ns1:c2>1223915.272</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2597036.307</ns1:c1>
+                  <ns1:c2>1224062.878</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596852.707</ns1:c1>
+                  <ns1:c2>1224234.783</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596692.108</ns1:c1>
+                  <ns1:c2>1224428.289</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596575.937</ns1:c1>
+                  <ns1:c2>1224610.847</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596575.935</ns1:c1>
+                  <ns1:c2>1224610.846</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596543.707</ns1:c1>
+                  <ns1:c2>1224592.094</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596385.306</ns1:c1>
+                  <ns1:c2>1224938.201</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596398.107</ns1:c1>
+                  <ns1:c2>1224943.501</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596372.207</ns1:c1>
+                  <ns1:c2>1225005.9</ns1:c2>
+                </ns1:coord>
+                <ns1:coord>
+                  <ns1:c1>2596401.419</ns1:c1>
+                  <ns1:c2>1225016.472</ns1:c2>
+                </ns1:coord>
+              </ns1:polyline>
+            </ns1:exterior>
+          </ns3:Surface>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:MetadataOfGeographicalBaseData>https://www.geocat.ch/geonetwork/srv/ger/md.viewer#/full_view/993bd105-3c7a-41ad-9470-9cf7faee0466</ns3:MetadataOfGeographicalBaseData>
+        </ns3:Geometry>
+        <ns3:Map>
+          <ns3:ReferenceWMS>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://wms.geo.admin.ch/?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.3.0&amp;LAYERS=ch.bazl.sicherheitszonenplan_v2_0.oereb&amp;STYLES=default&amp;CRS=EPSG:2056&amp;FORMAT=image/png&amp;LANG=de&amp;BBOX=2598338.9250959596,1227555.3637171718,2598392.7739040405,1227587.2632828283&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:ReferenceWMS>
+          <ns3:min>
+            <ns1:c1>2598338.9250959596</ns1:c1>
+            <ns1:c2>1227555.3637171718</ns1:c2>
+          </ns3:min>
+          <ns3:max>
+            <ns1:c1>2598392.7739040405</ns1:c1>
+            <ns1:c2>1227587.2632828283</ns1:c2>
+          </ns3:max>
+          <ns3:layerIndex>0</ns3:layerIndex>
+          <ns3:layerOpacity>0.6</ns3:layerOpacity>
+        </ns3:Map>
+        <ns3:LegalProvisions>
+          <ns3:Type>
+            <ns3:Code>LegalProvision</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtsvorschrift</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Type>
+          <ns3:Title>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Genehmigung des Sicherheitszonenplanes "Flughafen Grenchen SO"</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Title>
+          <ns3:TextAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/108-D-0074.pdf</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:TextAtWeb>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:Index>1</ns3:Index>
+          <ns3:ResponsibleOffice>
+            <ns3:Name>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Bundesamt für Zivilluftfahrt BAZL</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Name>
+            <ns3:UID>CHE188858471</ns3:UID>
+          </ns3:ResponsibleOffice>
+        </ns3:LegalProvisions>
+        <ns3:LegalProvisions>
+          <ns3:Type>
+            <ns3:Code>LegalProvision</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtsvorschrift</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Type>
+          <ns3:Title>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Sicherheitszonenplan "Regionalflugplatz Grenchen", 1:5000</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Title>
+          <ns3:TextAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/108-D-0073.pdf</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:TextAtWeb>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:Index>1</ns3:Index>
+          <ns3:ResponsibleOffice>
+            <ns3:Name>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Bundesamt für Zivilluftfahrt BAZL</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Name>
+            <ns3:UID>CHE188858471</ns3:UID>
+          </ns3:ResponsibleOffice>
+        </ns3:LegalProvisions>
+        <ns3:LegalProvisions>
+          <ns3:Type>
+            <ns3:Code>Hint</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Hinweis</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Type>
+          <ns3:Title>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Wichtige Hinweise</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Title>
+          <ns3:TextAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://data.geo.admin.ch/ch.bazl.sicherheitszonenplan_v2_0.oereb/Rechtsvorschriften/108-INFO-D.pdf</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:TextAtWeb>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:Index>1</ns3:Index>
+          <ns3:ResponsibleOffice>
+            <ns3:Name>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Bundesamt für Zivilluftfahrt BAZL</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Name>
+            <ns3:UID>CHE188858471</ns3:UID>
+          </ns3:ResponsibleOffice>
+        </ns3:LegalProvisions>
+        <ns3:LegalProvisions>
+          <ns3:Type>
+            <ns3:Code>Law</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Gesetzliche Grundlage</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Type>
+          <ns3:Title>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Bundesgesetz über die Luftfahrt</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Title>
+          <ns3:Abbreviation>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>LFG</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Abbreviation>
+          <ns3:OfficialNumber>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>SR 748.0</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:OfficialNumber>
+          <ns3:TextAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://www.admin.ch/ch/d/sr/c748_0.html</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:TextAtWeb>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:Index>310</ns3:Index>
+          <ns3:ResponsibleOffice>
+            <ns3:Name>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Bundeskanzlei</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Name>
+            <ns3:UID>CHE263297189</ns3:UID>
+          </ns3:ResponsibleOffice>
+        </ns3:LegalProvisions>
+        <ns3:LegalProvisions>
+          <ns3:Type>
+            <ns3:Code>Law</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Gesetzliche Grundlage</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Type>
+          <ns3:Title>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Verordnung über die Infrastruktur der Luftfahrt</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Title>
+          <ns3:Abbreviation>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>VIL</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Abbreviation>
+          <ns3:OfficialNumber>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>SR 748.131.1</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:OfficialNumber>
+          <ns3:TextAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>https://www.admin.ch/ch/d/sr/c748_131_1.html</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:TextAtWeb>
+          <ns3:Lawstatus>
+            <ns3:Code>inForce</ns3:Code>
+            <ns3:Text>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Rechtskräftig</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Text>
+          </ns3:Lawstatus>
+          <ns3:Index>320</ns3:Index>
+          <ns3:ResponsibleOffice>
+            <ns3:Name>
+              <ns3:LocalisedText>
+                <ns3:Language>de</ns3:Language>
+                <ns3:Text>Bundeskanzlei</ns3:Text>
+              </ns3:LocalisedText>
+            </ns3:Name>
+            <ns3:UID>CHE263297189</ns3:UID>
+          </ns3:ResponsibleOffice>
+        </ns3:LegalProvisions>
+        <ns3:ResponsibleOffice>
+          <ns3:Name>
+            <ns3:LocalisedText>
+              <ns3:Language>de</ns3:Language>
+              <ns3:Text>Bundesamt für Zivilluftfahrt BAZL</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:Name>
+          <ns3:OfficeAtWeb>
+            <ns3:LocalisedText>
+              <ns3:Text>https://www.bazl.admin.ch/bazl/de/home.html</ns3:Text>
+            </ns3:LocalisedText>
+          </ns3:OfficeAtWeb>
+          <ns3:UID>CHE188858471</ns3:UID>
+        </ns3:ResponsibleOffice>
+      </ns3:RestrictionOnLandownership>
+      <ns3:PlanForLandRegister>
+        <ns3:ReferenceWMS>
+          <ns3:LocalisedText>
+            <ns3:Language>de</ns3:Language>
+            <ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.grundbuchplan_oereb&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2598338.9250959596,1227555.3637171718,2598392.7739040405,1227587.2632828283&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+          </ns3:LocalisedText>
+        </ns3:ReferenceWMS>
+        <ns3:min>
+          <ns1:c1>2598338.9250959596</ns1:c1>
+          <ns1:c2>1227555.3637171718</ns1:c2>
+        </ns3:min>
+        <ns3:max>
+          <ns1:c1>2598392.7739040405</ns1:c1>
+          <ns1:c2>1227587.2632828283</ns1:c2>
+        </ns3:max>
+        <ns3:layerIndex>-10</ns3:layerIndex>
+        <ns3:layerOpacity>1.0</ns3:layerOpacity>
+      </ns3:PlanForLandRegister>
+      <ns3:PlanForLandRegisterMainPage>
+        <ns3:ReferenceWMS>
+          <ns3:LocalisedText>
+            <ns3:Language>de</ns3:Language>
+            <ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.hintergrundkarte_sw&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2598338.9250959596,1227555.3637171718,2598392.7739040405,1227587.2632828283&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+          </ns3:LocalisedText>
+          <ns3:LocalisedText>
+            <ns3:Language>it</ns3:Language>
+            <ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.hintergrundkarte_sw&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2598338.9250959596,1227555.3637171718,2598392.7739040405,1227587.2632828283&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+          </ns3:LocalisedText>
+        </ns3:ReferenceWMS>
+        <ns3:min>
+          <ns1:c1>2598338.9250959596</ns1:c1>
+          <ns1:c2>1227555.3637171718</ns1:c2>
+        </ns3:min>
+        <ns3:max>
+          <ns1:c1>2598392.7739040405</ns1:c1>
+          <ns1:c2>1227587.2632828283</ns1:c2>
+        </ns3:max>
+        <ns3:layerIndex>-10</ns3:layerIndex>
+        <ns3:layerOpacity>1.0</ns3:layerOpacity>
+      </ns3:PlanForLandRegisterMainPage>
+    </ns3:RealEstate>
+    <ns3:Disclaimer>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Eigentumsbeschränkungen im Grundbuch</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Restrictions de propriété dans le registre foncier</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Restrizioni della proprietà nel registro fondiario</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Restricziuns da la proprietad en il register funsil</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>Ownership restrictions in the land register</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Zusätzlich zu den Angaben in diesem Auszug können Eigentumsbeschränkungen auch im Grundbuch angemerkt sein.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Il est possible que des restrictions de propriété fassent l'objet d'une mention au registre foncier, en plus des indications figurant sur cet extrait.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Oltre alle informazioni contenute nel presente estratto, le restrizioni della proprietà possono essere annotate anche nel registro fondiario.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Supplementarmain a las indicaziuns en quest extract pon restricziuns da la proprietad er esser remartgadas en il register funsil.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>en</ns3:Language>
+          <ns3:Text>In addition to the information contained in this extract, ownership restrictions may also be cited in the land register.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Disclaimer>
+    <ns3:Disclaimer>
+      <ns3:Title>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Haftungsausschluss Kataster der belasteten Standorte (KbS)</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Clause de non-responsabilité du cadastre des sites pollués (CSP)</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Clausola di esclusione della responsabilità relativa al catasto dei siti inquinati (CSIN)</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Exclusiun da la responsabladad cataster dals lieus contaminads (CLC)</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Title>
+      <ns3:Content>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Der Kataster der belasteten Standorte (KbS) wurde anhand der vom Bundesamt für Umwelt BAFU festgelegten Kriterien erstellt und wird fortwährend aufgrund neuer Erkenntnisse (z.B. Untersuchungen) aktualisiert. Die im KbS eingetragenen Flächen können vom tatsächlichen Ausmass der Belastung abweichen. Erscheint ein Grundstück nicht im KbS, besteht keine absolute Gewähr, dass das Areal frei von jeglichen Abfall- oder Schadstoffbelastungen ist. Bahnbetrieblich, militärisch und für die Luftfahrt genutzte Standorte liegen im Zuständigkeitsbereich des Bundes.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>fr</ns3:Language>
+          <ns3:Text>Le cadastre des sites pollués (CSP) est établi d'après les critères émis par l'Office fédéral de l'environnement OFEV. Il est mis à jour continuellement sur la base des nouvelles connaissances (investigations). Les surfaces des sites indiqués dans le cadastre des sites pollués peuvent ne pas correspondre à la surface effectivement polluée. Cela ne signifie pas que tout terrain non inscrit au cadastre ne soit pas pollué et qu'il soit libre de tout déchet et pollution. Les zones utilisées à des fins de transports publics, militaire et aéronautique sont de la responsabilité de la Confédération.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>it</ns3:Language>
+          <ns3:Text>Il catasto dei siti inquinati (CSIN) è stato elaborato sulla base dei criteri definiti dall'Ufficio federale dell'ambiente (UFAM) e viene continuamente aggiornato sulla base delle nuove conoscenze ottenute (p.es. in seguito a indagini). Le superfici riportate nel CSIN possono discostarsi dalla portata dell'inquinamento effettivo. Se un fondo non figura nel CSIN, non esiste alcuna garanzia assoluta che l'area sia libera da inquinamento dovuto a rifiuti o sostanze nocive. I siti sfruttati per finalità ferroviarie, militari o relative all'aviazione civile rientrano nella sfera di competenze della Confederazione.</ns3:Text>
+        </ns3:LocalisedText>
+        <ns3:LocalisedText>
+          <ns3:Language>rm</ns3:Language>
+          <ns3:Text>Il cataster dals lieus contaminads (CLC) è vegnì fatg tenor ils criteris fixads da l'Uffizi federal d'ambient UFAM e vegn actualisà permanentamain sin basa da novas enconuschientschas (p.ex. retschertgas). Las surfatschas inscrittas en il CLC pon divergiar da la dimensiun effectiva da la contaminaziun. Sch'in bain immobigliar n'è betg inditgà en il CLC, na datti nagina garanzia absoluta che l'areal saja liber da mintga contaminaziun che deriva da rument u da substanzas nuschaivlas. Lieus duvrads per il manaschi da la viafier, per il militar e per l'aviatica tutgan tar il champ da cumpetenza da la Confederaziun.</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Content>
+    </ns3:Disclaimer>
+    <ns3:PLRCadastreAuthority>
+      <ns3:Name>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>Amt für Geoinformation</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:Name>
+      <ns3:OfficeAtWeb>
+        <ns3:LocalisedText>
+          <ns3:Language>de</ns3:Language>
+          <ns3:Text>https://agi.so.ch</ns3:Text>
+        </ns3:LocalisedText>
+      </ns3:OfficeAtWeb>
+      <ns3:Street>Rötistrasse</ns3:Street>
+      <ns3:Number>4</ns3:Number>
+      <ns3:PostalCode>4500</ns3:PostalCode>
+      <ns3:City>Solothurn</ns3:City>
+    </ns3:PLRCadastreAuthority>
+    <ns3:UpdateDateCS>2021-10-08T00:00:00.000+02:00</ns3:UpdateDateCS>
+  </ns3:Extract>
+</ns5:GetExtractByIdResponse>

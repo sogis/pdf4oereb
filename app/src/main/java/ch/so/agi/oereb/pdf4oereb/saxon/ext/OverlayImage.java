@@ -34,6 +34,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.so.agi.oereb.pdf4oereb.utils.AffinePointTransformation;
+import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -70,7 +71,8 @@ public class OverlayImage implements ExtensionFunction {
     @Override
     public SequenceType[] getArgumentTypes() {
         return new SequenceType[] { SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE), 
-                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE) };
+                SequenceType.makeSequenceType(ItemType.ANY_NODE, OccurrenceIndicator.ONE),
+                SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE)};
     }
     
     /**
@@ -86,7 +88,13 @@ public class OverlayImage implements ExtensionFunction {
     public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
         XdmNode limitNode = (XdmNode) arguments[0];
         XdmNode mapNode = (XdmNode) arguments[1];
-
+        String locale;
+        try {
+            locale = arguments[2].getUnderlyingValue().getStringValue();
+        } catch (XPathException e) {
+            throw new SaxonApiException(e.getMessage());
+        }
+        
         MultiPolygon realEstateDPRGeometry = multiSurface2JTS(limitNode);
         
         // TODO: Handle missing real estate geometry.
@@ -103,7 +111,7 @@ public class OverlayImage implements ExtensionFunction {
         byte[] overlayImage = null;
         
         try {
-            overlayImage = createOverlayImage(mapNode, mapEnvelope, realEstateDPRGeometry);           
+            overlayImage = createOverlayImage(mapNode, mapEnvelope, realEstateDPRGeometry, locale);           
         } catch (Exception e) {
             e.printStackTrace();
             throw new SaxonApiException(e.getMessage());
@@ -112,9 +120,9 @@ public class OverlayImage implements ExtensionFunction {
     }
     
     
-    private byte[] createOverlayImage(XdmNode node, Envelope worldEnvelope, MultiPolygon geometry) throws XPathException, SaxonApiException, IOException {
+    private byte[] createOverlayImage(XdmNode node, Envelope worldEnvelope, MultiPolygon geometry, String locale) throws XPathException, SaxonApiException, IOException {
         // Get the land register base image.
-        byte[] mapImageByteArray = getImageFromXdmNode(node);
+        byte[] mapImageByteArray = getImageFromXdmNode(node, locale);
         InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
         BufferedImage mapBufferedImage = ImageIO.read(mapImageInputStream);
         //ImageIO.write(mapBufferedImage, "png", new File("/Users/stefan/tmp/map_image.png"));
@@ -239,36 +247,49 @@ public class OverlayImage implements ExtensionFunction {
     /*
      * Creates a byte array of the image provided in the XdmNode (either as base64 string or
      * as wms getmap url).
+     * Es wird versucht die gewünschte Sprache des Bildes zu verwenden. Ist diese nicht vorhanden,
+     * wird das erste Sprachen-Element verwendet.
      */
-    private byte[] getImageFromXdmNode(XdmNode node) throws SaxonApiException, XPathException {
+    private byte[] getImageFromXdmNode(XdmNode node, String locale) throws SaxonApiException, XPathException {
         // Falls das Bild im XML eingebettet ist, wird dieses verwendet.
         byte[] mapImageByteArray = null;
+        String base64String = null;
+        int j=0;
+        
         Iterator<XdmNode> it = node.children("Image").iterator();
-       
         while(it.hasNext()) {
             XdmNode imageNode = (XdmNode) it.next();
             Iterator<XdmNode> jt = imageNode.children("LocalisedBlob").iterator();
-                    
-            while(jt.hasNext()) {
+             while(jt.hasNext()) {
                 XdmNode subNode = (XdmNode) jt.next();
                 Iterator<XdmNode> kt = subNode.children().iterator();
                 while (kt.hasNext()) {
                     XdmNode subSubNode = (XdmNode) kt.next();
                     if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                        if (subNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
-                            // do something
-                        } else if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Blob")) {
-                            String base64String = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                            mapImageByteArray = Base64.getDecoder().decode(base64String);
-                            break; // TODO: Ändern, falls Sprache berücksichtigt wird.
-                        }
+                        if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
+                            if (j == 0) {
+                                base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                            }
+                            String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                            if (language.equalsIgnoreCase(locale)) {
+                                base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
+                                break;
+                            } 
+                        } 
                     }
                 }
+                j++;
             }
+        }
+        if (base64String != null) {
+            mapImageByteArray = Base64.getDecoder().decode(base64String);
         }
         
         // Das Bild wird nur vom WMS bezogen, falls kein eingebettetes Bild vorhanden ist.
         if (mapImageByteArray == null) {
+            String requestString = null;
+            int i=0;
+            
             it = node.children("ReferenceWMS").iterator();
             while(it.hasNext()) {
                 XdmNode wmsNode = (XdmNode) it.next();
@@ -279,26 +300,35 @@ public class OverlayImage implements ExtensionFunction {
                     while(kt.hasNext()) {
                         XdmNode subNode = (XdmNode) kt.next();
                         if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
-                            // TODO: Sprache
-                            if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Text")) {
-                                String requestString = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
-                                try {
-                                    mapImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    log.error(e.getMessage());
-                                    throw new SaxonApiException(e.getMessage());
+                            if (subNode.getNodeName().getLocalName().toString().equalsIgnoreCase("Language")) {
+                                if (i == 0) {
+                                    requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                 }
-                                break;
+                                
+                                String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                if (language.equalsIgnoreCase(locale)) {
+                                    requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
+                                    break;
+                                } 
                             }
                         }
                     }
+                    i++;
                 }
             }
+            
+            try {
+                mapImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error(e.getMessage());
+                throw new SaxonApiException(e.getMessage());
+            }
+            
         }
         return mapImageByteArray;
     }
-    
+        
     /*
      * Calculates the Bounding Box of the map image from the extract.
      * This is needed to georeference the new highlighting image.
