@@ -1300,8 +1300,7 @@
                   <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11pt">
                     <fo:table-cell padding-top="1mm" padding-bottom="1mm">
                       <fo:block>
-                      <!--Funktionsname? Parametername?-->
-                        <!--<xsl:value-of select="oereb:getLocalisedText(data:Title/data:LocalisedText, 'it')"/>-->
+                        <!--<xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, 'it')"/>-->
 
                         <fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>: </fo:inline>
                         <xsl:value-of select="data:Content/data:LocalisedText[1]/data:Text"/>
@@ -1342,10 +1341,10 @@
 
 
   <xsl:function name="oereb:extractMultilingualText">
-    <xsl:param name="multilingualtext" />
+    <xsl:param name="seq" />
     <xsl:param name="lang" as="xs:string" />
     <!--<xsl:sequence select="$param1 + $param2"/>-->
-    <xsl:message><xsl:value-of select="$multilingualtext" /></xsl:message>
+    <xsl:message><xsl:value-of select="$seq" /></xsl:message>
 
   </xsl:function>
 
