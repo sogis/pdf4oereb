@@ -9,14 +9,12 @@ plugins {
 apply plugin: 'maven-publish'
 apply from: "$rootDir/gradle/versioning.gradle"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
-/*
 compileJava {
-    options.compilerArgs.addAll(['--release', '8'])
+    options.compilerArgs.addAll(['--release', '11'])
 }
-*/
 
 // "The package javax.xml.transform.stream is accessible from more than one module: <unnamed>, java.xml"
 configurations {
