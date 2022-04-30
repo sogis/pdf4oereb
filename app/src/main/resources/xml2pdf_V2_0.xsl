@@ -388,41 +388,12 @@
         <fo:flow flow-name="xsl-region-body">
           <fo:block>
             <xsl:for-each-group select="data:RestrictionOnLandownership" group-by="data:Theme/data:Code">
-            <!--
-              <xsl:message><xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text" /></xsl:message>
-              <xsl:message><xsl:value-of select="data:Lawstatus/data:Code" /></xsl:message>
-              <xsl:message>*******************</xsl:message>
-            -->
-
-              <!--<xsl:message>first level: <xsl:value-of select="count(current-group())"/></xsl:message>-->  
-
-<!--
-              <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
-                <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
--->
-                <!--
-                <xsl:message><xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text" /></xsl:message>
-                <xsl:message><xsl:value-of select="data:Lawstatus/data:Code" /></xsl:message>
-                -->
-                <!--<xsl:message>Start+++++++++++++++++++</xsl:message>-->
-
-                <!--<xsl:message>second level: <xsl:value-of select="count(current-group())"/></xsl:message>-->  
 
                 <xsl:if test="current-group()/data:Theme/data:SubCode">
-                  <!--<xsl:message>Subthema!!! <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/></xsl:message>-->
-
-                  <!--
-                  <xsl:message>count: <xsl:value-of select="count(data:LegendText/data:LocalisedText/data:Text)"/></xsl:message>  
-                  <xsl:message>count: <xsl:value-of select="data:LegendText/data:LocalisedText/data:Text"/></xsl:message>  
-                  -->
-
                   <xsl:for-each-group select="current-group()" group-by="data:Theme/data:SubCode">
-
                     <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
                       <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
 
-                      <!--<xsl:message><xsl:value-of select="data:Theme/data:SubCode" /></xsl:message>-->
-                      <!--<xsl:message>third level: <xsl:value-of select="count(current-group())"/></xsl:message>  -->
                       <fo:block-container background-color="transparent">
                         <fo:block id="{generate-id()}" page-break-before="always" linefeed-treatment="preserve" font-weight="700" font-size="15pt" line-height="18pt">
                           <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $localeUrl)"/>
@@ -440,12 +411,6 @@
                 </xsl:if>
 
                 <xsl:if test="not(current-group()/data:Theme/data:SubCode)">
-                  <!--<xsl:message>Ich bin kein Subthema: <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/></xsl:message>-->
-                <!--
-                  <xsl:message>Message Message Message</xsl:message>
-                  <xsl:message><xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/></xsl:message>
-                -->
-
                     <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
                       <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
 
@@ -463,9 +428,7 @@
                   </xsl:for-each-group>
                 </xsl:if>
 
-                <!--<xsl:message>Ende+++++++++++++++++++</xsl:message>-->
               </xsl:for-each-group>
-            <!--</xsl:for-each-group>-->
           </fo:block>
         </fo:flow>
       </fo:page-sequence>
