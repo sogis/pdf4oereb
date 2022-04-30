@@ -27,7 +27,7 @@
           <fo:block-container height="107mm" background-color="transparent">
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
               <fo:external-graphic border="0.2pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
-                <xsl:if test="data:RealEstate/data:PlanForLandRegisterMainPage/data:Image/data:LocalisedBlob[1]/data:Blob">
+                <xsl:if test="oereb:extractMultilingualBlob(data:RealEstate/data:PlanForLandRegisterMainPage/data:Image/data:LocalisedBlob, $localeUrl)">
                   <xsl:attribute name="src">
                     <xsl:text>url('data:</xsl:text>
                     <xsl:text>image/png;base64,</xsl:text>
@@ -1314,5 +1314,20 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
+
+  <xsl:function name="oereb:extractMultilingualBlob">
+    <xsl:param name="seq" as="item()*"/>
+    <xsl:param name="localeUrl" as="xs:string" />
+    <xsl:variable name="locale" select="substring($localeUrl, 11, 2)"/>
+    <xsl:choose>
+      <xsl:when test="$seq/data:Language/text()[. = $locale]">
+        <xsl:sequence select="$seq/data:Blob/text()[../../data:Language = $locale]"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$seq[1]/data:Blob" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
 
 </xsl:stylesheet>
