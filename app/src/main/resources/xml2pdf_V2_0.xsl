@@ -64,11 +64,10 @@
                   </fo:table-cell>
                   <fo:table-cell>
                     <fo:block>
-                      <xsl:value-of select="data:RealEstate/data:Type/data:Text/data:LocalisedText[1]/data:Text"/>
+                      <xsl:value-of select="oereb:extractMultilingualText(data:RealEstate/data:Type/data:Text/data:LocalisedText, $localeUrl)"/>
                     </fo:block>
                   </fo:table-cell>
                 </fo:table-row>
-
                 <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="6mm">
                   <fo:table-cell>
                     <fo:block>E-GRID</fo:block>
@@ -167,7 +166,7 @@
                   </fo:table-cell>
                   <fo:table-cell padding-top="3.5pt" padding-bottom="3.5pt">
                     <fo:block linefeed-treatment="preserve">
-                      <xsl:value-of select="data:PLRCadastreAuthority/data:Name/data:LocalisedText[1]/data:Text"/>
+                      <xsl:value-of select="oereb:extractMultilingualText(data:PLRCadastreAuthority/data:Name/data:LocalisedText, $localeUrl)"/>
                       <xsl:text>&#x000A;</xsl:text>
                       <xsl:value-of select="data:PLRCadastreAuthority/data:Street"/>
                       <xsl:text> </xsl:text>
@@ -180,10 +179,10 @@
                       <fo:inline>
                         <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                           <xsl:attribute name="external-destination">
-                            <xsl:value-of select="oereb:decodeURL(data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[1]/data:Text)"/>
+                            <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText, $localeUrl))"/>
                           </xsl:attribute>
                           <!--<xsl:value-of select="data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[data:Language = 'fr']/data:Text"/>-->
-                            <xsl:value-of select="oereb:decodeURL(data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[1]/data:Text)"/>
+                            <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText, $localeUrl))"/>
                         </fo:basic-link>
                       </fo:inline>
                     </fo:block>
@@ -242,7 +241,7 @@
                       <fo:table-row vertical-align="middle">
                         <fo:table-cell>
                           <fo:block>
-                            <xsl:value-of select="data:Text/data:LocalisedText[1]/data:Text"/>
+                            <xsl:value-of select="oereb:extractMultilingualText(data:Text/data:LocalisedText, $localeUrl)"/>
                           </fo:block>
                         </fo:table-cell>
                       </fo:table-row>
@@ -279,7 +278,7 @@
                       <fo:table-row vertical-align="middle">
                         <fo:table-cell>
                           <fo:block>
-                            <xsl:value-of select="data:Text/data:LocalisedText[1]/data:Text"/>
+                            <xsl:value-of select="oereb:extractMultilingualText(data:Text/data:LocalisedText, $localeUrl)"/>
                           </fo:block>
                         </fo:table-cell>
                       </fo:table-row>
@@ -314,25 +313,25 @@
                               </fo:block>
                               <fo:block>
                                 <xsl:call-template name="textRenderer">
-                                  <xsl:with-param name="textContent" select="data:GeneralInformation/data:LocalisedText[1]/data:Text" />
+                                  <xsl:with-param name="textContent" select="oereb:extractMultilingualText(data:GeneralInformation/data:LocalisedText, $localeUrl)" />
                                 </xsl:call-template>
                               </fo:block>
                               <fo:block margin-top="2.2mm" font-weight="700">
-                                <xsl:value-of select="data:Disclaimer[1]/data:Title/data:LocalisedText[1]/data:Text"/>
+                                <xsl:value-of select="oereb:extractMultilingualText(data:Disclaimer[1]/data:Title/data:LocalisedText, $localeUrl)"/>
                               </fo:block>
                               <fo:block>
                                 <xsl:call-template name="textRenderer">
-                                  <xsl:with-param name="textContent" select="data:Disclaimer[1]/data:Content/data:LocalisedText[1]/data:Text" />
+                                  <xsl:with-param name="textContent" select="oereb:extractMultilingualText(data:Disclaimer[1]/data:Content/data:LocalisedText, $localeUrl)" />
                                 </xsl:call-template>
                               </fo:block>
                             </fo:table-cell>
                             <fo:table-cell padding-left="1.5mm">
                               <fo:block font-weight="700">
-                                <xsl:value-of select="data:Disclaimer[2]/data:Title/data:LocalisedText[1]/data:Text"/>
+                                <xsl:value-of select="oereb:extractMultilingualText(data:Disclaimer[2]/data:Title/data:LocalisedText, $localeUrl)"/>
                               </fo:block>
                               <fo:block>
                                 <xsl:call-template name="textRenderer">
-                                  <xsl:with-param name="textContent" select="data:Disclaimer[2]/data:Content/data:LocalisedText[1]/data:Text" />
+                                  <xsl:with-param name="textContent" select="oereb:extractMultilingualText(data:Disclaimer[2]/data:Content/data:LocalisedText, $localeUrl)" />
                                 </xsl:call-template>
                               </fo:block>
                               <fo:block margin-top="2.2mm">
@@ -426,13 +425,13 @@
                       <!--<xsl:message>third level: <xsl:value-of select="count(current-group())"/></xsl:message>  -->
                       <fo:block-container background-color="transparent">
                         <fo:block id="{generate-id()}" page-break-before="always" linefeed-treatment="preserve" font-weight="700" font-size="15pt" line-height="18pt">
-                          <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/>
+                          <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $localeUrl)"/>
                         </fo:block>
                       </fo:block-container>
                       <fo:block-container>
                         <!-- 2mm sind circa. 3mm sind bereits vorhanden. Kann nicht (?) besser gesteuert werden.-->
                         <fo:block margin-top="1mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
-                          <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"/>
+                          <xsl:value-of select="oereb:extractMultilingualText(data:Lawstatus/data:Text/data:LocalisedText, $localeUrl)"/>
                         </fo:block>
                       </fo:block-container>
                       <xsl:call-template name="handleRestrictionOnLandownership"/>
@@ -452,12 +451,12 @@
 
                       <fo:block-container background-color="transparent">
                         <fo:block id="{generate-id()}" page-break-before="always" linefeed-treatment="preserve" font-weight="700" font-size="15pt" line-height="18pt">
-                          <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/>
+                          <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $localeUrl)"/>
                         </fo:block>
                       </fo:block-container>
                       <fo:block-container>
                         <fo:block margin-top="1mm" font-size="8pt" line-height="11pt" font-weight="700" background-color="transparent">
-                          <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"/>
+                          <xsl:value-of select="oereb:extractMultilingualText(data:Lawstatus/data:Text/data:LocalisedText, $localeUrl)"/>
                         </fo:block>
                       </fo:block-container>
                       <xsl:call-template name="handleRestrictionOnLandownership"/>
@@ -510,10 +509,10 @@
                             <fo:table-cell>
                               <fo:block>
                                 <fo:basic-link internal-destination="{generate-id(.)}">
-                                  <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/>
+                                  <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $localeUrl)"/>
                                   <xsl:if test="not(data:Lawstatus/data:Code = 'inForce')">
                                     <xsl:text> (</xsl:text>
-                                    <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"></xsl:value-of>
+                                    <xsl:value-of select="oereb:extractMultilingualText(data:Lawstatus/data:Text/data:LocalisedText, $localeUrl)"></xsl:value-of>
                                     <xsl:text>)</xsl:text>
                                   </xsl:if>
                                 </fo:basic-link>
@@ -540,10 +539,10 @@
                           <fo:table-cell>
                             <fo:block>
                               <fo:basic-link internal-destination="{generate-id(.)}">
-                                <xsl:value-of select="data:Theme/data:Text/data:LocalisedText[1]/data:Text"/>
+                                <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $localeUrl)"/>
                                 <xsl:if test="not(data:Lawstatus/data:Code = 'inForce')">
                                   <xsl:text> (</xsl:text>
-                                  <xsl:value-of select="data:Lawstatus/data:Text/data:LocalisedText[1]/data:Text"></xsl:value-of>
+                                  <xsl:value-of select="oereb:extractMultilingualText(data:Lawstatus/data:Text/data:LocalisedText, $localeUrl)"></xsl:value-of>
                                   <xsl:text>)</xsl:text>
                                 </xsl:if>
                               </fo:basic-link>
@@ -729,7 +728,7 @@
               </fo:table-cell>
               <fo:table-cell display-align="center" text-align="left" line-height="11pt">
                 <fo:block>
-                  <xsl:value-of select="data:LegendText/data:LocalisedText[1]/data:Text"/>
+                  <xsl:value-of select="oereb:extractMultilingualText(data:LegendText/data:LocalisedText, $localeUrl)"/>
                 </fo:block>
                 <!-- Zum Testen der Summenbildung und Gruppierung-->
                 <!--<xsl:message>TypeCode: <xsl:value-of select="data:TypeCode"/></xsl:message>-->
@@ -840,7 +839,7 @@
             ich es aber sinnvoller den Artcode zu verwenden. -->
             <!-- Die Variablen sind bereits weiter oben definiert, damit überhaupt nicht ein block-container mit Linie gezeichnet wird, wenn es gar keine Einträge gibt.-->
             <xsl:for-each-group select="current-group()/data:Map/data:OtherLegend[not(data:TypeCode = $restrictionTypeCode and data:TypeCodelist = $restrictionTypeCodelist)]" group-by="concat(data:TypeCode, '|', data:TypeCodelist, '|', data:Symbol)">
-              <xsl:sort lang="de" order="ascending" select="data:LegendText/data:LocalisedText[1]/data:Text"/>
+              <xsl:sort lang="de" order="ascending" select="oereb:extractMultilingualText(data:LegendText/data:LocalisedText, $localeUrl)"/>
               <fo:table-row vertical-align="middle" line-height="5mm">
                 <fo:table-cell>
                   <xsl:if test="position()=1">
@@ -876,7 +875,7 @@
                 </fo:table-cell>
                 <fo:table-cell display-align="center" text-align="left" line-height="11pt">
                   <fo:block>
-                    <xsl:value-of select="data:LegendText/data:LocalisedText[1]/data:Text"/>
+                    <xsl:value-of select="oereb:extractMultilingualText(data:LegendText/data:LocalisedText, $localeUrl)"/>
                   </fo:block>
                 </fo:table-cell>
                 <fo:table-cell text-align="right">
@@ -918,9 +917,9 @@
               <fo:block/>
             </fo:table-cell>
           </fo:table-row>
-          <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='LegalProvision']" group-by="data:TextAtWeb/data:LocalisedText[1]/data:Text">
+          <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='LegalProvision']" group-by="oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)">
             <xsl:sort lang="de" order="ascending" select="data:Index"/>
-            <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText[1]/data:Text"/>
+            <xsl:sort lang="de" order="ascending" select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
             <fo:table-row font-weight="400">
               <fo:table-cell padding-top="1.5pt">
                 <xsl:if test="position()=1">
@@ -935,9 +934,9 @@
               <fo:table-cell padding-top="1.5pt" padding-bottom="1.5pt">
                 <fo:block font-size="8pt" line-height="11pt">
                   <xsl:choose>
-                    <xsl:when test="data:OfficialNumber"><xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>, <xsl:value-of select="data:OfficialNumber/data:LocalisedText[1]/data:Text"/><xsl:text>:</xsl:text></xsl:when>
+                    <xsl:when test="data:OfficialNumber"><xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>, <xsl:value-of select="oereb:extractMultilingualText(data:OfficialNumber/data:LocalisedText, $localeUrl)"/><xsl:text>:</xsl:text></xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>
+                      <xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
                       <xsl:text>:</xsl:text>
                     </xsl:otherwise>
                   </xsl:choose>
@@ -945,10 +944,10 @@
                 <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="0mm">
                   <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                     <xsl:attribute name="external-destination">
-                      <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text)"/>
+                      <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl))"/>
                     </xsl:attribute>
                     <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
-                    <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
+                    <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
                   </fo:basic-link>
                 </fo:block>
               </fo:table-cell>
@@ -978,9 +977,9 @@
               <fo:block/>
             </fo:table-cell>
           </fo:table-row>
-          <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='Law']" group-by="data:TextAtWeb/data:LocalisedText[1]/data:Text">
+          <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='Law']" group-by="oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)">
             <xsl:sort lang="de" order="ascending" select="data:Index"/>
-            <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText[1]/data:Text"/>
+            <xsl:sort lang="de" order="ascending" select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
             <fo:table-row font-weight="400">
               <fo:table-cell background-color="transparent" padding-top="1.5pt">
                 <xsl:if test="position()=1">
@@ -994,24 +993,24 @@
               </fo:table-cell>
               <fo:table-cell background-color="transparent" padding-top="1.5pt" padding-bottom="1.5pt">
                 <fo:block font-size="8pt" line-height="11pt">
-                  <xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>
-                  <xsl:if test="data:Abbreviation/data:LocalisedText[1]/data:Text">
+                  <xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
+                  <xsl:if test="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $localeUrl)">
                     <xsl:text> (</xsl:text>
-                    <xsl:value-of select="data:Abbreviation/data:LocalisedText[1]/data:Text"/>
+                    <xsl:value-of select="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $localeUrl)"/>
                     <xsl:text>)</xsl:text>
                   </xsl:if>
                   <xsl:if test="data:OfficialNumber">
                     <xsl:text>, </xsl:text>
-                    <xsl:value-of select="data:OfficialNumber/data:LocalisedText[1]/data:Text"/>
+                    <xsl:value-of select="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $localeUrl)"/>
                   </xsl:if>
                   <xsl:text>:</xsl:text>
                 </fo:block>
                 <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="0mm">
                   <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                     <xsl:attribute name="external-destination">
-                      <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text)"/>
+                      <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl))"/>
                     </xsl:attribute>
-                    <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
+                    <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
                   </fo:basic-link>
                 </fo:block>
               </fo:table-cell>
@@ -1042,9 +1041,9 @@
                 <fo:block/>
               </fo:table-cell>
             </fo:table-row>
-            <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='Hint']" group-by="data:TextAtWeb/data:LocalisedText[1]/data:Text">
+            <xsl:for-each-group select="current-group()/data:LegalProvisions[data:Type/data:Code='Hint']" group-by="oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)">
               <xsl:sort lang="de" order="ascending" select="data:Index"/>
-              <xsl:sort lang="de" order="ascending" select="data:Title/data:LocalisedText[1]/data:Text"/>
+              <xsl:sort lang="de" order="ascending" select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
               <fo:table-row vertical-align="middle" line-height="5mm" font-weight="400">
                 <fo:table-cell>
                   <xsl:if test="position()=1">
@@ -1058,15 +1057,15 @@
                 </fo:table-cell>
                 <fo:table-cell display-align="center">
                   <fo:block font-size="8pt" line-height="11pt">
-                    <xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>
+                    <xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>
                     <xsl:text>:</xsl:text>
                   </fo:block>
                   <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="0mm">
                     <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                       <xsl:attribute name="external-destination">
-                        <xsl:value-of select="oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text)"/>
+                        <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl))"/>
                       </xsl:attribute>
-                      <xsl:value-of select="replace(replace(oereb:decodeURL(data:TextAtWeb/data:LocalisedText[1]/data:Text), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
+                      <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:TextAtWeb/data:LocalisedText, $localeUrl)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
                     </fo:basic-link>
                   </fo:block>
                 </fo:table-cell>
@@ -1099,7 +1098,7 @@
           </fo:table-row>
           <!-- <xsl:for-each-group select="current-group()/data:LegalProvisions/data:ResponsibleOffice" group-by="data:Name">  -->
           <xsl:for-each-group select="current-group()/data:ResponsibleOffice" group-by="data:Name">
-            <xsl:sort lang="de" order="ascending" select="data:Name/data:LocalisedText[1]/data:Text"/>
+            <xsl:sort lang="de" order="ascending" select="oereb:extractMultilingualText(data:Name/data:LocalisedText, $localeUrl)"/>
             <fo:table-row line-height="5mm" font-weight="400">
               <fo:table-cell padding-top="1.5pt">
                 <xsl:if test="position()=1">
@@ -1113,16 +1112,16 @@
               </fo:table-cell>
               <fo:table-cell padding-top="1.5pt" padding-bottom="1.5pt">
                 <fo:block font-size="8pt">
-                  <xsl:value-of select="data:Name/data:LocalisedText[1]/data:Text"/>
+                  <xsl:value-of select="oereb:extractMultilingualText(data:Name/data:LocalisedText, $localeUrl)"/>
                   <xsl:text>:</xsl:text>
                 </fo:block>
                 <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="-1mm">
                   <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
                     <xsl:attribute name="external-destination">
-                      <xsl:value-of select="oereb:decodeURL(data:OfficeAtWeb/data:LocalisedText[1]/data:Text)"/>
+                      <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $localeUrl))"/>
                     </xsl:attribute>
                     <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
-                    <xsl:value-of select="replace(replace(oereb:decodeURL(data:OfficeAtWeb/data:LocalisedText[1]/data:Text), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
+                    <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $localeUrl)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
                   </fo:basic-link>
                 </fo:block>
               </fo:table-cell>
@@ -1296,14 +1295,12 @@
               <fo:table-column column-width="174mm"/>
               <fo:table-body>
                 <xsl:for-each select="data:Glossary">
-                  <xsl:sort select="data:Title/data:LocalisedText[1]/data:Text" lang="de-CH"/>
+                  <xsl:sort select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)" lang="de-CH"/>
                   <fo:table-row border-bottom="0.2pt solid black" vertical-align="middle" line-height="11pt">
                     <fo:table-cell padding-top="1mm" padding-bottom="1mm">
                       <fo:block>
-                        <!--<xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, 'it')"/>-->
-
-                        <fo:inline font-weight="700"><xsl:value-of select="data:Title/data:LocalisedText[1]/data:Text"/>: </fo:inline>
-                        <xsl:value-of select="data:Content/data:LocalisedText[1]/data:Text"/>
+                        <fo:inline font-weight="700"><xsl:value-of select="oereb:extractMultilingualText(data:Title/data:LocalisedText, $localeUrl)"/>: </fo:inline>
+                        <xsl:value-of select="oereb:extractMultilingualText(data:Content/data:LocalisedText, $localeUrl)"/>
                       </fo:block>
                     </fo:table-cell>
                   </fo:table-row>
@@ -1339,13 +1336,20 @@
     </xsl:analyze-string>
   </xsl:template>
 
-
+  <!-- Falls die Sprache nicht im XML vorhanden ist, wird das erste Element des 
+  MultilingualTyps verwendet. -->
   <xsl:function name="oereb:extractMultilingualText">
-    <xsl:param name="seq" />
-    <xsl:param name="lang" as="xs:string" />
-    <!--<xsl:sequence select="$param1 + $param2"/>-->
-    <xsl:message><xsl:value-of select="$seq" /></xsl:message>
-
+    <xsl:param name="seq" as="item()*"/>
+    <xsl:param name="localeUrl" as="xs:string" />
+    <xsl:variable name="locale" select="substring($localeUrl, 11, 2)"/>
+    <xsl:choose>
+      <xsl:when test="$seq/data:Language/text()[. = $locale]">
+        <xsl:sequence select="$seq/data:Text/text()[../../data:Language = $locale]"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$seq[1]/data:Text" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:function>
 
 </xsl:stylesheet>

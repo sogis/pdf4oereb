@@ -82,7 +82,13 @@ Die Herausforderung ist in diesem Fall aber die Verwendung der extension functio
 Es wird zuerst immer versucht die eingebetteten Kartenausschnitte, Logos und Symbole zu verwenden. Nur wenn diese nicht vorhanden sind, wird versucht die die referenzierten Objekte zu laden und zu verwenden.
 
 ### Multilanguage
-Eine XSLT-Transformation ist gut parametrisierbar. Statische Texte (z.B. der Titel des Auszuges usw.) können in eigenen Sprachdateien verwaltet werden und entsprechend geladen werden. Die eigentlichen Auszugsinhalte sind per Definition mehrsprachig und die gewünschte Sprache (falls im XML vorhanden). Momentan wird jedoch immer das erste Element verwendet. Mit einem einfachen Filter könnte jedoch die gewünschte Sprache gewählt werden, z.B.: `select="data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[data:Language = 'fr']/data:Text`. 
+Eine XSLT-Transformation ist gut parametrisierbar. Statische Texte (z.B. der Titel des Auszuges usw.) können in eigenen Sprachdateien verwaltet werden und entsprechend geladen werden. Diese Texte stammen aus einem noch nicht offiziellen Teilmodell: https://www.cadastre.ch/content/cadastre-internet/de/manual-oereb/modell/frame/_jcr_content/contentPar/tabs_copy_copy_copy_/items/dokumente/tabPar/downloadlist_269503579/downloadItems/90_1646229667044.download/OeREBKRM_Vx_x_AuszugTexte_20220301.zip. Meines Erachtens haben sich aber noch ein paar Fehler eingeschlichen.
+
+Die eigentlichen Auszugsinhalte sind per Definition mehrsprachig und die gewünschte Sprache (falls im XML vorhanden). Momentan wird jedoch immer das erste Element verwendet. Mit einem einfachen Filter könnte jedoch die gewünschte Sprache gewählt werden, z.B.: `select="data:PLRCadastreAuthority/data:OfficeAtWeb/data:LocalisedText[data:Language = 'fr']/data:Text`. 
+
+
+
+
 
 ### Gruppierung und Sortierung der Themen
 Die Gruppierung und Sortierung der Themen funktioniert nun in OEREB V2_0 generisch und korrekt.
