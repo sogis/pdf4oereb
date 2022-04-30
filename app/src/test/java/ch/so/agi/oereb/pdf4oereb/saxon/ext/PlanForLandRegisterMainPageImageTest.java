@@ -23,6 +23,7 @@ import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.tree.util.Orphan;
 import net.sf.saxon.type.Type;
 
@@ -43,7 +44,7 @@ public class PlanForLandRegisterMainPageImageTest {
         node.setStringValue(overlayImageString);
         XdmNode overlayImageNode = new XdmNode(node);
 
-        XdmNode[] arguments = {baseMapNode, overlayImageNode};
+        XdmValue[] arguments = {baseMapNode, overlayImageNode, new XdmAtomicValue("de")};
         PlanForLandRegisterMainPageImage mainPageImage = new PlanForLandRegisterMainPageImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) mainPageImage.call(arguments);
 

@@ -19,6 +19,7 @@ import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XdmValue;
 
 public class OverlayImageTest {
     Logger log = LoggerFactory.getLogger(OverlayImageTest.class);
@@ -34,7 +35,7 @@ public class OverlayImageTest {
         XdmNode mapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/OverlayImageTest/createOverlayImage1_Ok_mapNode.xml")));
         XdmNode mapNode = mapSource.children().iterator().next();
         
-		XdmNode[] arguments = {limitNode, mapNode};
+        XdmValue[] arguments = {limitNode, mapNode, new XdmAtomicValue("de")};
         OverlayImage overlayImage = new OverlayImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) overlayImage.call(arguments);
         
