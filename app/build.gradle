@@ -79,6 +79,7 @@ run {
     args = ["--xml", "src/test/data/so/CH185532067274_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_ohne_punkt.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_einzelschutz.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
+    args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {

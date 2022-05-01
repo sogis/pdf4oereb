@@ -1,0 +1,5755 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extract:GetExtractByIdResponse
+                        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xmlns:data="http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData"
+                        xmlns:extract="http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract"
+                        xmlns:geometry="http://www.interlis.ch/geometry/1.0"
+                        xsi:schemaLocation="http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract http://schemas.geo.admin.ch/V_D/OeREB/2.0/Extract.xsd
+                                            http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData http://schemas.geo.admin.ch/V_D/OeREB/2.0/ExtractData.xsd
+                                            http://www.interlis.ch/geometry/1.0 http://models.interlis.ch/refhb24/geometry.xsd">
+
+
+
+    <data:Extract>
+        <data:CreationDate>2022-05-01T17:09:37</data:CreationDate>
+        <data:ConcernedTheme>
+            
+<data:Code>ch.Nutzungsplanung</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nutzungsplanung (kantonal/kommunal)</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:ConcernedTheme>
+        <data:ConcernedTheme>
+            
+<data:Code>ch.Laermempfindlichkeitsstufen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Lärmempfindlichkeitsstufen (in Nutzungszonen)</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:ConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BL.CantonalBuildingLines</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kantonale Baulinien</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BL.MunicipalBuildingLines</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kommunale Baulinien</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.ProjektierungszonenNationalstrassen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Nationalstrassen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BaulinienNationalstrassen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Nationalstrassen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.ProjektierungszonenEisenbahnanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Eisenbahnanlagen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BaulinienEisenbahnanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Eisenbahnanlagen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.ProjektierungszonenFlughafenanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Flughafenanlagen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BaulinienFlughafenanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Flughafenanlagen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Sicherheitszonenplan</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Sicherheitszonenplan</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BelasteteStandorte</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BelasteteStandorteMilitaer</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte im Bereich des Militärs</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BelasteteStandorteZivileFlugplaetze</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte im Bereich der zivilen Flugplätze</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BelasteteStandorteOeffentlicherVerkehr</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte im Bereich des öffentlichen Verkehrs</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Grundwasserschutzzonen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Grundwasserschutzzonen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Grundwasserschutzareale</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Grundwasserschutzareale</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Gewaesserraum</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gewässerraum</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.StatischeWaldgrenzen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Statische Waldgrenzen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Waldabstandslinien</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Waldabstandslinien</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.Waldreservate</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Waldreservate</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.ProjektierungszonenStarkstromanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Leitungen mit einer Nennspannung von 220 kV oder höher</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.BaulinienStarkstromanlagen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Starkstromanlagen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:NotConcernedTheme>
+            
+<data:Code>ch.SicherheitszonenplanFlughafen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>TEST Sicherheitszonenplan</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:NotConcernedTheme>
+        <data:ThemeWithoutData>
+            
+<data:Code>ch.Planungszonen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Planungszonen</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+        </data:ThemeWithoutData>
+        <data:LogoPLRCadastreRef>https://oereb-dev.geo.bl.ch/image/logo/oereb/de.png</data:LogoPLRCadastreRef>
+        <data:FederalLogoRef>https://oereb-dev.geo.bl.ch/image/logo/confederation/de.png</data:FederalLogoRef>
+        <data:CantonalLogoRef>https://oereb-dev.geo.bl.ch/image/logo/canton/de.png</data:CantonalLogoRef>
+        <data:MunicipalityLogoRef>https://oereb-dev.geo.bl.ch/image/logo/municipality/de.png?fosnr=2763</data:MunicipalityLogoRef>
+        <data:ExtractIdentifier>d3e7d391-a7a3-4852-8879-a61e652edb9d</data:ExtractIdentifier>
+        
+<data:GeneralInformation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Der Inhalt des ÖREB-Katasters wird als bekannt vorausgesetzt. Der Kanton Basel-Landschaft ist für die Genauigkeit und Verlässlichkeit der gesetzgebenden Dokumente in elektronischer Form nicht haftbar. Der Auszug hat rein informativen Charakter und begründet insbesondere keine Rechte und Pflichten. Massgeblich sind diejenigen Dokumente, welche rechtskräftig verabschiedet oder veröffentlicht worden sind. Weitere Informationen zum ÖREB-Kataster finden Sie unter www.cadastre.ch</data:Text>
+</data:LocalisedText>
+
+</data:GeneralInformation>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Eisenbahnanlagen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Eisenbahnanlagen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Flughafenanlagen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Flughafenanlagen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Nationalstrassen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Wenn der projektierte Strassenverlauf definitiv bekannt ist, werden beiderseits der Strasse Baulinien festgelegt. Diese Baulinien ermöglichen es, die Anforderungen der Verkehrssicherheit und der Wohnhygiene sowie die Erfordernisse eines eventuellen künftigen Ausbaus der Strasse zu berücksichtigen. Zwischen den Baulinien dürfen ohne Bewilligung weder Neubauten erstellt noch Umbauten bestehender Gebäude vorgenommen werden, auch wenn diese nur teilweise in die Baulinien hineinragen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien Starkstromanlagen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zwischen den Baulinien dürfen keine baulichen Veränderungen vorgenommen oder sonstige Massnahmen getroffen werden, die dem Zweck bestehender oder künftiger Starkstromanlagen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>BFS-Nr.</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindenummer aus amtlichem Gemeindeverzeichnis; Eine vom schweizerischen Bundesamt für Statistik mit dem Amtlichen Gemeindeverzeichnis im Jahre 1986 erstmals vergebene Zahl, die der eineindeutigen Bezeichnung von territorialen Einheiten im Einzugsbereich der Schweiz dient.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>E-GRID</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Eidgenössischer Grundstücksidentifikator; Aus einem Präfix und einer Nummer bestehende Bezeichnung, die es erlaubt, jedes in das Grundbuch aufgenommene Grundstück landesweit eindeutig zu identifizieren, und die zum Datenaustausch zwischen Informatiksystemen dient.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Eigentumsbeschränkung</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Der Zweck aller Eigentumsbeschränkungen ist die Wahrung von Interessen anderer Personen, denen jene des Eigentümers sich in bestimmter Beziehung unterordnen müssen. Dies sind entweder die Eigentümer angrenzender Grundstücke, die Nachbarn, oder auch weitere Kreise von Privatpersonen oder endlich die Allgemeinheit selber, der Staat. Die Beschränkungen zugunsten der Nachbarn oder weiterer Privatpersonen sind regelmässig privatrechtlicher, jene zugunsten der Allgemeinheit öffentlich-rechtlicher Natur.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetz, Verordnung etc., das generell-abstrakt ist (generell für die Person, die nicht bekannt ist, abstrakt, weil der Perimeter ohne Karte definiert ist) und auf Bundesebene, auf kantonaler oder kommunaler Ebene erlassen worden ist und die bloss eine allgemeine Rechtsgrundlage der Eigentumsbeschränkung darstellen. Die gesetzliche Grundlage ist nicht Teil des ÖREB-Katasters. Der ÖREB-Kataster enthält aber Hinweise auf die entsprechende gesetzliche Grundlage.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gewässerraum</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Fliessgewässer können nur wieder naturnäher werden, wenn ausreichend Raum in den Schutz der Gewässer miteinbezogen wird. Der Gewässerraum soll weitgehend frei von neuen Anlagen bleiben; bestehende Anlagen haben jedoch Bestandesgarantie. Dort wo der Gewässerraum oder dessen Verzicht noch nicht rechtskräftig ausgeschieden ist, gelten die Übergangsbestimmungen der Gewässerschutzverordnung (Übergangsbestimmungen zur Änderung vom 4. Mai 2011 GSchV, SR 814.201), wonach ein beidseitiger Uferstreifen von definierter Breite von Bauten und Anlagen grundsätzlich freizuhalten ist.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Grundwasserschutzareale</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Von Kanton festgelegte Areale, die für die künftige Nutzung und Anreicherung von Grundwasservorkommen von Bedeutung sind und in dem keine Bauten und Anlagen erstellt oder Arbeiten ausgeführt werden, die künftige Nutzungs- und Anreicherungsanlagen beeinträchtigen könnten.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Grundwasserschutzzonen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Grundwasserschutzzonen, in denen gewährleistet werden soll, dass bei unmittelbar drohenden Gefahren wie Unfällen mit wassergefährdenden Stoffen ausreichend Zeit und Raum für die erforderlichen Massnahmen zur Verfügung stehen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kantonale Baulinien</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien begrenzen die Bebauung und dienen insbesondere der Sicherung bestehender und geplanter Anlagen und Flächen sowie der baulichen Gestaltung. Kantonale Baulinien werden durch kantonale Nutzungspläne festgelegt. Generell gelten immer auch die gesetzlichen Abstände, welche im ÖREB-Katasterauszug nicht dargestellt werden.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Der Kataster enthält Deponien und andere durch Abfälle belastete Standorte, die saniert werden, wenn sie zu schädlichen oder lästigen Einwirkungen führen oder die konkrete Gefahr besteht, dass solche Einwirkungen entstehen. Die Behörde ermittelt die belasteten Standorte, indem sie vorhandene Angaben wie Karten, Verzeichnisse und Meldungen auswertet. Sie trägt diejenigen Standorte, deren Belastung erwiesen oder sehr wahrscheinlich ist, in den Kataster ein.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Katasterverantwortliche Stelle</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Die katasterverantwortliche Stelle im Kanton erhält die in den ÖREB-Kataster aufzunehmenden Daten von den zuständigen Fachstellen. Sie verwaltet diese Daten und stellt sie via kantonales ÖREB-Geoportal der Öffentlichkeit zur Verfügung.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>KbS</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der belasteten Standorte</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kommunale Baulinien</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Baulinien begrenzen die Bebauung und dienen insbesondere der Sicherung bestehender und geplanter Anlagen und Flächen sowie der baulichen Gestaltung. Kommunale Baulinien werden meist durch kommunale Bau- und Strassenlinienpläne festgelegt. Baulinien können auch mit Zonen- oder Quartierplänen festgelegt werden. Generell gelten immer auch die gesetzlichen Abstände, welche im ÖREB-Katasterauszug nicht dargestellt werden.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Lärmempfindlichkeitsstufen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Empfindlichkeitsstufen werden festgelegt, um jeweils bestimmte Zonen zu definieren: diejenigen, die eines erhöhten Lärmschutzes bedürfen, diejenigen, in denen keine störenden Betriebe zugelassen sind, und diejenigen, in denen mässig und stark störende Betriebe zugelassen sind.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nutzungsplanung</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Festlegung der Verwendung einzelner Bodenflächen für bestimmte Zwecke (z. B. Landwirtschaft, Siedlung, Wald).</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>ÖREB</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Öffentlich-rechtliche Eigentumsbeschränkung</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>ÖREB-Kataster</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Kataster der öffentlich-rechtlichen Eigentumsbeschränkungen</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Planungszonen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zone, die ein genau bezeichnetes Gebiet umfasst, für das ein Nutzungsplan angepasst werden muss oder noch keiner vorliegt, und innerhalb derer nichts unternommen werden darf, was die Nutzungsplanung erschwert.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Eisenbahnanlagen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Um die freie Verfügbarkeit der für künftige Bahnbauten und -anlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Eisenbahnen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Flughafenanlagen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Um die freie Verfügbarkeit der für Flughafenanlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Flughafenanlagen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Leitungen mit einer Nennspannung von 220 kV oder höher</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Um die freie Verfügbarkeit der für Flughafenanlagen erforderlichen Grundstücke zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Flughafenanlagen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Projektierungszonen Nationalstrassen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Um die freie Verfügbarkeit des für den Bau der Nationalstrassen erforderlichen Landes zu gewährleisten, können für genau bezeichnete Gebiete Projektierungszonen festgelegt werden. In diesen Zonen dürfen keine baulichen Veränderungen vorgenommen werden, die dem Zweck der Nationalstrassen widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Generell-konkrete Rechtsnorm, die zusammen mit den ihr zugeschriebenen Geobasisdaten die Eigentumsbeschränkung unmittelbar umschreibt und innerhalb desselben Verfahrens verabschiedet worden ist.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Sicherheitszonenplan</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zonenplan, in dem die Sicherheitszonen dargestellt sind und aus dem die Eigentumsbeschränkungen nach Fläche und Höhe ersichtlich sind.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Statische Waldgrenzen</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Statische Waldgrenzen müssen auf der Grundlage rechtskräftiger Waldfeststellungen festgelegt werden. Neue Bestockungen ausserhalb dieser Waldgrenzen gelten nicht als Wald.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Vorwirkung</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Mit der öffentlichen Auflage entsteht eine Vorwirkung: Ab diesem Zeitpunkt dürfen Bauvorhaben in der Regel nur bewilligt werden, wenn sie der öffentlich aufgelegten Planung nicht widersprechen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Waldabstandslinien</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bauten und Anlagen in Waldesnähe sind nur zulässig, wenn sie die Erhaltung, Pflege und Nutzung des Waldes nicht beeinträchtigen.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Waldreservate</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Geschützte Waldfläche, die der Erhaltung der Artenvielfalt von Fauna und Flora dient.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+<data:Glossary>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zuständige Stelle</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Durch die Gesetzgebung bezeichnete Stelle des Bundes, des Kantons oder der Gemeinde, die für das Erheben, Nachführen und Verwalten der Geobasisdaten zuständig ist.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Glossary>
+
+        
+
+<data:RealEstate>
+    <data:Number>3029</data:Number>
+    <data:IdentDN>BL0200002763</data:IdentDN>
+    <data:EGRID>CH344982777421</data:EGRID>
+    <data:Type>
+        
+
+<data:Code>RealEstate</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Liegenschaft</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Type>
+    <data:Canton>BL</data:Canton>
+    <data:MunicipalityName>Arlesheim</data:MunicipalityName>
+    <data:MunicipalityCode>2763</data:MunicipalityCode>
+    <data:LandRegistryArea>150</data:LandRegistryArea>
+    <data:Limit>
+        <geometry:surface>
+                
+<geometry:exterior>
+    <geometry:polyline>
+        
+
+<geometry:coord>
+    
+<geometry:c1>2613038.63</geometry:c1><geometry:c2>1259852.353</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613038.25</geometry:c1><geometry:c2>1259858.064</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613035.38</geometry:c1><geometry:c2>1259857.875</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.521</geometry:c1><geometry:c2>1259857.675</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613029.652</geometry:c1><geometry:c2>1259857.487</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.792</geometry:c1><geometry:c2>1259857.287</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613023.932</geometry:c1><geometry:c2>1259857.097</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.943</geometry:c1><geometry:c2>1259856.759</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.543</geometry:c1><geometry:c2>1259862.68</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613041.001</geometry:c1><geometry:c2>1259864.204</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613041.401</geometry:c1><geometry:c2>1259858.283</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613041.111</geometry:c1><geometry:c2>1259858.263</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613041.499</geometry:c1><geometry:c2>1259852.552</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613038.63</geometry:c1><geometry:c2>1259852.353</geometry:c2>
+</geometry:coord>
+
+    </geometry:polyline>
+</geometry:exterior>
+
+        </geometry:surface>
+    </data:Limit>
+    
+
+<data:RestrictionOnLandownership>
+    <data:LegendText>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gefahrenzone Hochwasser - geringe Gefährdung</data:Text>
+</data:LocalisedText>
+
+    </data:LegendText>
+    <data:Theme>
+        
+<data:Code>ch.Nutzungsplanung</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nutzungsplanung (kantonal/kommunal)</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Theme>
+    <data:TypeCode>220103</data:TypeCode>
+    <data:TypeCodelist>https://models.geo.bl.ch/Codetexte_dummy.xml</data:TypeCodelist>
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+    <data:AreaShare>97</data:AreaShare>
+    <data:PartInPercent>64.7</data:PartInPercent>
+    <data:SymbolRef>https%3A%2F%2Foereb-dev.geo.bl.ch%2Fimage%2Fsymbol%2Fch.Nutzungsplanung%2Flegend_entry.png%3Fidentifier%3D1139</data:SymbolRef>
+    
+<data:Geometry>
+        
+<data:Surface>
+    
+<geometry:exterior>
+    <geometry:polyline>
+        
+
+<geometry:coord>
+    
+<geometry:c1>2613014.74</geometry:c1><geometry:c2>1259892.237</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.808</geometry:c1><geometry:c2>1259892.37</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.995</geometry:c1><geometry:c2>1259892.386</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.183</geometry:c1><geometry:c2>1259893.23</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613023.808</geometry:c1><geometry:c2>1259897.73</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.808</geometry:c1><geometry:c2>1259900.136</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613027.808</geometry:c1><geometry:c2>1259900.933</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613029.812</geometry:c1><geometry:c2>1259896.372</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613030.443</geometry:c1><geometry:c2>1259894.936</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613030.814</geometry:c1><geometry:c2>1259894.091</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613031.495</geometry:c1><geometry:c2>1259892.541</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.308</geometry:c1><geometry:c2>1259891.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.808</geometry:c1><geometry:c2>1259891.588</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.87</geometry:c1><geometry:c2>1259890.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613033.308</geometry:c1><geometry:c2>1259885.557</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.808</geometry:c1><geometry:c2>1259884.666</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613030.808</geometry:c1><geometry:c2>1259881.104</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613029.808</geometry:c1><geometry:c2>1259881.026</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.808</geometry:c1><geometry:c2>1259880.838</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.371</geometry:c1><geometry:c2>1259880.885</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613022.121</geometry:c1><geometry:c2>1259876.854</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613021.37</geometry:c1><geometry:c2>1259875.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.558</geometry:c1><geometry:c2>1259874.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.058</geometry:c1><geometry:c2>1259873.01</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.808</geometry:c1><geometry:c2>1259871.291</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.621</geometry:c1><geometry:c2>1259869.432</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.871</geometry:c1><geometry:c2>1259868.995</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613021.563</geometry:c1><geometry:c2>1259867.935</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613022.87</geometry:c1><geometry:c2>1259865.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.808</geometry:c1><geometry:c2>1259864.948</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613028.807</geometry:c1><geometry:c2>1259864.412</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613030.619</geometry:c1><geometry:c2>1259863.927</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613030.806</geometry:c1><geometry:c2>1259863.877</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.058</geometry:c1><geometry:c2>1259863.541</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.371</geometry:c1><geometry:c2>1259858.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613032.433</geometry:c1><geometry:c2>1259857.682</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613037.808</geometry:c1><geometry:c2>1259857.979</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613042.498</geometry:c1><geometry:c2>1259858.335</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613043.81</geometry:c1><geometry:c2>1259858.435</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613047.563</geometry:c1><geometry:c2>1259858.72</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613051.808</geometry:c1><geometry:c2>1259859.01</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613052.558</geometry:c1><geometry:c2>1259859.057</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613052.87</geometry:c1><geometry:c2>1259853.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613052.808</geometry:c1><geometry:c2>1259853.338</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613053.808</geometry:c1><geometry:c2>1259852.604</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613054.746</geometry:c1><geometry:c2>1259851.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613056.058</geometry:c1><geometry:c2>1259850.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613056.808</geometry:c1><geometry:c2>1259850.338</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613058.245</geometry:c1><geometry:c2>1259849.182</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.246</geometry:c1><geometry:c2>1259841.401</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613059.87</geometry:c1><geometry:c2>1259838.916</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613059.87</geometry:c1><geometry:c2>1259838.432</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.433</geometry:c1><geometry:c2>1259836.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.808</geometry:c1><geometry:c2>1259835.963</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.933</geometry:c1><geometry:c2>1259835.651</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613062.808</geometry:c1><geometry:c2>1259834.291</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613063.308</geometry:c1><geometry:c2>1259833.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613063.808</geometry:c1><geometry:c2>1259833.604</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613064.746</geometry:c1><geometry:c2>1259832.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.808</geometry:c1><geometry:c2>1259832.166</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613066.558</geometry:c1><geometry:c2>1259831.619</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613066.37</geometry:c1><geometry:c2>1259830.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.808</geometry:c1><geometry:c2>1259829.073</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.746</geometry:c1><geometry:c2>1259828.948</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.495</geometry:c1><geometry:c2>1259828.041</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.996</geometry:c1><geometry:c2>1259824.338</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613070.246</geometry:c1><geometry:c2>1259824.073</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613073.62</geometry:c1><geometry:c2>1259823.276</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613079.996</geometry:c1><geometry:c2>1259818.322</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613084.558</geometry:c1><geometry:c2>1259815.4</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613086.808</geometry:c1><geometry:c2>1259814.29</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613089.308</geometry:c1><geometry:c2>1259812.931</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613091.808</geometry:c1><geometry:c2>1259810.493</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613092.016</geometry:c1><geometry:c2>1259808.306</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613086.78</geometry:c1><geometry:c2>1259812.872</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613070.039</geometry:c1><geometry:c2>1259812.7</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613069.808</geometry:c1><geometry:c2>1259812.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613066.808</geometry:c1><geometry:c2>1259812.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613065.808</geometry:c1><geometry:c2>1259812.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613063.808</geometry:c1><geometry:c2>1259812.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613063.204</geometry:c1><geometry:c2>1259812.63</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.808</geometry:c1><geometry:c2>1259812.492</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.808</geometry:c1><geometry:c2>1259814.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613048.991</geometry:c1><geometry:c2>1259817.384</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613048.808</geometry:c1><geometry:c2>1259817.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613047.808</geometry:c1><geometry:c2>1259818.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.808</geometry:c1><geometry:c2>1259818.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.808</geometry:c1><geometry:c2>1259825.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.141</geometry:c1><geometry:c2>1259827.265</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259829.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.808</geometry:c1><geometry:c2>1259829.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613047.808</geometry:c1><geometry:c2>1259830.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613047.808</geometry:c1><geometry:c2>1259832.963</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613047.308</geometry:c1><geometry:c2>1259833.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.808</geometry:c1><geometry:c2>1259833.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.808</geometry:c1><geometry:c2>1259835.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259837.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259838.385</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.496</geometry:c1><geometry:c2>1259838.948</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259839.358</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259839.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.245</geometry:c1><geometry:c2>1259839.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.808</geometry:c1><geometry:c2>1259840.62</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.058</geometry:c1><geometry:c2>1259840.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.808</geometry:c1><geometry:c2>1259841.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.808</geometry:c1><geometry:c2>1259844.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613045.808</geometry:c1><geometry:c2>1259845.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613044.808</geometry:c1><geometry:c2>1259845.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613042.808</geometry:c1><geometry:c2>1259844.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613040.808</geometry:c1><geometry:c2>1259843.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613040.808</geometry:c1><geometry:c2>1259842.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613039.808</geometry:c1><geometry:c2>1259841.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613034.808</geometry:c1><geometry:c2>1259841.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613034.808</geometry:c1><geometry:c2>1259842.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613033.808</geometry:c1><geometry:c2>1259843.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613028.877</geometry:c1><geometry:c2>1259843.895</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613028.683</geometry:c1><geometry:c2>1259843.72</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613025.371</geometry:c1><geometry:c2>1259843.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613023.808</geometry:c1><geometry:c2>1259844.385</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613022.433</geometry:c1><geometry:c2>1259844.776</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613021.058</geometry:c1><geometry:c2>1259843.932</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.746</geometry:c1><geometry:c2>1259843.119</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.134</geometry:c1><geometry:c2>1259844.211</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.894</geometry:c1><geometry:c2>1259847.308</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.737</geometry:c1><geometry:c2>1259845.884</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.943</geometry:c1><geometry:c2>1259856.759</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.543</geometry:c1><geometry:c2>1259862.68</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.153</geometry:c1><geometry:c2>1259868.46</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.753</geometry:c1><geometry:c2>1259874.242</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.261</geometry:c1><geometry:c2>1259881.402</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.161</geometry:c1><geometry:c2>1259882.903</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.431</geometry:c1><geometry:c2>1259882.712</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613014.74</geometry:c1><geometry:c2>1259892.237</geometry:c2>
+</geometry:coord>
+
+    </geometry:polyline>
+</geometry:exterior>
+
+</data:Surface>
+
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+</data:Geometry>
+
+    <data:Map>
+        
+<data:ReferenceWMS>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereb-dev.geo.bl.ch/wms?SERVICE=WMS&amp;VERSION=1.1&amp;REQUEST=GetMap&amp;LAYERS=LandUsePlans&amp;STYLES=default&amp;SRS=EPSG%3A2056&amp;FORMAT=image%2Fpng&amp;BBOX=2613017.6117221094%2C1259851.230634261%2C2613042.4302778905%2C1259865.3263657389&amp;WIDTH=493&amp;HEIGHT=280</data:Text>
+</data:LocalisedText>
+
+</data:ReferenceWMS>
+<data:min>
+    
+<geometry:c1>2613017.6117221094</geometry:c1><geometry:c2>1259851.230634261</geometry:c2>
+</data:min>
+<data:max>
+    
+<geometry:c1>2613042.4302778905</geometry:c1><geometry:c2>1259865.3263657389</geometry:c2>
+</data:max>
+<data:layerIndex>1</data:layerIndex>
+<data:layerOpacity>1.0</data:layerOpacity>
+
+    </data:Map>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bundesgesetz über die Raumplanung</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RPG</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SR 700</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.admin.ch/ch/d/sr/c700.html</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>10</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bundeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.bk.admin.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+<data:UID>CHE263297189</data:UID>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>LegalProvision</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RRB vom 04.07.2017</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nr. 1024</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereblex.bl.ch/api/attachments/16826</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>900</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindeverwaltung</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>LegalProvision</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zonenreglement Siedlung (Stand 04.07.2017)</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>06/ZRS/3/0</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereblex.bl.ch/api/attachments/5585</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>901</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindeverwaltung</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Raumplanungs- und Baugesetz</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RBG</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SGS 400</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://bl.clex.ch/frontend/versions/pdf_file_with_annex/2594?locale=de</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>731</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.baselland.ch/politik-und-behorden/besondere-behorden/landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Verordnung zum Raumplanungs- und Baugesetz</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RBV</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SGS 400.11</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://bl.clex.ch/frontend/versions/pdf_file_with_annex/3229?locale=de</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>741</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.baselland.ch/politik-und-behorden/besondere-behorden/landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:ResponsibleOffice>
+        
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeinde Arlesheim</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+    </data:ResponsibleOffice>
+    <data:extensions>
+        <AreaUnit>m2</AreaUnit>
+    </data:extensions>
+</data:RestrictionOnLandownership>
+
+    
+
+<data:RestrictionOnLandownership>
+    <data:LegendText>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Wohn- und Geschäftszone WG3</data:Text>
+</data:LocalisedText>
+
+    </data:LegendText>
+    <data:Theme>
+        
+<data:Code>ch.Nutzungsplanung</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nutzungsplanung (kantonal/kommunal)</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Theme>
+    <data:TypeCode>102315</data:TypeCode>
+    <data:TypeCodelist>https://models.geo.bl.ch/Codetexte_dummy.xml</data:TypeCodelist>
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+    <data:AreaShare>150</data:AreaShare>
+    <data:PartInPercent>100.0</data:PartInPercent>
+    <data:SymbolRef>https%3A%2F%2Foereb-dev.geo.bl.ch%2Fimage%2Fsymbol%2Fch.Nutzungsplanung%2Flegend_entry.png%3Fidentifier%3D1187</data:SymbolRef>
+    
+<data:Geometry>
+        
+<data:Surface>
+    
+<geometry:exterior>
+    <geometry:polyline>
+        
+
+<geometry:coord>
+    
+<geometry:c1>2613040.993</geometry:c1><geometry:c2>1259926.56</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613042.421</geometry:c1><geometry:c2>1259921.44</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.341</geometry:c1><geometry:c2>1259910.862</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613048.054</geometry:c1><geometry:c2>1259906.223</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613054.962</geometry:c1><geometry:c2>1259887.567</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613061.52</geometry:c1><geometry:c2>1259888.357</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613077.562</geometry:c1><geometry:c2>1259864.27</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613094.916</geometry:c1><geometry:c2>1259838.251</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613089.639</geometry:c1><geometry:c2>1259833.729</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613070.575</geometry:c1><geometry:c2>1259840.264</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613064.63</geometry:c1><geometry:c2>1259842.285</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613057.315</geometry:c1><geometry:c2>1259844.778</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613055.615</geometry:c1><geometry:c2>1259845.388</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613057.638</geometry:c1><geometry:c2>1259842.42</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613056.314</geometry:c1><geometry:c2>1259840.933</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.785</geometry:c1><geometry:c2>1259837.009</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.869</geometry:c1><geometry:c2>1259835.614</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613086.78</geometry:c1><geometry:c2>1259812.872</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.2</geometry:c1><geometry:c2>1259812.486</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.569</geometry:c1><geometry:c2>1259801.91</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613021.319</geometry:c1><geometry:c2>1259799.915</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.89</geometry:c1><geometry:c2>1259805.494</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.703</geometry:c1><geometry:c2>1259822.286</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.247</geometry:c1><geometry:c2>1259842.744</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.894</geometry:c1><geometry:c2>1259847.308</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.737</geometry:c1><geometry:c2>1259845.884</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.943</geometry:c1><geometry:c2>1259856.759</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.153</geometry:c1><geometry:c2>1259868.46</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.753</geometry:c1><geometry:c2>1259874.242</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.261</geometry:c1><geometry:c2>1259881.402</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.161</geometry:c1><geometry:c2>1259882.903</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.431</geometry:c1><geometry:c2>1259882.712</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613013.904</geometry:c1><geometry:c2>1259903.766</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.476</geometry:c1><geometry:c2>1259924.775</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613011.877</geometry:c1><geometry:c2>1259924.737</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613011.409</geometry:c1><geometry:c2>1259938.46</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.891</geometry:c1><geometry:c2>1259944.459</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613025.618</geometry:c1><geometry:c2>1259983.607</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.363</geometry:c1><geometry:c2>1259980.847</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613038.699</geometry:c1><geometry:c2>1259935.066</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613040.993</geometry:c1><geometry:c2>1259926.56</geometry:c2>
+</geometry:coord>
+
+    </geometry:polyline>
+</geometry:exterior>
+
+</data:Surface>
+
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+</data:Geometry>
+
+    <data:Map>
+        
+<data:ReferenceWMS>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereb-dev.geo.bl.ch/wms?SERVICE=WMS&amp;VERSION=1.1&amp;REQUEST=GetMap&amp;LAYERS=LandUsePlans&amp;STYLES=default&amp;SRS=EPSG%3A2056&amp;FORMAT=image%2Fpng&amp;BBOX=2613017.6117221094%2C1259851.230634261%2C2613042.4302778905%2C1259865.3263657389&amp;WIDTH=493&amp;HEIGHT=280</data:Text>
+</data:LocalisedText>
+
+</data:ReferenceWMS>
+<data:min>
+    
+<geometry:c1>2613017.6117221094</geometry:c1><geometry:c2>1259851.230634261</geometry:c2>
+</data:min>
+<data:max>
+    
+<geometry:c1>2613042.4302778905</geometry:c1><geometry:c2>1259865.3263657389</geometry:c2>
+</data:max>
+<data:layerIndex>1</data:layerIndex>
+<data:layerOpacity>1.0</data:layerOpacity>
+
+    </data:Map>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bundesgesetz über die Raumplanung</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RPG</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SR 700</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.admin.ch/ch/d/sr/c700.html</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>10</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bundeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.bk.admin.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+<data:UID>CHE263297189</data:UID>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>LegalProvision</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RRB vom 04.07.2017</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nr. 1024</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereblex.bl.ch/api/attachments/16826</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>900</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindeverwaltung</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>LegalProvision</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zonenreglement Siedlung (Stand 04.07.2017)</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>06/ZRS/3/0</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereblex.bl.ch/api/attachments/5585</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>901</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindeverwaltung</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Raumplanungs- und Baugesetz</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RBG</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SGS 400</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://bl.clex.ch/frontend/versions/pdf_file_with_annex/2594?locale=de</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>731</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.baselland.ch/politik-und-behorden/besondere-behorden/landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Verordnung zum Raumplanungs- und Baugesetz</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RBV</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SGS 400.11</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://bl.clex.ch/frontend/versions/pdf_file_with_annex/3229?locale=de</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>741</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.baselland.ch/politik-und-behorden/besondere-behorden/landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:ResponsibleOffice>
+        
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeinde Arlesheim</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+    </data:ResponsibleOffice>
+    <data:extensions>
+        <AreaUnit>m2</AreaUnit>
+    </data:extensions>
+</data:RestrictionOnLandownership>
+
+    
+
+<data:RestrictionOnLandownership>
+    <data:LegendText>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Empfindlichkeitsstufe II</data:Text>
+</data:LocalisedText>
+
+    </data:LegendText>
+    <data:Theme>
+        
+<data:Code>ch.Laermempfindlichkeitsstufen</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Lärmempfindlichkeitsstufen (in Nutzungszonen)</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Theme>
+    <data:TypeCode>ES_II</data:TypeCode>
+    <data:TypeCodelist>https://models.geo.bl.ch/Codetexte_dummy.xml</data:TypeCodelist>
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+    <data:AreaShare>150</data:AreaShare>
+    <data:PartInPercent>100.0</data:PartInPercent>
+    <data:SymbolRef>https%3A%2F%2Foereb-dev.geo.bl.ch%2Fimage%2Fsymbol%2Fch.Laermempfindlichkeitsstufen%2Flegend_entry.png%3Fidentifier%3D3</data:SymbolRef>
+    
+<data:Geometry>
+        
+<data:Surface>
+    
+<geometry:exterior>
+    <geometry:polyline>
+        
+
+<geometry:coord>
+    
+<geometry:c1>2613354.467</geometry:c1><geometry:c2>1260271.799</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613337.853</geometry:c1><geometry:c2>1260235.837</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613311.612</geometry:c1><geometry:c2>1260179.102</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613308.914</geometry:c1><geometry:c2>1260171.855</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613306.46</geometry:c1><geometry:c2>1260163.28</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613305.841</geometry:c1><geometry:c2>1260163.601</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613260.496</geometry:c1><geometry:c2>1260186.408</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613258.463</geometry:c1><geometry:c2>1260183.07</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613240.686</geometry:c1><geometry:c2>1260192.278</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613234.367</geometry:c1><geometry:c2>1260195.557</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613214.855</geometry:c1><geometry:c2>1260159.773</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613225.753</geometry:c1><geometry:c2>1260154.213</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613220.386</geometry:c1><geometry:c2>1260145.103</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613237.67</geometry:c1><geometry:c2>1260135.809</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613240.718</geometry:c1><geometry:c2>1260140.909</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.928</geometry:c1><geometry:c2>1260134.331</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613263.389</geometry:c1><geometry:c2>1260129.639</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613263.132</geometry:c1><geometry:c2>1260129.211</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613291.204</geometry:c1><geometry:c2>1260115.317</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613289.95</geometry:c1><geometry:c2>1260110.063</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613289.026</geometry:c1><geometry:c2>1260104.716</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613288.394</geometry:c1><geometry:c2>1260099.363</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.634</geometry:c1><geometry:c2>1260091.152</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.58</geometry:c1><geometry:c2>1260090.43</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.518</geometry:c1><geometry:c2>1260089.709</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.449</geometry:c1><geometry:c2>1260088.988</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.373</geometry:c1><geometry:c2>1260088.268</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.289</geometry:c1><geometry:c2>1260087.549</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.198</geometry:c1><geometry:c2>1260086.83</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613287.099</geometry:c1><geometry:c2>1260086.113</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.993</geometry:c1><geometry:c2>1260085.397</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.88</geometry:c1><geometry:c2>1260084.682</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.759</geometry:c1><geometry:c2>1260083.968</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.631</geometry:c1><geometry:c2>1260083.255</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.496</geometry:c1><geometry:c2>1260082.544</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.353</geometry:c1><geometry:c2>1260081.834</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.203</geometry:c1><geometry:c2>1260081.126</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613286.046</geometry:c1><geometry:c2>1260080.419</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613285.881</geometry:c1><geometry:c2>1260079.714</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613285.71</geometry:c1><geometry:c2>1260079.01</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613285.531</geometry:c1><geometry:c2>1260078.309</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613285.344</geometry:c1><geometry:c2>1260077.609</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613285.151</geometry:c1><geometry:c2>1260076.911</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613284.95</geometry:c1><geometry:c2>1260076.216</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613284.743</geometry:c1><geometry:c2>1260075.522</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613284.528</geometry:c1><geometry:c2>1260074.831</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613284.306</geometry:c1><geometry:c2>1260074.141</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613284.077</geometry:c1><geometry:c2>1260073.454</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613283.841</geometry:c1><geometry:c2>1260072.77</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613283.678</geometry:c1><geometry:c2>1260072.28</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613283.509</geometry:c1><geometry:c2>1260071.792</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613283.333</geometry:c1><geometry:c2>1260071.307</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613283.151</geometry:c1><geometry:c2>1260070.824</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613282.962</geometry:c1><geometry:c2>1260070.344</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613282.766</geometry:c1><geometry:c2>1260069.866</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613282.564</geometry:c1><geometry:c2>1260069.391</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613282.355</geometry:c1><geometry:c2>1260068.919</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613282.14</geometry:c1><geometry:c2>1260068.45</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.989</geometry:c1><geometry:c2>1260068.042</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.832</geometry:c1><geometry:c2>1260067.635</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.67</geometry:c1><geometry:c2>1260067.231</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.502</geometry:c1><geometry:c2>1260066.829</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.329</geometry:c1><geometry:c2>1260066.43</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613281.15</geometry:c1><geometry:c2>1260066.033</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613280.966</geometry:c1><geometry:c2>1260065.638</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613280.662</geometry:c1><geometry:c2>1260065.008</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613280.351</geometry:c1><geometry:c2>1260064.381</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613280.035</geometry:c1><geometry:c2>1260063.758</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613279.713</geometry:c1><geometry:c2>1260063.137</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613279.384</geometry:c1><geometry:c2>1260062.519</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613279.05</geometry:c1><geometry:c2>1260061.905</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613278.71</geometry:c1><geometry:c2>1260061.294</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613278.364</geometry:c1><geometry:c2>1260060.686</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613278.012</geometry:c1><geometry:c2>1260060.081</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613277.654</geometry:c1><geometry:c2>1260059.48</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613277.291</geometry:c1><geometry:c2>1260058.883</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613276.922</geometry:c1><geometry:c2>1260058.289</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613276.547</geometry:c1><geometry:c2>1260057.698</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613276.166</geometry:c1><geometry:c2>1260057.111</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613275.78</geometry:c1><geometry:c2>1260056.528</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613275.388</geometry:c1><geometry:c2>1260055.949</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613257.159</geometry:c1><geometry:c2>1260029.004</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613257.052</geometry:c1><geometry:c2>1260028.844</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.939</geometry:c1><geometry:c2>1260028.688</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.819</geometry:c1><geometry:c2>1260028.536</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.694</geometry:c1><geometry:c2>1260028.39</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.563</geometry:c1><geometry:c2>1260028.248</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.426</geometry:c1><geometry:c2>1260028.112</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.285</geometry:c1><geometry:c2>1260027.982</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613256.138</geometry:c1><geometry:c2>1260027.857</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.986</geometry:c1><geometry:c2>1260027.738</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.83</geometry:c1><geometry:c2>1260027.625</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.669</geometry:c1><geometry:c2>1260027.518</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.505</geometry:c1><geometry:c2>1260027.418</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.336</geometry:c1><geometry:c2>1260027.324</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613255.164</geometry:c1><geometry:c2>1260027.237</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.989</geometry:c1><geometry:c2>1260027.157</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.81</geometry:c1><geometry:c2>1260027.084</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.629</geometry:c1><geometry:c2>1260027.018</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.446</geometry:c1><geometry:c2>1260026.959</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.26</geometry:c1><geometry:c2>1260026.907</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613254.072</geometry:c1><geometry:c2>1260026.863</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.883</geometry:c1><geometry:c2>1260026.827</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.692</geometry:c1><geometry:c2>1260026.797</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.501</geometry:c1><geometry:c2>1260026.776</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.308</geometry:c1><geometry:c2>1260026.762</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613253.116</geometry:c1><geometry:c2>1260026.755</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613252.923</geometry:c1><geometry:c2>1260026.757</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613252.73</geometry:c1><geometry:c2>1260026.765</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613252.538</geometry:c1><geometry:c2>1260026.782</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613252.347</geometry:c1><geometry:c2>1260026.806</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613252.157</geometry:c1><geometry:c2>1260026.837</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.968</geometry:c1><geometry:c2>1260026.877</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.781</geometry:c1><geometry:c2>1260026.923</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.596</geometry:c1><geometry:c2>1260026.977</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.413</geometry:c1><geometry:c2>1260027.038</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.233</geometry:c1><geometry:c2>1260027.106</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613251.055</geometry:c1><geometry:c2>1260027.182</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.881</geometry:c1><geometry:c2>1260027.264</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.71</geometry:c1><geometry:c2>1260027.353</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.543</geometry:c1><geometry:c2>1260027.449</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.379</geometry:c1><geometry:c2>1260027.551</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.22</geometry:c1><geometry:c2>1260027.66</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613245.423</geometry:c1><geometry:c2>1260030.898</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613244.323</geometry:c1><geometry:c2>1260029.204</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613242.648</geometry:c1><geometry:c2>1260026.661</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613247.438</geometry:c1><geometry:c2>1260022.942</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613247.59</geometry:c1><geometry:c2>1260022.821</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613247.736</geometry:c1><geometry:c2>1260022.695</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613247.878</geometry:c1><geometry:c2>1260022.562</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.015</geometry:c1><geometry:c2>1260022.425</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.146</geometry:c1><geometry:c2>1260022.282</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.271</geometry:c1><geometry:c2>1260022.134</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.391</geometry:c1><geometry:c2>1260021.981</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.504</geometry:c1><geometry:c2>1260021.824</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.611</geometry:c1><geometry:c2>1260021.663</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.712</geometry:c1><geometry:c2>1260021.497</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.806</geometry:c1><geometry:c2>1260021.328</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.894</geometry:c1><geometry:c2>1260021.155</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.975</geometry:c1><geometry:c2>1260020.979</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.049</geometry:c1><geometry:c2>1260020.799</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.115</geometry:c1><geometry:c2>1260020.617</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.175</geometry:c1><geometry:c2>1260020.433</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.227</geometry:c1><geometry:c2>1260020.246</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.272</geometry:c1><geometry:c2>1260020.058</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.31</geometry:c1><geometry:c2>1260019.868</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.34</geometry:c1><geometry:c2>1260019.676</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.363</geometry:c1><geometry:c2>1260019.484</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.378</geometry:c1><geometry:c2>1260019.29</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.386</geometry:c1><geometry:c2>1260019.097</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.386</geometry:c1><geometry:c2>1260018.903</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.378</geometry:c1><geometry:c2>1260018.709</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.363</geometry:c1><geometry:c2>1260018.516</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.34</geometry:c1><geometry:c2>1260018.323</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.31</geometry:c1><geometry:c2>1260018.132</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.273</geometry:c1><geometry:c2>1260017.942</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.228</geometry:c1><geometry:c2>1260017.753</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.175</geometry:c1><geometry:c2>1260017.567</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.116</geometry:c1><geometry:c2>1260017.382</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.049</geometry:c1><geometry:c2>1260017.2</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.975</geometry:c1><geometry:c2>1260017.021</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.895</geometry:c1><geometry:c2>1260016.845</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.807</geometry:c1><geometry:c2>1260016.672</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.713</geometry:c1><geometry:c2>1260016.502</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.612</geometry:c1><geometry:c2>1260016.337</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613248.505</geometry:c1><geometry:c2>1260016.175</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613246.742</geometry:c1><geometry:c2>1260013.586</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613249.488</geometry:c1><geometry:c2>1260011.798</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613227.536</geometry:c1><geometry:c2>1259979.315</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613219.847</geometry:c1><geometry:c2>1259966.044</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613218.314</geometry:c1><geometry:c2>1259963.407</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613258.848</geometry:c1><geometry:c2>1259928.662</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613258.405</geometry:c1><geometry:c2>1259925.633</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613235.876</geometry:c1><geometry:c2>1259915.911</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613229.686</geometry:c1><geometry:c2>1259912.788</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613223.675</geometry:c1><geometry:c2>1259909.305</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613217.589</geometry:c1><geometry:c2>1259905.505</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613213.236</geometry:c1><geometry:c2>1259902.608</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613209.278</geometry:c1><geometry:c2>1259899.204</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613204.884</geometry:c1><geometry:c2>1259895.1</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613201.072</geometry:c1><geometry:c2>1259891.104</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613195.878</geometry:c1><geometry:c2>1259885.146</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613195.328</geometry:c1><geometry:c2>1259884.576</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613196.886</geometry:c1><geometry:c2>1259884.533</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613195.891</geometry:c1><geometry:c2>1259883.494</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613193.362</geometry:c1><geometry:c2>1259880.392</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613191.736</geometry:c1><geometry:c2>1259878.464</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613184.038</geometry:c1><geometry:c2>1259869.467</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.011</geometry:c1><geometry:c2>1259857.548</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.969</geometry:c1><geometry:c2>1259840.942</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.563</geometry:c1><geometry:c2>1259841.42</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613151.227</geometry:c1><geometry:c2>1259815.757</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.27</geometry:c1><geometry:c2>1259790.079</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.3</geometry:c1><geometry:c2>1259785.453</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613133.479</geometry:c1><geometry:c2>1259776.056</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613127.324</geometry:c1><geometry:c2>1259778.836</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613112.791</geometry:c1><geometry:c2>1259790.189</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613086.78</geometry:c1><geometry:c2>1259812.872</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.2</geometry:c1><geometry:c2>1259812.486</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613049.569</geometry:c1><geometry:c2>1259801.91</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613021.319</geometry:c1><geometry:c2>1259799.915</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.89</geometry:c1><geometry:c2>1259805.494</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.703</geometry:c1><geometry:c2>1259822.286</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.247</geometry:c1><geometry:c2>1259842.744</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.894</geometry:c1><geometry:c2>1259847.308</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.737</geometry:c1><geometry:c2>1259845.884</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.943</geometry:c1><geometry:c2>1259856.759</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613018.153</geometry:c1><geometry:c2>1259868.46</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.753</geometry:c1><geometry:c2>1259874.242</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.261</geometry:c1><geometry:c2>1259881.402</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613017.161</geometry:c1><geometry:c2>1259882.903</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.431</geometry:c1><geometry:c2>1259882.712</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613013.904</geometry:c1><geometry:c2>1259903.766</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.476</geometry:c1><geometry:c2>1259924.775</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613011.877</geometry:c1><geometry:c2>1259924.737</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613011.409</geometry:c1><geometry:c2>1259938.46</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.891</geometry:c1><geometry:c2>1259944.459</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613025.618</geometry:c1><geometry:c2>1259983.607</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613027.927</geometry:c1><geometry:c2>1259990.732</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613027.273</geometry:c1><geometry:c2>1260002.868</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613026.47</geometry:c1><geometry:c2>1260009.157</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613028.48</geometry:c1><geometry:c2>1260009.379</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613024.756</geometry:c1><geometry:c2>1260051.509</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613023.049</geometry:c1><geometry:c2>1260070.381</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613022.075</geometry:c1><geometry:c2>1260081.31</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.646</geometry:c1><geometry:c2>1260098.998</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613020.086</geometry:c1><geometry:c2>1260101.691</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613019.261</geometry:c1><geometry:c2>1260104.209</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613016.062</geometry:c1><geometry:c2>1260110.9</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613015.47</geometry:c1><geometry:c2>1260112.432</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.972</geometry:c1><geometry:c2>1260121.086</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.495</geometry:c1><geometry:c2>1260127.526</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613012.735</geometry:c1><geometry:c2>1260131.527</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613013.552</geometry:c1><geometry:c2>1260135.456</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613014.735</geometry:c1><geometry:c2>1260139.257</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613027.726</geometry:c1><geometry:c2>1260174.628</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613042.712</geometry:c1><geometry:c2>1260215.821</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613046.247</geometry:c1><geometry:c2>1260225.543</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613051.865</geometry:c1><geometry:c2>1260232.353</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613057.814</geometry:c1><geometry:c2>1260239.671</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613060.0</geometry:c1><geometry:c2>1260242.309</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613070.826</geometry:c1><geometry:c2>1260250.899</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613079.658</geometry:c1><geometry:c2>1260253.603</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613089.653</geometry:c1><geometry:c2>1260254.544</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.12</geometry:c1><geometry:c2>1260254.564</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.748</geometry:c1><geometry:c2>1260254.56</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.27</geometry:c1><geometry:c2>1260255.617</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.125</geometry:c1><geometry:c2>1260255.751</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.308</geometry:c1><geometry:c2>1260255.647</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.486</geometry:c1><geometry:c2>1260255.537</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.661</geometry:c1><geometry:c2>1260255.421</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.832</geometry:c1><geometry:c2>1260255.298</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.998</geometry:c1><geometry:c2>1260255.17</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.16</geometry:c1><geometry:c2>1260255.036</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.317</geometry:c1><geometry:c2>1260254.896</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.468</geometry:c1><geometry:c2>1260254.751</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.615</geometry:c1><geometry:c2>1260254.601</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.757</geometry:c1><geometry:c2>1260254.446</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.892</geometry:c1><geometry:c2>1260254.285</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.023</geometry:c1><geometry:c2>1260254.121</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.147</geometry:c1><geometry:c2>1260253.951</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.265</geometry:c1><geometry:c2>1260253.778</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.377</geometry:c1><geometry:c2>1260253.6</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.483</geometry:c1><geometry:c2>1260253.419</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.583</geometry:c1><geometry:c2>1260253.234</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.675</geometry:c1><geometry:c2>1260253.045</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.762</geometry:c1><geometry:c2>1260252.854</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.841</geometry:c1><geometry:c2>1260252.66</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.914</geometry:c1><geometry:c2>1260252.463</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.979</geometry:c1><geometry:c2>1260252.263</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.038</geometry:c1><geometry:c2>1260252.061</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.09</geometry:c1><geometry:c2>1260251.858</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.134</geometry:c1><geometry:c2>1260251.653</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.171</geometry:c1><geometry:c2>1260251.446</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.201</geometry:c1><geometry:c2>1260251.238</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.224</geometry:c1><geometry:c2>1260251.029</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.239</geometry:c1><geometry:c2>1260250.82</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.247</geometry:c1><geometry:c2>1260250.61</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.248</geometry:c1><geometry:c2>1260250.4</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.241</geometry:c1><geometry:c2>1260250.19</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.425</geometry:c1><geometry:c2>1260233.649</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.391</geometry:c1><geometry:c2>1260233.067</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.35</geometry:c1><geometry:c2>1260232.486</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.302</geometry:c1><geometry:c2>1260231.906</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.246</geometry:c1><geometry:c2>1260231.326</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.183</geometry:c1><geometry:c2>1260230.747</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.112</geometry:c1><geometry:c2>1260230.168</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.033</geometry:c1><geometry:c2>1260229.591</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.948</geometry:c1><geometry:c2>1260229.015</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.855</geometry:c1><geometry:c2>1260228.44</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.754</geometry:c1><geometry:c2>1260227.866</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.646</geometry:c1><geometry:c2>1260227.293</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.531</geometry:c1><geometry:c2>1260226.722</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.408</geometry:c1><geometry:c2>1260226.153</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.278</geometry:c1><geometry:c2>1260225.585</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.141</geometry:c1><geometry:c2>1260225.018</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.997</geometry:c1><geometry:c2>1260224.454</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.845</geometry:c1><geometry:c2>1260223.891</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.686</geometry:c1><geometry:c2>1260223.331</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.52</geometry:c1><geometry:c2>1260222.773</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.347</geometry:c1><geometry:c2>1260222.216</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613162.166</geometry:c1><geometry:c2>1260221.662</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.979</geometry:c1><geometry:c2>1260221.111</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.784</geometry:c1><geometry:c2>1260220.562</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.582</geometry:c1><geometry:c2>1260220.015</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.374</geometry:c1><geometry:c2>1260219.471</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613161.158</geometry:c1><geometry:c2>1260218.93</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613160.935</geometry:c1><geometry:c2>1260218.391</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613160.706</geometry:c1><geometry:c2>1260217.856</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613160.47</geometry:c1><geometry:c2>1260217.323</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613160.226</geometry:c1><geometry:c2>1260216.794</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613159.976</geometry:c1><geometry:c2>1260216.268</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613159.72</geometry:c1><geometry:c2>1260215.745</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613159.456</geometry:c1><geometry:c2>1260215.225</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613159.186</geometry:c1><geometry:c2>1260214.709</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613156.358</geometry:c1><geometry:c2>1260209.483</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.571</geometry:c1><geometry:c2>1260182.136</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.444</geometry:c1><geometry:c2>1260181.9</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.311</geometry:c1><geometry:c2>1260181.667</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.172</geometry:c1><geometry:c2>1260181.437</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.027</geometry:c1><geometry:c2>1260181.212</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.876</geometry:c1><geometry:c2>1260180.991</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.719</geometry:c1><geometry:c2>1260180.773</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.556</geometry:c1><geometry:c2>1260180.56</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.387</geometry:c1><geometry:c2>1260180.352</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.213</geometry:c1><geometry:c2>1260180.148</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.033</geometry:c1><geometry:c2>1260179.948</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.849</geometry:c1><geometry:c2>1260179.754</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.659</geometry:c1><geometry:c2>1260179.565</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.464</geometry:c1><geometry:c2>1260179.381</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.264</geometry:c1><geometry:c2>1260179.202</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.059</geometry:c1><geometry:c2>1260179.028</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.85</geometry:c1><geometry:c2>1260178.86</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.637</geometry:c1><geometry:c2>1260178.698</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.419</geometry:c1><geometry:c2>1260178.542</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.197</geometry:c1><geometry:c2>1260178.391</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613137.971</geometry:c1><geometry:c2>1260178.246</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613137.741</geometry:c1><geometry:c2>1260178.108</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613137.508</geometry:c1><geometry:c2>1260177.976</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613137.271</geometry:c1><geometry:c2>1260177.85</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613137.031</geometry:c1><geometry:c2>1260177.73</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613136.788</geometry:c1><geometry:c2>1260177.617</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613136.542</geometry:c1><geometry:c2>1260177.511</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613136.293</geometry:c1><geometry:c2>1260177.411</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613131.699</geometry:c1><geometry:c2>1260175.706</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613133.439</geometry:c1><geometry:c2>1260171.018</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.541</geometry:c1><geometry:c2>1260172.912</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613138.824</geometry:c1><geometry:c2>1260173.013</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.109</geometry:c1><geometry:c2>1260173.107</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.397</geometry:c1><geometry:c2>1260173.193</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.686</geometry:c1><geometry:c2>1260173.273</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613139.978</geometry:c1><geometry:c2>1260173.345</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.271</geometry:c1><geometry:c2>1260173.41</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.565</geometry:c1><geometry:c2>1260173.467</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613140.862</geometry:c1><geometry:c2>1260173.517</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.159</geometry:c1><geometry:c2>1260173.56</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.457</geometry:c1><geometry:c2>1260173.595</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613141.756</geometry:c1><geometry:c2>1260173.623</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613142.055</geometry:c1><geometry:c2>1260173.643</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613142.355</geometry:c1><geometry:c2>1260173.656</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613142.656</geometry:c1><geometry:c2>1260173.661</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613142.956</geometry:c1><geometry:c2>1260173.659</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613143.256</geometry:c1><geometry:c2>1260173.649</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613143.556</geometry:c1><geometry:c2>1260173.632</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613143.855</geometry:c1><geometry:c2>1260173.607</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613144.154</geometry:c1><geometry:c2>1260173.575</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613144.451</geometry:c1><geometry:c2>1260173.535</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613144.748</geometry:c1><geometry:c2>1260173.488</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613145.043</geometry:c1><geometry:c2>1260173.434</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613145.337</geometry:c1><geometry:c2>1260173.372</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613145.629</geometry:c1><geometry:c2>1260173.303</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613145.919</geometry:c1><geometry:c2>1260173.226</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613146.208</geometry:c1><geometry:c2>1260173.142</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613146.494</geometry:c1><geometry:c2>1260173.051</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613146.778</geometry:c1><geometry:c2>1260172.953</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.059</geometry:c1><geometry:c2>1260172.848</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.337</geometry:c1><geometry:c2>1260172.736</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.613</geometry:c1><geometry:c2>1260172.617</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.886</geometry:c1><geometry:c2>1260172.491</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.155</geometry:c1><geometry:c2>1260172.358</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.421</geometry:c1><geometry:c2>1260172.219</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613150.926</geometry:c1><geometry:c2>1260170.865</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613153.894</geometry:c1><geometry:c2>1260176.083</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613149.18</geometry:c1><geometry:c2>1260178.631</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613149.048</geometry:c1><geometry:c2>1260178.707</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.92</geometry:c1><geometry:c2>1260178.789</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.797</geometry:c1><geometry:c2>1260178.877</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.678</geometry:c1><geometry:c2>1260178.972</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.564</geometry:c1><geometry:c2>1260179.073</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.456</geometry:c1><geometry:c2>1260179.179</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.352</geometry:c1><geometry:c2>1260179.291</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.255</geometry:c1><geometry:c2>1260179.407</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.164</geometry:c1><geometry:c2>1260179.529</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.079</geometry:c1><geometry:c2>1260179.655</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613148.0</geometry:c1><geometry:c2>1260179.785</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.928</geometry:c1><geometry:c2>1260179.919</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.863</geometry:c1><geometry:c2>1260180.056</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.805</geometry:c1><geometry:c2>1260180.197</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.755</geometry:c1><geometry:c2>1260180.34</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.711</geometry:c1><geometry:c2>1260180.485</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.675</geometry:c1><geometry:c2>1260180.633</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.647</geometry:c1><geometry:c2>1260180.782</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.626</geometry:c1><geometry:c2>1260180.933</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.612</geometry:c1><geometry:c2>1260181.084</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.607</geometry:c1><geometry:c2>1260181.236</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.609</geometry:c1><geometry:c2>1260181.388</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.619</geometry:c1><geometry:c2>1260181.54</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.636</geometry:c1><geometry:c2>1260181.691</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.661</geometry:c1><geometry:c2>1260181.841</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.694</geometry:c1><geometry:c2>1260181.989</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.734</geometry:c1><geometry:c2>1260182.136</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.782</geometry:c1><geometry:c2>1260182.28</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.836</geometry:c1><geometry:c2>1260182.422</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.898</geometry:c1><geometry:c2>1260182.56</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613147.967</geometry:c1><geometry:c2>1260182.696</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613163.932</geometry:c1><geometry:c2>1260212.236</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.217</geometry:c1><geometry:c2>1260212.779</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.495</geometry:c1><geometry:c2>1260213.325</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613164.767</geometry:c1><geometry:c2>1260213.875</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.032</geometry:c1><geometry:c2>1260214.428</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.291</geometry:c1><geometry:c2>1260214.983</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.543</geometry:c1><geometry:c2>1260215.543</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613165.788</geometry:c1><geometry:c2>1260216.105</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613166.026</geometry:c1><geometry:c2>1260216.67</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613166.257</geometry:c1><geometry:c2>1260217.237</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613166.482</geometry:c1><geometry:c2>1260217.808</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613166.699</geometry:c1><geometry:c2>1260218.381</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613166.91</geometry:c1><geometry:c2>1260218.957</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613167.114</geometry:c1><geometry:c2>1260219.535</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613167.31</geometry:c1><geometry:c2>1260220.116</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613167.5</geometry:c1><geometry:c2>1260220.699</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613167.683</geometry:c1><geometry:c2>1260221.284</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613167.858</geometry:c1><geometry:c2>1260221.872</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.027</geometry:c1><geometry:c2>1260222.461</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.188</geometry:c1><geometry:c2>1260223.056</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.342</geometry:c1><geometry:c2>1260223.653</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.488</geometry:c1><geometry:c2>1260224.251</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.627</geometry:c1><geometry:c2>1260224.851</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.759</geometry:c1><geometry:c2>1260225.453</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613168.884</geometry:c1><geometry:c2>1260226.057</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.001</geometry:c1><geometry:c2>1260226.662</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.111</geometry:c1><geometry:c2>1260227.268</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.213</geometry:c1><geometry:c2>1260227.876</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.308</geometry:c1><geometry:c2>1260228.485</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.396</geometry:c1><geometry:c2>1260229.095</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.476</geometry:c1><geometry:c2>1260229.706</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.549</geometry:c1><geometry:c2>1260230.318</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.614</geometry:c1><geometry:c2>1260230.93</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.672</geometry:c1><geometry:c2>1260231.544</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.722</geometry:c1><geometry:c2>1260232.158</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.765</geometry:c1><geometry:c2>1260232.773</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613169.801</geometry:c1><geometry:c2>1260233.388</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613170.775</geometry:c1><geometry:c2>1260253.122</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.273</geometry:c1><geometry:c2>1260253.048</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.286</geometry:c1><geometry:c2>1260253.23</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.306</geometry:c1><geometry:c2>1260253.412</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.333</geometry:c1><geometry:c2>1260253.592</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.368</geometry:c1><geometry:c2>1260253.772</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.41</geometry:c1><geometry:c2>1260253.949</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.459</geometry:c1><geometry:c2>1260254.125</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.516</geometry:c1><geometry:c2>1260254.299</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.579</geometry:c1><geometry:c2>1260254.47</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.649</geometry:c1><geometry:c2>1260254.639</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.726</geometry:c1><geometry:c2>1260254.805</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.81</geometry:c1><geometry:c2>1260254.967</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.9</geometry:c1><geometry:c2>1260255.126</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613172.997</geometry:c1><geometry:c2>1260255.281</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.099</geometry:c1><geometry:c2>1260255.432</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.208</geometry:c1><geometry:c2>1260255.579</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.323</geometry:c1><geometry:c2>1260255.721</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.443</geometry:c1><geometry:c2>1260255.858</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.569</geometry:c1><geometry:c2>1260255.991</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.7</geometry:c1><geometry:c2>1260256.118</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.836</geometry:c1><geometry:c2>1260256.24</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613173.977</geometry:c1><geometry:c2>1260256.356</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.123</geometry:c1><geometry:c2>1260256.466</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.273</geometry:c1><geometry:c2>1260256.571</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.427</geometry:c1><geometry:c2>1260256.669</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.584</geometry:c1><geometry:c2>1260256.761</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.746</geometry:c1><geometry:c2>1260256.846</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613174.911</geometry:c1><geometry:c2>1260256.925</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.079</geometry:c1><geometry:c2>1260256.997</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.249</geometry:c1><geometry:c2>1260257.062</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.422</geometry:c1><geometry:c2>1260257.12</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.598</geometry:c1><geometry:c2>1260257.171</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.775</geometry:c1><geometry:c2>1260257.215</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613175.954</geometry:c1><geometry:c2>1260257.252</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613178.867</geometry:c1><geometry:c2>1260257.815</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613178.686</geometry:c1><geometry:c2>1260258.711</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613192.816</geometry:c1><geometry:c2>1260261.966</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613210.027</geometry:c1><geometry:c2>1260267.093</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613250.833</geometry:c1><geometry:c2>1260282.128</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613270.641</geometry:c1><geometry:c2>1260290.141</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613289.502</geometry:c1><geometry:c2>1260297.005</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613290.026</geometry:c1><geometry:c2>1260297.219</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613311.818</geometry:c1><geometry:c2>1260305.74</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613320.194</geometry:c1><geometry:c2>1260308.182</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613328.616</geometry:c1><geometry:c2>1260310.316</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613342.342</geometry:c1><geometry:c2>1260312.919</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613361.32</geometry:c1><geometry:c2>1260313.911</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613363.543</geometry:c1><geometry:c2>1260313.891</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613363.764</geometry:c1><geometry:c2>1260313.872</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613363.984</geometry:c1><geometry:c2>1260313.844</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613364.202</geometry:c1><geometry:c2>1260313.81</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613364.42</geometry:c1><geometry:c2>1260313.767</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613364.636</geometry:c1><geometry:c2>1260313.718</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613364.85</geometry:c1><geometry:c2>1260313.661</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613365.062</geometry:c1><geometry:c2>1260313.596</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613365.272</geometry:c1><geometry:c2>1260313.524</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613365.479</geometry:c1><geometry:c2>1260313.445</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613365.683</geometry:c1><geometry:c2>1260313.359</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613365.884</geometry:c1><geometry:c2>1260313.266</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613366.081</geometry:c1><geometry:c2>1260313.166</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613366.275</geometry:c1><geometry:c2>1260313.059</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613366.466</geometry:c1><geometry:c2>1260312.945</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613366.652</geometry:c1><geometry:c2>1260312.825</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613366.834</geometry:c1><geometry:c2>1260312.699</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.012</geometry:c1><geometry:c2>1260312.566</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.184</geometry:c1><geometry:c2>1260312.428</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.352</geometry:c1><geometry:c2>1260312.283</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.515</geometry:c1><geometry:c2>1260312.133</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.673</geometry:c1><geometry:c2>1260311.977</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.825</geometry:c1><geometry:c2>1260311.816</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613367.971</geometry:c1><geometry:c2>1260311.649</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.111</geometry:c1><geometry:c2>1260311.478</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.246</geometry:c1><geometry:c2>1260311.302</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.373</geometry:c1><geometry:c2>1260311.123</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.495</geometry:c1><geometry:c2>1260310.939</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.609</geometry:c1><geometry:c2>1260310.751</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.718</geometry:c1><geometry:c2>1260310.559</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.819</geometry:c1><geometry:c2>1260310.364</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.914</geometry:c1><geometry:c2>1260310.165</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.002</geometry:c1><geometry:c2>1260309.964</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.083</geometry:c1><geometry:c2>1260309.759</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.157</geometry:c1><geometry:c2>1260309.552</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.224</geometry:c1><geometry:c2>1260309.342</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.283</geometry:c1><geometry:c2>1260309.13</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.336</geometry:c1><geometry:c2>1260308.916</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.38</geometry:c1><geometry:c2>1260308.701</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.418</geometry:c1><geometry:c2>1260308.484</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.448</geometry:c1><geometry:c2>1260308.266</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.47</geometry:c1><geometry:c2>1260308.047</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.485</geometry:c1><geometry:c2>1260307.827</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.492</geometry:c1><geometry:c2>1260307.607</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.492</geometry:c1><geometry:c2>1260307.387</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.484</geometry:c1><geometry:c2>1260307.167</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.469</geometry:c1><geometry:c2>1260306.947</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.446</geometry:c1><geometry:c2>1260306.728</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.415</geometry:c1><geometry:c2>1260306.51</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.377</geometry:c1><geometry:c2>1260306.293</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613369.332</geometry:c1><geometry:c2>1260306.078</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613368.433</geometry:c1><geometry:c2>1260302.042</geometry:c2>
+</geometry:coord>
+<geometry:coord>
+    
+<geometry:c1>2613354.467</geometry:c1><geometry:c2>1260271.799</geometry:c2>
+</geometry:coord>
+
+    </geometry:polyline>
+</geometry:exterior>
+
+</data:Surface>
+
+    <data:Lawstatus>
+        
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+    </data:Lawstatus>
+</data:Geometry>
+
+    <data:Map>
+        
+<data:ReferenceWMS>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereb-dev.geo.bl.ch/wms?SERVICE=WMS&amp;VERSION=1.1&amp;REQUEST=GetMap&amp;LAYERS=ch.Laermempfindlichkeitsstufen&amp;STYLES=default&amp;SRS=EPSG%3A2056&amp;FORMAT=image%2Fpng&amp;BBOX=2613017.6117221094%2C1259851.230634261%2C2613042.4302778905%2C1259865.3263657389&amp;WIDTH=493&amp;HEIGHT=280</data:Text>
+</data:LocalisedText>
+
+</data:ReferenceWMS>
+<data:min>
+    
+<geometry:c1>2613017.6117221094</geometry:c1><geometry:c2>1259851.230634261</geometry:c2>
+</data:min>
+<data:max>
+    
+<geometry:c1>2613042.4302778905</geometry:c1><geometry:c2>1259865.3263657389</geometry:c2>
+</data:max>
+<data:layerIndex>1</data:layerIndex>
+<data:layerOpacity>1.0</data:layerOpacity>
+
+    </data:Map>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Lärmschutz-Verordnung</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>LSV</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SR 814.41</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.admin.ch/ch/d/sr/c814_41.html</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>620</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Bundeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.bk.admin.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+<data:UID>CHE263297189</data:UID>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>LegalProvision</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtsvorschrift</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>RRB vom 04.07.2017</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Nr. 1024</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://oereblex.bl.ch/api/attachments/16014</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>900</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeindeverwaltung</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:LegalProvisions>
+        
+<data:Type>
+    
+
+<data:Code>Law</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gesetzliche Grundlage</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Type>
+<data:Title>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Umweltschutzgesetz Basel-Landschaft</data:Text>
+</data:LocalisedText>
+
+</data:Title>
+<data:Abbreviation>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>USG BL</data:Text>
+</data:LocalisedText>
+
+</data:Abbreviation>
+<data:OfficialNumber>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>SGS 780</data:Text>
+</data:LocalisedText>
+
+</data:OfficialNumber>
+<data:TextAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://bl.clex.ch/frontend/versions/pdf_file_with_annex/1337?locale=de</data:Text>
+</data:LocalisedText>
+
+</data:TextAtWeb>
+<data:Lawstatus>
+    
+<data:Code>inForce</data:Code>
+<data:Text>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Rechtskräftig</data:Text>
+</data:LocalisedText>
+
+</data:Text>
+
+</data:Lawstatus>
+<data:Index>630</data:Index>
+
+<data:ResponsibleOffice>
+    
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.baselland.ch/politik-und-behorden/besondere-behorden/landeskanzlei</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+</data:ResponsibleOffice>
+
+    </data:LegalProvisions>
+    <data:ResponsibleOffice>
+        
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Gemeinde Arlesheim</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://www.arlesheim.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+
+    </data:ResponsibleOffice>
+    <data:extensions>
+        <AreaUnit>m2</AreaUnit>
+    </data:extensions>
+</data:RestrictionOnLandownership>
+
+    <data:PlanForLandRegister>
+        
+<data:ReferenceWMS>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://integration.geodienste.ch/db/av_situationsplan_oereb_0/deu/?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.1.1&amp;STYLES=default&amp;SRS=EPSG%3A2056&amp;BBOX=2613017.6117221094%2C1259851.230634261%2C2613042.4302778905%2C1259865.3263657389&amp;WIDTH=493&amp;HEIGHT=280&amp;FORMAT=image%2Fpng&amp;LAYERS=daten</data:Text>
+</data:LocalisedText>
+
+</data:ReferenceWMS>
+<data:min>
+    
+<geometry:c1>2613017.6117221094</geometry:c1><geometry:c2>1259851.230634261</geometry:c2>
+</data:min>
+<data:max>
+    
+<geometry:c1>2613042.4302778905</geometry:c1><geometry:c2>1259865.3263657389</geometry:c2>
+</data:max>
+<data:layerIndex>0</data:layerIndex>
+<data:layerOpacity>1.0</data:layerOpacity>
+
+    </data:PlanForLandRegister>
+    <data:PlanForLandRegisterMainPage>
+        
+<data:ReferenceWMS>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>https://integration.geodienste.ch/db/av_situationsplan_0/deu/?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.1.1&amp;STYLES=default&amp;SRS=EPSG%3A2056&amp;BBOX=2613017.6117221094%2C1259851.230634261%2C2613042.4302778905%2C1259865.3263657389&amp;WIDTH=493&amp;HEIGHT=280&amp;FORMAT=image%2Fpng&amp;LAYERS=daten</data:Text>
+</data:LocalisedText>
+
+</data:ReferenceWMS>
+<data:min>
+    
+<geometry:c1>2613017.6117221094</geometry:c1><geometry:c2>1259851.230634261</geometry:c2>
+</data:min>
+<data:max>
+    
+<geometry:c1>2613042.4302778905</geometry:c1><geometry:c2>1259865.3263657389</geometry:c2>
+</data:max>
+<data:layerIndex>0</data:layerIndex>
+<data:layerOpacity>1.0</data:layerOpacity>
+
+    </data:PlanForLandRegisterMainPage>
+</data:RealEstate>
+
+        
+<data:Disclaimer>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Eigentumsbeschränkungen im Grundbuch</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Zusätzlich zu den Angaben in diesem Auszug können Eigentumsbeschränkungen auch im Grundbuch angemerkt sein.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Disclaimer>
+
+        
+<data:Disclaimer>
+    <data:Title>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Haftungsausschluss Kataster der belasteten Standorte (KbS)</data:Text>
+</data:LocalisedText>
+
+    </data:Title>
+    <data:Content>
+        
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Der Kataster der belasteten Standorte (KbS) wurde anhand der vom Bundesamt für Umwelt BAFU festgelegten Kriterien erstellt und wird fortwährend aufgrund neuer Erkenntnisse (z.B. Untersuchungen) aktualisiert. Die im KbS eingetragenen Flächen können vom tatsächlichen Ausmass der Belastung abweichen. Erscheint ein Grundstück nicht im KbS, besteht keine absolute Gewähr, dass das Areal frei von jeglichen Abfall- oder Schadstoffbelastungen ist. Bahnbetrieblich, militärisch und für die Luftfahrt genutzte Standorte liegen im Zuständigkeitsbereich des Bundes.</data:Text>
+</data:LocalisedText>
+
+    </data:Content>
+</data:Disclaimer>
+
+        <data:PLRCadastreAuthority>
+            
+<data:Name>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>Amt für Geoinformation</data:Text>
+</data:LocalisedText>
+
+</data:Name>
+<data:OfficeAtWeb>
+    
+
+<data:LocalisedText>
+    <data:Language>de</data:Language>
+    <data:Text>http://www.agi.bl.ch</data:Text>
+</data:LocalisedText>
+
+</data:OfficeAtWeb>
+<data:Street>Mühlemattstrasse</data:Street>
+<data:Number>36</data:Number>
+<data:PostalCode>4410</data:PostalCode>
+<data:City>Liestal</data:City>
+
+        </data:PLRCadastreAuthority>
+        <data:UpdateDateCS>
+            2022-05-01T17:09:37
+        </data:UpdateDateCS>
+    </data:Extract>
+</extract:GetExtractByIdResponse>
