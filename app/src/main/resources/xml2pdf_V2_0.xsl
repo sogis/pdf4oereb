@@ -27,7 +27,7 @@
           </fo:block-container>
           <fo:block-container height="107mm" background-color="transparent">
             <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-              <fo:external-graphic border="0.2pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
+              <fo:external-graphic border="0.4pt solid black" width="173.7mm" height="99mm" scaling="non-uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="PlanForLandRegisterMainPageImage">
               <!-- Weil man das PlanForLandRegisterMainPage-Element der Extension Function übergibt,
               muss keine Image-WMS-if/else-Unterscheidung gemacht werden wie z.B. bei den Logos.-->
                 <xsl:attribute name="src">
@@ -566,7 +566,7 @@
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+            <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">
                 <xsl:text>url('data:</xsl:text>
                 <xsl:text>image/png;base64,</xsl:text>
@@ -584,7 +584,7 @@
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
-            <fo:external-graphic border="0.2pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+            <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">
                 <xsl:text>url('data:</xsl:text>
                 <xsl:text>image/png;base64,</xsl:text>
