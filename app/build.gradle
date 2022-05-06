@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'org.jreleaser' version '1.0.0-M2'
+    id 'org.graalvm.buildtools.native' version '0.9.11'
 }
 
 apply plugin: 'maven-publish'
@@ -81,6 +82,35 @@ run {
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_einzelschutz.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
     args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
 }
+
+
+graalvmNative {
+    binaries {
+        main {
+            imageName = 'application' // The name of the native image, defaults to the project name
+            mainClass = 'ch.so.agi.oereb.pdf4oereb.App' // The main class to use, defaults to the application.mainClass
+            debug = true // Determines if debug info should be generated, defaults to false
+            verbose = true // Add verbose output, defaults to false
+            fallback = false // Sets the fallback mode of native-image, defaults to false
+            sharedLibrary = false // Determines if image is a shared library, defaults to false if `java-library` plugin isn't included
+
+            //configurationFileDirectories.from(file('src/my-config')) // Adds a native image configuration file directory, containing files like reflection configuration
+
+            // Advanced options
+            //buildArgs.add('-H:Extra') // Passes '-H:Extra' to the native image builder options. This can be used to pass parameters which are not directly supported by this extension
+            //jvmArgs.add('flag') // Passes 'flag' directly to the JVM running the native image builder
+
+
+            // Development options
+            agent {
+                enabled = true // Enables the reflection agent. Can be also set on command line using '-Pagent'
+            }
+
+            //useFatJar = true // Instead of passing each jar individually, builds a fat jar
+        }
+    }
+}
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     baseName myArtifactId
