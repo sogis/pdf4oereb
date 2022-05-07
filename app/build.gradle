@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'org.jreleaser' version '1.0.0-M2'
+    id 'org.graalvm.buildtools.native' version '0.9.11'
 }
 
 apply plugin: 'maven-publish'
@@ -76,10 +77,30 @@ run {
     //args = ["--xml", "src/test/data/ne/20220125_70_2364_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
     //args = ["--xml", "src/test/data/bl/CH175978021788_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]   
     //args = ["--xml", "src/test/data/so/CH955832730623_geometry_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
-    args = ["--xml", "src/test/data/so/CH185532067274_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
+    //args = ["--xml", "src/test/data/so/CH185532067274_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_ohne_punkt.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_einzelschutz.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
-    args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
+    args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/tmp/", "--lang", "it"]
+}
+
+graalvmNative {
+    binaries {
+        main {
+            imageName = 'pdf4oereb' // The name of the native image, defaults to the project name
+            mainClass = 'ch.so.agi.oereb.pdf4oereb.App' // The main class to use, defaults to the application.mainClass
+            debug = true // Determines if debug info should be generated, defaults to false
+            verbose = true // Add verbose output, defaults to false
+            fallback = false // Sets the fallback mode of native-image, defaults to false
+
+            // Advanced options
+            //buildArgs.add('-H:Extra') 
+            jvmArgs.add("-Djava.awt.headless=false")
+
+            agent {
+                enabled = true 
+            }
+        }
+    }
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
