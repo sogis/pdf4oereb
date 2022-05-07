@@ -56,9 +56,9 @@ jobs:
     name: Native image build
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-        graalvm-version: ['22.1.0']
-        jdk-version: ['17']
+      matrix:
+          graalvm-version: ['22.1.0']
+          jdk-version: ['17']
     steps:
       - uses: actions/checkout@v2
 
