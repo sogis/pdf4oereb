@@ -24,7 +24,8 @@ jobs:
           distribution: 'temurin'
           
 
-      - run: echo ${{github.ref}}
+      - name: foo
+        run: echo ${{github.ref == 'refs/heads/master'}}
 
 
       # - name: Build with Gradle
