@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-
+          
       - name: Build with Gradle
         run: ./gradlew -i clean app:build app:assembleDist
 
@@ -80,5 +80,3 @@ jobs:
   #       run: |
   #         ./gradlew -Pagent run
   #         ./gradlew -Pagent nativeBuild
-
-
