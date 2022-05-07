@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
           
       - name: foo
-        if: ${{ success() }}
+        if: ${{ success() && github.ref == 'refs/heads/master'}}
         run: echo ${{github.ref == 'refs/heads/master'}}
 
 
