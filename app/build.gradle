@@ -77,10 +77,10 @@ run {
     //args = ["--xml", "src/test/data/ne/20220125_70_2364_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]          
     //args = ["--xml", "src/test/data/bl/CH175978021788_geom_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]   
     //args = ["--xml", "src/test/data/so/CH955832730623_geometry_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
-    args = ["--xml", "src/test/data/so/CH185532067274_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
+    //args = ["--xml", "src/test/data/so/CH185532067274_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_ohne_punkt.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
     //args = ["--xml", "src/test/data/so/CH870679603216_geom_images_einzelschutz.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "de"]
-    args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb", "--lang", "it"]
+    args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/tmp/", "--lang", "it"]
 }
 
 
@@ -99,6 +99,7 @@ graalvmNative {
             // Advanced options
             //buildArgs.add('-H:Extra') // Passes '-H:Extra' to the native image builder options. This can be used to pass parameters which are not directly supported by this extension
             //jvmArgs.add('flag') // Passes 'flag' directly to the JVM running the native image builder
+            jvmArgs.add("-Djava.awt.headless=false")
 
 
             // Development options
