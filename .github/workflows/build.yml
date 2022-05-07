@@ -25,7 +25,7 @@ jobs:
           
       - name: foo
         if: ${{ success() }}
-        run: echo github.ref == 'refs/heads/master'
+        run: echo ${{github.ref == 'refs/heads/master'}}
 
 
       # - name: Build with Gradle
