@@ -51,3 +51,35 @@ jobs:
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ success() && github.ref == 'refs/heads/master'}}
+
+  build-native-image:
+    name: Native image build
+    needs: [ build-jar ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        graalvm-version: ['22.1.0']
+        jdk-version: ['17']
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: ${{ matrix.graalvm-version }}
+          java-version: ${{ matrix.jdk-version }}
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build native image on Linux
+        run: |
+          ./gradlew -Pagent run
+          ./gradlew -Pagent nativeBuild
+
+
