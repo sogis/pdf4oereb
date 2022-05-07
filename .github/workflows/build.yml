@@ -54,7 +54,6 @@ jobs:
 
   build-native-image:
     name: Native image build
-    needs: [ build-jar ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
