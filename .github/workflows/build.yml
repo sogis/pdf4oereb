@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
           
       - name: foo
-        run: echo ${{github.ref == 'refs/heads/master'}}
+        run: echo ${{ success() }} && github.ref == 'refs/heads/master'
 
       # - name: Build with Gradle
       #   run: ./gradlew -i clean app:build app:assembleDist
