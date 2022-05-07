@@ -55,10 +55,10 @@ jobs:
   build-native-image:
     name: Native image build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        graalvm-version: ['22.1.0']
-        jdk-version: ['17']
+    # strategy:
+    #   matrix:
+    #     graalvm-version: ['22.1.0']
+    #     jdk-version: ['17']
 
       - uses: actions/checkout@v2
 
@@ -71,8 +71,8 @@ jobs:
 
       - uses: graalvm/setup-graalvm@v1
         with:
-          version: ${{ matrix.graalvm-version }}
-          java-version: ${{ matrix.jdk-version }}
+          version: '22.1.0'
+          java-version: '17'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
