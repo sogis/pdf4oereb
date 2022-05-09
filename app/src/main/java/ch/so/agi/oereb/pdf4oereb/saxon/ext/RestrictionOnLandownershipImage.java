@@ -44,6 +44,7 @@ import net.sf.saxon.trans.XPathException;
 public class RestrictionOnLandownershipImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(RestrictionOnLandownershipImage.class);
     
+    private final double referenceDpi = 300.0;
     private final String imageFormat = "png";
 
     @Override
@@ -187,6 +188,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                             }
                             i++;
                         }
+                        requestString = Utils.fixGetMapRequest(requestString, referenceDpi);
                     }
                     
                     try {
@@ -321,6 +323,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                         }
                         i++;
                     }
+                    requestString = Utils.fixGetMapRequest(requestString, referenceDpi);
                 }
                 try {
                     backgroundImageByteArray = ch.so.agi.oereb.pdf4oereb.utils.Image.getImage(requestString);
