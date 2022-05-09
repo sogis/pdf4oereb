@@ -62,6 +62,8 @@ public class Utils {
                 correctedQueryParams.add(queryParam);
             }
         }
+        // TODO: Muss auch geprüft werden, ob bereits was vorhanden ist,
+        // sonst werden eventuell unterschiedliche Werte angefordert.
         String dpi = String.valueOf(referenceDpi);
         Map<String, String> dpis = Map.of("DPI", dpi, "MAP_RESOLUTION", dpi, "FORMAT_OPTIONS", "dpi:"+dpi);
         for (Map.Entry<String, String> entry : dpis.entrySet()) {
