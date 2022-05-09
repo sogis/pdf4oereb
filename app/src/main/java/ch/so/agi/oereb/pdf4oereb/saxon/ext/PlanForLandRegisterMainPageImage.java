@@ -31,6 +31,8 @@ import net.sf.saxon.trans.XPathException;
 public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
     Logger log = LoggerFactory.getLogger(PlanForLandRegisterMainPageImage.class);
     
+    private final double referenceDpi = 300.0;
+
     private final String imageFormat = "png";
 
     @Override
@@ -134,6 +136,7 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                         }
                         i++;
                     }
+                    requestString = Utils.fixGetMapRequest(requestString, referenceDpi);
                 }
                 
                 try {

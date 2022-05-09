@@ -15,13 +15,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.net.URIBuilder;
 import org.locationtech.jts.awt.ShapeWriter;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Envelope;
@@ -120,7 +125,7 @@ public class OverlayImage implements ExtensionFunction {
     }
     
     
-    private byte[] createOverlayImage(XdmNode node, Envelope worldEnvelope, MultiPolygon geometry, String locale) throws XPathException, SaxonApiException, IOException {
+    private byte[] createOverlayImage(XdmNode node, Envelope worldEnvelope, MultiPolygon geometry, String locale) throws XPathException, SaxonApiException, IOException, URISyntaxException {
         // Get the land register base image.
         byte[] mapImageByteArray = getImageFromXdmNode(node, locale);
         InputStream mapImageInputStream = new ByteArrayInputStream(mapImageByteArray);
@@ -250,7 +255,7 @@ public class OverlayImage implements ExtensionFunction {
      * Es wird versucht die gewünschte Sprache des Bildes zu verwenden. Ist diese nicht vorhanden,
      * wird das erste Sprachen-Element verwendet.
      */
-    private byte[] getImageFromXdmNode(XdmNode node, String locale) throws SaxonApiException, XPathException {
+    private byte[] getImageFromXdmNode(XdmNode node, String locale) throws SaxonApiException, XPathException, URISyntaxException {
         // Falls das Bild im XML eingebettet ist, wird dieses verwendet.
         byte[] mapImageByteArray = null;
         String base64String = null;
@@ -315,6 +320,7 @@ public class OverlayImage implements ExtensionFunction {
                     }
                     i++;
                 }
+                requestString = Utils.fixGetMapRequest(requestString, referenceDpi);
             }
             
             try {
