@@ -40,6 +40,14 @@ These tests require a running external web map service.
 
 Building the app: `./gradlew clean app:build app:assembleDist`.
 
+GraalVM:
+
+```
+./gradlew -Pagent run
+./gradlew -Pagent nativeCompile
+```
+Running fails on macOS b/c of: https://github.com/oracle/graal/issues/2842 and https://github.com/oracle/graal/issues/4124
+
 ## Running
 
 ### Standalone program
