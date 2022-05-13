@@ -66,11 +66,7 @@ public class Converter {
         locales.add("Resources.it.resx");
         locales.add("Resources.rm.resx");
     }
-       
-    private Processor proc;
-    private XsltCompiler comp;
-    private XsltExecutable exp;
-    
+           
     public File runXml2Fo(String xmlFileName, String xsltFileName, String outputDirectory, Locale locale) throws ConverterException {
         try {
             Path outputPath = Paths.get(outputDirectory);
@@ -87,17 +83,15 @@ public class Converter {
 
             log.info("start saxon: " + new Date().toString());
             
-            if (proc == null) {
-                proc = new Processor(false);
-                proc.registerExtensionFunction(new OverlayImage());
-                proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
-                proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
-                proc.registerExtensionFunction(new FixImage());
-                proc.registerExtensionFunction(new URLDecoder());
-                
-                comp = proc.newXsltCompiler();
-                exp = comp.compile(new StreamSource(new File(xsltFileName)));
-            } 
+            Processor proc = new Processor(false);
+            proc.registerExtensionFunction(new OverlayImage());
+            proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+            proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+            proc.registerExtensionFunction(new FixImage());
+            proc.registerExtensionFunction(new URLDecoder());
+            
+            XsltCompiler comp = proc.newXsltCompiler();
+            XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
 
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
             Serializer outFo = proc.newSerializer(foFile);
@@ -166,17 +160,15 @@ public class Converter {
             log.info("start transformation: " + new Date().toString());
             
             // the saxon part
-            if (proc == null) {
-                proc = new Processor(false);
-                proc.registerExtensionFunction(new OverlayImage());
-                proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
-                proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
-                proc.registerExtensionFunction(new FixImage());
-                proc.registerExtensionFunction(new URLDecoder());
-                
-                comp = proc.newXsltCompiler();
-                exp = comp.compile(new StreamSource(new File(xsltFileName)));
-            } 
+            Processor proc = new Processor(false);
+            proc.registerExtensionFunction(new OverlayImage());
+            proc.registerExtensionFunction(new PlanForLandRegisterMainPageImage());
+            proc.registerExtensionFunction(new RestrictionOnLandownershipImage());
+            proc.registerExtensionFunction(new FixImage());
+            proc.registerExtensionFunction(new URLDecoder());
+            
+            XsltCompiler comp = proc.newXsltCompiler();
+            XsltExecutable exp = comp.compile(new StreamSource(new File(xsltFileName)));
              
             XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File(xmlFileName)));
             XsltTransformer trans = exp.load();
