@@ -38,6 +38,8 @@ import org.locationtech.jts.geom.Polygon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pngencoder.PngEncoder;
+
 import ch.so.agi.oereb.pdf4oereb.utils.AffinePointTransformation;
 import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
@@ -236,16 +238,20 @@ public class OverlayImage implements ExtensionFunction {
         gr.drawImage(tmpNorthArrowImage,  leftMargin, (int) Math.round(imageHeightPx - (imageHeightPx / 20) - scalebarBufferedImage.getHeight() - scaledNorthArrowHeightPx), null); 
         
         // write image to byte[]
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(overlayImage, imageFormat, baos); 
-        baos.flush();
-        byte[] highlightingImageByteArray = baos.toByteArray();
-        baos.close();          
+        //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        //ImageIO.write(overlayImage, imageFormat, baos);
 
-        String base64Encoded = Base64.getEncoder().encodeToString(highlightingImageByteArray);
+        //baos.flush();
+        //byte[] highlightingImageByteArray = baos.toByteArray();
+        //baos.close();          
+
+        byte[] highlightingImageByteArray = new PngEncoder().withBufferedImage(overlayImage).toBytes();
+
+        //String base64Encoded = Base64.getEncoder().encodeToString(highlightingImageByteArray);
         //System.out.println(base64Encoded);
 
         //ImageIO.write(overlayImage, "png", new File("/Users/stefan/tmp/overlay_image.png"));        
+        
         return highlightingImageByteArray;
     }
     

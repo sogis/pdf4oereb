@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pngencoder.PngEncoder;
+
 import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
@@ -175,10 +177,12 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
             //ImageIO.write(combinedImage, "png", new File("/Users/stefan/tmp/combined_image.png"));
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(combinedImage, imageFormat, baos); 
-            baos.flush();
-            byte[] combinedImageByteArray = baos.toByteArray();
-            baos.close();          
+            //ImageIO.write(combinedImage, imageFormat, baos); 
+            //baos.flush();
+            //byte[] combinedImageByteArray = baos.toByteArray();
+            //baos.close();
+            
+            byte[] combinedImageByteArray = new PngEncoder().withBufferedImage(combinedImage).toBytes();
 
             return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(combinedImageByteArray).asAtomic().getStringValue());
         } catch (Exception e) {

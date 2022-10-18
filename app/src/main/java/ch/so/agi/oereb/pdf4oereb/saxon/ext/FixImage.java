@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pngencoder.PngEncoder;
+
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -86,10 +88,12 @@ public class FixImage implements ExtensionFunction {
             g.drawImage(imageBufferedImage, 0, 0, null);
                                    
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(fixedImage, imageFormat, baos); 
-            baos.flush();
-            byte[] combinedImageByteArray = baos.toByteArray();
-            baos.close();          
+            //ImageIO.write(fixedImage, imageFormat, baos); 
+            //baos.flush();
+            //byte[] combinedImageByteArray = baos.toByteArray();
+            //baos.close();          
+
+            byte[] combinedImageByteArray = new PngEncoder().withBufferedImage(fixedImage).toBytes();
 
             return new XdmAtomicValue(new net.sf.saxon.value.Base64BinaryValue(combinedImageByteArray).asAtomic().getStringValue());
         } catch (Exception e) {

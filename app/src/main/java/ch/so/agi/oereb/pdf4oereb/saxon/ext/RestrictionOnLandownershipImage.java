@@ -27,6 +27,8 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pngencoder.PngEncoder;
+
 import ch.so.agi.oereb.pdf4oereb.utils.Utils;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
@@ -404,11 +406,13 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
         try {           
             //ImageIO.write(newImage, "png", new File("/Users/stefan/tmp/new_image.png"));
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(newImage, imageFormat, baos);
-            baos.flush();
-            newImageByteArray = baos.toByteArray();
-            baos.close();         
-        } catch (IOException e) {
+            //ImageIO.write(newImage, imageFormat, baos);
+            //baos.flush();
+            //newImageByteArray = baos.toByteArray();
+            //baos.close();     
+            
+            newImageByteArray = new PngEncoder().withBufferedImage(newImage).toBytes();
+        } catch (Exception e) {
             e.printStackTrace();
             throw new SaxonApiException(e.getMessage());
         }
