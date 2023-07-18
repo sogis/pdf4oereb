@@ -570,13 +570,15 @@
       schon generisch lösen. Dieser Code hier (inkl. Extension Function) müsste aber angepasst 
       werden.
       -->
-      <xsl:if test="data:Map/data:Image">
-        <xsl:message>Use Blob...</xsl:message>  
+
+      <!-- Blobs verwenden und group by Blobs. Siehe Kommentare oben: Die Blobs (also die Base64-Strings müssen identisch sein.)-->
+      <xsl:if test="data:Map/data:Image and not(data:Map/data:ReferenceWMS)">
+        <!--<xsl:message>Use Blob...</xsl:message>-->
 
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 
-          <xsl:message>You may see this only one per (Sub)theme...</xsl:message>  
+          <!--<xsl:message>You may see this only one per (Sub)theme...</xsl:message>-->
 
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
             <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
@@ -591,15 +593,40 @@
         </xsl:for-each-group>
       </xsl:if>
 
-      <xsl:if test="data:Map/data:ReferenceWMS and not(data:Map/data:Image)">
-        <!-- Funktioniert nur, wenn die GetMap-Requests syntaktisch identisch sind. -->
-        <!-- Siehe auch Kommentar oben. -->
-        <xsl:message>Use ReferenceWMS...</xsl:message>  
+      <!-- Blobs verwenden aber group by WMS-Url. Siehe Kommentare oben. Ist im Kanton SH der Fall. Noch nicht ganz klar warum. Die WMS-Url (die 
+      unterwegs vom oereb-web-service syntaktisch (?) gefixed werden) sind identisch. Die Bilder aber nicht. Die Bilder wiederum werden mit den
+      gefixede URL hergestellt im oereb-web-service.-->
+      <xsl:if test="data:Map/data:Image and data:Map/data:ReferenceWMS">
+        <!--<xsl:message>Use Blob but group by ReferenceWMS</xsl:message>-->
 
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
 
-          <xsl:message>You may see this only one per (Sub)theme...</xsl:message>  
+          <!--<xsl:message>You may see this only one per (Sub)theme...</xsl:message>-->
+
+          <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
+            <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
+              <xsl:attribute name="src">
+                <xsl:text>url('data:</xsl:text>
+                <xsl:text>image/png;base64,</xsl:text>
+                  <xsl:value-of select="oereb:createRestrictionOnLandownershipImages(data:Map, ../data:PlanForLandRegister, $OverlayImage, $locale)"/>
+                <xsl:text>')</xsl:text>
+              </xsl:attribute>
+            </fo:external-graphic>
+          </fo:block>
+        </xsl:for-each-group>
+      </xsl:if>
+
+      <!-- WMS-Url verwenden für das Herstellen der Bilder und gruppieren. -->
+      <xsl:if test="data:Map/data:ReferenceWMS and not(data:Map/data:Image)">
+        <!-- Funktioniert nur, wenn die GetMap-Requests syntaktisch identisch sind. -->
+        <!-- Siehe auch Kommentar oben. -->
+        <!--<xsl:message>Use ReferenceWMS...</xsl:message>-->
+
+        <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
+          <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
+
+          <!--<xsl:message>You may see this only one per (Sub)theme...</xsl:message>-->
 
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
             <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
