@@ -412,9 +412,17 @@
                 </xsl:if>
 
                 <xsl:if test="not(current-group()/data:Theme/data:SubCode)">
+
+
+
                     <xsl:for-each-group select="current-group()" group-by="data:Lawstatus/data:Code">
                       <xsl:sort data-type="number" order="ascending" select="(number(data:Lawstatus/data:Code='inForce') * 1) + (number(data:Lawstatus/data:Code='changeWithPreEffect') * 2) + (number(data:Lawstatus/data:Code='changeWithoutPreEffect') * 3)"/>
 
+<!--
+    <xsl:message>??fubar</xsl:message>  
+    <xsl:message><xsl:value-of select="current-group()/data:Theme"/></xsl:message>  
+    <xsl:message><xsl:value-of select="count(current-group())"/></xsl:message>  
+-->
                       <fo:block-container background-color="transparent">
                         <fo:block id="{generate-id()}" page-break-before="always" linefeed-treatment="preserve" font-weight="700" font-size="15pt" line-height="18pt">
                           <xsl:value-of select="oereb:extractMultilingualText(data:Theme/data:Text/data:LocalisedText, $locale)"/>
@@ -532,13 +540,13 @@
 
   <xsl:template name="handleRestrictionOnLandownership">
     
-    <!--
+<!--
     <xsl:message>??fubar</xsl:message>  
     <xsl:message><xsl:value-of select="count(current-group())"/></xsl:message>  
     <xsl:for-each-group select="current-group()" group-by="data:TypeCode">
       <xsl:message>TypeCode: <xsl:value-of select="data:TypeCode"/></xsl:message>  
     </xsl:for-each-group>
-    -->
+-->
 
     <!-- margin-top: heuristisch -->
     <fo:block-container margin-top="4mm" height="105mm" background-color="transparent">
@@ -563,8 +571,13 @@
       werden.
       -->
       <xsl:if test="data:Map/data:Image">
+        <xsl:message>Use Blob...</xsl:message>  
+
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:Image">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
+
+          <xsl:message>You may see this only one per (Sub)theme...</xsl:message>  
+
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
             <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">
@@ -581,8 +594,13 @@
       <xsl:if test="data:Map/data:ReferenceWMS and not(data:Map/data:Image)">
         <!-- Funktioniert nur, wenn die GetMap-Requests syntaktisch identisch sind. -->
         <!-- Siehe auch Kommentar oben. -->
+        <xsl:message>Use ReferenceWMS...</xsl:message>  
+
         <xsl:for-each-group select="current-group()" group-by="data:Map/data:ReferenceWMS">
           <xsl:sort order="ascending" select="data:Information/data:LocalisedText/data:Text"/>
+
+          <xsl:message>You may see this only one per (Sub)theme...</xsl:message>  
+
           <fo:block font-size="0pt" padding="0mm" margin="0mm" line-height="0mm">
             <fo:external-graphic border="0.4pt solid black" width="174mm" height="99mm" scaling="uniform" content-width="scale-to-fit" content-height="scale-to-fit" fox:alt-text="RestrictionOnLandownershipImage">
               <xsl:attribute name="src">

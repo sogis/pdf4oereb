@@ -37,6 +37,8 @@ public class PlanForLandRegisterMainPageImageTest {
         XdmNode baseMapSource = processor.newDocumentBuilder().build(new StreamSource(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_embeddedImage_Ok_baseMapNode.xml")));
         XdmNode baseMapNode = baseMapSource.children().iterator().next();
         
+        //System.out.println("baseMapNode: " + baseMapNode);
+        
         // the overlay image is only a base64 string
         String overlayImageString = new String(Files.readAllBytes(new File("src/test/resources/PlanForLandRegisterMainPageImageTest/createPlanForLandRegisterMainPageImage_embeddedImage_Ok_overlayImageNode.xml").toPath()));
         Orphan node = new Orphan(processor.getUnderlyingConfiguration());
@@ -44,6 +46,8 @@ public class PlanForLandRegisterMainPageImageTest {
         node.setStringValue(overlayImageString);
         XdmNode overlayImageNode = new XdmNode(node);
 
+        //System.out.println("overlayImageNode: " + overlayImageNode);
+        
         XdmValue[] arguments = {baseMapNode, overlayImageNode, new XdmAtomicValue("de")};
         PlanForLandRegisterMainPageImage mainPageImage = new PlanForLandRegisterMainPageImage();
         XdmAtomicValue resultImage = (XdmAtomicValue) mainPageImage.call(arguments);

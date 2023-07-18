@@ -80,12 +80,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
         XdmNode oerebMap = (XdmNode) arguments[0];
         XdmNode backgroundMapNode = (XdmNode) arguments[1];
         XdmNode overlayImageNode = (XdmNode) arguments[2];
-        String locale;
-        try {
-            locale = arguments[2].getUnderlyingValue().getStringValue();
-        } catch (XPathException e) {
-            throw new SaxonApiException(e.getMessage());
-        }
+        String locale = "de";
 
         List<MapImage> mapImageList = new ArrayList<MapImage>();
                 
@@ -124,7 +119,7 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                 // embedded
                 String base64String = null;
                 int j=0;
-
+                
                 Iterator<XdmNode> jt = mapNode.children("Image").iterator();
                 while(jt.hasNext()) {
                     XdmNode imageNode = (XdmNode) jt.next();
@@ -134,17 +129,21 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                         XdmNode subNode = (XdmNode) kt.next();
                         Iterator<XdmNode> lt = subNode.children().iterator();
                         while (lt.hasNext()) {
-                            XdmNode subSubNode = (XdmNode) lt.next();
+                            XdmNode subSubNode = (XdmNode) lt.next();                            
                             if (subSubNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
                                 if (subSubNode.getNodeName().getLocalName().equalsIgnoreCase("Language")) {
                                     if (j == 0) {
                                         base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                     }
-                                    String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                                                        
+                                    String language = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
                                     if (language.equalsIgnoreCase(locale)) {
                                         base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                         break;
                                     } 
+                                } else {
+                                    // Kein Language-Node vorhanden.
+                                    base64String = subSubNode.getStringValue();
                                 } 
                             }
                         }
@@ -183,7 +182,10 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                                             requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                             break;
                                         } 
-                                    }
+                                    } else {
+                                        // Kein Language-Node vorhanden.
+                                        requestString = subNode.getStringValue();
+                                    } 
                                 }
                             }
                             i++;
@@ -278,12 +280,15 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                                 if (j == 0) {
                                     base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                 }
-                                String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                String language = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
                                 if (language.equalsIgnoreCase(locale)) {
                                     base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                     break;
                                 } 
-                            } 
+                            } else {
+                                // Kein Language-Node vorhanden.
+                                base64String = subSubNode.getStringValue();
+                            }
                         }
                     }
                 }
@@ -318,6 +323,9 @@ public class RestrictionOnLandownershipImage implements ExtensionFunction {
                                         requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                         break;
                                     } 
+                                } else {
+                                    // Kein Language-Node vorhanden.
+                                    requestString = subNode.getStringValue();
                                 }
                             }
                         }

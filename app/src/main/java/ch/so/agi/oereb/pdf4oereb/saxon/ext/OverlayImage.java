@@ -275,13 +275,16 @@ public class OverlayImage implements ExtensionFunction {
                             if (j == 0) {
                                 base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                             }
-                            String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                            String language = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
                             if (language.equalsIgnoreCase(locale)) {
                                 base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                 break;
                             } 
+                        } else {
+                            // Kein Language-Node vorhanden.
+                            base64String = subNode.getStringValue();
                         } 
-                    }
+                    } 
                 }
                 j++;
             }
@@ -315,6 +318,9 @@ public class OverlayImage implements ExtensionFunction {
                                     requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                     break;
                                 } 
+                            } else {
+                                // Kein Language-Node vorhanden.
+                                requestString = subNode.getStringValue();
                             }
                         }
                     }

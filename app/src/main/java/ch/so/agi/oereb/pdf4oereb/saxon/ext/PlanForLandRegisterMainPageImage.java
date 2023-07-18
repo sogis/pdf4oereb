@@ -81,7 +81,6 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
             while(it.hasNext()) {
                 XdmNode imageNode = (XdmNode) it.next();
                 Iterator<XdmNode> jt = imageNode.children("LocalisedBlob").iterator();
-                        
                 while(jt.hasNext()) {
                     XdmNode subNode = (XdmNode) jt.next();
                     Iterator<XdmNode> kt = subNode.children().iterator();
@@ -92,12 +91,15 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                                 if (j == 0) {
                                     base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                 }
-                                String language = subNode.getTypedValue().getUnderlyingValue().getStringValue().trim();
+                                String language = subSubNode.getTypedValue().getUnderlyingValue().getStringValue().trim();                               
                                 if (language.equalsIgnoreCase(locale)) {
                                     base64String = Utils.extractMultilingualText(subSubNode.getParent(), "Blob");
                                     break;
                                 } 
-                            } 
+                            } else  {
+                                // Kein Language-Node vorhanden.
+                                base64String = subNode.getStringValue();
+                            }
                         }
                     }
                     j++;
@@ -117,7 +119,7 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                     Iterator<XdmNode> jt = wmsNode.children("LocalisedText").iterator();
                     while(jt.hasNext()) {
                         XdmNode localisedTextNode = (XdmNode) jt.next();
-                        Iterator<XdmNode> kt = localisedTextNode.children().iterator();
+                        Iterator<XdmNode> kt = localisedTextNode.children().iterator();                        
                         while(kt.hasNext()) {
                             XdmNode subNode = (XdmNode) kt.next();
                             if (subNode.getNodeKind().equals(XdmNodeKind.ELEMENT)) {
@@ -131,8 +133,11 @@ public class PlanForLandRegisterMainPageImage implements ExtensionFunction {
                                         requestString = Utils.extractMultilingualText(subNode.getParent(), "Text");
                                         break;
                                     } 
+                                } else {
+                                    // Kein Language-Node vorhanden.
+                                    requestString = subNode.getStringValue();
                                 }
-                            }
+                            } 
                         }
                         i++;
                     }

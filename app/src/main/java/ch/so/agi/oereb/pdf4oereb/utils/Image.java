@@ -18,8 +18,7 @@ public class Image {
     public static byte[] getImage(String request) throws Exception {
         String decodedRequest;
         try {
-            decodedRequest = java.net.URLDecoder.decode(request, "UTF-8");
-            
+            decodedRequest = java.net.URLDecoder.decode(request, "UTF-8").replace(" ", "%20");
             HttpClient httpClient = HttpClient.newBuilder()
                     .followRedirects(Redirect.ALWAYS)
                     .build();
