@@ -1008,9 +1008,9 @@
                     <xsl:value-of select="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $locale)"/>
                     <xsl:text>)</xsl:text>
                   </xsl:if>
-                  <xsl:if test="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $locale)">
+                  <xsl:if test="oereb:extractMultilingualText(data:OfficialNumber/data:LocalisedText, $locale)">
                     <xsl:text>, </xsl:text>
-                    <xsl:value-of select="oereb:extractMultilingualText(data:Abbreviation/data:LocalisedText, $locale)"/>
+                    <xsl:value-of select="oereb:extractMultilingualText(data:OfficialNumber/data:LocalisedText, $locale)"/>
                   </xsl:if>
                   <xsl:text>:</xsl:text>
                 </fo:block>
