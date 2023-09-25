@@ -308,7 +308,7 @@
                         <fo:table-column column-width="87mm"/>
                         <fo:table-body>
                           <fo:table-row vertical-align="top">
-                            <fo:table-cell padding-right="1.5mm">
+                            <fo:table-cell padding-right="1.5mm" background-color="transparent">
                               <fo:block font-weight="700">
                                 <xsl:value-of select="$localeXml/data[@name='ContentPage.GeneralInformation']/value/text()"/>
                               </fo:block>
@@ -326,7 +326,7 @@
                                 </xsl:call-template>
                               </fo:block>
                             </fo:table-cell>
-                            <fo:table-cell padding-left="1.5mm">
+                            <fo:table-cell padding-left="1.5mm" background-color="transparent">
                               <fo:block font-weight="700">
                                 <xsl:value-of select="oereb:extractMultilingualText(data:Disclaimer[2]/data:Title/data:LocalisedText, $locale)"/>
                               </fo:block>
@@ -335,6 +335,19 @@
                                   <xsl:with-param name="textContent" select="oereb:extractMultilingualText(data:Disclaimer[2]/data:Content/data:LocalisedText, $locale)" />
                                 </xsl:call-template>
                               </fo:block>
+                              <!-- Ein wenig handgestrickt. Normalerweise gibt es drei Disclamer. Wie macht man beliebig viele Disclamer?
+                              Man würde wohl eine Loop machen. Müsste irgendwie links/rechts-fähig sein.
+                              Fürs erste reicht es so. (Anforderung Kt. SH) -->
+                              <xsl:if test="data:Disclaimer[3]/data:Title/data:LocalisedText">
+                                <fo:block  margin-top="2.2mm" font-weight="700">
+                                  <xsl:value-of select="oereb:extractMultilingualText(data:Disclaimer[3]/data:Title/data:LocalisedText, $locale)"/>
+                                </fo:block>
+                                <fo:block>
+                                  <xsl:call-template name="textRenderer">
+                                    <xsl:with-param name="textContent" select="oereb:extractMultilingualText(data:Disclaimer[3]/data:Content/data:LocalisedText, $locale)" />
+                                  </xsl:call-template>
+                                </fo:block>
+                              </xsl:if>
                               <fo:block margin-top="2.2mm">
                                 <xsl:if test="data:QRCode">
                                   <fo:table table-layout="fixed" width="100%">

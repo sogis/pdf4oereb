@@ -83,6 +83,7 @@ run {
     //args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/tmp/", "--lang", "it"]
     //args = ["--xml", "src/test/data/bl/CH344982777421_geometry_wms.xml", "--out", "/Users/stefan/tmp/pdf4oereb/", "--lang", "it"]
     //args = ["--xml", "src/test/data/sh/CH715491087818_geometry_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb/", "--lang", "de"]
+    //args = ["--xml", "/Users/stefan/Downloads/CH150708785479_geometry_images.xml", "--out", "/Users/stefan/tmp/pdf4oereb"]
 }
 
 /*
