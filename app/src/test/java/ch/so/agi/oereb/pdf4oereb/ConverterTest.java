@@ -18,10 +18,10 @@ public class ConverterTest {
     @Test 
     public void convert2Pdf_SO_Images_Geometry_Ok(@TempDir Path tempDir) throws ConverterException, IOException {
         Converter converter = new Converter();
-        //File resultFile = converter.runXml2Pdf("src/test/data/so/CH955832730623_geometry_images.xml", tempDir.toAbsolutePath().toString(), Locale.IT);
-        File resultFile = converter.runXml2Pdf("src/test/data/bl/CH344982777421_geometry_wms.xml", tempDir.toAbsolutePath().toString(), Locale.IT);
+        File resultFile = converter.runXml2Pdf("src/test/data/so/CH955832730623_geometry_images.xml", tempDir.toAbsolutePath().toString(), Locale.IT);
 
         List<PdfPage> pdfPages = TestUtils.extractPdf(resultFile);
         
+        // TODO
     }
 }
