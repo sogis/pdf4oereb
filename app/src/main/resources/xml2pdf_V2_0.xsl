@@ -1135,17 +1135,21 @@
               <fo:table-cell padding-top="1.5pt" padding-bottom="1.5pt">
                 <fo:block font-size="8pt">
                   <xsl:value-of select="oereb:extractMultilingualText(data:Name/data:LocalisedText, $locale)"/>
-                  <xsl:text>:</xsl:text>
+                  <xsl:if test="data:OfficeAtWeb/data:LocalisedText">
+                    <xsl:text>:</xsl:text>
+                  </xsl:if>
                 </fo:block>
-                <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="-1mm">
-                  <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
-                    <xsl:attribute name="external-destination">
-                      <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $locale))"/>
-                    </xsl:attribute>
-                    <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
-                    <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $locale)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
-                  </fo:basic-link>
-                </fo:block>
+                <xsl:if test="data:OfficeAtWeb/data:LocalisedText">
+                  <fo:block font-size="6pt" line-height="8pt" margin-left="3mm" margin-top="-1mm">
+                    <fo:basic-link text-decoration="none" color="rgb(76,143,186)">
+                      <xsl:attribute name="external-destination">
+                        <xsl:value-of select="oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $locale))"/>
+                      </xsl:attribute>
+                      <!-- https://stackoverflow.com/questions/4350788/xsl-fo-force-wrap-on-table-entries/33689540#33689540 -->
+                      <xsl:value-of select="replace(replace(oereb:decodeURL(oereb:extractMultilingualText(data:OfficeAtWeb/data:LocalisedText, $locale)), '(\P{Zs}{13})', '$1​'), '​(\p{Zs})','$1')"/>
+                    </fo:basic-link>
+                  </fo:block>
+                </xsl:if>
               </fo:table-cell>
             </fo:table-row>
           </xsl:for-each-group>
